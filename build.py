@@ -184,50 +184,59 @@ APPS = {
         "category_label": "Productivity",
         "schema_category": "ProductivityApplication",
         "appstore_id": "6761559776",
-        "accent": "#7c5cff", "accent_deep": "#5f43d6", "accent_tint": "#ece7ff",
-        "icon_svg": '<rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="12" cy="10" r="2.4"/><path d="M8 16.5c.6-1.8 2.1-2.8 4-2.8s3.4 1 4 2.8"/>',
-        "tagline": "A personal CRM for real life.",
-        "hero_sub": "Remember the people who matter and stay in touch on purpose. Set how often you want to reach out, jot down what you talked about, and never let an important relationship quietly fade.",
-        "seo_title": "KeepContact — Private personal CRM to stay in touch, for iPhone",
-        "seo_desc": "KeepContact is a privacy-first personal CRM for iPhone. Set reminders to stay in touch, keep notes on the people you care about, no account and no tracking. Data stays on your device.",
+        # 1.6.0 "Lien" identity: violet #6B3FD4 (icon background), coral #FF7A59 second accent
+        "accent": "#6b3fd4", "accent_deep": "#5530b0", "accent_tint": "#ece5fa",
+        "icon_svg": '<path d="M4 5h11a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H9l-4 3v-3H4z"/><path d="M17 9h3v8h-1v3l-4-3h-4"/>',
+        "tagline": "Stay close to the people who matter.",
+        "hero_sub": "A friend you meant to call. A former colleague you never followed up with. KeepContact turns \"I should reach out\" into a simple daily habit — and helps you know what to say when you do. No cloud, no account, no server.",
+        "seo_title": "KeepContact — Private personal CRM with on-device AI, for iPhone",
+        "seo_desc": "KeepContact is a privacy-first personal CRM for iPhone. See who to reach out to each morning, remember what matters to each person, get message ideas from Apple's on-device AI. No account, no tracking, 100% offline.",
+        "updated": "11 October 2026",
+        "icloud": False,
+        "lifetime": True,
         "features": [
-            ("Stay in touch on purpose", "Choose how often you want to connect with each person. KeepContact gently reminds you before too long passes.", '<path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/>'),
-            ("Remember what matters", "Keep light notes on each person — what you last talked about, what's going on in their life — so you always pick up where you left off.", '<path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h6"/>'),
-            ("Your circle, your tiers", "Sort the people in your life into the circles that fit — close family, good friends, work — and reach out accordingly.", '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.6"/>'),
-            ("Completely yours", "Your relationships are deeply personal. KeepContact keeps every name and note on your device, never on a server.", '<path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/>'),
+            ("One clear next step, every morning", "See who is overdue, at the rhythm you chose for each person. KeepContact puts one person first, with a three-line summary and a way to open the conversation — and message ideas if you're stuck on the first words.", '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'),
+            ("Remember what matters to them", "Hobbies, gift ideas, allergies, their kids' names, the topic you promised to follow up on. Plus birthdays, anniversaries, the day you met, and who introduced you.", '<path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h6"/>'),
+            ("Keep the thread", "Log calls, coffees, messages and meetings in one journal. Dictate a voice memo, transcribed on your iPhone. Scan a business card and the contact fills itself in. KeepContact even spots who you saw in your calendar and offers to log it.", '<path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>'),
+            ("Your network at a glance", "A relationship health score out of 100, circles from closest to most distant, and statistics on who you actually stay in touch with.", '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.6"/>'),
+            ("Your year in relationships", "In December, KeepContact puts together your year in relationships and a greetings card, in story format, ready to share — no names shown by default.", '<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M10 15h4M12 7v5"/>'),
+            ("No guilt, no clutter", "Snooze anyone for a week, a month, or indefinitely. Updates from your Contacts are suggested field by field, and duplicates are found and merged in one tap.", '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>'),
         ],
         "steps": [
-            ("Add the people who matter", "Bring in a few key relationships and set how often you'd like to connect."),
-            ("Log your moments", "After a call or coffee, jot a quick note so nothing important slips away."),
-            ("Get a gentle nudge", "When it's been a while, KeepContact reminds you — quietly, never nagging."),
+            ("Pick the people who matter", "Work, friends, family: choose who counts and how often you'd like to be in touch. Import from Contacts or add people by hand."),
+            ("Reach out, with something to say", "Each morning, KeepContact shows who's due, what you know about them, and an idea to open the conversation."),
+            ("Log it in a tap", "After the call or the coffee, log it in one tap or dictate a voice note. Next time, you pick up right where you left off."),
         ],
         "faq": [
-            ("Is KeepContact free?", "Yes — KeepContact is free to download and free for up to 15 contacts. An optional subscription removes the limit and unlocks advanced features."),
-            ("What's a good private personal CRM app?", "KeepContact is a privacy-first personal CRM: it has no account, no analytics and no trackers, and every name, note and reminder is stored on your own device."),
-            ("Does KeepContact upload my contacts?", "No. KeepContact never uploads your contacts. Anything you add stays on your device, with optional sync through your own private iCloud."),
-            ("How many contacts can I track for free?", "You can track up to 15 contacts for free. The optional subscription removes the limit."),
+            ("Is KeepContact free?", "Yes. KeepContact is free to download, and you can track up to 15 contacts and 3 reminders for free. KeepContact Pro removes the limits and unlocks the on-device AI, voice notes, the morning brief, the health score, circles, statistics, year in review and encrypted backups. Subscriptions come with a 7-day free trial, or you can get Pro for life with a single payment."),
+            ("What's a good private personal CRM app?", "KeepContact is a privacy-first personal CRM for iPhone: no account, no server, no analytics and no trackers. Every name, note and reminder is stored on your device, and its App Store privacy label is \"Data Not Collected\"."),
+            ("Does KeepContact upload my contacts?", "No. KeepContact never uploads your contacts or notes. It works 100% offline and everything stays on your iPhone. Backups are files you save yourself, and can be encrypted with a password only you know."),
+            ("How does the AI work without sending my data?", "KeepContact uses Apple's on-device AI model. Summaries, message ideas and the facts it picks up from your notes are generated on your iPhone; your notes never leave it. It requires an iPhone that supports Apple Intelligence; the rest of the app works on any iPhone running a supported iOS version."),
+            ("Does KeepContact sync with iCloud?", "Not at the moment. KeepContact keeps everything on your iPhone. To move your data to another iPhone, KeepContact Pro includes a backup in Settings, which you can encrypt with your own password."),
         ],
         "mock": """
           <div style="flex:1;display:flex;flex-direction:column;gap:11px;padding:24px 18px;">
-            <div style="font-family:var(--serif);font-weight:600;font-size:1.1rem;color:var(--ink);">Stay in touch</div>
-            <div style="font-size:.68rem;color:var(--ink-faint);margin-bottom:4px;">2 people to reach out to</div>
-            <div style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:12px;background:var(--accent-tint);"><span style="width:30px;height:30px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff;font-weight:700;font-size:.8rem;">M</span><div><div style="font-size:.82rem;color:var(--ink);font-weight:600;line-height:1.1;">Maman</div><div style="font-size:.64rem;color:var(--accent-deep);">due today</div></div></div>
-            <div style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:12px;background:var(--accent-tint);"><span style="width:30px;height:30px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff;font-weight:700;font-size:.8rem;">J</span><div><div style="font-size:.82rem;color:var(--ink);font-weight:600;line-height:1.1;">Julien</div><div style="font-size:.64rem;color:var(--accent-deep);">2 days overdue</div></div></div>
-            <div style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:12px;opacity:.55;"><span style="width:30px;height:30px;border-radius:50%;background:#cfc7b6;display:grid;place-items:center;color:#fff;font-weight:700;font-size:.8rem;">S</span><div><div style="font-size:.82rem;color:var(--ink-soft);font-weight:600;line-height:1.1;">Sophie</div><div style="font-size:.64rem;color:var(--ink-faint);">in 5 days</div></div></div>
+            <div style="font-family:var(--serif);font-weight:600;font-size:1.1rem;color:var(--ink);">Today</div>
+            <div style="font-size:.68rem;color:var(--ink-faint);margin-bottom:4px;">3 people to reach out to</div>
+            <div style="padding:12px;border-radius:14px;background:var(--accent);color:#fff;font-size:.7rem;line-height:1.35;"><strong style="font-size:.82rem;">Write to Kate</strong><br>New studio opens in March. Ask how the Lyon trade show went.</div>
+            <div style="display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:12px;background:var(--accent-tint);"><span style="width:30px;height:30px;border-radius:50%;background:#ffd9c9;display:grid;place-items:center;color:#a8452b;font-weight:700;font-size:.72rem;">DT</span><div><div style="font-size:.82rem;color:var(--ink);font-weight:600;line-height:1.1;">David Taylor</div><div style="font-size:.64rem;color:var(--accent-deep);">25 days overdue</div></div></div>
           </div>""",
         "permissions": [
-            ("Contacts (optional)", "If you choose to import people from your address book, KeepContact reads your contacts only at that moment, on your device. It never uploads them anywhere. You can use KeepContact without granting this permission by adding people manually."),
-            ("Microphone (optional)", "Only used if you choose to attach a voice note to an interaction. The microphone is accessed only while you are recording, and voice notes are stored on your device along with the rest of your data. You can use KeepContact fully without granting this permission."),
-            ("Notifications", "Used only for the stay-in-touch reminders you set. Optional."),
+            ("Contacts (optional)", "If you choose to import people from your address book, KeepContact reads your contacts on your device to import them and to suggest updates. It never uploads them anywhere and never writes to your address book. You can use KeepContact without granting this permission by adding people manually."),
+            ("Calendar (optional)", "If you turn on calendar suggestions, KeepContact reads your past events on your device to suggest logging the time you spent with your contacts. Nothing is saved without your OK, and nothing leaves your iPhone."),
+            ("Camera (optional)", "Only used when you scan a business card, to read it and prefill a contact. The image is neither saved nor sent."),
+            ("Microphone (optional)", "Only used if you choose to record a voice note on an interaction. The microphone is accessed only while you are recording. Voice notes and their transcripts are created and stored on your device."),
+            ("Notifications (optional)", "Used only for the stay-in-touch reminders, birthday notifications and the morning brief you choose to receive. They are scheduled locally on your iPhone."),
         ],
-        "hero_shot_alt": "KeepContact home dashboard with a Network Health score, people you are due to contact, and recent interactions",
+        "hero_shot_alt": "KeepContact Today screen: the one person to write to today with an on-device AI summary, then the others who are due",
         "shots_type": "brut",
         "shots_w": 620, "shots_h": 1347,
         "shots": [
-            ("shot-1.webp", "KeepContact onboarding screen inviting you to stay connected with the people who matter"),
-            ("shot-2.webp", "KeepContact My Network view grouping your contacts by relationship tier"),
-            ("shot-3.webp", "KeepContact contact detail view with notes and last interactions for one person"),
-            ("shot-4.webp", "KeepContact stats screen with an overview of your relationship maintenance"),
+            ("shot-1.webp", "KeepContact Prepare card on a contact: an on-device AI summary, Write and Call buttons, and message ideas"),
+            ("shot-2.webp", "KeepContact What I know section: hobbies, gift ideas, allergies, loved ones and topics to bring up"),
+            ("shot-3.webp", "KeepContact My Network view: your people arranged in circles from closest to most distant"),
+            ("shot-4.webp", "KeepContact Statistics: a network health score out of 100 and your interactions over four weeks"),
+            ("shot-5.webp", "KeepContact Year in review: your year in relationships as a story image, with names hidden by default"),
         ],
     },
 }
@@ -543,26 +552,38 @@ def build_privacy(slug):
     perms = "".join(
         f"<h3>{html.escape(p)}</h3><p>{html.escape(d)}</p>" for p, d in a["permissions"]
     )
+    updated = a.get("updated", UPDATED)
+    if a.get("icloud", True):
+        short_storage = f"{a['name']} stores your data on your device, optionally synced through your own private iCloud."
+        storage = f"Everything you create in {a['name']} is stored locally on your device using Apple's on-device frameworks. If you enable iCloud, this data may sync through your own private Apple iCloud account, which SuiteForge cannot access. We do not operate any server that stores your personal content."
+    else:
+        short_storage = f"{a['name']} stores your data on your device only. It does not sync to any cloud."
+        storage = f"Everything you create in {a['name']} is stored locally on your device using Apple's on-device frameworks. {a['name']} does not sync your data to iCloud or to any other cloud service, and we do not operate any server that stores your personal content. If you create a backup or an export, it is a file you choose where to save; backups can be encrypted with a password only you know."
+    ai = ""
+    if slug == "keepcontact":
+        ai = f"""
+  <h3>On-device AI</h3>
+  <p>On iPhones that support Apple Intelligence, {a['name']} uses Apple's on-device language model to summarise a contact, suggest message ideas and spot facts in your notes. Voice notes are transcribed on your device too. This processing happens entirely on your iPhone: your notes and recordings are not sent to SuiteForge, to Apple or to any third party.</p>"""
     return f'''{head(f"Privacy Policy — {a['name']}", f"How {a['name']} handles your data. Short version: it stays on your device. No accounts, no tracking.", canonical, theme)}
 {site_header()}
 <main class="legal">
   <h1>Privacy Policy</h1>
-  <p class="updated">{a['name']} · Last updated {UPDATED}</p>
+  <p class="updated">{a['name']} · Last updated {updated}</p>
 
-  <div class="callout"><p><strong>The short version.</strong> {a['name']} stores your data on your device, optionally synced through your own private iCloud. There is no {a['name']} account. We do not use analytics or advertising trackers, and we never sell your data. The only information that leaves your device is the anonymous purchase data needed to manage an optional subscription.</p></div>
+  <div class="callout"><p><strong>The short version.</strong> {short_storage} There is no {a['name']} account. We do not use analytics or advertising trackers, and we never sell your data. The only information that leaves your device is the anonymous purchase data needed to manage an optional subscription.</p></div>
 
   <h2>1. Who we are</h2>
   <p>{a['name']} is an iPhone app published by SuiteForge. For any privacy question, contact us at <a href="mailto:suiteforgeops@gmail.com">suiteforgeops@gmail.com</a>.</p>
 
   <h2>2. Data stored on your device</h2>
-  <p>Everything you create in {a['name']} is stored locally on your device using Apple's on-device frameworks. If you enable iCloud, this data may sync through your own private Apple iCloud account, which SuiteForge cannot access. We do not operate any server that stores your personal content.</p>
+  <p>{storage}</p>{ai}
 
   <h2>3. Permissions {a['name']} may request</h2>
   {perms}
   <p>Each permission is optional, is requested only when relevant, and can be changed at any time in the iOS Settings app.</p>
 
   <h2>4. Subscriptions and purchases</h2>
-  <p>{a['name']} offers an optional auto-renewing subscription. Purchases are processed by Apple. To deliver and restore purchases across your devices, we use RevenueCat, Inc. as a service provider. For this purpose only, an anonymous app-user identifier together with purchase and receipt information is processed by Apple and RevenueCat. This information is not linked to your personal content in the app and is not used for advertising. See <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a> and <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat's Privacy Policy</a>.</p>
+  <p>{a['name']} offers an optional auto-renewing subscription{" and an optional one-time lifetime purchase" if a.get("lifetime") else ""}. Purchases are processed by Apple. To deliver and restore purchases across your devices, we use RevenueCat, Inc. as a service provider. For this purpose only, an anonymous app-user identifier together with purchase and receipt information is processed by Apple and RevenueCat. This information is not linked to your personal content in the app and is not used for advertising. See <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a> and <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat's Privacy Policy</a>.</p>
 
   <h2>5. What we do not do</h2>
   <ul>
@@ -597,11 +618,15 @@ def build_terms(slug):
     if is_health:
         health_clause = f'''<h2>4. Not medical advice</h2>
   <p>{a['name']} is provided for general informational and wellness purposes only. It is not a medical device and does not provide medical advice, diagnosis or treatment. Always consult a qualified healthcare professional before making changes to your diet, fasting, exercise or health routine, and especially if you are pregnant, nursing, under 18, or have any medical condition. Never disregard professional medical advice because of something in this app.</p>'''
+    updated = a.get("updated", UPDATED)
+    lifetime = ""
+    if a.get("lifetime"):
+        lifetime = " A one-time lifetime purchase is also available: it is charged once, does not renew, and unlocks the same features for as long as the app is offered."
     return f'''{head(f"Terms of Use — {a['name']}", f"The terms that apply when you use {a['name']}.", canonical, theme)}
 {site_header()}
 <main class="legal">
   <h1>Terms of Use</h1>
-  <p class="updated">{a['name']} · Last updated {UPDATED}</p>
+  <p class="updated">{a['name']} · Last updated {updated}</p>
 
   <h2>1. Acceptance</h2>
   <p>By downloading or using {a['name']} ("the app"), you agree to these Terms of Use. If you do not agree, please do not use the app. The app is published by SuiteForge.</p>
@@ -610,7 +635,7 @@ def build_terms(slug):
   <p>SuiteForge grants you a personal, non-transferable, non-exclusive licence to use {a['name']} on Apple devices that you own or control, in accordance with the Apple Media Services Terms and these Terms.</p>
 
   <h2>3. Subscriptions</h2>
-  <p>{a['name']} is free to download and includes optional auto-renewing subscriptions. Payment is charged to your Apple Account at confirmation of purchase. A subscription renews automatically unless cancelled at least 24 hours before the end of the current period. You can manage or cancel your subscription in your Apple Account settings. Prices are shown in the app before purchase and may vary by region.</p>
+  <p>{a['name']} is free to download and includes optional auto-renewing subscriptions. Payment is charged to your Apple Account at confirmation of purchase. A subscription renews automatically unless cancelled at least 24 hours before the end of the current period. You can manage or cancel your subscription in your Apple Account settings. Prices are shown in the app before purchase and may vary by region.{lifetime}</p>
 
   {health_clause}
 

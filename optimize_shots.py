@@ -22,6 +22,8 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 APPS = ["fastclear", "routineflow", "walkquest", "keepcontact"]
 
 CAROUSEL = dict(max_width=620, target_bytes=90 * 1024, start_q=82, min_q=50, step=4, max_count=5)
+# Per-app carousel size override (sources sorted; the home screen is removed)
+MAX_COUNT = {"keepcontact": 6}
 HERO     = dict(max_width=680, target_bytes=120 * 1024, start_q=84, min_q=50, step=4)
 
 
@@ -92,7 +94,7 @@ def main():
             summary.setdefault(slug, {})["hero"] = (w, h, size, os.path.basename(hero_src))
 
         # 2. Carrousel: first 5 sorted, minus the home
-        candidates = srcs[: CAROUSEL["max_count"]]
+        candidates = srcs[: MAX_COUNT.get(slug, CAROUSEL["max_count"])]
         if hero_src and hero_src in candidates:
             candidates = [c for c in candidates if c != hero_src]
         carousel_total = 0
