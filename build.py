@@ -264,7 +264,7 @@ def og_image(slug=None):
     """Per-app share image (<slug>/og.png, made by make_og.py) if present."""
     if slug and os.path.isfile(os.path.join(ROOT, slug, "og.png")):
         return DOMAIN + ver(f"/{slug}/og.png")
-    return f"{DOMAIN}/assets/og-suiteforge.png"
+    return DOMAIN + ver("/assets/og-suiteforge.png")
 
 def head(title, desc, canonical, theme, extra_jsonld="", extra_head="", og=None):
     og = og or og_image()
