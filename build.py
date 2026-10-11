@@ -253,7 +253,21 @@ def appstore_badge(slug):
       <span><small>Download on the</small><strong>App Store</strong></span>
     </a>'''
 
-def head(title, desc, canonical, theme, extra_jsonld="", extra_head=""):
+def ver(path):
+    """Cache-busting URL for a local file: /path?v=<content hash>, so browsers
+    pick up a new screenshot or icon right after a deploy."""
+    import hashlib
+    with open(os.path.join(ROOT, path.lstrip("/")), "rb") as f:
+        return f"{path}?v={hashlib.md5(f.read()).hexdigest()[:8]}"
+
+def og_image(slug=None):
+    """Per-app share image (<slug>/og.png, made by make_og.py) if present."""
+    if slug and os.path.isfile(os.path.join(ROOT, slug, "og.png")):
+        return DOMAIN + ver(f"/{slug}/og.png")
+    return f"{DOMAIN}/assets/og-suiteforge.png"
+
+def head(title, desc, canonical, theme, extra_jsonld="", extra_head="", og=None):
+    og = og or og_image()
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -268,9 +282,9 @@ def head(title, desc, canonical, theme, extra_jsonld="", extra_head=""):
 <meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{canonical}">
-<meta property="og:image" content="{DOMAIN}/assets/og-suiteforge.png">
+<meta property="og:image" content="{og}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="{DOMAIN}/assets/og-suiteforge.png">
+<meta name="twitter:image" content="{og}">
 <link rel="preload" href="/assets/fonts/fraunces-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/hanken-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/styles.css">
@@ -348,7 +362,7 @@ def build_shots(slug):
     h = a.get("shots_h", 1344)
     imgs = "".join(
         f'<figure class="shot reveal">'
-        f'<img src="/{slug}/screenshots/{fn}" alt="{html.escape(alt)}" '
+        f'<img src="{ver(f"/{slug}/screenshots/{fn}")}" alt="{html.escape(alt)}" '
         f'width="{w}" height="{h}" loading="lazy" decoding="async">'
         f'</figure>'
         for fn, alt in available
@@ -372,7 +386,7 @@ def icon_block(slug, size=56):
         return (
             f'<div class="app-icon app-icon--real" '
             f'style="width:{size}px;height:{size}px;border-radius:{r}px;">'
-            f'<img src="/{slug}/icon.webp" alt="{html.escape(a["name"])} app icon" '
+            f'<img src="{ver(f"/{slug}/icon.webp")}" alt="{html.escape(a["name"])} app icon" '
             f'width="{size}" height="{size}" loading="lazy" decoding="async">'
             f'</div>'
         )
@@ -396,12 +410,12 @@ def build_landing(slug):
         hero_block = (
             f'<div class="phone phone--shot">'
             f'<div class="phone-screen">'
-            f'<img src="/{slug}/screenshots/hero-home.webp" alt="{html.escape(hero_alt)}" '
+            f'<img src="{ver(f"/{slug}/screenshots/hero-home.webp")}" alt="{html.escape(hero_alt)}" '
             f'width="680" height="1477" loading="eager" fetchpriority="high" decoding="async">'
             f'</div></div>'
         )
         preload_link = (
-            f'<link rel="preload" as="image" href="/{slug}/screenshots/hero-home.webp" '
+            f'<link rel="preload" as="image" href="{ver(f"/{slug}/screenshots/hero-home.webp")}" '
             f'fetchpriority="high">'
         )
     else:
@@ -415,7 +429,7 @@ def build_landing(slug):
     # Per-landing favicon = the app's own icon (if optimized).
     favicon_link = ""
     if os.path.isfile(os.path.join(ROOT, slug, "icon.webp")):
-        favicon_link = f'<link rel="icon" type="image/webp" href="/{slug}/icon.webp">'
+        favicon_link = f'<link rel="icon" type="image/webp" href="{ver(f"/{slug}/icon.webp")}">'
     head_extra = preload_link + favicon_link
 
     faq_items = "".join(
@@ -460,7 +474,7 @@ def build_landing(slug):
 {{"@type":"ListItem","position":2,"name":{jsonstr(a['name'])},"item":"{canonical}"}}]}}
 </script>'''
 
-    return f'''{head(a['seo_title'], a['seo_desc'], canonical, theme, jsonld, head_extra)}
+    return f'''{head(a['seo_title'], a['seo_desc'], canonical, theme, jsonld, head_extra, og_image(slug))}
 {site_header()}
 
 <section class="app-hero">
@@ -564,7 +578,7 @@ def build_privacy(slug):
         ai = f"""
   <h3>On-device AI</h3>
   <p>On iPhones that support Apple Intelligence, {a['name']} uses Apple's on-device language model to summarise a contact, suggest message ideas and spot facts in your notes. Voice notes are transcribed on your device too. This processing happens entirely on your iPhone: your notes and recordings are not sent to SuiteForge, to Apple or to any third party.</p>"""
-    return f'''{head(f"Privacy Policy — {a['name']}", f"How {a['name']} handles your data. Short version: it stays on your device. No accounts, no tracking.", canonical, theme)}
+    return f'''{head(f"Privacy Policy — {a['name']}", f"How {a['name']} handles your data. Short version: it stays on your device. No accounts, no tracking.", canonical, theme, og=og_image(slug))}
 {site_header()}
 <main class="legal">
   <h1>Privacy Policy</h1>
@@ -622,7 +636,7 @@ def build_terms(slug):
     lifetime = ""
     if a.get("lifetime"):
         lifetime = " A one-time lifetime purchase is also available: it is charged once, does not renew, and unlocks the same features for as long as the app is offered."
-    return f'''{head(f"Terms of Use — {a['name']}", f"The terms that apply when you use {a['name']}.", canonical, theme)}
+    return f'''{head(f"Terms of Use — {a['name']}", f"The terms that apply when you use {a['name']}.", canonical, theme, og=og_image(slug))}
 {site_header()}
 <main class="legal">
   <h1>Terms of Use</h1>
