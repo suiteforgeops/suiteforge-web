@@ -26,6 +26,32 @@ APPS = {
         "hero_sub": "Pick a fasting protocol, start your timer, and watch your streak grow. No charts you can't read, no noise — just a clear view of where you are in your fast.",
         "seo_title": "FastClear — Private intermittent fasting timer for iPhone",
         "seo_desc": "FastClear is a privacy-first intermittent fasting timer for iPhone. Track 16:8, 18:6, OMAD and custom fasts. No account, no tracking, all data on your device.",
+        # Comparison table. Facts only, each one read on the competitor's US App Store page
+        # (privacy label, "Contains advertising", in-app purchase list, compatibility). Re-check every quarter.
+        # Cell = (state, text): "good" / "bad" from the user's point of view, "info" = neutral.
+        "compare": {
+            "checked": "14 October 2026",
+            "rivals": ["Zero", "Fastic", "BodyFast"],
+            "rows": [
+                ("Data used to track you across other companies' apps and websites", [
+                    ("good", "None"), ("good", "None"), ("bad", "Location, contact info, identifiers, usage, purchases"), ("bad", "Identifiers, usage data")]),
+                ("Data linked to your identity", [
+                    ("good", "None: Data Not Collected"), ("bad", "Health, location, contact info, usage"), ("bad", "Health, location, contact info, usage"), ("bad", "Email, identifiers, sensitive info, usage")]),
+                ("Health & fitness data collected by the developer", [
+                    ("good", "No"), ("bad", "Yes"), ("bad", "Yes"), ("info", "Not listed")]),
+                ("Contains advertising", [
+                    ("good", "No"), ("good", "No"), ("bad", "Yes"), ("bad", "Yes")]),
+                ("In-app purchases listed", [
+                    ("good", "$3.99 to $24.99"), ("info", "$9.99 to $89.99"), ("info", "$12.99 to $79.99"), ("info", "$11.99 to $69.99")]),
+                ("Food & calorie tracking", [
+                    ("bad", "No, fasting only"), ("good", "Yes"), ("good", "Yes"), ("good", "Yes")]),
+                ("Apple Watch app", [
+                    ("bad", "No"), ("good", "Yes"), ("bad", "No"), ("bad", "No")]),
+            ],
+            # Plain sentences under the table: what an AI assistant quotes (a lone "None" cell means nothing out of context).
+            "summary": "According to their App Store privacy labels, FastClear collects no data at all, while Zero, Fastic and BodyFast all collect data linked to your identity, including health and fitness data for Zero and Fastic. Fastic and BodyFast also use data to track you across other companies' apps and websites, and contain ads. FastClear's in-app purchases are listed from $3.99 to $24.99, against up to $69.99 to $89.99 for the others. In exchange, Zero, Fastic and BodyFast offer food and calorie tracking, and Zero has an Apple Watch app; FastClear is a fasting timer only.",
+            "note": "FastClear does one thing, fasting, and keeps it on your iPhone. If you want meal logging or a Watch app, the others do more; if you want a fasting timer that knows nothing about you, that's FastClear.",
+        },
         "home_blurb": "A clean, focused intermittent-fasting timer. Pick a protocol, start your fast, watch your streak grow.",
         "price_note": "Free download · optional subscription",
         "highlights": [
@@ -51,6 +77,7 @@ APPS = {
             ("Does FastClear need an internet connection?", "No. FastClear works fully offline. A connection is only used by Apple to manage an optional subscription."),
             ("Does FastClear share my fasting data?", "No. Your fasting history never leaves your device unless you choose to write completed fasts to Apple Health, which stays under your control in the Health app."),
             ("Does FastClear support 16:8 and OMAD?", "Yes. FastClear supports 16:8, 18:6, 20:4, OMAD and fully custom fasting windows."),
+            ("How is FastClear different from Zero, Fastic or BodyFast?", "FastClear is a fasting timer only, built for privacy: its App Store privacy label is \"Data Not Collected\", it has no ads and no account, and its in-app purchases are listed from $3.99 to $24.99. Zero, Fastic and BodyFast go further with food and calorie tracking (and an Apple Watch app for Zero), but according to their App Store listings they collect data linked to your identity, and Fastic and BodyFast also contain ads and use data to track you."),
         ],
         "mock": """
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:30px 18px;">
@@ -91,6 +118,26 @@ APPS = {
         "hero_sub": "Design a calm sequence of small steps and move through them one at a time. No streak shaming, no overwhelm — just a gentle flow to start the day on your terms.",
         "seo_title": "RoutineFlow — Calm morning routine builder for iPhone",
         "seo_desc": "RoutineFlow helps you build and keep a morning routine on iPhone. Step-by-step flows, gentle reminders, no account and no tracking. All data stays on your device.",
+        "compare": {
+            "checked": "14 October 2026",
+            "rivals": ["Routinery", "Fabulous", "Me+"],
+            "rows": [
+                ("Data used to track you across other companies' apps and websites", [
+                    ("good", "None"), ("bad", "Other data"), ("bad", "Contact info"), ("bad", "Identifiers")]),
+                ("Data collected by the developer (linked to you or not)", [
+                    ("good", "None: Data Not Collected"), ("bad", "Contact info, identifiers, usage, diagnostics"), ("bad", "Location, contact info, usage"), ("bad", "Identifiers, health & fitness, user content, usage")]),
+                ("Contains advertising", [
+                    ("good", "No"), ("bad", "Yes"), ("good", "No"), ("bad", "Yes")]),
+                ("In-app purchases listed", [
+                    ("good", "$2.99 to $14.99"), ("info", "$4.19 to $41.99"), ("info", "$16.99 to $59.99"), ("info", "$7.99 to $69.99")]),
+                ("Apple Watch app", [
+                    ("bad", "No"), ("good", "Yes"), ("good", "Yes"), ("bad", "No")]),
+                ("App languages", [
+                    ("info", "English, French"), ("info", "12 languages"), ("info", "7 languages"), ("info", "5 languages")]),
+            ],
+            "summary": "According to their App Store privacy labels, RoutineFlow collects no data, while Routinery, Fabulous and Me+ all collect data and use some of it to track you across other companies' apps and websites. Routinery and Me+ also contain ads. RoutineFlow's in-app purchases are listed from $2.99 to $14.99, against up to $41.99 to $69.99 for the others. In exchange, Routinery and Fabulous have an Apple Watch app, and all three are available in more languages.",
+            "note": "RoutineFlow is a calm, step-by-step morning routine that stays on your iPhone. The others add coaching, Watch apps and more languages; RoutineFlow adds nothing that watches you.",
+        },
         "home_blurb": "Build a morning routine that actually sticks. One step at a time, calmly, every day.",
         "price_note": "Free download · optional subscription",
         "highlights": [
@@ -114,6 +161,7 @@ APPS = {
             ("Is RoutineFlow free?", "Yes — RoutineFlow is free to download with a free core routine. An optional subscription unlocks multiple routines and advanced options."),
             ("What's a good private morning routine app?", "RoutineFlow is designed for a calm, private start to the day: no account, no analytics, no trackers, and your routines stay on your own device."),
             ("Can I have more than one routine?", "You can build a morning routine for free; additional routines (evening, weekend, focus) are part of the optional subscription."),
+            ("How is RoutineFlow different from Routinery, Fabulous or Me+?", "RoutineFlow is built for privacy: its App Store privacy label is \"Data Not Collected\", it has no ads, and its in-app purchases are listed from $2.99 to $14.99. According to their App Store listings, Routinery, Fabulous and Me+ collect data and use some of it to track you, and Routinery and Me+ contain ads; Routinery and Fabulous also offer an Apple Watch app."),
             ("Does RoutineFlow track me?", "No. There are no analytics or advertising trackers. Your routine data never leaves your device unless you use private iCloud sync."),
         ],
         "mock": """
@@ -150,6 +198,28 @@ APPS = {
         "hero_sub": "Set a step goal that fits your life and watch your progress fill in, day after day. No leaderboards, no social pressure — just you, moving a little more.",
         "seo_title": "WalkQuest — Private step tracker for iPhone",
         "seo_desc": "WalkQuest is a privacy-first step tracker for iPhone: daily walking goals and honest progress from your Apple Health steps. No account, no tracking.",
+        "compare": {
+            "checked": "14 October 2026",
+            "rivals": ["Pedometer++", "StepsApp", "Pacer"],
+            "rows": [
+                ("Data used to track you across other companies' apps and websites", [
+                    ("good", "None"), ("good", "None"), ("bad", "Identifiers, usage data"), ("bad", "Location")]),
+                ("Data linked to your identity", [
+                    ("good", "None"), ("good", "None"), ("good", "None"), ("bad", "Health, location, contacts, contact info, purchases, usage")]),
+                ("Data collected but not linked to you", [
+                    ("info", "Health & fitness"), ("info", "Location, identifiers, usage, diagnostics"), ("info", "Identifiers, usage, diagnostics"), ("info", "Diagnostics")]),
+                ("Contains advertising", [
+                    ("good", "No"), ("bad", "Yes"), ("bad", "Yes"), ("bad", "Yes")]),
+                ("May use your location when the app isn't open", [
+                    ("good", "No"), ("bad", "Yes"), ("bad", "Yes"), ("bad", "Yes")]),
+                ("In-app purchases listed", [
+                    ("good", "$2.99 to $14.99"), ("info", "$1.99 to $39.99"), ("info", "$0.99 to $32.99"), ("info", "$3.99 to $49.99")]),
+                ("Apple Watch app", [
+                    ("bad", "No"), ("good", "Yes"), ("good", "Yes"), ("good", "Yes")]),
+            ],
+            "summary": "According to their App Store listings, WalkQuest has no ads, links no data to your identity, tracks you nowhere and never uses your location, while Pedometer++, StepsApp and Pacer all contain ads and may use your location when the app isn't open. StepsApp and Pacer also use data to track you across other companies' apps and websites, and Pacer links health, location and contact data to your identity. In exchange, all three have an Apple Watch app.",
+            "note": "WalkQuest reads the steps your iPhone already counts and stays out of your way: no ads, no location, no leaderboard. The others add a Watch app and social features.",
+        },
         "home_blurb": "Turn your daily steps into a quiet quest. Simple goals, honest progress, no noise.",
         "price_note": "Free download · optional subscription",
         "highlights": [
@@ -173,6 +243,7 @@ APPS = {
             ("Is WalkQuest free?", "Yes — WalkQuest is free to download with free daily step tracking. An optional subscription unlocks long-term trends and extra goals."),
             ("What's a good private step tracker for iPhone?", "WalkQuest is a privacy-first step tracker: it reads steps from Apple Health on your device, has no account, no analytics and no trackers, and keeps your data local."),
             ("Do I need an Apple Watch?", "No. WalkQuest uses the step data your iPhone already records through Apple Health. An Apple Watch simply adds more accurate counts."),
+            ("How is WalkQuest different from Pedometer++, StepsApp or Pacer?", "According to their App Store listings, WalkQuest has no ads and never uses your location, while Pedometer++, StepsApp and Pacer contain ads and may use your location when the app isn't open; StepsApp and Pacer also use data to track you. WalkQuest's in-app purchases are listed from $2.99 to $14.99. Pedometer++, StepsApp and Pacer offer an Apple Watch app; WalkQuest uses the steps your iPhone and Apple Watch already record in Apple Health."),
             ("Does WalkQuest sell my activity data?", "No. WalkQuest never sells or shares your activity data. Your steps stay on your device."),
         ],
         "mock": """
@@ -218,6 +289,26 @@ APPS = {
         "updated": "11 October 2026",
         "icloud": False,
         "lifetime": True,
+        "compare": {
+            "checked": "14 October 2026",
+            "rivals": ["Dex", "Mesh (Clay)", "Contacts Journal"],
+            "rows": [
+                ("Data linked to your identity", [
+                    ("good", "None: Data Not Collected"), ("bad", "Contacts, contact info, usage"), ("bad", "Contacts, contact info, user content, search history, identifiers, usage"), ("good", "None")]),
+                ("Your contacts collected by the developer", [
+                    ("good", "No"), ("bad", "Yes"), ("bad", "Yes"), ("good", "No")]),
+                ("Data collected but not linked to you", [
+                    ("good", "None"), ("info", "Diagnostics"), ("info", "Diagnostics"), ("info", "Identifiers, diagnostics")]),
+                ("In-app purchases listed", [
+                    ("good", "$4.99 to $69.99, lifetime option"), ("info", "$19.99 to $239.99"), ("info", "$19.99 to $119.99"), ("info", "$9.99 to $399.99, team plans")]),
+                ("Apple Watch app", [
+                    ("bad", "No"), ("bad", "No"), ("bad", "No"), ("good", "Yes")]),
+                ("App languages", [
+                    ("good", "English, French"), ("info", "English"), ("info", "English"), ("info", "English")]),
+            ],
+            "summary": "According to their App Store privacy labels, KeepContact collects no data, while Dex and Mesh (Clay) collect your contacts and link them, with other data, to your identity. Contacts Journal links no data to you but collects identifiers and diagnostics, and also offers an Apple Watch app and team plans. KeepContact's in-app purchases are listed from $4.99 to $69.99, including a lifetime option, against up to $119.99 to $399.99 for the others.",
+            "note": "Your address book is the most personal data on your iPhone. KeepContact never sends it anywhere; cloud CRMs sync it to their servers to work across devices.",
+        },
         "home_blurb": "A private personal CRM. Each morning, who to reach out to and what to say — written by your iPhone's on-device AI.",
         "price_note": "Free for up to 15 contacts · Pro with a 7-day trial",
         "highlights": [
@@ -247,6 +338,7 @@ APPS = {
             ("What's a good private personal CRM app?", "KeepContact is a privacy-first personal CRM for iPhone: no account, no server, no analytics and no trackers. Every name, note and reminder is stored on your device, and its App Store privacy label is \"Data Not Collected\"."),
             ("Does KeepContact upload my contacts?", "No. KeepContact never uploads your contacts or notes. It works 100% offline and everything stays on your iPhone. Backups are files you save yourself, and can be encrypted with a password only you know."),
             ("How does the AI work without sending my data?", "KeepContact uses Apple's on-device AI model. Summaries, message ideas and the facts it picks up from your notes are generated on your iPhone; your notes never leave it. It requires an iPhone that supports Apple Intelligence; the rest of the app works on any iPhone running a supported iOS version."),
+            ("How is KeepContact different from Dex, Mesh (Clay) or Contacts Journal?", "KeepContact's App Store privacy label is \"Data Not Collected\": your contacts and notes never leave your iPhone. According to their App Store listings, Dex and Mesh (Clay) collect your contacts and link them to your identity, and Contacts Journal collects identifiers and diagnostics. KeepContact's in-app purchases are listed from $4.99 to $69.99, including a lifetime option. Contacts Journal offers an Apple Watch app and team plans; cloud CRMs sync across devices, which KeepContact deliberately does not."),
             ("Does KeepContact sync with iCloud?", "Not at the moment. KeepContact keeps everything on your iPhone. To move your data to another iPhone, KeepContact Pro includes a backup in Settings, which you can encrypt with your own password."),
         ],
         "mock": """
@@ -289,6 +381,25 @@ APPS = {
         "hero_sub": "Your child understands baka and deka but doesn't dare answer? Ježko turns Serbian into a daily ritual: one story, one hedgehog, ten minutes. Children follow Milena's summer in Serbia, speak from the very first lesson and learn to read both alphabets.",
         "seo_title": "Ježko: Learn Serbian for kids & families — iPhone app",
         "seo_desc": "Ježko teaches Serbian to kids and families through one story in 100 lessons. Speak out loud, read Latin and Cyrillic, 10 minutes a day. No account, no ads.",
+        "compare": {
+            "checked": "14 October 2026",
+            "rivals": ["Duolingo", "Drops", "Ling"],
+            "rows": [
+                ("Serbian course", [
+                    ("good", "Yes: 100 lessons, A1 to B1"), ("bad", "No"), ("good", "Yes"), ("good", "Yes")]),
+                ("Data used to track you across other companies' apps and websites", [
+                    ("good", "None"), ("bad", "Location, contact info, user content, identifiers, usage, purchases"), ("bad", "Contact info, identifiers, usage"), ("bad", "Contact info, identifiers, usage, purchases")]),
+                ("Data linked to your identity", [
+                    ("good", "None"), ("bad", "Location, contacts, contact info, financial info, user content, usage"), ("bad", "Contact info, identifiers, usage, diagnostics"), ("bad", "Identifiers, usage, purchases, diagnostics")]),
+                ("Contains advertising", [
+                    ("good", "No"), ("bad", "Yes"), ("bad", "Yes"), ("bad", "Yes")]),
+                ("Other languages to learn", [
+                    ("bad", "No, Serbian only"), ("good", "Yes, 40+"), ("good", "Yes"), ("good", "Yes")]),
+            ],
+            "summary": "Duolingo does not offer a Serbian course. Drops and Ling do, as part of many languages, but according to their App Store listings both contain ads, use data to track you across other companies' apps and websites, and link data to your identity, as does Duolingo. Ježko teaches only Serbian, through one story told over 100 lessons for children and their families, with no ads, no account and no data collected.",
+            "source": "Ježko is not on the App Store yet: its column reflects how the app is built and its privacy policy. Duolingo's courses: Duolingo's public course catalog.",
+            "note": "The big apps teach dozens of languages to everyone. Ježko teaches one, Serbian, to children and their families, through a story.",
+        },
         "home_blurb": "Serbian for kids and families, 10 minutes a day. Follow Milena's summer at her grandparents' in Serbia over 100 lessons, speak from day one, and learn to read both alphabets.",
         "home_pills": ["100 lessons · A1 → B1", "Latin & Cyrillic", "Up to 5 profiles", "No ads"],
         "price_note": "First 7 lessons free · English & French",
@@ -324,6 +435,7 @@ APPS = {
             ("Can adults learn Serbian with Ježko too?", "Yes. Ježko is designed for children, but each family member can have their own profile, adults included, and progress at their own pace. Parents learning alongside their children is exactly the idea."),
             ("Is Ježko safe for children?", "Ježko has no ads, no account, no chat and no tracking. Profile names, recordings and progress stay on your device. On a child profile, purchases, external links and sharing are behind a parental gate."),
             ("Does Ježko work offline?", "Yes. The lessons and their audio are built into the app, so Ježko works without a connection. A connection is only used to buy or restore Ježko Family."),
+            ("Can I learn Serbian on Duolingo?", "No. As of October 2026, Duolingo's course catalog has no Serbian course. Apps that teach Serbian include Drops and Ling, which cover many languages and contain ads, and Ježko, which teaches only Serbian, to children and their families, through one story over 100 lessons, with no ads and no data collected."),
             ("Which languages does Ježko support?", "Ježko teaches Serbian, with the app and every translation available in English and in French."),
         ],
         "permissions": [
@@ -356,6 +468,9 @@ HOME_LAYOUT = [("jezko", "feature"), ("keepcontact", "half"), ("fastclear", "hal
 HOME_FAN = ["keepcontact", "jezko", "fastclear"]   # the three screens in the home hero
 
 TODAY = datetime.date.today().isoformat()
+# Replaced in write() by the date the page content last changed (see DATES_FILE).
+MODIFIED = "__DATE_MODIFIED__"
+DATES_FILE = os.path.join(ROOT, ".page-dates.json")
 CONTACT = "suiteforgeops@gmail.com"
 ORG_ID = f"{DOMAIN}/#organization"
 
@@ -593,6 +708,19 @@ def app_jsonld(slug):
         d["teaches"] = "Serbian language, Latin and Cyrillic alphabets"
     return d
 
+def iso(day):
+    """'14 October 2026' -> '2026-10-14'."""
+    return datetime.datetime.strptime(day, "%d %B %Y").date().isoformat()
+
+def webpage_jsonld(url, name, about=None, reviewed=None):
+    d = {"@context": "https://schema.org", "@type": "WebPage", "@id": url, "url": url, "name": name,
+         "inLanguage": "en", "isPartOf": {"@id": f"{DOMAIN}/#website"}, "dateModified": MODIFIED}
+    if about:
+        d["about"] = {"@id": about}
+    if reviewed:
+        d["lastReviewed"] = reviewed
+    return d
+
 def faq_jsonld(faq):
     return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in faq]}
@@ -641,6 +769,37 @@ def more_apps(slug):
   <div class="wrap">
     <div class="section-head"><p class="eyebrow reveal">More from SuiteForge</p><h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.2rem);">Same principles, other corners of life.</h2></div>
     <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;">{cards}</div>
+  </div>
+</section>'''
+
+def build_compare(slug):
+    """Comparison table vs the main competitors (facts from their App Store pages), or ''."""
+    a = APPS[slug]
+    c = a.get("compare")
+    if not c:
+        return ""
+    mark = {"good": svg("check", "3"), "bad": svg('<path d="M6 6l12 12M18 6L6 18"/>', "3"), "info": ""}
+    def cell(state, text, ours=False):
+        return f'<td class="cmp-{state}{" cmp-us" if ours else ""}"><span class="cmp-mark" aria-hidden="true">{mark[state]}</span>{esc(text)}</td>'
+    head_cells = (f'<th scope="col" class="cmp-us"><span class="cmp-app">{icon_img(slug, 28)}{esc(a["name"])}</span></th>'
+                  + "".join(f'<th scope="col">{esc(r)}</th>' for r in c["rivals"]))
+    rows = "".join(
+        f'<tr><th scope="row">{esc(label)}</th>{cell(*cells[0], ours=True)}{"".join(cell(*x) for x in cells[1:])}</tr>'
+        for label, cells in c["rows"])
+    names = ", ".join(c["rivals"][:-1]) + " and " + c["rivals"][-1]
+    return f'''
+<section class="section" id="compare">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow reveal">How it compares</p><h2 class="reveal">{esc(a['name'])} vs {esc(names)}</h2>
+      <p class="lede reveal">{esc(c['note'])}</p></div>
+    <div class="cmp-wrap reveal" tabindex="0" role="region" aria-label="Comparison of {esc(a['name'])} with {esc(names)}">
+      <table class="cmp">
+        <thead><tr><td></td>{head_cells}</tr></thead>
+        <tbody>{rows}</tbody>
+      </table>
+    </div>
+    {f'<p class="cmp-summary reveal"><strong>In short.</strong> {esc(c["summary"])}</p>' if c.get("summary") else ""}
+    <p class="faint reveal" style="margin-top:16px;max-width:80ch;">Source: each app's page on the US App Store, checked on {esc(c['checked'])}.{(" " + esc(c["source"])) if c.get("source") else ""} Privacy details are declared by each developer and are not verified by Apple; prices vary by country and change over time. {esc(names)} are trademarks of their respective owners; SuiteForge is not affiliated with them.</p>
   </div>
 </section>'''
 
@@ -693,7 +852,8 @@ def build_landing(slug):
         getbar = ""
         cta_title, cta_text = f"{name} is coming to the App Store.", "Very soon on iPhone. No account, no ads, and your family's data stays at home."
 
-    jsonld = [app_jsonld(slug), faq_jsonld(a["faq"]),
+    reviewed = iso(a["compare"]["checked"]) if a.get("compare") else None
+    jsonld = [app_jsonld(slug), webpage_jsonld(canonical, a["seo_title"], f"{canonical}#app", reviewed), faq_jsonld(a["faq"]),
               crumbs_jsonld([("SuiteForge", f"{DOMAIN}/"), (a["name"], canonical)])]
 
     return f'''{head(a['seo_title'], a['seo_desc'], canonical, body_style=theme(a), jsonld=jsonld, extra_head=extra_head, og=og_image(slug), og_alt=f"{a['name']}: {a['tagline']}", favicon=favicon)}
@@ -732,7 +892,8 @@ def build_landing(slug):
   </div>
 </section>
 
-<section class="section">
+{build_compare(slug)}
+<section class="section{' band' if a.get('compare') else ''}">
   <div class="wrap">
     <div class="section-head"><p class="eyebrow reveal">How it works</p><h2 class="reveal">Three steps, then it's a habit.</h2></div>
     <div class="steps">{steps}</div>
@@ -829,6 +990,7 @@ def build_home():
     jsonld = [
         org_jsonld(),
         {"@context": "https://schema.org", "@type": "WebSite", "@id": f"{DOMAIN}/#website", "name": "SuiteForge", "url": canonical, "publisher": {"@id": ORG_ID}, "inLanguage": "en"},
+        webpage_jsonld(canonical, title, ORG_ID),
         {"@context": "https://schema.org", "@type": "ItemList", "name": "SuiteForge apps", "itemListElement": [
             {"@type": "ListItem", "position": i + 1, "url": f"{DOMAIN}/{s}/", "name": APPS[s]["name"]} for i, s in enumerate(ORDER)]},
         faq_jsonld(HOME_FAQ),
@@ -912,7 +1074,8 @@ def legal_page(slug, kind, title, desc, sections, intro=""):
     a = APPS[slug]
     canonical = f"{DOMAIN}/{slug}/{kind}/"
     body = "".join(f"\n  <h2>{i}. {t}</h2>\n  {c}" for i, (t, c) in enumerate(sections, 1))
-    jsonld = [crumbs_jsonld([("SuiteForge", f"{DOMAIN}/"), (a["name"], f"{DOMAIN}/{slug}/"), (title, canonical)])]
+    jsonld = [webpage_jsonld(canonical, f"{title} — {a['name']}", f"{DOMAIN}/{slug}/#app"),
+              crumbs_jsonld([("SuiteForge", f"{DOMAIN}/"), (a["name"], f"{DOMAIN}/{slug}/"), (title, canonical)])]
     return f'''{head(f"{title} — {a['name']}", desc, canonical, body_style=theme(a), jsonld=jsonld, og=og_image(slug))}
 {site_header(slug)}
 <main class="legal" id="main">
@@ -993,12 +1156,55 @@ def build_terms(slug):
 # ---------------------------------------------------------------------------
 # WRITE FILES
 # ---------------------------------------------------------------------------
+def load_dates():
+    try:
+        with open(DATES_FILE, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return {}
+
+DATES = load_dates()
+
 def write(path, content):
+    """Write a generated file. Pages carry MODIFIED: it becomes the date their content last
+    changed (content hash kept in .page-dates.json), so dateModified and sitemap lastmod stay honest."""
+    if MODIFIED in content or path.endswith("index.html"):
+        digest = hashlib.md5(content.encode("utf-8")).hexdigest()
+        known = DATES.get(path)
+        if not known or known["hash"] != digest:
+            DATES[path] = {"hash": digest, "date": TODAY}
+        content = content.replace(MODIFIED, DATES[path]["date"])
     full = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "w", encoding="utf-8") as f:
         f.write(content)
     print("  ✓", path)
+
+def build_llms_txt():
+    """/llms.txt: a plain-text summary of the site for AI assistants (llmstxt.org convention)."""
+    out = ["# SuiteForge", "",
+           "> SuiteForge is an independent studio from France making privacy-first iPhone apps for health, habits, "
+           "relationships and learning. No accounts, no ads, no tracking: data stays on the user's device.", "",
+           f"Contact: {CONTACT}", "", "## Apps", ""]
+    for slug in ORDER:
+        a = APPS[slug]
+        status = f"App Store: {appstore_url(slug)}" if released(slug) else "Coming soon to the App Store"
+        out.append(f"- [{a['name']}]({DOMAIN}/{slug}/): {a['category_label']}. {a['seo_desc']} {a.get('price_note', '')}. {status}.")
+    for slug in ORDER:
+        a = APPS[slug]
+        out += ["", f"## {a['name']}", "", a["hero_sub"], ""]
+        out += [f"- {t}: {d}" for t, d, _ in a["features"]]
+        c = a.get("compare")
+        if c and c.get("summary"):
+            out += ["", f"Comparison with {', '.join(c['rivals'])} (App Store listings, checked {c['checked']}): {c['summary']}"]
+        out += ["", "Questions:", ""] + [f"- {q} {ans}" for q, ans in a["faq"]]
+        out += ["", f"- [Privacy Policy]({DOMAIN}/{slug}/privacy/)", f"- [Terms of Use]({DOMAIN}/{slug}/terms/)"]
+    out += ["", "## About SuiteForge", ""] + [f"- {q} {ans}" for q, ans in HOME_FAQ]
+    return "\n".join(out) + "\n"
+
+# AI crawlers named explicitly: they are welcome (answers in ChatGPT, Claude, Perplexity, Gemini).
+AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User",
+           "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "CCBot"]
 
 if __name__ == "__main__":
     print("Generating SuiteForge site...")
@@ -1008,14 +1214,20 @@ if __name__ == "__main__":
         write(f"{slug}/privacy/index.html", build_privacy(slug))
         write(f"{slug}/terms/index.html", build_terms(slug))
 
-    urls = [(f"{DOMAIN}/", "1.0")]
+    pages = [("index.html", f"{DOMAIN}/", "1.0")]
     for slug in ORDER:
-        urls += [(f"{DOMAIN}/{slug}/", "0.8"), (f"{DOMAIN}/{slug}/privacy/", "0.3"), (f"{DOMAIN}/{slug}/terms/", "0.3")]
+        pages += [(f"{slug}/index.html", f"{DOMAIN}/{slug}/", "0.8"),
+                  (f"{slug}/privacy/index.html", f"{DOMAIN}/{slug}/privacy/", "0.3"),
+                  (f"{slug}/terms/index.html", f"{DOMAIN}/{slug}/terms/", "0.3")]
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    for u, pr in urls:
-        sitemap += f"  <url><loc>{u}</loc><lastmod>{TODAY}</lastmod><changefreq>monthly</changefreq><priority>{pr}</priority></url>\n"
+    for path, u, pr in pages:
+        sitemap += f"  <url><loc>{u}</loc><lastmod>{DATES[path]['date']}</lastmod><changefreq>monthly</changefreq><priority>{pr}</priority></url>\n"
     sitemap += "</urlset>\n"
     write("sitemap.xml", sitemap)
-    write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n")
+    robots = "User-agent: *\nAllow: /\n\n" + "".join(f"User-agent: {b}\nAllow: /\n\n" for b in AI_BOTS)
+    write("robots.txt", robots + f"Sitemap: {DOMAIN}/sitemap.xml\n")
+    write("llms.txt", build_llms_txt())
     write("CNAME", "suiteforge.app\n")
+    with open(DATES_FILE, "w", encoding="utf-8") as f:
+        json.dump(DATES, f, indent=1, sort_keys=True)
     print("Done.")

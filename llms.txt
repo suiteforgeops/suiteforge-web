@@ -1,0 +1,141 @@
+# SuiteForge
+
+> SuiteForge is an independent studio from France making privacy-first iPhone apps for health, habits, relationships and learning. No accounts, no ads, no tracking: data stays on the user's device.
+
+Contact: suiteforgeops@gmail.com
+
+## Apps
+
+- [Ježko](https://suiteforge.app/jezko/): Education. Ježko teaches Serbian to kids and families through one story in 100 lessons. Speak out loud, read Latin and Cyrillic, 10 minutes a day. No account, no ads. First 7 lessons free · English & French. Coming soon to the App Store.
+- [KeepContact](https://suiteforge.app/keepcontact/): Productivity. Privacy-first personal CRM for iPhone: who to reach out to each morning, what matters to each person, message ideas from on-device AI. No account, 100% offline. Free for up to 15 contacts · Pro with a 7-day trial. App Store: https://apps.apple.com/app/id6761559776.
+- [FastClear](https://suiteforge.app/fastclear/): Health & Wellness. FastClear is a privacy-first intermittent fasting timer for iPhone. Track 16:8, 18:6, OMAD and custom fasts. No account, no tracking, all data on your device. Free download · optional subscription. App Store: https://apps.apple.com/app/id6762476052.
+- [RoutineFlow](https://suiteforge.app/routineflow/): Health & Wellness. RoutineFlow helps you build and keep a morning routine on iPhone. Step-by-step flows, gentle reminders, no account and no tracking. All data stays on your device. Free download · optional subscription. App Store: https://apps.apple.com/app/id6766101143.
+- [WalkQuest](https://suiteforge.app/walkquest/): Health & Wellness. WalkQuest is a privacy-first step tracker for iPhone: daily walking goals and honest progress from your Apple Health steps. No account, no tracking. Free download · optional subscription. App Store: https://apps.apple.com/app/id6768080009.
+
+## Ježko
+
+Your child understands baka and deka but doesn't dare answer? Ježko turns Serbian into a daily ritual: one story, one hedgehog, ten minutes. Children follow Milena's summer in Serbia, speak from the very first lesson and learn to read both alphabets.
+
+- A real story, 100 lessons: Milena is 10, half French, half Serbian. This summer she visits her grandparents in Serbia with Ježko, a garden hedgehog who woke up in her backpack. From A1 to B1, children learn the words they actually need: the market, the slava, the village.
+- Speak from day one: Listen, repeat each line, record yourself and compare with the model, without judgement. In Challenge mode, stars for every word recognised, right on the iPhone. And a voice journal to send to baka.
+- Play Milena: Act out the story: the family gives you your cues, you answer with Milena's lines. From lesson 50, “Sad ti!” (your turn) asks you to say earlier sentences in Serbian, from memory.
+- Read both alphabets: Latin first, then Cyrillic, one group of letters at a time. Lessons switch to Cyrillic as your child learns the letters, so reading grows with the story.
+- Grammar without memorising rules: Words come first. Then 25 short “Behind the scenes” cards explain why we say “volim čokoladu”, each with a mini quiz, and games put the words to work: pairs, missing word, sentences in order.
+- Made for the whole family: Up to 5 profiles on one iPhone, for children aged 6 to 14 and for adults. Spaced repetition brings every word back at the right time, and a parent area shows progress, sentences said out loud and the week's activity.
+
+Comparison with Duolingo, Drops, Ling (App Store listings, checked 14 October 2026): Duolingo does not offer a Serbian course. Drops and Ling do, as part of many languages, but according to their App Store listings both contain ads, use data to track you across other companies' apps and websites, and link data to your identity, as does Duolingo. Ježko teaches only Serbian, through one story told over 100 lessons for children and their families, with no ads, no account and no data collected.
+
+Questions:
+
+- Is Ježko free? The first 7 lessons are free, with the Latin alphabet and the first group of Cyrillic letters, for one profile. Ježko Family unlocks all 100 lessons and up to 5 profiles: a monthly or yearly subscription with a 7-day free trial, or a one-time lifetime purchase. All three can be shared through Family Sharing.
+- What's a good app to teach my child Serbian? Ježko is an iPhone app made for children aged 6 to 14 and their parents, especially families of the Serbian diaspora. Instead of isolated words, it tells one story over 100 lessons (A1 to B1), gets children speaking out loud from the first lesson and teaches both the Latin and Cyrillic alphabets. It has no ads, no account and no tracking.
+- Does Ježko teach the Cyrillic alphabet? Yes. Ježko starts with the Latin alphabet, then introduces Cyrillic one group of letters at a time. Lessons gradually switch to Cyrillic as the letters are learned, and you can choose Latin, mixed or Cyrillic display.
+- Can adults learn Serbian with Ježko too? Yes. Ježko is designed for children, but each family member can have their own profile, adults included, and progress at their own pace. Parents learning alongside their children is exactly the idea.
+- Is Ježko safe for children? Ježko has no ads, no account, no chat and no tracking. Profile names, recordings and progress stay on your device. On a child profile, purchases, external links and sharing are behind a parental gate.
+- Does Ježko work offline? Yes. The lessons and their audio are built into the app, so Ježko works without a connection. A connection is only used to buy or restore Ježko Family.
+- Can I learn Serbian on Duolingo? No. As of October 2026, Duolingo's course catalog has no Serbian course. Apps that teach Serbian include Drops and Ling, which cover many languages and contain ads, and Ježko, which teaches only Serbian, to children and their families, through one story over 100 lessons, with no ads and no data collected.
+- Which languages does Ježko support? Ježko teaches Serbian, with the app and every translation available in English and in French.
+
+- [Privacy Policy](https://suiteforge.app/jezko/privacy/)
+- [Terms of Use](https://suiteforge.app/jezko/terms/)
+
+## KeepContact
+
+A friend you meant to call. A former colleague you never followed up with. KeepContact turns "I should reach out" into a simple daily habit — and helps you know what to say when you do. No cloud, no account, no server.
+
+- One clear next step, every morning: See who is overdue, at the rhythm you chose for each person. KeepContact puts one person first, with a three-line summary and a way to open the conversation — and message ideas if you're stuck on the first words.
+- Remember what matters to them: Hobbies, gift ideas, allergies, their kids' names, the topic you promised to follow up on. Plus birthdays, anniversaries, the day you met, and who introduced you.
+- Keep the thread: Log calls, coffees, messages and meetings in one journal. Dictate a voice memo, transcribed on your iPhone. Scan a business card and the contact fills itself in. KeepContact even spots who you saw in your calendar and offers to log it.
+- Your network at a glance: A relationship health score out of 100, circles from closest to most distant, and statistics on who you actually stay in touch with.
+- Your year in relationships: In December, KeepContact puts together your year in relationships, in story format, ready to share — no names shown by default. With Pro, add a greetings card to send with your wishes.
+- No guilt, no clutter: Snooze anyone for a week, a month, or indefinitely. Updates from your Contacts are suggested field by field, and duplicates are found and merged in one tap.
+
+Comparison with Dex, Mesh (Clay), Contacts Journal (App Store listings, checked 14 October 2026): According to their App Store privacy labels, KeepContact collects no data, while Dex and Mesh (Clay) collect your contacts and link them, with other data, to your identity. Contacts Journal links no data to you but collects identifiers and diagnostics, and also offers an Apple Watch app and team plans. KeepContact's in-app purchases are listed from $4.99 to $69.99, including a lifetime option, against up to $119.99 to $399.99 for the others.
+
+Questions:
+
+- Is KeepContact free? Yes. KeepContact is free to download, and you can track up to 15 contacts and 3 reminders for free. KeepContact Pro removes the limits and unlocks the on-device AI, voice notes, the morning brief, the health score, circles, statistics, messages to several people and encrypted backups. Your year in review, every December, is free. Subscriptions come with a 7-day free trial, or you can get Pro for life with a single payment.
+- What's a good private personal CRM app? KeepContact is a privacy-first personal CRM for iPhone: no account, no server, no analytics and no trackers. Every name, note and reminder is stored on your device, and its App Store privacy label is "Data Not Collected".
+- Does KeepContact upload my contacts? No. KeepContact never uploads your contacts or notes. It works 100% offline and everything stays on your iPhone. Backups are files you save yourself, and can be encrypted with a password only you know.
+- How does the AI work without sending my data? KeepContact uses Apple's on-device AI model. Summaries, message ideas and the facts it picks up from your notes are generated on your iPhone; your notes never leave it. It requires an iPhone that supports Apple Intelligence; the rest of the app works on any iPhone running a supported iOS version.
+- How is KeepContact different from Dex, Mesh (Clay) or Contacts Journal? KeepContact's App Store privacy label is "Data Not Collected": your contacts and notes never leave your iPhone. According to their App Store listings, Dex and Mesh (Clay) collect your contacts and link them to your identity, and Contacts Journal collects identifiers and diagnostics. KeepContact's in-app purchases are listed from $4.99 to $69.99, including a lifetime option. Contacts Journal offers an Apple Watch app and team plans; cloud CRMs sync across devices, which KeepContact deliberately does not.
+- Does KeepContact sync with iCloud? Not at the moment. KeepContact keeps everything on your iPhone. To move your data to another iPhone, KeepContact Pro includes a backup in Settings, which you can encrypt with your own password.
+
+- [Privacy Policy](https://suiteforge.app/keepcontact/privacy/)
+- [Terms of Use](https://suiteforge.app/keepcontact/terms/)
+
+## FastClear
+
+Pick a fasting protocol, start your timer, and watch your streak grow. No charts you can't read, no noise — just a clear view of where you are in your fast.
+
+- Every protocol, one tap: 16:8, 18:6, 20:4, OMAD or a custom window. Switch any time without losing your history.
+- Honest streaks: See completed fasts build into a streak that motivates without guilt-tripping. Miss a day? Pick right back up.
+- Apple Health, your way: Completed fasts can be written to Apple Health so your wellness data stays together — only if you allow it.
+- Widgets that glance: Keep your current fast on your Home Screen. One look tells you how long is left.
+
+Comparison with Zero, Fastic, BodyFast (App Store listings, checked 14 October 2026): According to their App Store privacy labels, FastClear collects no data at all, while Zero, Fastic and BodyFast all collect data linked to your identity, including health and fitness data for Zero and Fastic. Fastic and BodyFast also use data to track you across other companies' apps and websites, and contain ads. FastClear's in-app purchases are listed from $3.99 to $24.99, against up to $69.99 to $89.99 for the others. In exchange, Zero, Fastic and BodyFast offer food and calorie tracking, and Zero has an Apple Watch app; FastClear is a fasting timer only.
+
+Questions:
+
+- Is FastClear free? Yes — FastClear is free to download and the core timer is free to use. An optional subscription unlocks advanced protocols and extended history.
+- What's the best app for private intermittent fasting? FastClear is built specifically for people who want a private fasting timer: it has no account, no analytics and no trackers, and every fast is stored on your own device rather than on a company server.
+- Does FastClear need an internet connection? No. FastClear works fully offline. A connection is only used by Apple to manage an optional subscription.
+- Does FastClear share my fasting data? No. Your fasting history never leaves your device unless you choose to write completed fasts to Apple Health, which stays under your control in the Health app.
+- Does FastClear support 16:8 and OMAD? Yes. FastClear supports 16:8, 18:6, 20:4, OMAD and fully custom fasting windows.
+- How is FastClear different from Zero, Fastic or BodyFast? FastClear is a fasting timer only, built for privacy: its App Store privacy label is "Data Not Collected", it has no ads and no account, and its in-app purchases are listed from $3.99 to $24.99. Zero, Fastic and BodyFast go further with food and calorie tracking (and an Apple Watch app for Zero), but according to their App Store listings they collect data linked to your identity, and Fastic and BodyFast also contain ads and use data to track you.
+
+- [Privacy Policy](https://suiteforge.app/fastclear/privacy/)
+- [Terms of Use](https://suiteforge.app/fastclear/terms/)
+
+## RoutineFlow
+
+Design a calm sequence of small steps and move through them one at a time. No streak shaming, no overwhelm — just a gentle flow to start the day on your terms.
+
+- Build your sequence: Add the steps that matter to you — water, stretch, journal, meditate — in the order that feels right.
+- One step at a time: RoutineFlow shows you a single step, not an intimidating list. Finish it, flow to the next.
+- Gentle reminders: A quiet nudge at the time you choose. No badges screaming at you from the Home Screen.
+- Progress without pressure: See the mornings you showed up. Miss one and nothing breaks — you simply begin again.
+
+Comparison with Routinery, Fabulous, Me+ (App Store listings, checked 14 October 2026): According to their App Store privacy labels, RoutineFlow collects no data, while Routinery, Fabulous and Me+ all collect data and use some of it to track you across other companies' apps and websites. Routinery and Me+ also contain ads. RoutineFlow's in-app purchases are listed from $2.99 to $14.99, against up to $41.99 to $69.99 for the others. In exchange, Routinery and Fabulous have an Apple Watch app, and all three are available in more languages.
+
+Questions:
+
+- Is RoutineFlow free? Yes — RoutineFlow is free to download with a free core routine. An optional subscription unlocks multiple routines and advanced options.
+- What's a good private morning routine app? RoutineFlow is designed for a calm, private start to the day: no account, no analytics, no trackers, and your routines stay on your own device.
+- Can I have more than one routine? You can build a morning routine for free; additional routines (evening, weekend, focus) are part of the optional subscription.
+- How is RoutineFlow different from Routinery, Fabulous or Me+? RoutineFlow is built for privacy: its App Store privacy label is "Data Not Collected", it has no ads, and its in-app purchases are listed from $2.99 to $14.99. According to their App Store listings, Routinery, Fabulous and Me+ collect data and use some of it to track you, and Routinery and Me+ contain ads; Routinery and Fabulous also offer an Apple Watch app.
+- Does RoutineFlow track me? No. There are no analytics or advertising trackers. Your routine data never leaves your device unless you use private iCloud sync.
+
+- [Privacy Policy](https://suiteforge.app/routineflow/privacy/)
+- [Terms of Use](https://suiteforge.app/routineflow/terms/)
+
+## WalkQuest
+
+Set a step goal that fits your life and watch your progress fill in, day after day. No leaderboards, no social pressure — just you, moving a little more.
+
+- Goals that fit you: Start where you are. Set a realistic daily step goal and adjust it as you build momentum.
+- Honest progress: A clean ring shows today at a glance and history shows the trend — no vanity metrics.
+- Reads from Apple Health: WalkQuest uses the step data already on your iPhone. Nothing new to wear, nothing extra to set up.
+- Quietly motivating: Gentle milestones celebrate consistency, not competition. Your walk is nobody else's business.
+
+Comparison with Pedometer++, StepsApp, Pacer (App Store listings, checked 14 October 2026): According to their App Store listings, WalkQuest has no ads, links no data to your identity, tracks you nowhere and never uses your location, while Pedometer++, StepsApp and Pacer all contain ads and may use your location when the app isn't open. StepsApp and Pacer also use data to track you across other companies' apps and websites, and Pacer links health, location and contact data to your identity. In exchange, all three have an Apple Watch app.
+
+Questions:
+
+- Is WalkQuest free? Yes — WalkQuest is free to download with free daily step tracking. An optional subscription unlocks long-term trends and extra goals.
+- What's a good private step tracker for iPhone? WalkQuest is a privacy-first step tracker: it reads steps from Apple Health on your device, has no account, no analytics and no trackers, and keeps your data local.
+- Do I need an Apple Watch? No. WalkQuest uses the step data your iPhone already records through Apple Health. An Apple Watch simply adds more accurate counts.
+- How is WalkQuest different from Pedometer++, StepsApp or Pacer? According to their App Store listings, WalkQuest has no ads and never uses your location, while Pedometer++, StepsApp and Pacer contain ads and may use your location when the app isn't open; StepsApp and Pacer also use data to track you. WalkQuest's in-app purchases are listed from $2.99 to $14.99. Pedometer++, StepsApp and Pacer offer an Apple Watch app; WalkQuest uses the steps your iPhone and Apple Watch already record in Apple Health.
+- Does WalkQuest sell my activity data? No. WalkQuest never sells or shares your activity data. Your steps stay on your device.
+
+- [Privacy Policy](https://suiteforge.app/walkquest/privacy/)
+- [Terms of Use](https://suiteforge.app/walkquest/terms/)
+
+## About SuiteForge
+
+- Does SuiteForge collect my personal data? No. SuiteForge apps store everything on your device (some can also sync through your own private iCloud). There are no SuiteForge accounts, no analytics SDKs and no third-party trackers. The only data that leaves your device is the anonymous purchase information Apple and our subscription provider need to manage a subscription.
+- Do I need an account? No. SuiteForge apps work immediately on first launch: no sign-up, no email, no password.
+- What kinds of apps does SuiteForge make? Focused, single-purpose iPhone apps: Health & Wellness (intermittent fasting, morning routines, step tracking), Productivity (KeepContact, a private personal CRM) and Education (Ježko, Serbian for kids and families). Each app does one thing well and runs on-device.
+- Are the apps free? Each app is free to download, with an optional subscription that unlocks advanced features; some also offer a one-time lifetime purchase. You can use the core of every app without paying.
+- Do you make apps for children? Yes: Ježko teaches Serbian to children aged 6 to 14 and their families. Like every SuiteForge app, it has no ads, no account and no tracking, and purchases and external links sit behind a parental gate on a child profile.
+- How do I get help or suggest a feature? Every app has a feedback option in its settings, or you can email suiteforgeops@gmail.com directly. We read everything.
