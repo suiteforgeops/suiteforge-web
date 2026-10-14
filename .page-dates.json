@@ -1,130 +1,138 @@
 {
  "fastclear/index.html": {
   "date": "2026-10-14",
-  "hash": "b6140a798673d8ac5561740858fb2347"
+  "hash": "e2beeceee8556c16c558c6247bd64fe9"
  },
  "fastclear/privacy/index.html": {
   "date": "2026-10-14",
-  "hash": "79b37b957e3b15983b317b2fb5cba335"
+  "hash": "780f2f32b20ebee228647876c6a913ac"
  },
  "fastclear/terms/index.html": {
   "date": "2026-10-14",
-  "hash": "0ac9a8eb088bebcb5f005f7acb0a8789"
+  "hash": "4a317098f39c0ae2c314148402ef85c8"
  },
  "fr/fastclear/conditions/index.html": {
   "date": "2026-10-14",
-  "hash": "4d61260e0f2eea60e6bc7909754434e3"
+  "hash": "599d46be542cca59f5a11f9e03aa0898"
  },
  "fr/fastclear/confidentialite/index.html": {
   "date": "2026-10-14",
-  "hash": "504e57f83adcb138387731bebf370585"
+  "hash": "062d2ca115ddef357ee4e6256b65026f"
  },
  "fr/fastclear/index.html": {
   "date": "2026-10-14",
-  "hash": "21da5e0c68ed9845a2ea55257fcac190"
+  "hash": "1979e505f9fff8d8a88aa9a76060f470"
  },
  "fr/index.html": {
   "date": "2026-10-14",
-  "hash": "79e30fd694996c87a49296584768046b"
+  "hash": "6a22132d01485907a9ed41fb42c47e13"
  },
  "fr/jezko/conditions/index.html": {
   "date": "2026-10-14",
-  "hash": "3862b45f6dd6412bf9477ddd2819c431"
+  "hash": "c21ca0aa87ef59caab5df357d7697ced"
  },
  "fr/jezko/confidentialite/index.html": {
   "date": "2026-10-14",
-  "hash": "2f7fcaf9c656538b41119ed5ccf1ac4f"
+  "hash": "e7b8d477801a36cb78565eca6a06299e"
  },
  "fr/jezko/index.html": {
   "date": "2026-10-14",
-  "hash": "e23d4b5cea1b4c6a45b08616237b4e16"
+  "hash": "fe428e1a868c8c3654660178450a4472"
  },
  "fr/keepcontact/conditions/index.html": {
   "date": "2026-10-14",
-  "hash": "d37f2f8a348df00ab44185f3887e105f"
+  "hash": "e101577825c5610f2a3ee07ac2d2b325"
  },
  "fr/keepcontact/confidentialite/index.html": {
   "date": "2026-10-14",
-  "hash": "024bda4983feea708ea29d7b1cb185c8"
+  "hash": "c680e340810058a8429f2ca839a92e2e"
  },
  "fr/keepcontact/index.html": {
   "date": "2026-10-14",
-  "hash": "16efc23f57b68574afc4486a0cee2d19"
+  "hash": "3e61446322c6297adc51c41bb5d2f7a8"
+ },
+ "fr/mentions-legales/index.html": {
+  "date": "2026-10-14",
+  "hash": "56789bdb9d7d7733f3626fbbcc2dd7ff"
  },
  "fr/routineflow/conditions/index.html": {
   "date": "2026-10-14",
-  "hash": "67aa811eaacf85aa0869bd0a1b80efee"
+  "hash": "50a5a49c5946479f7677fc6368a734fe"
  },
  "fr/routineflow/confidentialite/index.html": {
   "date": "2026-10-14",
-  "hash": "6cf303766c48dcf3cee3c3fb7f718a9d"
+  "hash": "54055e3f3c827e51b1bf7809f26341d4"
  },
  "fr/routineflow/index.html": {
   "date": "2026-10-14",
-  "hash": "f4c09686a24d3afd4651db92b9f7a674"
+  "hash": "17e10f56e070d22c60c0b1bb5a9f5a49"
  },
  "fr/walkquest/conditions/index.html": {
   "date": "2026-10-14",
-  "hash": "a8d9d2227688af0d4057b8e13e8b40ba"
+  "hash": "1661f7c2a273e4196d0204507705d89b"
  },
  "fr/walkquest/confidentialite/index.html": {
   "date": "2026-10-14",
-  "hash": "2b4ead6a33afec030942697510c8dc54"
+  "hash": "0fb6a088f5935916875ddca6aad1fdc5"
  },
  "fr/walkquest/index.html": {
   "date": "2026-10-14",
-  "hash": "6a7a66a30724e407fb1bea7ba13d8798"
+  "hash": "35cc805cc384c432dd982f3c756ad32e"
  },
  "index.html": {
   "date": "2026-10-14",
-  "hash": "76f5c01233f4040348918ed9c50879fc"
+  "hash": "daee8e4e54ff14ea43a1d1957173eadf"
  },
  "jezko/index.html": {
   "date": "2026-10-14",
-  "hash": "fdcda96f84d715b37979fbf1d29a3c73"
+  "hash": "5a2d9ded16fa57fade2be6db3e2e208e"
  },
  "jezko/privacy/index.html": {
   "date": "2026-10-14",
-  "hash": "c6d4a22cdf9f5cf449289d4d74e3f4ce"
+  "hash": "477712131e44fff9ea2c2580e3db2fe7"
  },
  "jezko/terms/index.html": {
   "date": "2026-10-14",
-  "hash": "da92eb49a774effd5f14750b2ecc1bd4"
+  "hash": "6aece0c224c37aa8755fed1861a0ae0f"
  },
  "keepcontact/index.html": {
   "date": "2026-10-14",
-  "hash": "8049a732bb39d2f9310b1d8318e8dd3c"
+  "hash": "7d26190160ee2794ca338b80c6f15a29"
  },
  "keepcontact/privacy/index.html": {
   "date": "2026-10-14",
-  "hash": "9cb47f376f71521fc287f63bbc99e134"
+  "hash": "d671161a7d539863e4ef0eb74e10793c"
  },
  "keepcontact/terms/index.html": {
   "date": "2026-10-14",
-  "hash": "00b85c215c776d603bad8fef61314db1"
+  "hash": "7a5d44b71979a9f0d4bba50ac139dc10"
+ },
+ "legal-notice/index.html": {
+  "date": "2026-10-14",
+  "hash": "0a1bef8d4c2e8db47109d51397928107"
  },
  "routineflow/index.html": {
   "date": "2026-10-14",
-  "hash": "7c08b887b0f782b4c7b17b2c3041107c"
+  "hash": "b8a89476836d46c219837b917c455433"
  },
  "routineflow/privacy/index.html": {
   "date": "2026-10-14",
-  "hash": "0be22cb303d92fb3cee6cead2d3e77e0"
+  "hash": "966b3f1b5ad8b9f0edff6135aab2b018"
  },
  "routineflow/terms/index.html": {
   "date": "2026-10-14",
-  "hash": "403a9d844998e2b0dab9d8f4ee04d62d"
+  "hash": "6a5e86cf35ba028d0322d8286dca50ab"
  },
  "walkquest/index.html": {
   "date": "2026-10-14",
-  "hash": "80954911f3f13ecf3cf6b06eb35520b4"
+  "hash": "189ef1491f507d11308f0111ea53a09c"
  },
  "walkquest/privacy/index.html": {
   "date": "2026-10-14",
-  "hash": "737f277e49edb8fe2a2648263efdbce2"
+  "hash": "55088d537e8c2a3e8b130d78ce260c6f"
  },
  "walkquest/terms/index.html": {
   "date": "2026-10-14",
-  "hash": "91ea3d718c96c784be1856867ac0c623"
+  "hash": "9e0d5ec37bf6d50ef4594a96a511f99d"
  }
 }

@@ -474,6 +474,10 @@ TODAY = datetime.date.today().isoformat()
 MODIFIED = "__DATE_MODIFIED__"
 DATES_FILE = os.path.join(ROOT, ".page-dates.json")
 CONTACT = "suiteforgeops@gmail.com"
+# Legal publisher: SuiteForge is a trade name, not a company. Same identity as the App Store
+# "trader" details (EU Digital Services Act) of the apps.
+PUBLISHER = "Nicolas Dojcilovic"
+ADDRESS = ["68 rue du Colonel de Rochebrune", "92380 Garches", "France"]
 ORG_ID = f"{DOMAIN}/#organization"
 
 # ---------------------------------------------------------------------------
@@ -494,13 +498,15 @@ def T(en, fr):
     return fr if LANG == "fr" else en
 
 def page_path(key, lang=None):
-    """Site path of a page. key: "home", ("app", slug) or ("legal", slug, "privacy"|"terms")."""
+    """Site path of a page. key: "home", ("notice",), ("app", slug) or ("legal", slug, "privacy"|"terms")."""
     lang = lang or LANG
     base = "/fr" if lang == "fr" else ""
     if key == "home":
         return f"{base}/"
     if key[0] == "app":
         return f"{base}/{key[1]}/"
+    if key[0] == "notice":
+        return f"{base}/{'mentions-legales' if lang == 'fr' else 'legal-notice'}/"
     return f"{base}/{key[1]}/{LEGAL_SLUG[key[2]][lang]}/"
 
 def page_url(key, lang=None):
@@ -727,6 +733,7 @@ def site_footer(slug=None):
           <li><a href="{page_path(("legal", slug, "privacy"))}">{T("Privacy Policy", "Politique de confidentialité")}</a></li>
           <li><a href="{page_path(("legal", slug, "terms"))}">{T("Terms of Use", "Conditions d'utilisation")}</a></li>
           <li><a href="mailto:{CONTACT}?subject={esc(APPS[slug]["name"])}">{T("Support", "Assistance")}</a></li>
+          <li><a href="{page_path(("notice",))}">{T("Legal notice", "Mentions légales")}</a></li>
         </ul>'''
     else:
         col = f'''<h4>SuiteForge</h4>
@@ -734,6 +741,7 @@ def site_footer(slug=None):
           <li><a href="{home}#privacy">{T("Our privacy approach", "Notre approche de la vie privée")}</a></li>
           <li><a href="{home}#faq">FAQ</a></li>
           <li><a href="mailto:{CONTACT}">Contact</a></li>
+          <li><a href="{page_path(("notice",))}">{T("Legal notice", "Mentions légales")}</a></li>
         </ul>'''
     return f'''<footer class="site-foot">
   <div class="wrap">
@@ -769,6 +777,7 @@ def org_jsonld():
         "description": T("Independent studio making privacy-first iPhone apps for health, wellness, productivity and education. No accounts, no tracking, data stored on-device.",
                          "Studio indépendant qui crée des apps iPhone respectueuses de la vie privée : santé, bien-être, productivité et éducation. Sans compte, sans pistage, données sur l'appareil."),
         "foundingLocation": {"@type": "Place", "address": {"@type": "PostalAddress", "addressCountry": "FR"}},
+        "founder": {"@type": "Person", "name": PUBLISHER},
         "sameAs": [f"https://apps.apple.com/app/id{APPS[s]['appstore_id']}" for s in ORDER if released(s)],
     }
 
@@ -1242,8 +1251,8 @@ def build_privacy(slug):
     apple_pp = '<a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">' + T("Apple's Privacy Policy", "la politique de confidentialité d'Apple") + "</a>"
     rc_pp = '<a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">' + T("RevenueCat's Privacy Policy", "celle de RevenueCat") + "</a>"
     sections = [
-        (T("Who we are", "Qui sommes-nous"), T(f"<p>{name} is an iPhone app published by SuiteForge. For any privacy question, contact us at {mail}.</p>",
-                                                f"<p>{name} est une app iPhone éditée par SuiteForge. Pour toute question sur la confidentialité, écrivez-nous à {mail}.</p>")),
+        (T("Who we are", "Qui sommes-nous"), T(f"<p>{name} is an iPhone app published by {PUBLISHER} under the name SuiteForge, who is the data controller for the processing described below (see the <a href=\"{page_path(('notice',))}\">legal notice</a>). For any privacy question, contact us at {mail}.</p>",
+                                                f"<p>{name} est une app iPhone éditée par {PUBLISHER}, sous le nom SuiteForge, responsable des traitements décrits ci-dessous (voir les <a href=\"{page_path(('notice',))}\">mentions légales</a>). Pour toute question sur la confidentialité, écrivez-nous à {mail}.</p>")),
         (T("Data stored on your device", "Données enregistrées sur votre appareil"), f"<p>{storage}</p>{extra}"),
         (T(f"Permissions {name} may request", f"Autorisations que {name} peut demander"),
          perms + T("<p>Each permission is optional, is requested only when relevant, and can be changed at any time in the iOS Settings app.</p>",
@@ -1278,10 +1287,10 @@ def build_terms(slug):
     trial = T(" If a free trial is offered and you do not cancel at least 24 hours before it ends, the subscription starts automatically at the price shown.",
               " Si un essai gratuit est proposé et que vous ne l'annulez pas au moins 24 heures avant sa fin, l'abonnement démarre automatiquement au prix indiqué.")
     sections = [
-        (T("Acceptance", "Acceptation"), T(f"<p>By downloading or using {name} (\"the app\"), you agree to these Terms of Use. If you do not agree, please do not use the app. The app is published by SuiteForge.</p>",
-                                          f"<p>En téléchargeant ou en utilisant {name} (« l'app »), vous acceptez les présentes conditions d'utilisation. Si vous ne les acceptez pas, merci de ne pas utiliser l'app. L'app est éditée par SuiteForge.</p>")),
-        (T("Licence", "Licence"), T(f"<p>SuiteForge grants you a personal, non-transferable, non-exclusive licence to use {name} on Apple devices that you own or control, in accordance with the Apple Media Services Terms and these Terms.</p>",
-                                    f"<p>SuiteForge vous accorde une licence personnelle, non transférable et non exclusive pour utiliser {name} sur les appareils Apple dont vous êtes propriétaire ou que vous contrôlez, conformément aux Conditions générales des services multimédias d'Apple et aux présentes conditions.</p>")),
+        (T("Acceptance", "Acceptation"), T(f"<p>By downloading or using {name} (\"the app\"), you agree to these Terms of Use. If you do not agree, please do not use the app. The app is published by {PUBLISHER} under the name SuiteForge (\"we\").</p>",
+                                          f"<p>En téléchargeant ou en utilisant {name} (« l'app »), vous acceptez les présentes conditions d'utilisation. Si vous ne les acceptez pas, merci de ne pas utiliser l'app. L'app est éditée par {PUBLISHER}, sous le nom SuiteForge (« nous »).</p>")),
+        (T("Licence", "Licence"), T(f"<p>We grant you a personal, non-transferable, non-exclusive licence to use {name} on Apple devices that you own or control, in accordance with the Apple Media Services Terms and these Terms.</p>",
+                                    f"<p>Nous vous accordons une licence personnelle, non transférable et non exclusive pour utiliser {name} sur les appareils Apple dont vous êtes propriétaire ou que vous contrôlez, conformément aux Conditions générales des services multimédias d'Apple et aux présentes conditions.</p>")),
         (T("Subscriptions", "Abonnements"), T(
             f"<p>{name} is free to download and includes optional auto-renewing subscriptions. Payment is charged to your Apple Account at confirmation of purchase. A subscription renews automatically unless cancelled at least 24 hours before the end of the current period. You can manage or cancel your subscription in your Apple Account settings. Prices are shown in the app before purchase and may vary by region.{trial}{lifetime}{family}</p>",
             f"<p>{name} est gratuite à télécharger et propose des abonnements facultatifs à renouvellement automatique. Le paiement est débité de votre compte Apple à la confirmation de l'achat. Un abonnement se renouvelle automatiquement, sauf résiliation au moins 24 heures avant la fin de la période en cours. Vous pouvez gérer ou résilier votre abonnement dans les réglages de votre compte Apple. Les prix sont affichés dans l'app avant l'achat et peuvent varier selon les pays.{trial}{lifetime}{family}</p>")),
@@ -1301,11 +1310,11 @@ def build_terms(slug):
         (T("Acceptable use", "Utilisation autorisée"), T("<p>You agree to use the app only for lawful purposes and not to attempt to disrupt, reverse-engineer or misuse it beyond what applicable law permits.</p>",
                                                          "<p>Vous vous engagez à n'utiliser l'app qu'à des fins licites et à ne pas tenter de la perturber, de la décompiler ou de la détourner au-delà de ce que permet la loi applicable.</p>")),
         (T("Intellectual property", "Propriété intellectuelle"), T(
-            f"<p>The app, its design, its stories, characters, illustrations and audio, and the SuiteForge and {name} names and logos are the property of SuiteForge and are protected by intellectual-property law. The content you create within the app belongs to you.</p>",
-            f"<p>L'app, son design, ses histoires, personnages, illustrations et sons, ainsi que les noms et logos SuiteForge et {name}, sont la propriété de SuiteForge et sont protégés par le droit de la propriété intellectuelle. Le contenu que vous créez dans l'app vous appartient.</p>")),
+            f"<p>The app, its design, its stories, characters, illustrations and audio, and the SuiteForge and {name} names and logos are the property of {PUBLISHER} and are protected by intellectual-property law. The content you create within the app belongs to you.</p>",
+            f"<p>L'app, son design, ses histoires, personnages, illustrations et sons, ainsi que les noms et logos SuiteForge et {name}, sont la propriété de {PUBLISHER} et sont protégés par le droit de la propriété intellectuelle. Le contenu que vous créez dans l'app vous appartient.</p>")),
         (T("Disclaimer and limitation of liability", "Garantie et limitation de responsabilité"), T(
-            "<p>The app is provided \"as is\" and \"as available\" without warranties of any kind, to the fullest extent permitted by law. SuiteForge is not liable for any indirect or consequential loss arising from your use of the app. Nothing in these Terms limits liability that cannot be limited under applicable law.</p>",
-            "<p>Dans toute la mesure permise par la loi, l'app est fournie « en l'état » et « selon sa disponibilité », sans garantie d'aucune sorte. SuiteForge n'est pas responsable des dommages indirects résultant de votre utilisation de l'app. Rien dans les présentes conditions ne limite une responsabilité qui ne peut pas l'être en vertu de la loi applicable, ni les garanties légales dont vous bénéficiez en tant que consommateur.</p>")),
+            "<p>The app is provided \"as is\" and \"as available\" without warranties of any kind, to the fullest extent permitted by law. We are not liable for any indirect or consequential loss arising from your use of the app. Nothing in these Terms limits liability that cannot be limited under applicable law.</p>",
+            "<p>Dans toute la mesure permise par la loi, l'app est fournie « en l'état » et « selon sa disponibilité », sans garantie d'aucune sorte. Nous ne sommes pas responsables des dommages indirects résultant de votre utilisation de l'app. Rien dans les présentes conditions ne limite une responsabilité qui ne peut pas l'être en vertu de la loi applicable, ni les garanties légales dont vous bénéficiez en tant que consommateur.</p>")),
         (T("Governing law", "Droit applicable"), T("<p>These Terms are governed by French law. Mandatory consumer-protection rules of your country of residence continue to apply.</p>",
                                                     "<p>Les présentes conditions sont régies par le droit français. Les règles impératives de protection des consommateurs de votre pays de résidence continuent de s'appliquer.</p>")),
         ("Contact", T(f'<p>Questions about these Terms? Email <a href="mailto:{CONTACT}">{CONTACT}</a>.</p>',
@@ -1313,6 +1322,42 @@ def build_terms(slug):
     ]
     return legal_page(slug, "terms", T("Terms of Use", "Conditions d'utilisation"),
                       T(f"The terms that apply when you use {a['name']}.", f"Les conditions qui s'appliquent quand vous utilisez {a['name']}."), sections)
+
+def build_notice():
+    """Legal notice (mentions légales, LCEN art. 6-III): publisher, publication director, host."""
+    key = ("notice",)
+    title = T("Legal notice", "Mentions légales")
+    addr = "<br>".join(ADDRESS)
+    mail = f'<a href="mailto:{CONTACT}">{CONTACT}</a>'
+    sections = [
+        (T("Publisher", "Éditeur"), T(
+            f"<p>This website and the SuiteForge apps are published by <strong>{PUBLISHER}</strong>, an individual, under the trade name SuiteForge.</p><p>{addr}<br>Email: {mail}</p>",
+            f"<p>Ce site et les apps SuiteForge sont édités par <strong>{PUBLISHER}</strong>, personne physique, sous le nom commercial SuiteForge.</p><p>{addr}<br>E-mail : {mail}</p>")),
+        (T("Publication director", "Directeur de la publication"), f"<p>{PUBLISHER}</p>"),
+        (T("Hosting", "Hébergement"), T(
+            "<p>GitHub Pages, a service of GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States. <a href=\"https://github.com\" target=\"_blank\" rel=\"noopener\">github.com</a></p>",
+            "<p>GitHub Pages, service de GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis. <a href=\"https://github.com\" target=\"_blank\" rel=\"noopener\">github.com</a></p>")),
+        (T("Personal data and cookies", "Données personnelles et cookies"), T(
+            "<p>This website sets no cookies and uses no analytics or advertising tools; its fonts are served from this site. Like any web host, GitHub may process technical connection data (such as IP addresses) to deliver the pages and keep them secure. How each app handles your data is explained in its own privacy policy.</p>",
+            "<p>Ce site ne dépose aucun cookie et n'utilise aucun outil de mesure d'audience ni de publicité ; ses polices sont servies par le site lui-même. Comme tout hébergeur, GitHub peut traiter des données techniques de connexion (adresse IP, par exemple) pour afficher les pages et en assurer la sécurité. Le traitement des données par chaque app est décrit dans sa propre politique de confidentialité.</p>")),
+        (T("Intellectual property", "Propriété intellectuelle"), T(
+            f"<p>The content of this website (texts, images, logos, app icons and screenshots) belongs to {PUBLISHER} unless stated otherwise, and may not be reproduced without permission. Apple, the Apple logo, iPhone and App Store are trademarks of Apple Inc. Other app names mentioned in comparisons are trademarks of their respective owners.</p>",
+            f"<p>Le contenu de ce site (textes, images, logos, icônes et captures d'écran des apps) appartient à {PUBLISHER}, sauf mention contraire, et ne peut être reproduit sans autorisation. Apple, le logo Apple, iPhone et App Store sont des marques d'Apple Inc. Les noms d'autres apps cités dans les comparatifs sont des marques de leurs propriétaires respectifs.</p>")),
+        ("Contact", T(f"<p>For any question about this website or the apps: {mail}.</p>", f"<p>Pour toute question sur ce site ou sur les apps : {mail}.</p>")),
+    ]
+    body = "".join(f"\n  <h2>{t}</h2>\n  {c}" for t, c in sections)
+    jsonld = [webpage_jsonld(key, f"{title} — SuiteForge", ORG_ID),
+              crumbs_jsonld([("SuiteForge", page_url("home")), (title, page_url(key))])]
+    return f'''{head(f"{title} — SuiteForge", T("Legal notice of suiteforge.app: publisher, publication director and host.", "Mentions légales de suiteforge.app : éditeur, directeur de la publication et hébergeur."), key, jsonld=jsonld)}
+{site_header(key)}
+<main class="legal" id="main">
+  <nav class="crumbs" aria-label="{T("Breadcrumb", "Fil d'Ariane")}"><a href="{page_path("home")}">SuiteForge</a><span>/</span><span>{title}</span></nav>
+  <h1>{title}</h1>
+  <p class="updated">suiteforge.app</p>
+  {body}
+</main>
+{site_footer()}
+{scripts()}'''
 
 def build_404():
     """GitHub Pages serves /404.html for any unknown URL (with a 404 status). Bilingual, English first."""
@@ -1397,7 +1442,7 @@ AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-Searc
 
 def all_pages():
     """Every indexable page: (key, sitemap priority)."""
-    pages = [("home", "1.0")]
+    pages = [("home", "1.0"), (("notice",), "0.2")]
     for slug in ORDER:
         pages += [(("app", slug), "0.8"), (("legal", slug, "privacy"), "0.3"), (("legal", slug, "terms"), "0.3")]
     return pages
@@ -1405,6 +1450,8 @@ def all_pages():
 def build_page(key):
     if key == "home":
         return build_home()
+    if key[0] == "notice":
+        return build_notice()
     if key[0] == "app":
         return build_landing(key[1])
     return build_privacy(key[1]) if key[2] == "privacy" else build_terms(key[1])
