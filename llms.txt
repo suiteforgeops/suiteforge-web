@@ -3,6 +3,7 @@
 > SuiteForge is an independent studio from France making privacy-first iPhone apps for health, habits, relationships and learning. No accounts, no ads, no tracking: data stays on the user's device.
 
 Contact: suiteforgeops@gmail.com
+French version of the site: https://suiteforge.app/fr/
 
 ## Apps
 
@@ -23,7 +24,7 @@ Your child understands baka and deka but doesn't dare answer? Ježko turns Serbi
 - Grammar without memorising rules: Words come first. Then 25 short “Behind the scenes” cards explain why we say “volim čokoladu”, each with a mini quiz, and games put the words to work: pairs, missing word, sentences in order.
 - Made for the whole family: Up to 5 profiles on one iPhone, for children aged 6 to 14 and for adults. Spaced repetition brings every word back at the right time, and a parent area shows progress, sentences said out loud and the week's activity.
 
-Comparison with Duolingo, Drops, Ling (App Store listings, checked 14 October 2026): Duolingo does not offer a Serbian course. Drops and Ling do, as part of many languages, but according to their App Store listings both contain ads, use data to track you across other companies' apps and websites, and link data to your identity, as does Duolingo. Ježko teaches only Serbian, through one story told over 100 lessons for children and their families, with no ads, no account and no data collected.
+Comparison with Duolingo, Drops, Ling (US App Store listings, checked 14 October 2026): Duolingo does not offer a Serbian course. Drops and Ling do, as part of many languages, but according to their App Store listings both contain ads, use data to track you across other companies' apps and websites, and link data to your identity, as does Duolingo. Ježko teaches only Serbian, through one story told over 100 lessons for children and their families, with no ads, no account and no data collected.
 
 Questions:
 
@@ -38,6 +39,7 @@ Questions:
 
 - [Privacy Policy](https://suiteforge.app/jezko/privacy/)
 - [Terms of Use](https://suiteforge.app/jezko/terms/)
+- [French page](https://suiteforge.app/fr/jezko/)
 
 ## KeepContact
 
@@ -50,7 +52,7 @@ A friend you meant to call. A former colleague you never followed up with. KeepC
 - Your year in relationships: In December, KeepContact puts together your year in relationships, in story format, ready to share — no names shown by default. With Pro, add a greetings card to send with your wishes.
 - No guilt, no clutter: Snooze anyone for a week, a month, or indefinitely. Updates from your Contacts are suggested field by field, and duplicates are found and merged in one tap.
 
-Comparison with Dex, Mesh (Clay), Contacts Journal (App Store listings, checked 14 October 2026): According to their App Store privacy labels, KeepContact collects no data, while Dex and Mesh (Clay) collect your contacts and link them, with other data, to your identity. Contacts Journal links no data to you but collects identifiers and diagnostics, and also offers an Apple Watch app and team plans. KeepContact's in-app purchases are listed from $4.99 to $69.99, including a lifetime option, against up to $119.99 to $399.99 for the others.
+Comparison with Dex, Mesh (Clay), Contacts Journal (US App Store listings, checked 14 October 2026): According to their App Store privacy labels, KeepContact collects no data, while Dex and Mesh (Clay) collect your contacts and link them, with other data, to your identity. Contacts Journal links no data to you but collects identifiers and diagnostics, and also offers an Apple Watch app and team plans. KeepContact's in-app purchases are listed from $4.99 to $69.99, including a lifetime option, against up to $119.99 to $399.99 for the others.
 
 Questions:
 
@@ -63,6 +65,7 @@ Questions:
 
 - [Privacy Policy](https://suiteforge.app/keepcontact/privacy/)
 - [Terms of Use](https://suiteforge.app/keepcontact/terms/)
+- [French page](https://suiteforge.app/fr/keepcontact/)
 
 ## FastClear
 
@@ -73,7 +76,7 @@ Pick a fasting protocol, start your timer, and watch your streak grow. No charts
 - Apple Health, your way: Completed fasts can be written to Apple Health so your wellness data stays together — only if you allow it.
 - Widgets that glance: Keep your current fast on your Home Screen. One look tells you how long is left.
 
-Comparison with Zero, Fastic, BodyFast (App Store listings, checked 14 October 2026): According to their App Store privacy labels, FastClear collects no data at all, while Zero, Fastic and BodyFast all collect data linked to your identity, including health and fitness data for Zero and Fastic. Fastic and BodyFast also use data to track you across other companies' apps and websites, and contain ads. FastClear's in-app purchases are listed from $3.99 to $24.99, against up to $69.99 to $89.99 for the others. In exchange, Zero, Fastic and BodyFast offer food and calorie tracking, and Zero has an Apple Watch app; FastClear is a fasting timer only.
+Comparison with Zero, Fastic, BodyFast (US App Store listings, checked 14 October 2026): According to their App Store privacy labels, FastClear collects no data at all, while Zero, Fastic and BodyFast all collect data linked to your identity, including health and fitness data for Zero and Fastic. Fastic and BodyFast also use data to track you across other companies' apps and websites, and contain ads. FastClear's in-app purchases are listed from $3.99 to $24.99, against up to $69.99 to $89.99 for the others. In exchange, Zero, Fastic and BodyFast offer food and calorie tracking, and Zero has an Apple Watch app; FastClear is a fasting timer only.
 
 Questions:
 
@@ -86,6 +89,7 @@ Questions:
 
 - [Privacy Policy](https://suiteforge.app/fastclear/privacy/)
 - [Terms of Use](https://suiteforge.app/fastclear/terms/)
+- [French page](https://suiteforge.app/fr/fastclear/)
 
 ## RoutineFlow
 
@@ -96,7 +100,7 @@ Design a calm sequence of small steps and move through them one at a time. No st
 - Gentle reminders: A quiet nudge at the time you choose. No badges screaming at you from the Home Screen.
 - Progress without pressure: See the mornings you showed up. Miss one and nothing breaks — you simply begin again.
 
-Comparison with Routinery, Fabulous, Me+ (App Store listings, checked 14 October 2026): According to their App Store privacy labels, RoutineFlow collects no data, while Routinery, Fabulous and Me+ all collect data and use some of it to track you across other companies' apps and websites. Routinery and Me+ also contain ads. RoutineFlow's in-app purchases are listed from $2.99 to $14.99, against up to $41.99 to $69.99 for the others. In exchange, Routinery and Fabulous have an Apple Watch app, and all three are available in more languages.
+Comparison with Routinery, Fabulous, Me+ (US App Store listings, checked 14 October 2026): According to their App Store privacy labels, RoutineFlow collects no data, while Routinery, Fabulous and Me+ all collect data and use some of it to track you across other companies' apps and websites. Routinery and Me+ also contain ads. RoutineFlow's in-app purchases are listed from $2.99 to $14.99, against up to $41.99 to $69.99 for the others. In exchange, Routinery and Fabulous have an Apple Watch app, and all three are available in more languages.
 
 Questions:
 
@@ -108,6 +112,7 @@ Questions:
 
 - [Privacy Policy](https://suiteforge.app/routineflow/privacy/)
 - [Terms of Use](https://suiteforge.app/routineflow/terms/)
+- [French page](https://suiteforge.app/fr/routineflow/)
 
 ## WalkQuest
 
@@ -118,7 +123,7 @@ Set a step goal that fits your life and watch your progress fill in, day after d
 - Reads from Apple Health: WalkQuest uses the step data already on your iPhone. Nothing new to wear, nothing extra to set up.
 - Quietly motivating: Gentle milestones celebrate consistency, not competition. Your walk is nobody else's business.
 
-Comparison with Pedometer++, StepsApp, Pacer (App Store listings, checked 14 October 2026): According to their App Store listings, WalkQuest has no ads, links no data to your identity, tracks you nowhere and never uses your location, while Pedometer++, StepsApp and Pacer all contain ads and may use your location when the app isn't open. StepsApp and Pacer also use data to track you across other companies' apps and websites, and Pacer links health, location and contact data to your identity. In exchange, all three have an Apple Watch app.
+Comparison with Pedometer++, StepsApp, Pacer (US App Store listings, checked 14 October 2026): According to their App Store listings, WalkQuest has no ads, links no data to your identity, tracks you nowhere and never uses your location, while Pedometer++, StepsApp and Pacer all contain ads and may use your location when the app isn't open. StepsApp and Pacer also use data to track you across other companies' apps and websites, and Pacer links health, location and contact data to your identity. In exchange, all three have an Apple Watch app.
 
 Questions:
 
@@ -130,6 +135,7 @@ Questions:
 
 - [Privacy Policy](https://suiteforge.app/walkquest/privacy/)
 - [Terms of Use](https://suiteforge.app/walkquest/terms/)
+- [French page](https://suiteforge.app/fr/walkquest/)
 
 ## About SuiteForge
 

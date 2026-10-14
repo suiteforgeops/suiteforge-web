@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 """
 SuiteForge static site generator.
-Generates: the home page, one landing + privacy + terms per app, sitemap.xml, robots.txt, CNAME.
+Generates, in English (root) and French (/fr/): the home page, one landing + privacy + terms
+per app; plus 404.html, sitemap.xml, robots.txt, llms.txt, CNAME. French texts: content_fr.py.
 Single source of truth = APPS config below. No external deps.
 """
 import os, html, json, hashlib, datetime
+from content_fr import FR_APPS, FR_HOME_FAQ
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DOMAIN = "https://suiteforge.app"
@@ -475,6 +477,71 @@ CONTACT = "suiteforgeops@gmail.com"
 ORG_ID = f"{DOMAIN}/#organization"
 
 # ---------------------------------------------------------------------------
+# LANGUAGES
+# English at the root, French under /fr/. Each page is built once per language;
+# LANG says which one is being built, and every visible string goes through T().
+# ---------------------------------------------------------------------------
+LANGS = ["en", "fr"]
+LANG = "en"
+LOCALE = {"en": "en_US", "fr": "fr_FR"}
+LEGAL_SLUG = {"privacy": {"en": "privacy", "fr": "confidentialite"},
+              "terms": {"en": "terms", "fr": "conditions"}}
+MONTHS_FR = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
+             "septembre", "octobre", "novembre", "décembre"]
+
+def T(en, fr):
+    """The string for the language being built."""
+    return fr if LANG == "fr" else en
+
+def page_path(key, lang=None):
+    """Site path of a page. key: "home", ("app", slug) or ("legal", slug, "privacy"|"terms")."""
+    lang = lang or LANG
+    base = "/fr" if lang == "fr" else ""
+    if key == "home":
+        return f"{base}/"
+    if key[0] == "app":
+        return f"{base}/{key[1]}/"
+    return f"{base}/{key[1]}/{LEGAL_SLUG[key[2]][lang]}/"
+
+def page_url(key, lang=None):
+    return DOMAIN + page_path(key, lang)
+
+def file_of(key, lang):
+    return page_path(key, lang).lstrip("/") + "index.html"
+
+def human_date(day):
+    """'14 October 2026' -> as written in the language being built."""
+    if LANG != "fr":
+        return day
+    d = datetime.datetime.strptime(day, "%d %B %Y").date()
+    return f"{'1er' if d.day == 1 else d.day} {MONTHS_FR[d.month - 1]} {d.year}"
+
+def A(slug):
+    """The app's content in the language being built: French texts over the English entry."""
+    a = APPS[slug]
+    fr = FR_APPS.get(slug) if LANG == "fr" else None
+    if not fr:
+        return a
+    m = dict(a)
+    for k, v in fr.items():
+        if k == "features":
+            assert len(v) == len(a["features"]), slug
+            m[k] = [(t, d, ico) for (t, d), (_, _, ico) in zip(v, a["features"])]
+        elif k == "shots":
+            assert len(v) == len(a["shots"]), slug
+            m[k] = [(fn, alt) for alt, (fn, _) in zip(v, a["shots"])]
+        elif k == "compare":
+            c = dict(a["compare"])
+            assert len(v["rows"]) == len(c["rows"]), slug
+            c["rows"] = [(label, [(state, txt) for txt, (state, _) in zip(texts, cells)])
+                         for (label, texts), (_, cells) in zip(v["rows"], c["rows"])]
+            c.update({x: v[x] for x in ("summary", "note", "source") if x in v})
+            m[k] = c
+        else:
+            m[k] = v
+    return m
+
+# ---------------------------------------------------------------------------
 # HELPERS
 # ---------------------------------------------------------------------------
 def esc(s):
@@ -487,7 +554,8 @@ def released(slug):
     return bool(APPS[slug].get("appstore_id")) and APPS[slug].get("status") != "soon"
 
 def appstore_url(slug):
-    return f"https://apps.apple.com/app/id{APPS[slug]['appstore_id']}"
+    country = "fr/" if LANG == "fr" else ""
+    return f"https://apps.apple.com/{country}app/id{APPS[slug]['appstore_id']}"
 
 def theme(a):
     return f"--accent:{a['accent']};--accent-deep:{a['accent_deep']};--accent-tint:{a['accent_tint']};"
@@ -501,11 +569,18 @@ def ver(path):
 def has(path):
     return os.path.isfile(os.path.join(ROOT, path.lstrip("/")))
 
+def shot(slug, fn):
+    """Screenshot path: the French capture (<slug>/screenshots/fr/) on French pages, when it exists."""
+    if LANG == "fr" and has(f"/{slug}/screenshots/fr/{fn}"):
+        return f"/{slug}/screenshots/fr/{fn}"
+    return f"/{slug}/screenshots/{fn}"
+
 def og_image(slug=None):
-    """Per-app share image (<slug>/og.png, made by make_og.py) if present."""
-    if slug and has(f"/{slug}/og.png"):
-        return DOMAIN + ver(f"/{slug}/og.png")
-    return DOMAIN + ver("/assets/og-suiteforge.png")
+    """Share image made by make_og.py: per app and per language when present."""
+    suffix = "-fr" if LANG == "fr" else ""
+    for path in ([f"/{slug}/og{suffix}.png", f"/{slug}/og.png"] if slug else []) + [f"/assets/og-suiteforge{suffix}.png", "/assets/og-suiteforge.png"]:
+        if has(path):
+            return DOMAIN + ver(path)
 
 ICON = {
     "arrow": '<path d="M5 12h14M13 6l6 6-6 6"/>',
@@ -534,14 +609,15 @@ APPLE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d
 # SHARED PARTIALS
 # ---------------------------------------------------------------------------
 def appstore_badge(slug):
-    a = APPS[slug]
+    a = A(slug)
     if not released(slug):
-        return f'''<span class="appstore appstore--soon" role="note">{APPLE}<span><small>Coming soon</small><strong>App Store</strong></span></span>'''
-    return f'''<a class="appstore" href="{appstore_url(slug)}" aria-label="Download {esc(a['name'])} on the App Store">{APPLE}<span><small>Download on the</small><strong>App Store</strong></span></a>'''
+        return f'''<span class="appstore appstore--soon" role="note">{APPLE}<span><small>{T("Coming soon", "Bientôt sur l'")}</small><strong>App Store</strong></span></span>'''
+    return (f'''<a class="appstore" href="{appstore_url(slug)}" aria-label="{T(f"Download {esc(a['name'])} on the App Store", f"Télécharger {esc(a['name'])} dans l'App Store")}">'''
+            f'''{APPLE}<span><small>{T("Download on the", "Télécharger dans l'")}</small><strong>App Store</strong></span></a>''')
 
 def icon_img(slug, size, cls="", lazy=True):
     a = APPS[slug]
-    return (f'<img class="{cls}" src="{ver(f"/{slug}/icon.webp")}" alt="{esc(a["name"])} app icon" width="{size}" height="{size}"'
+    return (f'<img class="{cls}" src="{ver(f"/{slug}/icon.webp")}" alt="{T(f"{esc(a["name"])} app icon", f"Icône de l’app {esc(a["name"])}")}" width="{size}" height="{size}"'
             f'{" loading=\"lazy\"" if lazy else ""} decoding="async">')
 
 def icon_block(slug, size=56, lazy=True):
@@ -556,19 +632,22 @@ def icon_block(slug, size=56, lazy=True):
 
 def phone(slug, alt=None, cls="", eager=False):
     """Phone frame around the app's hero screenshot."""
-    a = APPS[slug]
-    alt = alt if alt is not None else (a.get("hero_shot_alt") or f"{a['name']} home screen")
+    a = A(slug)
+    alt = alt if alt is not None else (a.get("hero_shot_alt") or a["name"])
     load = 'loading="eager" fetchpriority="high"' if eager else 'loading="lazy"'
     return (f'<div class="phone phone--shot {cls}"><div class="phone-screen">'
-            f'<img src="{ver(f"/{slug}/screenshots/hero-home.webp")}" alt="{esc(alt)}" width="680" height="1478" {load} decoding="async">'
+            f'<img src="{ver(shot(slug, "hero-home.webp"))}" alt="{esc(alt)}" width="680" height="1478" {load} decoding="async">'
             f'</div></div>')
 
-def head(title, desc, canonical, *, body_style="", jsonld=(), extra_head="", og=None, og_alt="", favicon=None, robots="index, follow, max-image-preview:large"):
+def head(title, desc, key, *, body_style="", jsonld=(), extra_head="", og=None, og_alt="", favicon=None, robots="index, follow, max-image-preview:large"):
+    canonical = page_url(key)
     og = og or og_image()
     blocks = "\n".join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False, separators=(",", ":"))}</script>' for j in jsonld)
     fav = favicon or '<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">'
+    alternates = "\n".join(f'<link rel="alternate" hreflang="{l}" href="{page_url(key, l)}">' for l in LANGS)
+    other = [l for l in LANGS if l != LANG][0]
     return f'''<!DOCTYPE html>
-<html lang="en">
+<html lang="{LANG}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -576,12 +655,15 @@ def head(title, desc, canonical, *, body_style="", jsonld=(), extra_head="", og=
 <meta name="description" content="{esc(desc)}">
 <meta name="robots" content="{robots}">
 <link rel="canonical" href="{canonical}">
+{alternates}
+<link rel="alternate" hreflang="x-default" href="{page_url(key, "en")}">
 <meta name="theme-color" content="#f7f3ec" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#13110e" media="(prefers-color-scheme: dark)">
 <meta name="author" content="SuiteForge">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SuiteForge">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="{LOCALE[LANG]}">
+<meta property="og:locale:alternate" content="{LOCALE[other]}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{canonical}">
@@ -603,53 +685,62 @@ def head(title, desc, canonical, *, body_style="", jsonld=(), extra_head="", og=
 {blocks}
 </head>
 <body{f' style="{body_style}"' if body_style else ''}>
-<a class="skip" href="#main">Skip to content</a>'''
+<a class="skip" href="#main">{T("Skip to content", "Aller au contenu")}</a>'''
 
-def site_header(slug=None):
+def lang_switch(key):
+    """Link to the same page in the other language."""
+    other = [l for l in LANGS if l != LANG][0]
+    label, name = {"en": ("EN", "English"), "fr": ("FR", "Français")}[other]
+    return f'<a class="lang" href="{page_path(key, other)}" hreflang="{other}" lang="{other}" aria-label="{name}">{label}</a>'
+
+def site_header(key, slug=None):
     cta = ""
     if slug:
-        a = APPS[slug]
+        a = A(slug)
         if released(slug):
-            cta = f'<a class="btn btn-primary btn-sm" href="{appstore_url(slug)}">Get {esc(a["name"])}</a>'
+            cta = f'<a class="btn btn-primary btn-sm" href="{appstore_url(slug)}">{T("Get", "Obtenir")} {esc(a["name"])}</a>'
         else:
-            cta = f'<a class="btn btn-ghost btn-sm" href="#get">Coming soon</a>'
-    home = "" if slug else ' aria-current="page"'
+            cta = f'<a class="btn btn-ghost btn-sm" href="#get">{T("Coming soon", "Bientôt")}</a>'
+    home = page_path("home")
+    current = ' aria-current="page"' if key == "home" else ""
     return f'''<header class="site-head">
   <div class="wrap">
-    <a class="brand" href="/"{home}>{MARK} SuiteForge</a>
-    <nav class="nav" aria-label="Main">
-      <a href="/#apps">Apps</a>
-      <a href="/#privacy" class="hide-sm">Privacy</a>
-      <a href="/#faq" class="hide-sm">FAQ</a>
+    <a class="brand" href="{home}"{current}>{MARK} SuiteForge</a>
+    <nav class="nav" aria-label="{T("Main", "Navigation principale")}">
+      <a href="{home}#apps">Apps</a>
+      <a href="{home}#privacy" class="hide-sm">{T("Privacy", "Confidentialité")}</a>
+      <a href="{home}#faq" class="hide-sm">FAQ</a>
+      {lang_switch(key)}
       {cta}
     </nav>
   </div>
 </header>'''
 
 def site_footer(slug=None):
+    home = page_path("home")
     apps = "".join(
-        f'<li><a href="/{s}/">{icon_img(s, 20)}{esc(APPS[s]["name"])}{"" if released(s) else " <span class=\"tag-soon\">Soon</span>"}</a></li>'
+        f'<li><a href="{page_path(("app", s))}">{icon_img(s, 20)}{esc(APPS[s]["name"])}{"" if released(s) else " <span class=\"tag-soon\">" + T("Soon", "Bientôt") + "</span>"}</a></li>'
         for s in ORDER)
     if slug:
         col = f'''<h4>{esc(APPS[slug]["name"])}</h4>
         <ul>
-          <li><a href="/{slug}/privacy/">Privacy Policy</a></li>
-          <li><a href="/{slug}/terms/">Terms of Use</a></li>
-          <li><a href="mailto:{CONTACT}?subject={esc(APPS[slug]["name"])}">Support</a></li>
+          <li><a href="{page_path(("legal", slug, "privacy"))}">{T("Privacy Policy", "Politique de confidentialité")}</a></li>
+          <li><a href="{page_path(("legal", slug, "terms"))}">{T("Terms of Use", "Conditions d'utilisation")}</a></li>
+          <li><a href="mailto:{CONTACT}?subject={esc(APPS[slug]["name"])}">{T("Support", "Assistance")}</a></li>
         </ul>'''
     else:
         col = f'''<h4>SuiteForge</h4>
         <ul>
-          <li><a href="/#privacy">Our privacy approach</a></li>
-          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="{home}#privacy">{T("Our privacy approach", "Notre approche de la vie privée")}</a></li>
+          <li><a href="{home}#faq">FAQ</a></li>
           <li><a href="mailto:{CONTACT}">Contact</a></li>
         </ul>'''
     return f'''<footer class="site-foot">
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a class="brand" href="/">{MARK} SuiteForge</a>
-        <p class="muted" style="margin-top:16px;max-width:36ch;font-size:.97rem;">Privacy-first iPhone apps for a calmer life. An independent studio, one focused tool at a time.</p>
+        <a class="brand" href="{home}">{MARK} SuiteForge</a>
+        <p class="muted" style="margin-top:16px;max-width:36ch;font-size:.97rem;">{T("Privacy-first iPhone apps for a calmer life. An independent studio, one focused tool at a time.", "Des apps iPhone respectueuses de la vie privée, pour une vie plus sereine. Un studio indépendant, un outil à la fois.")}</p>
       </div>
       <div>
         <h4>Apps</h4>
@@ -660,8 +751,8 @@ def site_footer(slug=None):
       </div>
     </div>
     <div class="foot-base">
-      <span>© {datetime.date.today().year} SuiteForge. All rights reserved.</span>
-      <span>Made in France · No accounts · No tracking</span>
+      <span>© {datetime.date.today().year} SuiteForge. {T("All rights reserved.", "Tous droits réservés.")}</span>
+      <span>{T("Made in France · No accounts · No tracking", "Conçu en France · Sans compte · Sans pistage")}</span>
     </div>
   </div>
 </footer>'''
@@ -675,14 +766,15 @@ def org_jsonld():
         "name": "SuiteForge", "url": f"{DOMAIN}/",
         "logo": {"@type": "ImageObject", "url": f"{DOMAIN}/assets/logo.png", "width": 512, "height": 512},
         "email": CONTACT,
-        "description": "Independent studio making privacy-first iPhone apps for health, wellness, productivity and education. No accounts, no tracking, data stored on-device.",
+        "description": T("Independent studio making privacy-first iPhone apps for health, wellness, productivity and education. No accounts, no tracking, data stored on-device.",
+                         "Studio indépendant qui crée des apps iPhone respectueuses de la vie privée : santé, bien-être, productivité et éducation. Sans compte, sans pistage, données sur l'appareil."),
         "foundingLocation": {"@type": "Place", "address": {"@type": "PostalAddress", "addressCountry": "FR"}},
-        "sameAs": [appstore_url(s) for s in ORDER if released(s)],
+        "sameAs": [f"https://apps.apple.com/app/id{APPS[s]['appstore_id']}" for s in ORDER if released(s)],
     }
 
 def app_jsonld(slug):
-    a = APPS[slug]
-    canonical = f"{DOMAIN}/{slug}/"
+    a = A(slug)
+    canonical = page_url(("app", slug))
     d = {
         "@context": "https://schema.org", "@type": "MobileApplication",
         "@id": f"{canonical}#app",
@@ -690,10 +782,10 @@ def app_jsonld(slug):
         "operatingSystem": "iOS", "applicationCategory": a["schema_category"],
         "description": a["seo_desc"], "url": canonical,
         "image": DOMAIN + ver(f"/{slug}/icon.webp"),
-        "screenshot": [DOMAIN + ver(f"/{slug}/screenshots/{fn}") for fn, _ in a["shots"] if has(f"/{slug}/screenshots/{fn}")],
-        "inLanguage": a.get("languages", ["en"]),
+        "screenshot": [DOMAIN + ver(shot(slug, fn)) for fn, _ in a["shots"] if has(f"/{slug}/screenshots/{fn}")],
+        "inLanguage": a.get("languages", ["en", "fr"]),
         "isAccessibleForFree": True,
-        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"},
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": T("USD", "EUR"), "category": "free"},
         "publisher": {"@id": ORG_ID}, "author": {"@id": ORG_ID},
     }
     if released(slug):
@@ -704,17 +796,18 @@ def app_jsonld(slug):
         d["offers"]["availability"] = "https://schema.org/PreOrder"
     if a.get("kids"):
         d["audience"] = {"@type": "PeopleAudience", "suggestedMinAge": 6}
-        d["educationalLevel"] = "Beginner (CEFR A1 to B1)"
-        d["teaches"] = "Serbian language, Latin and Cyrillic alphabets"
+        d["educationalLevel"] = T("Beginner (CEFR A1 to B1)", "Débutant (CECRL A1 à B1)")
+        d["teaches"] = T("Serbian language, Latin and Cyrillic alphabets", "Langue serbe, alphabets latin et cyrillique")
     return d
 
 def iso(day):
     """'14 October 2026' -> '2026-10-14'."""
     return datetime.datetime.strptime(day, "%d %B %Y").date().isoformat()
 
-def webpage_jsonld(url, name, about=None, reviewed=None):
+def webpage_jsonld(key, name, about=None, reviewed=None):
+    url = page_url(key)
     d = {"@context": "https://schema.org", "@type": "WebPage", "@id": url, "url": url, "name": name,
-         "inLanguage": "en", "isPartOf": {"@id": f"{DOMAIN}/#website"}, "dateModified": MODIFIED}
+         "inLanguage": LANG, "isPartOf": {"@id": f"{DOMAIN}/#website"}, "dateModified": MODIFIED}
     if about:
         d["about"] = {"@id": about}
     if reviewed:
@@ -732,49 +825,54 @@ def crumbs_jsonld(items):
 def faq_html(faq):
     return "".join(f"<details><summary>{esc(q)}</summary><p>{esc(ans)}</p></details>" for q, ans in faq)
 
+def and_list(names):
+    return ", ".join(names[:-1]) + T(" and ", " et ") + names[-1]
+
 # ---------------------------------------------------------------------------
 # LANDING PAGE
 # ---------------------------------------------------------------------------
 def build_shots(slug):
-    a = APPS[slug]
+    a = A(slug)
     available = [(fn, alt) for fn, alt in a.get("shots") or [] if has(f"/{slug}/screenshots/{fn}")]
     if not available:
         return ""
     w, h = a.get("shots_w", 620), a.get("shots_h", 1347)
     imgs = "".join(
-        f'<figure class="shot"><img src="{ver(f"/{slug}/screenshots/{fn}")}" alt="{esc(alt)}" '
+        f'<figure class="shot"><img src="{ver(shot(slug, fn))}" alt="{esc(alt)}" '
         f'width="{w}" height="{h}" loading="lazy" decoding="async"></figure>'
         for fn, alt in available)
     return f'''
 <section class="shots-section" data-shots aria-labelledby="shots-title">
   <div class="shots-head">
     <div>
-      <p class="eyebrow reveal">See it in action</p>
-      <h2 class="reveal" id="shots-title">Real screens from {esc(a['name'])}.</h2>
+      <p class="eyebrow reveal">{T("See it in action", "En images")}</p>
+      <h2 class="reveal" id="shots-title">{T(f"Real screens from {esc(a['name'])}.", f"Les vrais écrans de {esc(a['name'])}.")}</h2>
     </div>
     <div class="shots-nav">
-      <button type="button" data-prev aria-label="Previous screenshots">{svg("left")}</button>
-      <button type="button" data-next aria-label="Next screenshots">{svg("right")}</button>
+      <button type="button" data-prev aria-label="{T("Previous screenshots", "Captures précédentes")}">{svg("left")}</button>
+      <button type="button" data-next aria-label="{T("Next screenshots", "Captures suivantes")}">{svg("right")}</button>
     </div>
   </div>
-  <div class="shots" role="list" aria-label="{esc(a['name'])} screenshots" tabindex="0">{imgs}</div>
+  <div class="shots" role="list" aria-label="{T(f"{esc(a['name'])} screenshots", f"Captures d'écran de {esc(a['name'])}")}" tabindex="0">{imgs}</div>
 </section>'''
 
-def more_apps(slug):
-    cards = "".join(f'''<a class="card reveal themed" href="/{s}/" style="{theme(APPS[s])}display:flex;gap:16px;align-items:center;padding:20px 22px;">
+def app_tiles(skip=None, reveal=True):
+    return "".join(f'''<a class="card{' reveal' if reveal else ''} themed" href="{page_path(("app", s))}" style="{theme(APPS[s])}display:flex;gap:16px;align-items:center;padding:20px 22px;">
         {icon_block(s, 52)}
-        <div><div class="app-card-cat">{esc(APPS[s]['category_label'])}</div><h3 style="font-size:1.18rem;margin-top:2px;">{esc(APPS[s]['name'])}</h3></div>
-      </a>''' for s in ORDER if s != slug)
+        <div><div class="app-card-cat">{esc(A(s)['category_label'])}</div><h3 style="font-size:1.18rem;margin-top:2px;">{esc(APPS[s]['name'])}</h3></div>
+      </a>''' for s in ORDER if s != skip)
+
+def more_apps(slug):
     return f'''<section class="section-sm">
   <div class="wrap">
-    <div class="section-head"><p class="eyebrow reveal">More from SuiteForge</p><h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.2rem);">Same principles, other corners of life.</h2></div>
-    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;">{cards}</div>
+    <div class="section-head"><p class="eyebrow reveal">{T("More from SuiteForge", "Les autres apps SuiteForge")}</p><h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.2rem);">{T("Same principles, other corners of life.", "Mêmes principes, d'autres moments de la vie.")}</h2></div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;">{app_tiles(slug)}</div>
   </div>
 </section>'''
 
 def build_compare(slug):
     """Comparison table vs the main competitors (facts from their App Store pages), or ''."""
-    a = APPS[slug]
+    a = A(slug)
     c = a.get("compare")
     if not c:
         return ""
@@ -786,37 +884,41 @@ def build_compare(slug):
     rows = "".join(
         f'<tr><th scope="row">{esc(label)}</th>{cell(*cells[0], ours=True)}{"".join(cell(*x) for x in cells[1:])}</tr>'
         for label, cells in c["rows"])
-    names = ", ".join(c["rivals"][:-1]) + " and " + c["rivals"][-1]
+    names = and_list(c["rivals"])
+    source = T(f"Source: each app's page on the US App Store, checked on {esc(human_date(c['checked']))}.",
+               f"Source : la fiche de chaque app sur l'App Store français, consultée le {esc(human_date(c['checked']))}.")
+    caveat = T(f"Privacy details are declared by each developer and are not verified by Apple; prices vary by country and change over time. {esc(names)} are trademarks of their respective owners; SuiteForge is not affiliated with them.",
+               f"Les informations de confidentialité sont déclarées par chaque développeur et ne sont pas vérifiées par Apple ; les prix varient selon le pays et dans le temps. {esc(names)} sont des marques de leurs propriétaires respectifs ; SuiteForge n'y est pas affilié.")
     return f'''
 <section class="section" id="compare">
   <div class="wrap">
-    <div class="section-head"><p class="eyebrow reveal">How it compares</p><h2 class="reveal">{esc(a['name'])} vs {esc(names)}</h2>
+    <div class="section-head"><p class="eyebrow reveal">{T("How it compares", "Face aux alternatives")}</p><h2 class="reveal">{esc(a['name'])} vs {esc(names)}</h2>
       <p class="lede reveal">{esc(c['note'])}</p></div>
-    <div class="cmp-wrap reveal" tabindex="0" role="region" aria-label="Comparison of {esc(a['name'])} with {esc(names)}">
+    <div class="cmp-wrap reveal" tabindex="0" role="region" aria-label="{T(f"Comparison of {esc(a['name'])} with {esc(names)}", f"Comparaison de {esc(a['name'])} avec {esc(names)}")}">
       <table class="cmp">
         <thead><tr><td></td>{head_cells}</tr></thead>
         <tbody>{rows}</tbody>
       </table>
     </div>
-    {f'<p class="cmp-summary reveal"><strong>In short.</strong> {esc(c["summary"])}</p>' if c.get("summary") else ""}
-    <p class="faint reveal" style="margin-top:16px;max-width:80ch;">Source: each app's page on the US App Store, checked on {esc(c['checked'])}.{(" " + esc(c["source"])) if c.get("source") else ""} Privacy details are declared by each developer and are not verified by Apple; prices vary by country and change over time. {esc(names)} are trademarks of their respective owners; SuiteForge is not affiliated with them.</p>
+    {f'<p class="cmp-summary reveal"><strong>{T("In short.", "En bref.")}</strong> {esc(c["summary"])}</p>' if c.get("summary") else ""}
+    <p class="faint reveal" style="margin-top:16px;max-width:80ch;">{source}{(" " + esc(c["source"])) if c.get("source") else ""} {caveat}</p>
   </div>
 </section>'''
 
 def build_landing(slug):
-    a = APPS[slug]
-    canonical = f"{DOMAIN}/{slug}/"
+    a = A(slug)
+    key = ("app", slug)
     name = esc(a["name"])
 
     extra_head = ""
     if has(f"/{slug}/screenshots/hero-home.webp"):
-        extra_head += f'<link rel="preload" as="image" href="{ver(f"/{slug}/screenshots/hero-home.webp")}" fetchpriority="high">\n'
+        extra_head += f'<link rel="preload" as="image" href="{ver(shot(slug, "hero-home.webp"))}" fetchpriority="high">\n'
         back = next((fn for fn, _ in a["shots"] if has(f"/{slug}/screenshots/{fn}")), None)
-        visual = f'''<div class="hero-visual" style="--d:.1s">
+        visual = f'''<div class="hero-visual">
           <span class="ring"></span><span class="ring"></span>
           <div class="duo">
             {phone(slug, eager=True)}
-            {f'<div class="phone phone--shot back" aria-hidden="true"><div class="phone-screen"><img src="{ver(f"/{slug}/screenshots/{back}")}" alt="" width="620" height="1347" loading="lazy" decoding="async"></div></div>' if back else ''}
+            {f'<div class="phone phone--shot back" aria-hidden="true"><div class="phone-screen"><img src="{ver(shot(slug, back))}" alt="" width="620" height="1347" loading="lazy" decoding="async"></div></div>' if back else ''}
           </div>
         </div>'''
     else:
@@ -843,21 +945,23 @@ def build_landing(slug):
         f'<div class="perm reveal"><h3>{svg("lock")}{esc(p)}</h3><p>{esc(d)}</p></div>' for p, d in a["permissions"])
 
     if released(slug):
-        getbar = f'''<div class="getbar" role="complementary" aria-label="Get {name}">
+        getbar = f'''<div class="getbar" role="complementary" aria-label="{T("Get", "Obtenir")} {name}">
   {icon_img(slug, 40)}<div><strong>{name}</strong><span>{esc(a["price_note"])}</span></div>
-  <a class="btn btn-primary btn-sm" href="{appstore_url(slug)}">Get</a>
+  <a class="btn btn-primary btn-sm" href="{appstore_url(slug)}">{T("Get", "Obtenir")}</a>
 </div>'''
-        cta_title, cta_text = f"Start with {name} today.", "Free to download. No account. Your data stays yours."
+        cta_title = T(f"Start with {name} today.", f"Commencez avec {name} dès aujourd'hui.")
+        cta_text = T("Free to download. No account. Your data stays yours.", "Gratuit à télécharger. Sans compte. Vos données restent les vôtres.")
     else:
         getbar = ""
-        cta_title, cta_text = f"{name} is coming to the App Store.", "Very soon on iPhone. No account, no ads, and your family's data stays at home."
+        cta_title = T(f"{name} is coming to the App Store.", f"{name} arrive bientôt sur l'App Store.")
+        cta_text = T("Very soon on iPhone. No account, no ads, and your family's data stays at home.", "Très bientôt sur iPhone. Sans compte, sans publicité, et les données de votre famille restent à la maison.")
 
     reviewed = iso(a["compare"]["checked"]) if a.get("compare") else None
-    jsonld = [app_jsonld(slug), webpage_jsonld(canonical, a["seo_title"], f"{canonical}#app", reviewed), faq_jsonld(a["faq"]),
-              crumbs_jsonld([("SuiteForge", f"{DOMAIN}/"), (a["name"], canonical)])]
+    jsonld = [app_jsonld(slug), webpage_jsonld(key, a["seo_title"], f"{page_url(key)}#app", reviewed), faq_jsonld(a["faq"]),
+              crumbs_jsonld([("SuiteForge", page_url("home")), (a["name"], page_url(key))])]
 
-    return f'''{head(a['seo_title'], a['seo_desc'], canonical, body_style=theme(a), jsonld=jsonld, extra_head=extra_head, og=og_image(slug), og_alt=f"{a['name']}: {a['tagline']}", favicon=favicon)}
-{site_header(slug)}
+    return f'''{head(a['seo_title'], a['seo_desc'], key, body_style=theme(a), jsonld=jsonld, extra_head=extra_head, og=og_image(slug), og_alt=f"{a['name']} : {a['tagline']}" if LANG == "fr" else f"{a['name']}: {a['tagline']}", favicon=favicon)}
+{site_header(key, slug)}
 <main id="main">
 <section class="app-hero">
   <div class="wrap">
@@ -866,7 +970,7 @@ def build_landing(slug):
         <div class="app-id">
           {icon_block(slug, 76, lazy=False)}
           <div>
-            <div class="app-cat">{esc(a['category_label'])} · iPhone{'' if released(slug) else ' · <span class="tag-soon" style="vertical-align:1px;">Coming soon</span>'}</div>
+            <div class="app-cat">{esc(a['category_label'])} · iPhone{'' if released(slug) else ' · <span class="tag-soon" style="vertical-align:1px;">' + T("Coming soon", "Bientôt disponible") + '</span>'}</div>
             <div class="app-name">{name}</div>
           </div>
         </div>
@@ -874,9 +978,9 @@ def build_landing(slug):
         <p class="lede">{esc(a['hero_sub'])}</p>
         <div class="cta-row" data-hero>{appstore_badge(slug)}<span class="price-note">{esc(a.get('price_note', ''))}</span></div>
         <div class="trust">
-          <span>{svg("shield")} No account</span>
-          <span>{svg("noeye")} No tracking</span>
-          <span>{svg("device")} Data stays on your iPhone</span>
+          <span>{svg("shield")} {T("No account", "Sans compte")}</span>
+          <span>{svg("noeye")} {T("No tracking", "Sans pistage")}</span>
+          <span>{svg("device")} {T("Data stays on your iPhone", "Données gardées sur votre iPhone")}</span>
         </div>
       </div>
       {visual}
@@ -887,7 +991,7 @@ def build_landing(slug):
 {build_shots(slug)}
 <section class="section band">
   <div class="wrap">
-    <div class="section-head"><p class="eyebrow reveal">What it does</p><h2 class="reveal">Everything you need, nothing you don't.</h2></div>
+    <div class="section-head"><p class="eyebrow reveal">{T("What it does", "Ce qu'elle fait")}</p><h2 class="reveal">{T("Everything you need, nothing you don't.", "L'essentiel, rien de superflu.")}</h2></div>
     <div class="bento">{features}</div>
   </div>
 </section>
@@ -895,7 +999,7 @@ def build_landing(slug):
 {build_compare(slug)}
 <section class="section{' band' if a.get('compare') else ''}">
   <div class="wrap">
-    <div class="section-head"><p class="eyebrow reveal">How it works</p><h2 class="reveal">Three steps, then it's a habit.</h2></div>
+    <div class="section-head"><p class="eyebrow reveal">{T("How it works", "Comment ça marche")}</p><h2 class="reveal">{T("Three steps, then it's a habit.", "Trois étapes, puis c'est une habitude.")}</h2></div>
     <div class="steps">{steps}</div>
   </div>
 </section>
@@ -904,15 +1008,15 @@ def build_landing(slug):
   <div class="wrap">
     <div class="privacy-grid">
       <div>
-        <p class="eyebrow reveal">Privacy</p>
-        <h2 class="reveal" style="margin-top:12px;">{name} keeps your data on your device.</h2>
-        <p class="reveal" style="margin-top:16px;max-width:46ch;">No SuiteForge account. No analytics. No advertising trackers. Here is exactly what {name} can access, and why.</p>
+        <p class="eyebrow reveal">{T("Privacy", "Confidentialité")}</p>
+        <h2 class="reveal" style="margin-top:12px;">{T(f"{name} keeps your data on your device.", f"{name} garde vos données sur votre appareil.")}</h2>
+        <p class="reveal" style="margin-top:16px;max-width:46ch;">{T(f"No SuiteForge account. No analytics. No advertising trackers. Here is exactly what {name} can access, and why.", f"Pas de compte SuiteForge. Pas d'outil d'analyse. Pas de pisteur publicitaire. Voici exactement ce à quoi {name} peut accéder, et pourquoi.")}</p>
         <ul class="checks reveal">
-          <li>{svg("check", "3")} No ads, no analytics, no trackers</li>
-          <li>{svg("check", "3")} Every permission is optional</li>
-          <li>{svg("check", "3")} Nothing stored on our servers</li>
+          <li>{svg("check", "3")} {T("No ads, no analytics, no trackers", "Ni publicité, ni analyse, ni pisteur")}</li>
+          <li>{svg("check", "3")} {T("Every permission is optional", "Chaque autorisation est facultative")}</li>
+          <li>{svg("check", "3")} {T("Nothing stored on our servers", "Rien n'est stocké sur nos serveurs")}</li>
         </ul>
-        <p class="faint reveal" style="margin-top:26px;">Full details in the <a class="link" href="/{slug}/privacy/">{name} Privacy Policy</a>.</p>
+        <p class="faint reveal" style="margin-top:26px;">{T("Full details in the", "Tous les détails dans la")} <a class="link" href="{page_path(("legal", slug, "privacy"))}">{T(f"{name} Privacy Policy", f"politique de confidentialité de {name}")}</a>.</p>
       </div>
       <div class="perm-list">{perms}</div>
     </div>
@@ -921,7 +1025,7 @@ def build_landing(slug):
 
 <section class="section">
   <div class="wrap narrow">
-    <div class="section-head"><p class="eyebrow reveal">Questions</p><h2 class="reveal">Frequently asked</h2></div>
+    <div class="section-head"><p class="eyebrow reveal">{T("Questions", "Questions")}</p><h2 class="reveal">{T("Frequently asked", "Questions fréquentes")}</h2></div>
     <div class="faq reveal">{faq_html(a['faq'])}</div>
   </div>
 </section>
@@ -945,7 +1049,7 @@ def build_landing(slug):
 # ---------------------------------------------------------------------------
 # HOME PAGE
 # ---------------------------------------------------------------------------
-HOME_FAQ = [
+HOME_FAQ_EN = [
     ("Does SuiteForge collect my personal data?", "No. SuiteForge apps store everything on your device (some can also sync through your own private iCloud). There are no SuiteForge accounts, no analytics SDKs and no third-party trackers. The only data that leaves your device is the anonymous purchase information Apple and our subscription provider need to manage a subscription."),
     ("Do I need an account?", "No. SuiteForge apps work immediately on first launch: no sign-up, no email, no password."),
     ("What kinds of apps does SuiteForge make?", "Focused, single-purpose iPhone apps: Health & Wellness (intermittent fasting, morning routines, step tracking), Productivity (KeepContact, a private personal CRM) and Education (Ježko, Serbian for kids and families). Each app does one thing well and runs on-device."),
@@ -954,51 +1058,57 @@ HOME_FAQ = [
     ("How do I get help or suggest a feature?", f"Every app has a feedback option in its settings, or you can email {CONTACT} directly. We read everything."),
 ]
 
+def home_faq():
+    return FR_HOME_FAQ if LANG == "fr" else HOME_FAQ_EN
+
 def home_card(slug, layout, i):
-    a = APPS[slug]
-    soon = "" if released(slug) else ' <span class="tag-soon">Coming soon</span>'
+    a = A(slug)
+    soon = "" if released(slug) else f' <span class="tag-soon">{T("Coming soon", "Bientôt")}</span>'
     pills = ""
     if layout == "feature" and a.get("home_pills"):
         pills = '<div class="pill-list">' + "".join(f'<span class="pill">{esc(p)}</span>' for p in a["home_pills"]) + "</div>"
-    label = "New · " if layout == "feature" and not released(slug) else ""
-    shot = ""
+    label = T("New · ", "Nouveau · ") if layout == "feature" and not released(slug) else ""
+    shot_html = ""
     if has(f"/{slug}/screenshots/hero-home.webp"):
-        shot = f'<div class="app-card-shot" aria-hidden="true">{phone(slug, alt="")}</div>'
-    return f'''<a class="app-card app-card--{layout} themed reveal" href="/{slug}/" style="{theme(a)}--d:{(i % 2) * .08:.2f}s">
+        shot_html = f'<div class="app-card-shot" aria-hidden="true">{phone(slug, alt="")}</div>'
+    return f'''<a class="app-card app-card--{layout} themed reveal" href="{page_path(("app", slug))}" style="{theme(a)}--d:{(i % 2) * .08:.2f}s">
         <div class="app-card-body">
           <div class="app-card-top">{icon_block(slug, 56 if layout != "feature" else 64)}<div><div class="app-card-cat">{label}{esc(a['category_label'])}</div><h3>{esc(a['name'])}{soon}</h3></div></div>
           <p class="app-card-text">{esc(a['home_blurb'])}</p>
           {pills}
-          <span class="app-card-more">Discover {esc(a['name'])} {svg("arrow")}</span>
+          <span class="app-card-more">{T("Discover", "Découvrir")} {esc(a['name'])} {svg("arrow")}</span>
         </div>
-        {shot}
+        {shot_html}
       </a>'''
 
 def build_home():
-    title = "SuiteForge — Privacy-first iPhone apps for a calmer life"
-    desc = "Privacy-first iPhone apps for health, habits, relationships and learning: FastClear, RoutineFlow, WalkQuest, KeepContact and Ježko. No accounts, no tracking."
-    canonical = f"{DOMAIN}/"
+    key = "home"
+    title = T("SuiteForge — Privacy-first iPhone apps for a calmer life", "SuiteForge : apps iPhone privées pour une vie plus sereine")
+    desc = T("Privacy-first iPhone apps for health, habits, relationships and learning: FastClear, RoutineFlow, WalkQuest, KeepContact and Ježko. No accounts, no tracking.",
+             "Apps iPhone respectueuses de la vie privée : santé, habitudes, relations et apprentissage. FastClear, RoutineFlow, WalkQuest, KeepContact et Ježko. Sans compte.")
+    canonical = page_url(key)
     new = next((s for s in ORDER if APPS[s].get("status") == "soon"), None)
     announce = ""
     if new:
-        a = APPS[new]
-        announce = f'''<a class="announce" href="/{new}/">{icon_img(new, 26, lazy=False)}<span><b>New: {esc(a['name'])}</b> · {esc(a['category_label'])}, coming soon</span><span class="arrow" aria-hidden="true">→</span></a>'''
-    fan = "".join(phone(s, alt=APPS[s].get("hero_shot_alt"), eager=(k == 1)) for k, s in enumerate(HOME_FAN))
+        a = A(new)
+        announce = (f'''<a class="announce" href="{page_path(("app", new))}">{icon_img(new, 26, lazy=False)}<span><b>{T("New: ", "Nouveau : ")}{esc(a['name'])}</b> · '''
+                    f'''{esc(a['category_label'])}{T(", coming soon", ", bientôt disponible")}</span><span class="arrow" aria-hidden="true">→</span></a>''')
+    fan = "".join(phone(s, alt=A(s).get("hero_shot_alt"), eager=(k == 1)) for k, s in enumerate(HOME_FAN))
     stack = "".join(icon_img(s, 34, lazy=False) for s in ORDER)
     cards = "".join(home_card(s, layout, i) for i, (s, layout) in enumerate(HOME_LAYOUT))
 
     jsonld = [
         org_jsonld(),
-        {"@context": "https://schema.org", "@type": "WebSite", "@id": f"{DOMAIN}/#website", "name": "SuiteForge", "url": canonical, "publisher": {"@id": ORG_ID}, "inLanguage": "en"},
-        webpage_jsonld(canonical, title, ORG_ID),
-        {"@context": "https://schema.org", "@type": "ItemList", "name": "SuiteForge apps", "itemListElement": [
-            {"@type": "ListItem", "position": i + 1, "url": f"{DOMAIN}/{s}/", "name": APPS[s]["name"]} for i, s in enumerate(ORDER)]},
-        faq_jsonld(HOME_FAQ),
+        {"@context": "https://schema.org", "@type": "WebSite", "@id": f"{DOMAIN}/#website", "name": "SuiteForge", "url": f"{DOMAIN}/", "publisher": {"@id": ORG_ID}, "inLanguage": LANGS},
+        webpage_jsonld(key, title, ORG_ID),
+        {"@context": "https://schema.org", "@type": "ItemList", "name": T("SuiteForge apps", "Apps SuiteForge"), "itemListElement": [
+            {"@type": "ListItem", "position": i + 1, "url": page_url(("app", s)), "name": APPS[s]["name"]} for i, s in enumerate(ORDER)]},
+        faq_jsonld(home_faq()),
     ]
     principles = [
-        ("One job, done well", "Each app solves one problem and stops there. No feature bloat, no endless settings, no feed."),
-        ("Calm by design", "No streak shaming, no red badges, no guilt. Miss a day and nothing breaks: you simply begin again."),
-        ("Fair, honest pricing", "Free to download, a useful free core, an optional subscription, and often a lifetime option. Never ads."),
+        (T("One job, done well", "Une seule tâche, bien faite"), T("Each app solves one problem and stops there. No feature bloat, no endless settings, no feed.", "Chaque app résout un problème et s'arrête là. Pas de fonctions en trop, pas de réglages sans fin, pas de fil d'actualité.")),
+        (T("Calm by design", "Le calme par conception"), T("No streak shaming, no red badges, no guilt. Miss a day and nothing breaks: you simply begin again.", "Pas de série qui culpabilise, pas de pastilles rouges, pas de remords. Un jour manqué ne casse rien : vous recommencez, simplement.")),
+        (T("Fair, honest pricing", "Des prix justes et clairs"), T("Free to download, a useful free core, an optional subscription, and often a lifetime option. Never ads.", "Gratuit à télécharger, l'essentiel gratuit, un abonnement facultatif, et souvent une option à vie. Jamais de publicité.")),
     ]
     principles_html = "".join(
         f'<div class="card reveal" style="--d:{i * .08:.2f}s"><div class="feature-ico">{svg(ic, "1.8")}</div><h3 style="font-size:1.3rem;margin-bottom:8px;">{esc(t)}</h3><p class="muted" style="font-size:1rem;">{esc(d)}</p></div>'
@@ -1007,58 +1117,59 @@ def build_home():
             '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>',
             '<path d="M20 12V7l-8-4-8 4v5c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9z"/><path d="M9 12l2 2 4-4"/>'])))
 
-    return f'''{head(title, desc, canonical, jsonld=jsonld, extra_head=f'<link rel="preload" as="image" href="{ver(f"/{HOME_FAN[1]}/screenshots/hero-home.webp")}" fetchpriority="high">', og_alt="SuiteForge: privacy-first iPhone apps")}
-{site_header()}
+    return f'''{head(title, desc, key, jsonld=jsonld, extra_head=f'<link rel="preload" as="image" href="{ver(shot(HOME_FAN[1], "hero-home.webp"))}" fetchpriority="high">', og_alt=T("SuiteForge: privacy-first iPhone apps", "SuiteForge : des apps iPhone respectueuses de la vie privée"))}
+{site_header(key)}
 <main id="main">
 <section class="hero">
   <div class="wrap">
     <div class="hero-grid">
       <div>
         {announce}
-        <h1 class="display">Apps for a calmer, <em>quieter</em> life.</h1>
-        <p class="lede">SuiteForge makes small, focused iPhone apps that help you take care of yourself: your health, your habits, your relationships, your family's language. Each one runs on your device. Nothing to sign up for. Nothing watching over your shoulder.</p>
+        <h1 class="display">{T("Apps for a calmer, <em>quieter</em> life.", "Des apps pour une vie plus <em>sereine</em>.")}</h1>
+        <p class="lede">{T("SuiteForge makes small, focused iPhone apps that help you take care of yourself: your health, your habits, your relationships, your family's language. Each one runs on your device. Nothing to sign up for. Nothing watching over your shoulder.",
+                           "SuiteForge crée de petites apps iPhone concentrées sur l'essentiel, pour prendre soin de vous : votre santé, vos habitudes, vos relations, la langue de votre famille. Chacune fonctionne sur votre appareil. Aucune inscription. Personne pour regarder par-dessus votre épaule.")}</p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="#apps">Explore the apps {svg("arrow")}</a>
-          <a class="btn btn-ghost" href="#privacy">Why privacy-first</a>
+          <a class="btn btn-primary" href="#apps">{T("Explore the apps", "Découvrir les apps")} {svg("arrow")}</a>
+          <a class="btn btn-ghost" href="#privacy">{T("Why privacy-first", "Pourquoi la vie privée d'abord")}</a>
         </div>
-        <div class="hero-proof"><span class="icon-stack">{stack}</span><span>{len(ORDER)} apps · Made in France · Zero trackers</span></div>
+        <div class="hero-proof"><span class="icon-stack">{stack}</span><span>{T(f"{len(ORDER)} apps · Made in France · Zero trackers", f"{len(ORDER)} apps · Conçues en France · Zéro pisteur")}</span></div>
       </div>
-      <div class="fan" style="--d:.1s" aria-label="Screens from SuiteForge apps">{fan}</div>
+      <div class="fan" aria-label="{T("Screens from SuiteForge apps", "Écrans des apps SuiteForge")}">{fan}</div>
     </div>
   </div>
 </section>
 
 <section class="section band" id="apps">
   <div class="wrap">
-    <div class="section-head"><p class="eyebrow reveal">The apps</p><h2 class="reveal">Small tools for the things that matter.</h2><p class="lede reveal">Health, habits, relationships, learning. Different corners of life, the same promise: your data stays yours.</p></div>
+    <div class="section-head"><p class="eyebrow reveal">{T("The apps", "Les apps")}</p><h2 class="reveal">{T("Small tools for the things that matter.", "De petits outils pour ce qui compte.")}</h2><p class="lede reveal">{T("Health, habits, relationships, learning. Different corners of life, the same promise: your data stays yours.", "Santé, habitudes, relations, apprentissage. Des moments de vie différents, une même promesse : vos données restent les vôtres.")}</p></div>
     <div class="apps-grid">{cards}</div>
   </div>
 </section>
 
 <section class="section ink-band" id="privacy">
   <div class="wrap">
-    <p class="eyebrow reveal">Why privacy-first</p>
-    <h2 class="reveal" style="margin-top:12px;max-width:18ch;">Your life is yours. Not a dataset.</h2>
+    <p class="eyebrow reveal">{T("Why privacy-first", "Pourquoi la vie privée d'abord")}</p>
+    <h2 class="reveal" style="margin-top:12px;max-width:18ch;">{T("Your life is yours. Not a dataset.", "Votre vie vous appartient. Ce n'est pas un jeu de données.")}</h2>
     <div class="stats">
-      <div class="stat reveal"><div class="num">0</div><h3>Accounts</h3><p>No sign-up, no email, no password. There is no SuiteForge login because there is nothing for us to log in to.</p></div>
-      <div class="stat reveal" style="--d:.08s"><div class="num">0</div><h3>Trackers</h3><p>No analytics SDKs, no advertising IDs, no third-party trackers. We don't measure you because we don't need to.</p></div>
-      <div class="stat reveal" style="--d:.16s"><div class="num">100%</div><h3>On your device</h3><p>Your fasts, routines, steps, contacts and lessons live on your iPhone, or in your own private iCloud. Never on our servers.</p></div>
+      <div class="stat reveal"><div class="num">0</div><h3>{T("Accounts", "Compte")}</h3><p>{T("No sign-up, no email, no password. There is no SuiteForge login because there is nothing for us to log in to.", "Pas d'inscription, pas d'e-mail, pas de mot de passe. Il n'y a pas de connexion SuiteForge parce qu'il n'y a rien à quoi se connecter.")}</p></div>
+      <div class="stat reveal" style="--d:.08s"><div class="num">0</div><h3>{T("Trackers", "Pisteur")}</h3><p>{T("No analytics SDKs, no advertising IDs, no third-party trackers. We don't measure you because we don't need to.", "Pas d'outil d'analyse, pas d'identifiant publicitaire, pas de pisteur tiers. Nous ne vous mesurons pas, parce que nous n'en avons pas besoin.")}</p></div>
+      <div class="stat reveal" style="--d:.16s"><div class="num">100 %</div><h3>{T("On your device", "Sur votre appareil")}</h3><p>{T("Your fasts, routines, steps, contacts and lessons live on your iPhone, or in your own private iCloud. Never on our servers.", "Vos jeûnes, routines, pas, contacts et leçons vivent sur votre iPhone, ou dans votre propre iCloud privé. Jamais sur nos serveurs.")}</p></div>
     </div>
-    <p class="faint reveal" style="margin-top:34px;max-width:72ch;">The one exception: to manage an optional subscription, Apple and our payment provider process an anonymous purchase identifier. It is never linked to your personal content, and each app's privacy policy spells this out in plain language.</p>
+    <p class="faint reveal" style="margin-top:34px;max-width:72ch;">{T("The one exception: to manage an optional subscription, Apple and our payment provider process an anonymous purchase identifier. It is never linked to your personal content, and each app's privacy policy spells this out in plain language.", "La seule exception : pour gérer un abonnement facultatif, Apple et notre prestataire de paiement traitent un identifiant d'achat anonyme. Il n'est jamais lié à votre contenu personnel, et la politique de confidentialité de chaque app l'explique en termes simples.")}</p>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <div class="section-head"><p class="eyebrow reveal">How we build</p><h2 class="reveal">Fewer features. More care.</h2></div>
+    <div class="section-head"><p class="eyebrow reveal">{T("How we build", "Notre façon de faire")}</p><h2 class="reveal">{T("Fewer features. More care.", "Moins de fonctions. Plus de soin.")}</h2></div>
     <div class="grid grid-3">{principles_html}</div>
   </div>
 </section>
 
 <section class="section band" id="faq">
   <div class="wrap narrow">
-    <div class="section-head"><p class="eyebrow reveal">Questions</p><h2 class="reveal">Good to know</h2></div>
-    <div class="faq reveal">{faq_html(HOME_FAQ)}</div>
+    <div class="section-head"><p class="eyebrow reveal">{T("Questions", "Questions")}</p><h2 class="reveal">{T("Good to know", "Bon à savoir")}</h2></div>
+    <div class="faq reveal">{faq_html(home_faq())}</div>
   </div>
 </section>
 </main>
@@ -1071,105 +1182,152 @@ def build_home():
 UPDATED = "29 May 2026"
 
 def legal_page(slug, kind, title, desc, sections, intro=""):
-    a = APPS[slug]
-    canonical = f"{DOMAIN}/{slug}/{kind}/"
+    a = A(slug)
+    key = ("legal", slug, kind)
+    canonical = page_url(key)
     body = "".join(f"\n  <h2>{i}. {t}</h2>\n  {c}" for i, (t, c) in enumerate(sections, 1))
-    jsonld = [webpage_jsonld(canonical, f"{title} — {a['name']}", f"{DOMAIN}/{slug}/#app"),
-              crumbs_jsonld([("SuiteForge", f"{DOMAIN}/"), (a["name"], f"{DOMAIN}/{slug}/"), (title, canonical)])]
-    return f'''{head(f"{title} — {a['name']}", desc, canonical, body_style=theme(a), jsonld=jsonld, og=og_image(slug))}
-{site_header(slug)}
+    jsonld = [webpage_jsonld(key, f"{title} — {a['name']}", f"{page_url(('app', slug))}#app"),
+              crumbs_jsonld([("SuiteForge", page_url("home")), (a["name"], page_url(("app", slug))), (title, canonical)])]
+    updated = human_date(a.get("updated", UPDATED))
+    return f'''{head(f"{title} — {a['name']}", desc, key, body_style=theme(a), jsonld=jsonld, og=og_image(slug))}
+{site_header(key, slug)}
 <main class="legal" id="main">
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">SuiteForge</a><span>/</span><a href="/{slug}/">{esc(a['name'])}</a><span>/</span><span>{title}</span></nav>
+  <nav class="crumbs" aria-label="{T("Breadcrumb", "Fil d'Ariane")}"><a href="{page_path("home")}">SuiteForge</a><span>/</span><a href="{page_path(("app", slug))}">{esc(a['name'])}</a><span>/</span><span>{title}</span></nav>
   <h1>{title}</h1>
-  <p class="updated">{esc(a['name'])} · Last updated {a.get('updated', UPDATED)}</p>
+  <p class="updated">{esc(a['name'])} · {T(f"Last updated {updated}", f"Dernière mise à jour : {updated}")}</p>
   {intro}{body}
 
-  <p style="margin-top:40px;"><a href="/{slug}/">← Back to {esc(a['name'])}</a></p>
+  <p style="margin-top:40px;"><a href="{page_path(("app", slug))}">← {T("Back to", "Retour à")} {esc(a['name'])}</a></p>
 </main>
 {site_footer(slug)}
 {scripts()}'''
 
 def build_privacy(slug):
-    a = APPS[slug]
+    a = A(slug)
     name = esc(a["name"])
     mail = f'<a href="mailto:{CONTACT}">{CONTACT}</a>'
     if a.get("icloud", True):
-        short_storage = f"{name} stores your data on your device, optionally synced through your own private iCloud."
-        storage = f"Everything you create in {name} is stored locally on your device using Apple's on-device frameworks. If you enable iCloud, this data may sync through your own private Apple iCloud account, which SuiteForge cannot access. We do not operate any server that stores your personal content."
+        short_storage = T(f"{name} stores your data on your device, optionally synced through your own private iCloud.",
+                          f"{name} enregistre vos données sur votre appareil, avec une synchronisation facultative via votre propre iCloud privé.")
+        storage = T(f"Everything you create in {name} is stored locally on your device using Apple's on-device frameworks. If you enable iCloud, this data may sync through your own private Apple iCloud account, which SuiteForge cannot access. We do not operate any server that stores your personal content.",
+                    f"Tout ce que vous créez dans {name} est enregistré localement sur votre appareil, avec les outils d'Apple prévus à cet effet. Si vous activez iCloud, ces données peuvent se synchroniser via votre propre compte iCloud privé, auquel SuiteForge n'a pas accès. Nous n'exploitons aucun serveur qui stocke votre contenu personnel.")
     else:
-        short_storage = f"{name} stores your data on your device only. It does not sync to any cloud."
-        storage = f"Everything you create in {name} is stored locally on your device using Apple's on-device frameworks. {name} does not sync your data to iCloud or to any other cloud service, and we do not operate any server that stores your personal content."
+        short_storage = T(f"{name} stores your data on your device only. It does not sync to any cloud.",
+                          f"{name} enregistre vos données uniquement sur votre appareil. Elles ne sont synchronisées avec aucun cloud.")
+        storage = T(f"Everything you create in {name} is stored locally on your device using Apple's on-device frameworks. {name} does not sync your data to iCloud or to any other cloud service, and we do not operate any server that stores your personal content.",
+                    f"Tout ce que vous créez dans {name} est enregistré localement sur votre appareil, avec les outils d'Apple prévus à cet effet. {name} ne synchronise vos données ni avec iCloud ni avec aucun autre service en ligne, et nous n'exploitons aucun serveur qui stocke votre contenu personnel.")
         if slug == "keepcontact":
-            storage += " If you create a backup or an export, it is a file you choose where to save; backups can be encrypted with a password only you know."
+            storage += T(" If you create a backup or an export, it is a file you choose where to save; backups can be encrypted with a password only you know.",
+                         " Si vous créez une sauvegarde ou un export, c'est un fichier que vous enregistrez où vous le souhaitez ; les sauvegardes peuvent être chiffrées avec un mot de passe connu de vous seul.")
     extra = "".join(f"\n  <h3>{esc(t)}</h3>\n  <p>{esc(d.format(name=a['name']))}</p>" for t, d in a.get("privacy_extra", []))
     perms = "".join(f"<h3>{esc(p)}</h3><p>{esc(d)}</p>" for p, d in a["permissions"])
     if a.get("kids"):
-        children = (f"<p>{name} is designed to be used by children together with their parents. We do not collect personal data from anyone, including children: "
-                    f"profile names, recordings and progress are stored only on your device and are never sent to SuiteForge. {name} contains no advertising, "
-                    "no third-party analytics, no chat and no social features.</p>"
-                    "<p>On a child profile, purchases, links that leave the app and sharing are protected by a parental gate. Purchases are made by the adult who "
-                    "holds the Apple Account; the anonymous purchase data described in section 4 relates to that account, not to the child. "
-                    f"If you have any question about your child's use of {name}, contact us at {mail}.</p>")
+        children = T(
+            f"<p>{name} is designed to be used by children together with their parents. We do not collect personal data from anyone, including children: "
+            f"profile names, recordings and progress are stored only on your device and are never sent to SuiteForge. {name} contains no advertising, "
+            "no third-party analytics, no chat and no social features.</p>"
+            "<p>On a child profile, purchases, links that leave the app and sharing are protected by a parental gate. Purchases are made by the adult who "
+            "holds the Apple Account; the anonymous purchase data described in section 4 relates to that account, not to the child. "
+            f"If you have any question about your child's use of {name}, contact us at {mail}.</p>",
+            f"<p>{name} est conçu pour être utilisé par les enfants avec leurs parents. Nous ne collectons de données personnelles sur personne, enfants compris : "
+            f"les prénoms des profils, les enregistrements et les progrès sont stockés uniquement sur votre appareil et ne sont jamais envoyés à SuiteForge. {name} ne contient "
+            "ni publicité, ni outil d'analyse tiers, ni messagerie, ni fonction sociale.</p>"
+            "<p>Sur un profil enfant, les achats, les liens qui sortent de l'app et le partage sont protégés par un contrôle parental. Les achats sont effectués par l'adulte "
+            "titulaire du compte Apple ; les données d'achat anonymes décrites à la section 4 concernent ce compte, et non l'enfant. "
+            f"Pour toute question sur l'utilisation de {name} par votre enfant, écrivez-nous à {mail}.</p>")
     else:
-        children = f"<p>{name} is not directed to children under 13, and we do not knowingly collect personal data from children.</p>"
-    lifetime = " and an optional one-time lifetime purchase" if a.get("lifetime") else ""
+        children = T(f"<p>{name} is not directed to children under 13, and we do not knowingly collect personal data from children.</p>",
+                     f"<p>{name} ne s'adresse pas aux enfants de moins de 13 ans, et nous ne collectons pas sciemment de données personnelles concernant des enfants.</p>")
+    lifetime = T(" and an optional one-time lifetime purchase", " et un achat unique à vie facultatif") if a.get("lifetime") else ""
+    apple_pp = '<a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">' + T("Apple's Privacy Policy", "la politique de confidentialité d'Apple") + "</a>"
+    rc_pp = '<a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">' + T("RevenueCat's Privacy Policy", "celle de RevenueCat") + "</a>"
     sections = [
-        ("Who we are", f"<p>{name} is an iPhone app published by SuiteForge. For any privacy question, contact us at {mail}.</p>"),
-        ("Data stored on your device", f"<p>{storage}</p>{extra}"),
-        (f"Permissions {name} may request", f"{perms}<p>Each permission is optional, is requested only when relevant, and can be changed at any time in the iOS Settings app.</p>"),
-        ("Subscriptions and purchases", f'<p>{name} offers an optional auto-renewing subscription{lifetime}. Purchases are processed by Apple. To deliver and restore purchases across your devices, we use RevenueCat, Inc. as a service provider. For this purpose only, an anonymous app-user identifier together with purchase and receipt information is processed by Apple and RevenueCat. This information is not linked to your personal content in the app and is not used for advertising. See <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple\'s Privacy Policy</a> and <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat\'s Privacy Policy</a>.</p>'),
-        ("What we do not do", "<ul><li>We do not require or create an account.</li><li>We do not use third-party analytics or advertising SDKs.</li><li>We do not track you across apps or websites.</li><li>We do not sell, rent or trade your personal data.</li></ul>"),
-        ("Your rights", f"<p>Because your content is stored on your own device, you remain in control of it at all times: you can edit or delete it within the app, and removing the app removes its local data. As {name} is published from France, the EU General Data Protection Regulation (GDPR) applies to the limited purchase-related processing described above; you may exercise your applicable rights of access, rectification, erasure and objection by contacting {mail}.</p>"),
-        ("Children", children),
-        ("Changes to this policy", "<p>We may update this policy as the app evolves. Material changes will be reflected here with a new \"last updated\" date.</p>"),
-        ("Contact", f"<p>Questions about this policy? Email {mail}.</p>"),
+        (T("Who we are", "Qui sommes-nous"), T(f"<p>{name} is an iPhone app published by SuiteForge. For any privacy question, contact us at {mail}.</p>",
+                                                f"<p>{name} est une app iPhone éditée par SuiteForge. Pour toute question sur la confidentialité, écrivez-nous à {mail}.</p>")),
+        (T("Data stored on your device", "Données enregistrées sur votre appareil"), f"<p>{storage}</p>{extra}"),
+        (T(f"Permissions {name} may request", f"Autorisations que {name} peut demander"),
+         perms + T("<p>Each permission is optional, is requested only when relevant, and can be changed at any time in the iOS Settings app.</p>",
+                   "<p>Chaque autorisation est facultative, n'est demandée qu'au moment utile et peut être modifiée à tout moment dans l'app Réglages d'iOS.</p>")),
+        (T("Subscriptions and purchases", "Abonnements et achats"), T(
+            f"<p>{name} offers an optional auto-renewing subscription{lifetime}. Purchases are processed by Apple. To deliver and restore purchases across your devices, we use RevenueCat, Inc. as a service provider. For this purpose only, an anonymous app-user identifier together with purchase and receipt information is processed by Apple and RevenueCat. This information is not linked to your personal content in the app and is not used for advertising. See {apple_pp} and {rc_pp}.</p>",
+            f"<p>{name} propose un abonnement facultatif à renouvellement automatique{lifetime}. Les achats sont traités par Apple. Pour délivrer et restaurer vos achats sur vos appareils, nous faisons appel à RevenueCat, Inc. comme prestataire. Pour cette seule finalité, un identifiant d'utilisateur anonyme, accompagné des informations d'achat et de reçu, est traité par Apple et RevenueCat. Ces informations ne sont pas liées à votre contenu personnel dans l'app et ne servent pas à la publicité. Voir {apple_pp} et {rc_pp}.</p>")),
+        (T("What we do not do", "Ce que nous ne faisons pas"), T(
+            "<ul><li>We do not require or create an account.</li><li>We do not use third-party analytics or advertising SDKs.</li><li>We do not track you across apps or websites.</li><li>We do not sell, rent or trade your personal data.</li></ul>",
+            "<ul><li>Nous n'exigeons et ne créons aucun compte.</li><li>Nous n'utilisons aucun outil d'analyse ni aucun kit publicitaire tiers.</li><li>Nous ne vous suivons pas d'une app ou d'un site à l'autre.</li><li>Nous ne vendons, ne louons ni n'échangeons vos données personnelles.</li></ul>")),
+        (T("Your rights", "Vos droits"), T(
+            f"<p>Because your content is stored on your own device, you remain in control of it at all times: you can edit or delete it within the app, and removing the app removes its local data. As {name} is published from France, the EU General Data Protection Regulation (GDPR) applies to the limited purchase-related processing described above; you may exercise your applicable rights of access, rectification, erasure and objection by contacting {mail}.</p>",
+            f"<p>Votre contenu étant enregistré sur votre propre appareil, vous en gardez le contrôle à tout moment : vous pouvez le modifier ou le supprimer dans l'app, et supprimer l'app efface ses données locales. {name} étant éditée depuis la France, le Règlement général sur la protection des données (RGPD) s'applique au traitement limité lié aux achats décrit ci-dessus ; vous pouvez exercer vos droits d'accès, de rectification, d'effacement et d'opposition en écrivant à {mail}. Vous pouvez aussi introduire une réclamation auprès de la CNIL.</p>")),
+        (T("Children", "Enfants"), children),
+        (T("Changes to this policy", "Modifications de cette politique"), T(
+            "<p>We may update this policy as the app evolves. Material changes will be reflected here with a new \"last updated\" date.</p>",
+            "<p>Nous pouvons mettre à jour cette politique à mesure que l'app évolue. Toute modification importante figurera ici, avec une nouvelle date de mise à jour.</p>")),
+        ("Contact", T(f"<p>Questions about this policy? Email {mail}.</p>", f"<p>Une question sur cette politique ? Écrivez à {mail}.</p>")),
     ]
-    intro = f'<div class="callout"><p><strong>The short version.</strong> {short_storage} There is no {name} account. We do not use analytics or advertising trackers, and we never sell your data. The only information that leaves your device is the anonymous purchase data needed to manage an optional subscription.</p></div>'
-    return legal_page(slug, "privacy", "Privacy Policy",
-                      f"How {a['name']} handles your data. Short version: it stays on your device. No accounts, no tracking.", sections, intro)
+    intro = T(f'<div class="callout"><p><strong>The short version.</strong> {short_storage} There is no {name} account. We do not use analytics or advertising trackers, and we never sell your data. The only information that leaves your device is the anonymous purchase data needed to manage an optional subscription.</p></div>',
+              f'<div class="callout"><p><strong>En bref.</strong> {short_storage} Il n\'y a pas de compte {name}. Nous n\'utilisons ni outil d\'analyse ni pisteur publicitaire, et nous ne vendons jamais vos données. Les seules informations qui quittent votre appareil sont les données d\'achat anonymes nécessaires pour gérer un abonnement facultatif.</p></div>')
+    return legal_page(slug, "privacy", T("Privacy Policy", "Politique de confidentialité"),
+                      T(f"How {a['name']} handles your data. Short version: it stays on your device. No accounts, no tracking.",
+                        f"Comment {a['name']} traite vos données. En bref : elles restent sur votre appareil. Sans compte, sans pistage."), sections, intro)
 
 def build_terms(slug):
-    a = APPS[slug]
+    a = A(slug)
     name = esc(a["name"])
-    lifetime = " A one-time lifetime purchase is also available: it is charged once, does not renew, and unlocks the same features for as long as the app is offered." if a.get("lifetime") else ""
-    family = " Purchases can be shared with your family through Apple's Family Sharing." if a.get("family_sharing") else ""
-    trial = " If a free trial is offered and you do not cancel at least 24 hours before it ends, the subscription starts automatically at the price shown."
+    lifetime = T(" A one-time lifetime purchase is also available: it is charged once, does not renew, and unlocks the same features for as long as the app is offered.",
+                 " Un achat unique à vie est aussi proposé : il est facturé une seule fois, ne se renouvelle pas et débloque les mêmes fonctions tant que l'app est proposée.") if a.get("lifetime") else ""
+    family = T(" Purchases can be shared with your family through Apple's Family Sharing.", " Les achats peuvent être partagés avec votre famille grâce au Partage familial d'Apple.") if a.get("family_sharing") else ""
+    trial = T(" If a free trial is offered and you do not cancel at least 24 hours before it ends, the subscription starts automatically at the price shown.",
+              " Si un essai gratuit est proposé et que vous ne l'annulez pas au moins 24 heures avant sa fin, l'abonnement démarre automatiquement au prix indiqué.")
     sections = [
-        ("Acceptance", f"<p>By downloading or using {name} (\"the app\"), you agree to these Terms of Use. If you do not agree, please do not use the app. The app is published by SuiteForge.</p>"),
-        ("Licence", f"<p>SuiteForge grants you a personal, non-transferable, non-exclusive licence to use {name} on Apple devices that you own or control, in accordance with the Apple Media Services Terms and these Terms.</p>"),
-        ("Subscriptions", f"<p>{name} is free to download and includes optional auto-renewing subscriptions. Payment is charged to your Apple Account at confirmation of purchase. A subscription renews automatically unless cancelled at least 24 hours before the end of the current period. You can manage or cancel your subscription in your Apple Account settings. Prices are shown in the app before purchase and may vary by region.{trial}{lifetime}{family}</p>"),
+        (T("Acceptance", "Acceptation"), T(f"<p>By downloading or using {name} (\"the app\"), you agree to these Terms of Use. If you do not agree, please do not use the app. The app is published by SuiteForge.</p>",
+                                          f"<p>En téléchargeant ou en utilisant {name} (« l'app »), vous acceptez les présentes conditions d'utilisation. Si vous ne les acceptez pas, merci de ne pas utiliser l'app. L'app est éditée par SuiteForge.</p>")),
+        (T("Licence", "Licence"), T(f"<p>SuiteForge grants you a personal, non-transferable, non-exclusive licence to use {name} on Apple devices that you own or control, in accordance with the Apple Media Services Terms and these Terms.</p>",
+                                    f"<p>SuiteForge vous accorde une licence personnelle, non transférable et non exclusive pour utiliser {name} sur les appareils Apple dont vous êtes propriétaire ou que vous contrôlez, conformément aux Conditions générales des services multimédias d'Apple et aux présentes conditions.</p>")),
+        (T("Subscriptions", "Abonnements"), T(
+            f"<p>{name} is free to download and includes optional auto-renewing subscriptions. Payment is charged to your Apple Account at confirmation of purchase. A subscription renews automatically unless cancelled at least 24 hours before the end of the current period. You can manage or cancel your subscription in your Apple Account settings. Prices are shown in the app before purchase and may vary by region.{trial}{lifetime}{family}</p>",
+            f"<p>{name} est gratuite à télécharger et propose des abonnements facultatifs à renouvellement automatique. Le paiement est débité de votre compte Apple à la confirmation de l'achat. Un abonnement se renouvelle automatiquement, sauf résiliation au moins 24 heures avant la fin de la période en cours. Vous pouvez gérer ou résilier votre abonnement dans les réglages de votre compte Apple. Les prix sont affichés dans l'app avant l'achat et peuvent varier selon les pays.{trial}{lifetime}{family}</p>")),
     ]
     if a["schema_category"] == "HealthApplication":
-        sections.append(("Not medical advice", f"<p>{name} is provided for general informational and wellness purposes only. It is not a medical device and does not provide medical advice, diagnosis or treatment. Always consult a qualified healthcare professional before making changes to your diet, fasting, exercise or health routine, and especially if you are pregnant, nursing, under 18, or have any medical condition. Never disregard professional medical advice because of something in this app.</p>"))
+        sections.append((T("Not medical advice", "Pas un avis médical"), T(
+            f"<p>{name} is provided for general informational and wellness purposes only. It is not a medical device and does not provide medical advice, diagnosis or treatment. Always consult a qualified healthcare professional before making changes to your diet, fasting, exercise or health routine, and especially if you are pregnant, nursing, under 18, or have any medical condition. Never disregard professional medical advice because of something in this app.</p>",
+            f"<p>{name} est proposée à titre d'information générale et de bien-être uniquement. Ce n'est pas un dispositif médical et elle ne fournit ni avis médical, ni diagnostic, ni traitement. Consultez toujours un professionnel de santé qualifié avant de modifier votre alimentation, votre jeûne, votre activité physique ou vos habitudes de santé, en particulier si vous êtes enceinte, si vous allaitez, si vous avez moins de 18 ans ou si vous avez un problème de santé. Ne négligez jamais un avis médical à cause d'un contenu de cette app.</p>")))
     if a.get("kids"):
-        sections.append(("Use by children", f"<p>{name} is designed for children to use with the involvement of a parent or guardian, who accepts these Terms on their behalf. Purchases must be made by an adult; on a child profile, purchases and links that leave the app are protected by a parental gate.</p>"))
-        sections.append(("Educational content", f"<p>{name} is a learning aid. We take care to make its content accurate and suitable for children, but we do not guarantee any particular level of language proficiency. Voices in the app may be synthesised.</p>"))
+        sections.append((T("Use by children", "Utilisation par les enfants"), T(
+            f"<p>{name} is designed for children to use with the involvement of a parent or guardian, who accepts these Terms on their behalf. Purchases must be made by an adult; on a child profile, purchases and links that leave the app are protected by a parental gate.</p>",
+            f"<p>{name} est conçu pour être utilisé par les enfants avec l'accompagnement d'un parent ou d'un tuteur, qui accepte les présentes conditions en leur nom. Les achats doivent être effectués par un adulte ; sur un profil enfant, les achats et les liens qui sortent de l'app sont protégés par un contrôle parental.</p>")))
+        sections.append((T("Educational content", "Contenu pédagogique"), T(
+            f"<p>{name} is a learning aid. We take care to make its content accurate and suitable for children, but we do not guarantee any particular level of language proficiency. Voices in the app may be synthesised.</p>",
+            f"<p>{name} est une aide à l'apprentissage. Nous veillons à ce que son contenu soit exact et adapté aux enfants, mais nous ne garantissons pas l'atteinte d'un niveau de langue particulier. Les voix de l'app peuvent être des voix de synthèse.</p>")))
     sections += [
-        ("Acceptable use", "<p>You agree to use the app only for lawful purposes and not to attempt to disrupt, reverse-engineer or misuse it beyond what applicable law permits.</p>"),
-        ("Intellectual property", f"<p>The app, its design, its stories, characters, illustrations and audio, and the SuiteForge and {name} names and logos are the property of SuiteForge and are protected by intellectual-property law. The content you create within the app belongs to you.</p>"),
-        ("Disclaimer and limitation of liability", "<p>The app is provided \"as is\" and \"as available\" without warranties of any kind, to the fullest extent permitted by law. SuiteForge is not liable for any indirect or consequential loss arising from your use of the app. Nothing in these Terms limits liability that cannot be limited under applicable law.</p>"),
-        ("Governing law", "<p>These Terms are governed by French law. Mandatory consumer-protection rules of your country of residence continue to apply.</p>"),
-        ("Contact", f'<p>Questions about these Terms? Email <a href="mailto:{CONTACT}">{CONTACT}</a>.</p>'),
+        (T("Acceptable use", "Utilisation autorisée"), T("<p>You agree to use the app only for lawful purposes and not to attempt to disrupt, reverse-engineer or misuse it beyond what applicable law permits.</p>",
+                                                         "<p>Vous vous engagez à n'utiliser l'app qu'à des fins licites et à ne pas tenter de la perturber, de la décompiler ou de la détourner au-delà de ce que permet la loi applicable.</p>")),
+        (T("Intellectual property", "Propriété intellectuelle"), T(
+            f"<p>The app, its design, its stories, characters, illustrations and audio, and the SuiteForge and {name} names and logos are the property of SuiteForge and are protected by intellectual-property law. The content you create within the app belongs to you.</p>",
+            f"<p>L'app, son design, ses histoires, personnages, illustrations et sons, ainsi que les noms et logos SuiteForge et {name}, sont la propriété de SuiteForge et sont protégés par le droit de la propriété intellectuelle. Le contenu que vous créez dans l'app vous appartient.</p>")),
+        (T("Disclaimer and limitation of liability", "Garantie et limitation de responsabilité"), T(
+            "<p>The app is provided \"as is\" and \"as available\" without warranties of any kind, to the fullest extent permitted by law. SuiteForge is not liable for any indirect or consequential loss arising from your use of the app. Nothing in these Terms limits liability that cannot be limited under applicable law.</p>",
+            "<p>Dans toute la mesure permise par la loi, l'app est fournie « en l'état » et « selon sa disponibilité », sans garantie d'aucune sorte. SuiteForge n'est pas responsable des dommages indirects résultant de votre utilisation de l'app. Rien dans les présentes conditions ne limite une responsabilité qui ne peut pas l'être en vertu de la loi applicable, ni les garanties légales dont vous bénéficiez en tant que consommateur.</p>")),
+        (T("Governing law", "Droit applicable"), T("<p>These Terms are governed by French law. Mandatory consumer-protection rules of your country of residence continue to apply.</p>",
+                                                    "<p>Les présentes conditions sont régies par le droit français. Les règles impératives de protection des consommateurs de votre pays de résidence continuent de s'appliquer.</p>")),
+        ("Contact", T(f'<p>Questions about these Terms? Email <a href="mailto:{CONTACT}">{CONTACT}</a>.</p>',
+                      f'<p>Une question sur ces conditions ? Écrivez à <a href="mailto:{CONTACT}">{CONTACT}</a>.</p>')),
     ]
-    return legal_page(slug, "terms", "Terms of Use", f"The terms that apply when you use {a['name']}.", sections)
+    return legal_page(slug, "terms", T("Terms of Use", "Conditions d'utilisation"),
+                      T(f"The terms that apply when you use {a['name']}.", f"Les conditions qui s'appliquent quand vous utilisez {a['name']}."), sections)
 
 def build_404():
-    """GitHub Pages serves /404.html for any unknown URL (with a 404 status)."""
-    cards = "".join(f'''<a class="card themed" href="/{s}/" style="{theme(APPS[s])}display:flex;gap:16px;align-items:center;padding:20px 22px;">
-        {icon_block(s, 52)}
-        <div><div class="app-card-cat">{esc(APPS[s]['category_label'])}</div><h3 style="font-size:1.18rem;margin-top:2px;">{esc(APPS[s]['name'])}</h3></div>
-      </a>''' for s in ORDER)
-    return f'''{head("Page not found — SuiteForge", "This page doesn't exist. Find SuiteForge's privacy-first iPhone apps here.", f"{DOMAIN}/", robots="noindex, follow")}
-{site_header()}
+    """GitHub Pages serves /404.html for any unknown URL (with a 404 status). Bilingual, English first."""
+    return f'''{head("Page not found — SuiteForge", "This page doesn't exist. Find SuiteForge's privacy-first iPhone apps here.", "home", robots="noindex, follow")}
+{site_header("home")}
 <main id="main" class="section">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Error 404</p>
+      <p class="eyebrow">Error 404 · Erreur 404</p>
       <h1 class="display" style="font-size:clamp(2.4rem,5vw,3.6rem);margin-top:14px;">This page wandered off.</h1>
       <p class="lede">The link may be old or mistyped. Here is where everything lives now.</p>
+      <p class="lede" lang="fr" style="margin-top:6px;">Cette page s'est égarée. Le lien est peut-être ancien ou mal saisi : <a class="link" href="/fr/">voir le site en français</a>.</p>
       <div class="hero-cta"><a class="btn btn-primary" href="/">Back to SuiteForge {svg("arrow")}</a></div>
     </div>
-    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;">{cards}</div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;">{app_tiles(reveal=False)}</div>
   </div>
 </main>
 {site_footer()}
@@ -1187,6 +1345,12 @@ def load_dates():
 
 DATES = load_dates()
 
+def french_typography(text):
+    """Narrow no-break space before ? ! ; : and inside « », so they never start a line."""
+    for x in "?!;:":
+        text = text.replace(f" {x}", f"\u202f{x}")
+    return text.replace("« ", "«\u202f").replace(" »", "\u202f»")
+
 def write(path, content):
     """Write a generated file. Pages carry MODIFIED: it becomes the date their content last
     changed (content hash kept in .page-dates.json), so dateModified and sitemap lastmod stay honest."""
@@ -1196,6 +1360,8 @@ def write(path, content):
         if not known or known["hash"] != digest:
             DATES[path] = {"hash": digest, "date": TODAY}
         content = content.replace(MODIFIED, DATES[path]["date"])
+    if path.startswith("fr/"):
+        content = french_typography(content)
     full = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "w", encoding="utf-8") as f:
@@ -1203,11 +1369,11 @@ def write(path, content):
     print("  ✓", path)
 
 def build_llms_txt():
-    """/llms.txt: a plain-text summary of the site for AI assistants (llmstxt.org convention)."""
+    """/llms.txt: a plain-text summary of the site for AI assistants (llmstxt.org convention). English."""
     out = ["# SuiteForge", "",
            "> SuiteForge is an independent studio from France making privacy-first iPhone apps for health, habits, "
            "relationships and learning. No accounts, no ads, no tracking: data stays on the user's device.", "",
-           f"Contact: {CONTACT}", "", "## Apps", ""]
+           f"Contact: {CONTACT}", f"French version of the site: {DOMAIN}/fr/", "", "## Apps", ""]
     for slug in ORDER:
         a = APPS[slug]
         status = f"App Store: {appstore_url(slug)}" if released(slug) else "Coming soon to the App Store"
@@ -1218,33 +1384,49 @@ def build_llms_txt():
         out += [f"- {t}: {d}" for t, d, _ in a["features"]]
         c = a.get("compare")
         if c and c.get("summary"):
-            out += ["", f"Comparison with {', '.join(c['rivals'])} (App Store listings, checked {c['checked']}): {c['summary']}"]
+            out += ["", f"Comparison with {', '.join(c['rivals'])} (US App Store listings, checked {c['checked']}): {c['summary']}"]
         out += ["", "Questions:", ""] + [f"- {q} {ans}" for q, ans in a["faq"]]
-        out += ["", f"- [Privacy Policy]({DOMAIN}/{slug}/privacy/)", f"- [Terms of Use]({DOMAIN}/{slug}/terms/)"]
-    out += ["", "## About SuiteForge", ""] + [f"- {q} {ans}" for q, ans in HOME_FAQ]
+        out += ["", f"- [Privacy Policy]({DOMAIN}/{slug}/privacy/)", f"- [Terms of Use]({DOMAIN}/{slug}/terms/)",
+                f"- [French page]({DOMAIN}/fr/{slug}/)"]
+    out += ["", "## About SuiteForge", ""] + [f"- {q} {ans}" for q, ans in HOME_FAQ_EN]
     return "\n".join(out) + "\n"
 
 # AI crawlers named explicitly: they are welcome (answers in ChatGPT, Claude, Perplexity, Gemini).
 AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User",
            "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "CCBot"]
 
+def all_pages():
+    """Every indexable page: (key, sitemap priority)."""
+    pages = [("home", "1.0")]
+    for slug in ORDER:
+        pages += [(("app", slug), "0.8"), (("legal", slug, "privacy"), "0.3"), (("legal", slug, "terms"), "0.3")]
+    return pages
+
+def build_page(key):
+    if key == "home":
+        return build_home()
+    if key[0] == "app":
+        return build_landing(key[1])
+    return build_privacy(key[1]) if key[2] == "privacy" else build_terms(key[1])
+
 if __name__ == "__main__":
     print("Generating SuiteForge site...")
-    write("index.html", build_home())
+    for lang in LANGS:
+        LANG = lang
+        for key, _ in all_pages():
+            write(file_of(key, lang), build_page(key))
+    LANG = "en"
     write("404.html", build_404())
-    for slug in ORDER:
-        write(f"{slug}/index.html", build_landing(slug))
-        write(f"{slug}/privacy/index.html", build_privacy(slug))
-        write(f"{slug}/terms/index.html", build_terms(slug))
 
-    pages = [("index.html", f"{DOMAIN}/", "1.0")]
-    for slug in ORDER:
-        pages += [(f"{slug}/index.html", f"{DOMAIN}/{slug}/", "0.8"),
-                  (f"{slug}/privacy/index.html", f"{DOMAIN}/{slug}/privacy/", "0.3"),
-                  (f"{slug}/terms/index.html", f"{DOMAIN}/{slug}/terms/", "0.3")]
-    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    for path, u, pr in pages:
-        sitemap += f"  <url><loc>{u}</loc><lastmod>{DATES[path]['date']}</lastmod><changefreq>monthly</changefreq><priority>{pr}</priority></url>\n"
+    # Sitemap with both languages, each URL announcing its translation (hreflang).
+    sitemap = ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+               'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n')
+    for key, pr in all_pages():
+        alts = "".join(f'<xhtml:link rel="alternate" hreflang="{l}" href="{page_url(key, l)}"/>' for l in LANGS)
+        alts += f'<xhtml:link rel="alternate" hreflang="x-default" href="{page_url(key, "en")}"/>'
+        for lang in LANGS:
+            sitemap += (f"  <url><loc>{page_url(key, lang)}</loc><lastmod>{DATES[file_of(key, lang)]['date']}</lastmod>"
+                        f"<changefreq>monthly</changefreq><priority>{pr}</priority>{alts}</url>\n")
     sitemap += "</urlset>\n"
     write("sitemap.xml", sitemap)
     robots = "User-agent: *\nAllow: /\n\n" + "".join(f"User-agent: {b}\nAllow: /\n\n" for b in AI_BOTS)

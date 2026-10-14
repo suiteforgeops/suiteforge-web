@@ -2,6 +2,16 @@
 
 Site statique unique pour `suiteforge.app`. Zéro dépendance externe, zéro CDN, fonts auto-hébergées (privacy-first : aucune requête vers Google quand un visiteur ouvre une page). Prêt pour GitHub Pages.
 
+## Langues
+
+Le site existe en **anglais** (à la racine) et en **français** (sous `/fr/`, pages légales en `/fr/<app>/confidentialite/` et `/fr/<app>/conditions/`).
+- Les textes anglais vivent dans `build.py` (`APPS`), les textes français dans `content_fr.py` (`FR_APPS`, `FR_HOME_FAQ`) : mêmes listes, même ordre. Les couleurs, icônes, identifiants App Store et l'état ✓/✗ des comparatifs viennent de `APPS`.
+- Les textes de l'interface (titres de section, boutons, pages légales) sont écrits dans les gabarits sous la forme `T("anglais", "français")`.
+- Chaque page déclare sa traduction (`hreflang`, aussi dans le sitemap) et le sélecteur EN/FR de l'en-tête pointe vers la page équivalente.
+- Les prix des comparatifs français viennent de l'App Store **français** (en euros), relevés à part des prix américains.
+- Captures françaises : `python3 optimize_shots.py --fr` (sources `source/fr/` → `screenshots/fr/` ; l'ordre de KeepContact est fixé dans `FR_ORDER`). Images de partage : `og-fr.png` par app et `assets/og-suiteforge-fr.png` (`python3 make_og.py fr`).
+- Typographie : `build.py` insère automatiquement une espace fine insécable avant `? ! : ;` et dans `« »` sur les pages françaises.
+
 ## Contenu
 
 ```

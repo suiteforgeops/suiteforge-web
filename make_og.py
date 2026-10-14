@@ -83,6 +83,23 @@ HOUSE = {
 }
 
 
+# French share images (<slug>/og-fr.png, assets/og-suiteforge-fr.png): texts and capture override OG / HOUSE.
+OG_FR = {
+    "jezko": {"shot": "screenshots/source/fr/01 home.png", "title": ["Apprendre le serbe", "avec une histoire."],
+              "sub": "Enfants et familles, 10 minutes par jour", "chips": ["100 leçons", "Latin et cyrillique", "Sans pub"]},
+    "keepcontact": {"shot": "screenshots/source/fr/KeepContact FR - 1. Accueil.png", "title": ["Restez proche des", "gens qui comptent."],
+                    "sub": "CRM personnel privé pour iPhone", "chips": ["IA sur l'iPhone", "Sans compte", "100 % hors ligne"]},
+    "fastclear": {"shot": "screenshots/source/fr/1_home_fr.png", "title": ["Un minuteur serein", "pour le jeûne."],
+                  "sub": "Suivi du jeûne privé pour iPhone", "chips": ["16:8 · 18:6 · OMAD", "Sans compte", "Sans pistage"]},
+    "routineflow": {"shot": "screenshots/source/fr/01_home_fr.png", "title": ["Une routine du matin", "qui tient vraiment."],
+                    "sub": "Une étape calme à la fois, sur iPhone", "chips": ["Pas à pas", "Sans compte", "Sans pistage"]},
+    "walkquest": {"shot": "screenshots/source/fr/1. Today FR.png", "title": ["Vos pas du jour,", "une quête tranquille."],
+                  "sub": "Défis de pas privés pour iPhone", "chips": ["Pas Apple Santé", "Sans compte", "Sans pistage"]},
+}
+HOUSE_FR = {"title": ["Des apps pour une", "vie plus sereine."], "sub": "Apps iPhone respectueuses de la vie privée",
+            "chips": ["Sans compte", "Sans pistage", "Sur votre iPhone"]}
+
+
 def font(size, weight="Bold"):
     f = ImageFont.truetype(FONT, size)
     try:
@@ -100,7 +117,7 @@ def rounded(im, radius):
     return out
 
 
-def build(slug, c):
+def build(slug, c, out="og.png"):
     img = Image.new("RGBA", (W, H), c["bg"] + (255,))
 
     # Soft coral glow behind the phone
@@ -125,7 +142,7 @@ def build(slug, c):
 
     icon = rounded(Image.open(ICONS[slug]).convert("RGBA").resize((96, 96), Image.LANCZOS), 22)
     text_block(img, c, icon)
-    save(img, os.path.join(ROOT, slug, "og.png"))
+    save(img, os.path.join(ROOT, slug, out))
 
 
 def text_block(img, c, icon=None):
@@ -169,7 +186,7 @@ def save(img, out):
     print(f"  ✓ {os.path.relpath(out, ROOT)}  {os.path.getsize(out) / 1024:.0f} KB")
 
 
-def build_house(c):
+def build_house(c, out="og-suiteforge.png"):
     img = Image.new("RGBA", (W, H), c["bg"] + (255,))
     glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     ImageDraw.Draw(glow).ellipse((720, 80, 1240, 600), fill=c["glow"] + (140,))
@@ -194,7 +211,7 @@ def build_house(c):
         img.alpha_composite(rounded(icon, 30), (x, y))
 
     text_block(img, c)
-    save(img, os.path.join(ROOT, "assets", "og-suiteforge.png"))
+    save(img, os.path.join(ROOT, "assets", out))
 
 
 def s_path(scale):
@@ -243,7 +260,10 @@ if __name__ == "__main__":
     for slug, cfg in OG.items():
         if not only or slug in only:
             build(slug, cfg)
+        if slug in OG_FR and (not only or slug in only or "fr" in only):
+            build(slug, {**cfg, **OG_FR[slug]}, "og-fr.png")
     if not only or "house" in only:
         build_house(HOUSE)
+        build_house({**HOUSE, **HOUSE_FR}, "og-suiteforge-fr.png")
     if not only or "marks" in only:
         build_marks()

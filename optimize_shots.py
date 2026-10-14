@@ -69,6 +69,36 @@ def encode(src_path, out_path, cfg):
         q -= cfg["step"]
 
 
+# French captures (source/fr/) -> <slug>/screenshots/fr/, same file names as the English set.
+# Their order must match the English one; when the French file names sort differently, list them here.
+FR_ORDER = {
+    "keepcontact": ["1. Accueil", "2. Preparer", "9. Ce que je sais", "5. Mon réseau", "4. Stats", "10. Bilan"],
+}
+
+
+def french(slugs):
+    for slug in slugs:
+        src_dir = os.path.join(ROOT, slug, "screenshots", "source", "fr")
+        srcs = sorted(glob.glob(os.path.join(src_dir, "*.png")), key=lambda f: os.path.basename(f).lower())
+        if not srcs:
+            print(f"{slug:<14} (no French sources)")
+            continue
+        if slug in FR_ORDER:
+            srcs = [next(f for f in srcs if key in os.path.basename(f)) for key in FR_ORDER[slug]]
+            hero, rest = srcs[0], srcs[1:]
+        else:
+            hero = pick_home(srcs) or srcs[0]
+            rest = [f for f in srcs[: MAX_COUNT.get(slug, CAROUSEL["max_count"])] if f != hero]
+        out_dir = os.path.join(ROOT, slug, "screenshots", "fr")
+        os.makedirs(out_dir, exist_ok=True)
+        for old in glob.glob(os.path.join(out_dir, "*.webp")):
+            os.remove(old)
+        jobs = [(hero, "hero-home.webp", HERO)] + [(f, f"shot-{i}.webp", CAROUSEL) for i, f in enumerate(rest, 1)]
+        for src, name, cfg in jobs:
+            w, h, size, q = encode(src, os.path.join(out_dir, name), cfg)
+            print(f"{slug:<14} fr/{name:<16} {w}x{h:<7} {size/1024:>7.1f} {q:>3}  {os.path.basename(src)}")
+
+
 def main():
     print(f"{'App':<14} {'Role':<10} {'#':>2} {'WxH':>11} {'KB':>7} {'q':>3}  source")
     print("-" * 96)
@@ -126,4 +156,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if "--fr" in sys.argv:   # French set only: python3 optimize_shots.py --fr [apps]
+        french([a for a in sys.argv[1:] if a != "--fr"] or APPS)
+    else:
+        main()

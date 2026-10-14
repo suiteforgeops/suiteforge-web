@@ -208,6 +208,8 @@ a.appstore:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
 .nav { display: flex; align-items: center; gap: 28px; font-size: .95rem; font-weight: 500; }
 .nav a:not(.btn) { color: var(--ink-soft); transition: color .15s ease; }
 .nav a:not(.btn):hover, .nav a[aria-current="page"] { color: var(--ink); }
+.nav .lang { font-size: .78rem; font-weight: 700; letter-spacing: .08em; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: .3em .75em; line-height: 1; }
+.nav .lang:hover { color: var(--ink); border-color: var(--accent-line); }
 .nav .app-chip { display: inline-flex; align-items: center; gap: .5em; }
 .nav .app-chip img { width: 22px; height: 22px; border-radius: 6px; }
 
