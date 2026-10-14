@@ -20,7 +20,7 @@ APPS = {
         "category_label": "Health & Wellness",
         "schema_category": "HealthApplication",
         "appstore_id": "6762476052",
-        "accent": "#1f9d57", "accent_deep": "#157a42", "accent_tint": "#e3f3ea",
+        "accent": "#1f9d57", "accent_deep": "#13703c", "accent_tint": "#e3f3ea",
         "icon_svg": '<path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/><circle cx="12" cy="12" r="3.2"/><path d="M12 10.4V12l1.1.9"/>',
         "tagline": "A calm timer for intermittent fasting.",
         "hero_sub": "Pick a fasting protocol, start your timer, and watch your streak grow. No charts you can't read, no noise — just a clear view of where you are in your fast.",
@@ -112,7 +112,7 @@ APPS = {
         "category_label": "Health & Wellness",
         "schema_category": "HealthApplication",
         "appstore_id": "6766101143",
-        "accent": "#e8821e", "accent_deep": "#c26a14", "accent_tint": "#fbedd9",
+        "accent": "#e8821e", "accent_deep": "#9e540e", "accent_tint": "#fbedd9",
         "icon_svg": '<path d="M12 4a8 8 0 1 1-7.5 5.2"/><path d="M4 4v4h4"/><path d="M12 8v4l2.6 1.6"/>',
         "tagline": "A morning routine that actually sticks.",
         "hero_sub": "Design a calm sequence of small steps and move through them one at a time. No streak shaming, no overwhelm — just a gentle flow to start the day on your terms.",
@@ -192,7 +192,7 @@ APPS = {
         "category_label": "Health & Wellness",
         "schema_category": "HealthApplication",
         "appstore_id": "6768080009",
-        "accent": "#b7892f", "accent_deep": "#94701f", "accent_tint": "#f4ebd6",
+        "accent": "#b7892f", "accent_deep": "#7d5f19", "accent_tint": "#f4ebd6",
         "icon_svg": '<path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/><path d="M9.5 11.5l1.8 1.8 3.2-3.6"/>',
         "tagline": "Turn your daily steps into a quiet quest.",
         "hero_sub": "Set a step goal that fits your life and watch your progress fill in, day after day. No leaderboards, no social pressure — just you, moving a little more.",
@@ -812,7 +812,7 @@ def build_landing(slug):
     if has(f"/{slug}/screenshots/hero-home.webp"):
         extra_head += f'<link rel="preload" as="image" href="{ver(f"/{slug}/screenshots/hero-home.webp")}" fetchpriority="high">\n'
         back = next((fn for fn, _ in a["shots"] if has(f"/{slug}/screenshots/{fn}")), None)
-        visual = f'''<div class="hero-visual reveal" style="--d:.1s">
+        visual = f'''<div class="hero-visual" style="--d:.1s">
           <span class="ring"></span><span class="ring"></span>
           <div class="duo">
             {phone(slug, eager=True)}
@@ -863,17 +863,17 @@ def build_landing(slug):
   <div class="wrap">
     <div class="app-hero-grid">
       <div>
-        <div class="app-id reveal">
+        <div class="app-id">
           {icon_block(slug, 76, lazy=False)}
           <div>
             <div class="app-cat">{esc(a['category_label'])} · iPhone{'' if released(slug) else ' · <span class="tag-soon" style="vertical-align:1px;">Coming soon</span>'}</div>
             <div class="app-name">{name}</div>
           </div>
         </div>
-        <h1 class="reveal">{esc(a['tagline'])}</h1>
-        <p class="lede reveal">{esc(a['hero_sub'])}</p>
-        <div class="cta-row reveal" data-hero>{appstore_badge(slug)}<span class="price-note">{esc(a.get('price_note', ''))}</span></div>
-        <div class="trust reveal">
+        <h1>{esc(a['tagline'])}</h1>
+        <p class="lede">{esc(a['hero_sub'])}</p>
+        <div class="cta-row" data-hero>{appstore_badge(slug)}<span class="price-note">{esc(a.get('price_note', ''))}</span></div>
+        <div class="trust">
           <span>{svg("shield")} No account</span>
           <span>{svg("noeye")} No tracking</span>
           <span>{svg("device")} Data stays on your iPhone</span>
@@ -982,7 +982,7 @@ def build_home():
     announce = ""
     if new:
         a = APPS[new]
-        announce = f'''<a class="announce reveal" href="/{new}/">{icon_img(new, 26, lazy=False)}<span><b>New: {esc(a['name'])}</b> · {esc(a['category_label'])}, coming soon</span><span class="arrow" aria-hidden="true">→</span></a>'''
+        announce = f'''<a class="announce" href="/{new}/">{icon_img(new, 26, lazy=False)}<span><b>New: {esc(a['name'])}</b> · {esc(a['category_label'])}, coming soon</span><span class="arrow" aria-hidden="true">→</span></a>'''
     fan = "".join(phone(s, alt=APPS[s].get("hero_shot_alt"), eager=(k == 1)) for k, s in enumerate(HOME_FAN))
     stack = "".join(icon_img(s, 34, lazy=False) for s in ORDER)
     cards = "".join(home_card(s, layout, i) for i, (s, layout) in enumerate(HOME_LAYOUT))
@@ -1015,15 +1015,15 @@ def build_home():
     <div class="hero-grid">
       <div>
         {announce}
-        <h1 class="display reveal">Apps for a calmer, <em>quieter</em> life.</h1>
-        <p class="lede reveal">SuiteForge makes small, focused iPhone apps that help you take care of yourself: your health, your habits, your relationships, your family's language. Each one runs on your device. Nothing to sign up for. Nothing watching over your shoulder.</p>
-        <div class="hero-cta reveal">
+        <h1 class="display">Apps for a calmer, <em>quieter</em> life.</h1>
+        <p class="lede">SuiteForge makes small, focused iPhone apps that help you take care of yourself: your health, your habits, your relationships, your family's language. Each one runs on your device. Nothing to sign up for. Nothing watching over your shoulder.</p>
+        <div class="hero-cta">
           <a class="btn btn-primary" href="#apps">Explore the apps {svg("arrow")}</a>
           <a class="btn btn-ghost" href="#privacy">Why privacy-first</a>
         </div>
-        <div class="hero-proof reveal"><span class="icon-stack">{stack}</span><span>{len(ORDER)} apps · Made in France · Zero trackers</span></div>
+        <div class="hero-proof"><span class="icon-stack">{stack}</span><span>{len(ORDER)} apps · Made in France · Zero trackers</span></div>
       </div>
-      <div class="fan reveal" style="--d:.1s" aria-label="Screens from SuiteForge apps">{fan}</div>
+      <div class="fan" style="--d:.1s" aria-label="Screens from SuiteForge apps">{fan}</div>
     </div>
   </div>
 </section>
@@ -1153,6 +1153,28 @@ def build_terms(slug):
     ]
     return legal_page(slug, "terms", "Terms of Use", f"The terms that apply when you use {a['name']}.", sections)
 
+def build_404():
+    """GitHub Pages serves /404.html for any unknown URL (with a 404 status)."""
+    cards = "".join(f'''<a class="card themed" href="/{s}/" style="{theme(APPS[s])}display:flex;gap:16px;align-items:center;padding:20px 22px;">
+        {icon_block(s, 52)}
+        <div><div class="app-card-cat">{esc(APPS[s]['category_label'])}</div><h3 style="font-size:1.18rem;margin-top:2px;">{esc(APPS[s]['name'])}</h3></div>
+      </a>''' for s in ORDER)
+    return f'''{head("Page not found — SuiteForge", "This page doesn't exist. Find SuiteForge's privacy-first iPhone apps here.", f"{DOMAIN}/", robots="noindex, follow")}
+{site_header()}
+<main id="main" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Error 404</p>
+      <h1 class="display" style="font-size:clamp(2.4rem,5vw,3.6rem);margin-top:14px;">This page wandered off.</h1>
+      <p class="lede">The link may be old or mistyped. Here is where everything lives now.</p>
+      <div class="hero-cta"><a class="btn btn-primary" href="/">Back to SuiteForge {svg("arrow")}</a></div>
+    </div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;">{cards}</div>
+  </div>
+</main>
+{site_footer()}
+{scripts()}'''
+
 # ---------------------------------------------------------------------------
 # WRITE FILES
 # ---------------------------------------------------------------------------
@@ -1209,6 +1231,7 @@ AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-Searc
 if __name__ == "__main__":
     print("Generating SuiteForge site...")
     write("index.html", build_home())
+    write("404.html", build_404())
     for slug in ORDER:
         write(f"{slug}/index.html", build_landing(slug))
         write(f"{slug}/privacy/index.html", build_privacy(slug))

@@ -33,7 +33,7 @@
   --bg-deep:   #efe9df;   /* recessed band */
   --ink:       #211c16;   /* near-black, warm */
   --ink-soft:  #5f574b;   /* body copy (AA on cream) */
-  --ink-faint: #857b6e;   /* captions */
+  --ink-faint: #71675a;   /* captions (AA on cream and bands) */
   --line:      #e3dccf;   /* hairlines */
   --line-soft: #ece6db;
   --night:     #1b1814;   /* the dark "ink" bands */
@@ -404,7 +404,7 @@ a.card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-co
   counter-increment: step; content: counter(step);
   position: absolute; top: 0; left: 0; width: 48px; height: 48px; border-radius: 50%;
   display: grid; place-items: center; font-family: var(--serif); font-weight: 900; font-size: 1.3rem;
-  background: var(--accent); color: #fff; box-shadow: 0 0 0 8px var(--bg), 0 0 0 9px var(--accent-line);
+  background: var(--accent-deep); color: #fff; box-shadow: 0 0 0 8px var(--bg), 0 0 0 9px var(--accent-line);
 }
 .step:not(:last-child)::after { content: ""; position: absolute; top: 24px; left: 70px; right: -10px; height: 1px;
   background: repeating-linear-gradient(90deg, var(--accent-line) 0 6px, transparent 6px 12px); }
@@ -449,7 +449,7 @@ a.card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-co
 .cta-card {
   position: relative; overflow: hidden; isolation: isolate;
   border-radius: 34px; padding: 72px 40px; text-align: center;
-  background: linear-gradient(140deg, var(--accent), var(--accent-deep));
+  background: linear-gradient(140deg, color-mix(in srgb, var(--accent) 35%, var(--accent-deep)), var(--accent-deep));
   color: #fff;
 }
 .cta-card::before { content: ""; position: absolute; z-index: -1; inset: -40% -10% auto auto; width: 70%; aspect-ratio: 1; border-radius: 50%;
