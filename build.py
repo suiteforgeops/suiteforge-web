@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 """
 SuiteForge static site generator.
-Generates: 4 landing pages, 8 legal pages (privacy + terms), sitemap.xml, robots.txt, CNAME.
+Generates: the home page, one landing + privacy + terms per app, sitemap.xml, robots.txt, CNAME.
 Single source of truth = APPS config below. No external deps.
 """
-import os, html
+import os, html, json, hashlib, datetime
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DOMAIN = "https://suiteforge.app"
@@ -24,8 +24,16 @@ APPS = {
         "icon_svg": '<path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/><circle cx="12" cy="12" r="3.2"/><path d="M12 10.4V12l1.1.9"/>',
         "tagline": "A calm timer for intermittent fasting.",
         "hero_sub": "Pick a fasting protocol, start your timer, and watch your streak grow. No charts you can't read, no noise — just a clear view of where you are in your fast.",
-        "seo_title": "FastClear — Simple, private intermittent fasting timer for iPhone",
+        "seo_title": "FastClear — Private intermittent fasting timer for iPhone",
         "seo_desc": "FastClear is a privacy-first intermittent fasting timer for iPhone. Track 16:8, 18:6, OMAD and custom fasts. No account, no tracking, all data on your device.",
+        "home_blurb": "A clean, focused intermittent-fasting timer. Pick a protocol, start your fast, watch your streak grow.",
+        "price_note": "Free download · optional subscription",
+        "highlights": [
+            ("16:8 → OMAD", "Every protocol, or your own window"),
+            ("Widgets", "Your fast on the Home Screen"),
+            ("Apple Health", "Completed fasts, only if you allow it"),
+            ("0", "Accounts, ads or trackers"),
+        ],
         "features": [
             ("Every protocol, one tap", "16:8, 18:6, 20:4, OMAD or a custom window. Switch any time without losing your history.", '<circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.2 1.8"/>'),
             ("Honest streaks", "See completed fasts build into a streak that motivates without guilt-tripping. Miss a day? Pick right back up.", '<path d="M5 13l4 4 10-11"/>'),
@@ -83,6 +91,14 @@ APPS = {
         "hero_sub": "Design a calm sequence of small steps and move through them one at a time. No streak shaming, no overwhelm — just a gentle flow to start the day on your terms.",
         "seo_title": "RoutineFlow — Calm morning routine builder for iPhone",
         "seo_desc": "RoutineFlow helps you build and keep a morning routine on iPhone. Step-by-step flows, gentle reminders, no account and no tracking. All data stays on your device.",
+        "home_blurb": "Build a morning routine that actually sticks. One step at a time, calmly, every day.",
+        "price_note": "Free download · optional subscription",
+        "highlights": [
+            ("1 step", "On screen at a time, never a wall of tasks"),
+            ("Reminders", "A quiet nudge at the time you pick"),
+            ("No guilt", "Miss a morning, simply begin again"),
+            ("0", "Accounts, ads or trackers"),
+        ],
         "features": [
             ("Build your sequence", "Add the steps that matter to you — water, stretch, journal, meditate — in the order that feels right.", '<path d="M4 6h16M4 12h16M4 18h10"/>'),
             ("One step at a time", "RoutineFlow shows you a single step, not an intimidating list. Finish it, flow to the next.", '<path d="M5 12h14M13 6l6 6-6 6"/>'),
@@ -132,8 +148,16 @@ APPS = {
         "icon_svg": '<path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/><path d="M9.5 11.5l1.8 1.8 3.2-3.6"/>',
         "tagline": "Turn your daily steps into a quiet quest.",
         "hero_sub": "Set a step goal that fits your life and watch your progress fill in, day after day. No leaderboards, no social pressure — just you, moving a little more.",
-        "seo_title": "WalkQuest — Private step tracker & walking goals for iPhone",
-        "seo_desc": "WalkQuest is a privacy-first step tracker for iPhone. Set daily walking goals, see honest progress, no account and no tracking. Reads steps from Apple Health on your device.",
+        "seo_title": "WalkQuest — Private step tracker for iPhone",
+        "seo_desc": "WalkQuest is a privacy-first step tracker for iPhone: daily walking goals and honest progress from your Apple Health steps. No account, no tracking.",
+        "home_blurb": "Turn your daily steps into a quiet quest. Simple goals, honest progress, no noise.",
+        "price_note": "Free download · optional subscription",
+        "highlights": [
+            ("Apple Health", "Steps your iPhone already counts"),
+            ("No Watch", "Needed: your iPhone is enough"),
+            ("Milestones", "Challenges and achievements"),
+            ("0", "Leaderboards, ads or trackers"),
+        ],
         "features": [
             ("Goals that fit you", "Start where you are. Set a realistic daily step goal and adjust it as you build momentum.", '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.2"/>'),
             ("Honest progress", "A clean ring shows today at a glance and history shows the trend — no vanity metrics.", '<path d="M21 12a9 9 0 1 1-9-9" /><path d="M21 4v5h-5"/>'),
@@ -189,11 +213,22 @@ APPS = {
         "icon_svg": '<path d="M4 5h11a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H9l-4 3v-3H4z"/><path d="M17 9h3v8h-1v3l-4-3h-4"/>',
         "tagline": "Stay close to the people who matter.",
         "hero_sub": "A friend you meant to call. A former colleague you never followed up with. KeepContact turns \"I should reach out\" into a simple daily habit — and helps you know what to say when you do. No cloud, no account, no server.",
-        "seo_title": "KeepContact — Private personal CRM with on-device AI, for iPhone",
-        "seo_desc": "KeepContact is a privacy-first personal CRM for iPhone. See who to reach out to each morning, remember what matters to each person, get message ideas from Apple's on-device AI. No account, no tracking, 100% offline.",
+        "seo_title": "KeepContact — Private personal CRM with on-device AI",
+        "seo_desc": "Privacy-first personal CRM for iPhone: who to reach out to each morning, what matters to each person, message ideas from on-device AI. No account, 100% offline.",
         "updated": "11 October 2026",
         "icloud": False,
         "lifetime": True,
+        "home_blurb": "A private personal CRM. Each morning, who to reach out to and what to say — written by your iPhone's on-device AI.",
+        "price_note": "Free for up to 15 contacts · Pro with a 7-day trial",
+        "highlights": [
+            ("On-device AI", "Summaries and message ideas, on your iPhone"),
+            ("Score /100", "Your relationship health at a glance"),
+            ("15 free", "Contacts tracked, no time limit"),
+            ("100% offline", "No server, no account, no sync"),
+        ],
+        "privacy_extra": [
+            ("On-device AI", "On iPhones that support Apple Intelligence, {name} uses Apple's on-device language model to summarise a contact, suggest message ideas and spot facts in your notes. Voice notes are transcribed on your device too. This processing happens entirely on your iPhone: your notes and recordings are not sent to SuiteForge, to Apple or to any third party."),
+        ],
         "features": [
             ("One clear next step, every morning", "See who is overdue, at the rhythm you chose for each person. KeepContact puts one person first, with a three-line summary and a way to open the conversation — and message ideas if you're stuck on the first words.", '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'),
             ("Remember what matters to them", "Hobbies, gift ideas, allergies, their kids' names, the topic you promised to follow up on. Plus birthdays, anniversaries, the day you met, and who introduced you.", '<path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h6"/>'),
@@ -239,438 +274,721 @@ APPS = {
             ("shot-5.webp", "KeepContact Year in review: your year in relationships as a story image, with names hidden by default"),
         ],
     },
+    "jezko": {
+        "name": "Ježko",
+        "full_name": "Ježko: Learn Serbian",
+        "category_label": "Education",
+        "schema_category": "EducationalApplication",
+        # In App Review (October 2026). Once live: put the App Store ID here and remove "status".
+        "appstore_id": None,
+        "status": "soon",
+        # Palette « l'été chez baka » : crvena (icon background)
+        "accent": "#d9483b", "accent_deep": "#b8372c", "accent_tint": "#fbe6e1",
+        "icon_svg": '<path d="M4 15c0-4 3.5-7 8-7s8 3 8 7H4z"/><circle cx="16" cy="12" r=".8"/>',
+        "tagline": "Serbian for your family, 10 minutes a day.",
+        "hero_sub": "Your child understands baka and deka but doesn't dare answer? Ježko turns Serbian into a daily ritual: one story, one hedgehog, ten minutes. Children follow Milena's summer in Serbia, speak from the very first lesson and learn to read both alphabets.",
+        "seo_title": "Ježko: Learn Serbian for kids & families — iPhone app",
+        "seo_desc": "Ježko teaches Serbian to kids and families through one story in 100 lessons. Speak out loud, read Latin and Cyrillic, 10 minutes a day. No account, no ads.",
+        "home_blurb": "Serbian for kids and families, 10 minutes a day. Follow Milena's summer at her grandparents' in Serbia over 100 lessons, speak from day one, and learn to read both alphabets.",
+        "home_pills": ["100 lessons · A1 → B1", "Latin & Cyrillic", "Up to 5 profiles", "No ads"],
+        "price_note": "First 7 lessons free · English & French",
+        "updated": "14 October 2026",
+        "icloud": False,
+        "lifetime": True,
+        "family_sharing": True,
+        "kids": True,
+        "languages": ["en", "fr"],
+        "highlights": [
+            ("100 lessons", "One story, from A1 to B1"),
+            ("10 min", "A day: one short, complete session"),
+            ("2 alphabets", "Latin first, then Cyrillic"),
+            ("5 profiles", "Children aged 6–14 and adults"),
+        ],
+        "features": [
+            ("A real story, 100 lessons", "Milena is 10, half French, half Serbian. This summer she visits her grandparents in Serbia with Ježko, a garden hedgehog who woke up in her backpack. From A1 to B1, children learn the words they actually need: the market, the slava, the village.", '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M9 8h7M9 12h5"/>'),
+            ("Speak from day one", "Listen, repeat each line, record yourself and compare with the model, without judgement. In Challenge mode, stars for every word recognised, right on the iPhone. And a voice journal to send to baka.", '<path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>'),
+            ("Play Milena", "Act out the story: the family gives you your cues, you answer with Milena's lines. From lesson 50, “Sad ti!” (your turn) asks you to say earlier sentences in Serbian, from memory.", '<path d="M4 5h11a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H9l-4 3v-3H4z"/><path d="M17 9h3v8h-1v3l-4-3h-4"/>'),
+            ("Read both alphabets", "Latin first, then Cyrillic, one group of letters at a time. Lessons switch to Cyrillic as your child learns the letters, so reading grows with the story.", '<path d="M4 19l5-14 5 14M6 14h6"/><path d="M15 5h5M17.5 5v14M15 19h5"/>'),
+            ("Grammar without memorising rules", "Words come first. Then 25 short “Behind the scenes” cards explain why we say “volim čokoladu”, each with a mini quiz, and games put the words to work: pairs, missing word, sentences in order.", '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/>'),
+            ("Made for the whole family", "Up to 5 profiles on one iPhone, for children aged 6 to 14 and for adults. Spaced repetition brings every word back at the right time, and a parent area shows progress, sentences said out loud and the week's activity.", '<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9.5" r="2.3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0M14.5 20a4 4 0 0 1 6.5-3.1"/>'),
+        ],
+        "steps": [
+            ("Create the family's profiles", "Up to five learners, children and adults, each with their own path and pace."),
+            ("Ten minutes a day", "A warm-up with the words that are due, a new scene of the story, your lines out loud, then a game."),
+            ("Hear the progress", "Words come back at the right time. The parent area shows what was learned and said out loud this week."),
+        ],
+        "faq": [
+            ("Is Ježko free?", "The first 7 lessons are free, with the Latin alphabet and the first group of Cyrillic letters, for one profile. Ježko Family unlocks all 100 lessons and up to 5 profiles: a monthly or yearly subscription with a 7-day free trial, or a one-time lifetime purchase. All three can be shared through Family Sharing."),
+            ("What's a good app to teach my child Serbian?", "Ježko is an iPhone app made for children aged 6 to 14 and their parents, especially families of the Serbian diaspora. Instead of isolated words, it tells one story over 100 lessons (A1 to B1), gets children speaking out loud from the first lesson and teaches both the Latin and Cyrillic alphabets. It has no ads, no account and no tracking."),
+            ("Does Ježko teach the Cyrillic alphabet?", "Yes. Ježko starts with the Latin alphabet, then introduces Cyrillic one group of letters at a time. Lessons gradually switch to Cyrillic as the letters are learned, and you can choose Latin, mixed or Cyrillic display."),
+            ("Can adults learn Serbian with Ježko too?", "Yes. Ježko is designed for children, but each family member can have their own profile, adults included, and progress at their own pace. Parents learning alongside their children is exactly the idea."),
+            ("Is Ježko safe for children?", "Ježko has no ads, no account, no chat and no tracking. Profile names, recordings and progress stay on your device. On a child profile, purchases, external links and sharing are behind a parental gate."),
+            ("Does Ježko work offline?", "Yes. The lessons and their audio are built into the app, so Ježko works without a connection. A connection is only used to buy or restore Ježko Family."),
+            ("Which languages does Ježko support?", "Ježko teaches Serbian, with the app and every translation available in English and in French."),
+        ],
+        "permissions": [
+            ("Microphone (optional)", "Used only when the learner taps the microphone button, to record a line and compare it with the model, or to say a sentence in Challenge mode. Recordings are stored on your device and are never uploaded. You can refuse and keep using the app: any spoken step can be skipped."),
+            ("Speech recognition (optional)", "In Challenge mode, Ježko recognises the words you say to award stars. Recognition uses Apple's on-device speech framework: your voice is not sent to SuiteForge."),
+            ("Notifications (optional)", "A daily reminder for the lesson, if you turn it on. It is scheduled locally on your iPhone."),
+        ],
+        "privacy_extra": [
+            ("Profiles and recordings", "Profile names, progress, review cards and voice recordings are stored only on your device. They are never sent to SuiteForge. A recording leaves your device only if you choose to share it yourself, through the iOS share sheet (on a child profile, behind a parental gate)."),
+        ],
+        "hero_shot_alt": "Ježko Today screen: a Zdravo! greeting from the hedgehog, lesson 24 ready to start and a 12-day streak",
+        "shots_type": "brut",
+        "shots_w": 620, "shots_h": 1348,
+        "shots": [
+            ("shot-1.webp", "Ježko lesson 23, Hajde napolje!: the illustrated dialogue between Vuk and Tomi, in Serbian with translations"),
+            ("shot-2.webp", "Ježko Repeat screen: say the line like Milena, then compare your voice with the model"),
+            ("shot-3.webp", "Ježko Play Milena: your turn to say Milena's line out loud"),
+            ("shot-4.webp", "Ježko alphabet screen: Cyrillic letters learned group by group"),
+            ("shot-5.webp", "Ježko journey map: completed lessons and the next stop, lesson 24"),
+            ("shot-6.webp", "Ježko Pairs game: match each Serbian word with its meaning"),
+            ("shot-7.webp", "Ježko Behind the scenes card explaining masculine, feminine and neuter nouns"),
+            ("shot-8.webp", "Ježko profiles screen: Who's learning today? with four family profiles"),
+        ],
+    },
 }
 
-ORDER = ["fastclear", "routineflow", "walkquest", "keepcontact"]
+# Page order of the apps (footer, sitemap, "more apps") and the home page bento.
+ORDER = ["jezko", "keepcontact", "fastclear", "routineflow", "walkquest"]
+HOME_LAYOUT = [("jezko", "feature"), ("keepcontact", "half"), ("fastclear", "half"), ("routineflow", "half"), ("walkquest", "half")]
+HOME_FAN = ["keepcontact", "jezko", "fastclear"]   # the three screens in the home hero
+
+TODAY = datetime.date.today().isoformat()
+CONTACT = "suiteforgeops@gmail.com"
+ORG_ID = f"{DOMAIN}/#organization"
+
+# ---------------------------------------------------------------------------
+# HELPERS
+# ---------------------------------------------------------------------------
+def esc(s):
+    return html.escape(s, quote=True)
+
+def jsonstr(s):
+    return json.dumps(s, ensure_ascii=False)
+
+def released(slug):
+    return bool(APPS[slug].get("appstore_id")) and APPS[slug].get("status") != "soon"
+
+def appstore_url(slug):
+    return f"https://apps.apple.com/app/id{APPS[slug]['appstore_id']}"
+
+def theme(a):
+    return f"--accent:{a['accent']};--accent-deep:{a['accent_deep']};--accent-tint:{a['accent_tint']};"
+
+def ver(path):
+    """Cache-busting URL for a local file: /path?v=<content hash>, so browsers
+    pick up a new screenshot or icon right after a deploy."""
+    with open(os.path.join(ROOT, path.lstrip("/")), "rb") as f:
+        return f"{path}?v={hashlib.md5(f.read()).hexdigest()[:8]}"
+
+def has(path):
+    return os.path.isfile(os.path.join(ROOT, path.lstrip("/")))
+
+def og_image(slug=None):
+    """Per-app share image (<slug>/og.png, made by make_og.py) if present."""
+    if slug and has(f"/{slug}/og.png"):
+        return DOMAIN + ver(f"/{slug}/og.png")
+    return DOMAIN + ver("/assets/og-suiteforge.png")
+
+ICON = {
+    "arrow": '<path d="M5 12h14M13 6l6 6-6 6"/>',
+    "left": '<path d="M15 18l-6-6 6-6"/>',
+    "right": '<path d="M9 18l6-6-6-6"/>',
+    "shield": '<path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/>',
+    "noeye": '<path d="M3 3l18 18"/><path d="M10.6 5.1A9 9 0 0 1 21 12c-.5 1-1.1 1.9-1.9 2.6M6.6 6.6A9 9 0 0 0 3 12a9 9 0 0 0 12.5 4.3"/>',
+    "check": '<path d="M5 13l4 4L19 7"/>',
+    "lock": '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+    "user": '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="M3 3l18 18"/>',
+    "device": '<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/>',
+}
+
+def svg(name, sw="2"):
+    return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICON.get(name, name)}</svg>'
+
+MARK = ('<svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="sfg" x1="0" y1="0" x2="1" y2="1">'
+        '<stop offset="0" stop-color="#5d8270"/><stop offset="1" stop-color="#3c5648"/></linearGradient></defs>'
+        '<rect width="32" height="32" rx="9" fill="url(#sfg)"/>'
+        '<path d="M21 11.6c-.5-1.9-2.3-3.1-4.6-3.1h-1.1a3.9 3.9 0 0 0 0 7.8h1.4a3.9 3.9 0 0 1 0 7.8h-1.1c-2.3 0-4.1-1.2-4.6-3.1" '
+        'fill="none" stroke="#fbf9f4" stroke-width="2.8" stroke-linecap="round"/></svg>')
+
+APPLE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 1.6c.1 1-.3 2-1 2.8-.7.8-1.8 1.4-2.8 1.3-.1-1 .4-2 1-2.7.7-.8 1.9-1.4 2.8-1.4zM19 17c-.4 1-.6 1.4-1.1 2.3-.8 1.3-1.9 2.9-3.3 2.9-1.2 0-1.5-.8-3.2-.8s-2 .8-3.2.8c-1.4 0-2.4-1.4-3.2-2.7-2.2-3.5-2.5-7.6-1.1-9.8 1-1.6 2.6-2.5 4.1-2.5 1.5 0 2.4.8 3.6.8 1.1 0 1.8-.8 3.5-.8 1.3 0 2.7.7 3.7 2-3.2 1.8-2.7 6.4.5 7.8z"/></svg>'
 
 # ---------------------------------------------------------------------------
 # SHARED PARTIALS
 # ---------------------------------------------------------------------------
 def appstore_badge(slug):
     a = APPS[slug]
-    return f'''<a class="appstore" href="https://apps.apple.com/app/id{a['appstore_id']}" aria-label="Download {a['name']} on the App Store">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 1.6c.1 1-.3 2-1 2.8-.7.8-1.8 1.4-2.8 1.3-.1-1 .4-2 1-2.7.7-.8 1.9-1.4 2.8-1.4zM19 17c-.4 1-.6 1.4-1.1 2.3-.8 1.3-1.9 2.9-3.3 2.9-1.2 0-1.5-.8-3.2-.8s-2 .8-3.2.8c-1.4 0-2.4-1.4-3.2-2.7-2.2-3.5-2.5-7.6-1.1-9.8 1-1.6 2.6-2.5 4.1-2.5 1.5 0 2.4.8 3.6.8 1.1 0 1.8-.8 3.5-.8 1.3 0 2.7.7 3.7 2-3.2 1.8-2.7 6.4.5 7.8z"/></svg>
-      <span><small>Download on the</small><strong>App Store</strong></span>
-    </a>'''
+    if not released(slug):
+        return f'''<span class="appstore appstore--soon" role="note">{APPLE}<span><small>Coming soon</small><strong>App Store</strong></span></span>'''
+    return f'''<a class="appstore" href="{appstore_url(slug)}" aria-label="Download {esc(a['name'])} on the App Store">{APPLE}<span><small>Download on the</small><strong>App Store</strong></span></a>'''
 
-def ver(path):
-    """Cache-busting URL for a local file: /path?v=<content hash>, so browsers
-    pick up a new screenshot or icon right after a deploy."""
-    import hashlib
-    with open(os.path.join(ROOT, path.lstrip("/")), "rb") as f:
-        return f"{path}?v={hashlib.md5(f.read()).hexdigest()[:8]}"
+def icon_img(slug, size, cls="", lazy=True):
+    a = APPS[slug]
+    return (f'<img class="{cls}" src="{ver(f"/{slug}/icon.webp")}" alt="{esc(a["name"])} app icon" width="{size}" height="{size}"'
+            f'{" loading=\"lazy\"" if lazy else ""} decoding="async">')
 
-def og_image(slug=None):
-    """Per-app share image (<slug>/og.png, made by make_og.py) if present."""
-    if slug and os.path.isfile(os.path.join(ROOT, slug, "og.png")):
-        return DOMAIN + ver(f"/{slug}/og.png")
-    return DOMAIN + ver("/assets/og-suiteforge.png")
+def icon_block(slug, size=56, lazy=True):
+    """The real App Store icon (<slug>/icon.webp) if present, else the SVG placeholder."""
+    a = APPS[slug]
+    r = int(size * 0.27)
+    if has(f"/{slug}/icon.webp"):
+        return (f'<div class="app-icon app-icon--real" style="width:{size}px;height:{size}px;border-radius:{r}px;">'
+                f'{icon_img(slug, size, lazy=lazy)}</div>')
+    return (f'<div class="app-icon" style="width:{size}px;height:{size}px;border-radius:{r}px;">'
+            f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">{a["icon_svg"]}</svg></div>')
 
-def head(title, desc, canonical, theme, extra_jsonld="", extra_head="", og=None):
+def phone(slug, alt=None, cls="", eager=False):
+    """Phone frame around the app's hero screenshot."""
+    a = APPS[slug]
+    alt = alt if alt is not None else (a.get("hero_shot_alt") or f"{a['name']} home screen")
+    load = 'loading="eager" fetchpriority="high"' if eager else 'loading="lazy"'
+    return (f'<div class="phone phone--shot {cls}"><div class="phone-screen">'
+            f'<img src="{ver(f"/{slug}/screenshots/hero-home.webp")}" alt="{esc(alt)}" width="680" height="1478" {load} decoding="async">'
+            f'</div></div>')
+
+def head(title, desc, canonical, *, body_style="", jsonld=(), extra_head="", og=None, og_alt="", favicon=None, robots="index, follow, max-image-preview:large"):
     og = og or og_image()
+    blocks = "\n".join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False, separators=(",", ":"))}</script>' for j in jsonld)
+    fav = favicon or '<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">'
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{html.escape(title)}</title>
-<meta name="description" content="{html.escape(desc)}">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{esc(title)}</title>
+<meta name="description" content="{esc(desc)}">
+<meta name="robots" content="{robots}">
 <link rel="canonical" href="{canonical}">
-<meta name="theme-color" content="#f7f3ec">
+<meta name="theme-color" content="#f7f3ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#13110e" media="(prefers-color-scheme: dark)">
+<meta name="author" content="SuiteForge">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SuiteForge">
-<meta property="og:title" content="{html.escape(title)}">
-<meta property="og:description" content="{html.escape(desc)}">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="{esc(title)}">
+<meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{canonical}">
 <meta property="og:image" content="{og}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{esc(og_alt or title)}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{esc(title)}">
+<meta name="twitter:description" content="{esc(desc)}">
 <meta name="twitter:image" content="{og}">
+{fav}
+<link rel="apple-touch-icon" href="{ver('/assets/apple-touch-icon.png')}">
 <link rel="preload" href="/assets/fonts/fraunces-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/hanken-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/styles.css">
+<link rel="stylesheet" href="{ver('/assets/styles.css')}">
+<script>document.documentElement.classList.add("js")</script>
 {extra_head}
-{extra_jsonld}
+{blocks}
 </head>
-<body style="{theme}">'''
+<body{f' style="{body_style}"' if body_style else ''}>
+<a class="skip" href="#main">Skip to content</a>'''
 
-def site_header():
-    return '''<header class="site-head">
+def site_header(slug=None):
+    cta = ""
+    if slug:
+        a = APPS[slug]
+        if released(slug):
+            cta = f'<a class="btn btn-primary btn-sm" href="{appstore_url(slug)}">Get {esc(a["name"])}</a>'
+        else:
+            cta = f'<a class="btn btn-ghost btn-sm" href="#get">Coming soon</a>'
+    home = "" if slug else ' aria-current="page"'
+    return f'''<header class="site-head">
   <div class="wrap">
-    <a class="brand" href="/"><span class="mark">S</span> SuiteForge</a>
-    <nav class="nav">
+    <a class="brand" href="/"{home}>{MARK} SuiteForge</a>
+    <nav class="nav" aria-label="Main">
       <a href="/#apps">Apps</a>
       <a href="/#privacy" class="hide-sm">Privacy</a>
+      <a href="/#faq" class="hide-sm">FAQ</a>
+      {cta}
     </nav>
   </div>
 </header>'''
 
 def site_footer(slug=None):
-    legal = ""
+    apps = "".join(
+        f'<li><a href="/{s}/">{icon_img(s, 20)}{esc(APPS[s]["name"])}{"" if released(s) else " <span class=\"tag-soon\">Soon</span>"}</a></li>'
+        for s in ORDER)
     if slug:
-        legal = f'''<li><a href="/{slug}/privacy/">Privacy Policy</a></li>
-          <li><a href="/{slug}/terms/">Terms of Use</a></li>'''
+        col = f'''<h4>{esc(APPS[slug]["name"])}</h4>
+        <ul>
+          <li><a href="/{slug}/privacy/">Privacy Policy</a></li>
+          <li><a href="/{slug}/terms/">Terms of Use</a></li>
+          <li><a href="mailto:{CONTACT}?subject={esc(APPS[slug]["name"])}">Support</a></li>
+        </ul>'''
+    else:
+        col = f'''<h4>SuiteForge</h4>
+        <ul>
+          <li><a href="/#privacy">Our privacy approach</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="mailto:{CONTACT}">Contact</a></li>
+        </ul>'''
     return f'''<footer class="site-foot">
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a class="brand" href="/"><span class="mark">S</span> SuiteForge</a>
-        <p class="muted" style="margin-top:14px;max-width:34ch;font-size:.96rem;">Privacy-first iPhone apps for a calmer life. Built with care, one focused tool at a time.</p>
+        <a class="brand" href="/">{MARK} SuiteForge</a>
+        <p class="muted" style="margin-top:16px;max-width:36ch;font-size:.97rem;">Privacy-first iPhone apps for a calmer life. An independent studio, one focused tool at a time.</p>
       </div>
       <div>
         <h4>Apps</h4>
-        <ul>
-          <li><a href="/fastclear/">FastClear</a></li>
-          <li><a href="/routineflow/">RoutineFlow</a></li>
-          <li><a href="/walkquest/">WalkQuest</a></li>
-          <li><a href="/keepcontact/">KeepContact</a></li>
-        </ul>
+        <ul>{apps}</ul>
       </div>
       <div>
-        <h4>{'This app' if slug else 'Company'}</h4>
-        <ul>
-          {legal if slug else '<li><a href="/#privacy">Privacy approach</a></li><li><a href="/#faq">FAQ</a></li>'}
-          <li><a href="mailto:suiteforgeops@gmail.com">Contact</a></li>
-        </ul>
+        {col}
       </div>
     </div>
     <div class="foot-base">
-      <span>© 2026 SuiteForge. All rights reserved.</span>
+      <span>© {datetime.date.today().year} SuiteForge. All rights reserved.</span>
       <span>Made in France · No accounts · No tracking</span>
     </div>
   </div>
-</footer>
-<script src="/assets/reveal.js"></script>
-</body>
-</html>'''
+</footer>'''
 
-def build_shots(slug):
-    """Render the App Store screenshots gallery, or '' if none configured /
-    no optimized files on disk. Files must exist at <slug>/screenshots/<file>."""
-    a = APPS[slug]
-    shots = a.get("shots") or []
-    if not shots:
-        return ""
-    # Skip silently any file that hasn't been optimized yet
-    available = [
-        (fn, alt) for fn, alt in shots
-        if os.path.isfile(os.path.join(ROOT, slug, "screenshots", fn))
-    ]
-    if not available:
-        return ""
-    variant = a.get("shots_type", "brut")
-    w = a.get("shots_w", 620)
-    h = a.get("shots_h", 1344)
-    imgs = "".join(
-        f'<figure class="shot reveal">'
-        f'<img src="{ver(f"/{slug}/screenshots/{fn}")}" alt="{html.escape(alt)}" '
-        f'width="{w}" height="{h}" loading="lazy" decoding="async">'
-        f'</figure>'
-        for fn, alt in available
-    )
-    return f'''
-<section class="shots-section">
-  <div class="shots-head">
-    <p class="eyebrow reveal">See it in action</p>
-    <h2 class="reveal" style="margin:10px 0 0;">Real screens from {a['name']}.</h2>
-  </div>
-  <div class="shots shots--{variant}" role="list" aria-label="{html.escape(a['name'])} screenshots">{imgs}</div>
-</section>'''
+def scripts():
+    return f'<script src="{ver("/assets/reveal.js")}" defer></script>\n</body>\n</html>'
 
-def icon_block(slug, size=56):
-    """Render an app icon. Uses the real App Store icon (<slug>/icon.webp) if
-    present; otherwise falls back to the hand-drawn SVG placeholder."""
+def org_jsonld():
+    return {
+        "@context": "https://schema.org", "@type": "Organization", "@id": ORG_ID,
+        "name": "SuiteForge", "url": f"{DOMAIN}/",
+        "logo": {"@type": "ImageObject", "url": f"{DOMAIN}/assets/logo.png", "width": 512, "height": 512},
+        "email": CONTACT,
+        "description": "Independent studio making privacy-first iPhone apps for health, wellness, productivity and education. No accounts, no tracking, data stored on-device.",
+        "foundingLocation": {"@type": "Place", "address": {"@type": "PostalAddress", "addressCountry": "FR"}},
+        "sameAs": [appstore_url(s) for s in ORDER if released(s)],
+    }
+
+def app_jsonld(slug):
     a = APPS[slug]
-    r = int(size * 0.27)
-    icon_path = os.path.join(ROOT, slug, "icon.webp")
-    if os.path.isfile(icon_path):
-        return (
-            f'<div class="app-icon app-icon--real" '
-            f'style="width:{size}px;height:{size}px;border-radius:{r}px;">'
-            f'<img src="{ver(f"/{slug}/icon.webp")}" alt="{html.escape(a["name"])} app icon" '
-            f'width="{size}" height="{size}" loading="lazy" decoding="async">'
-            f'</div>'
-        )
-    return f'''<div class="app-icon" style="width:{size}px;height:{size}px;border-radius:{r}px;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">{a['icon_svg']}</svg>
-    </div>'''
+    canonical = f"{DOMAIN}/{slug}/"
+    d = {
+        "@context": "https://schema.org", "@type": "MobileApplication",
+        "@id": f"{canonical}#app",
+        "name": a["name"], "alternateName": a["full_name"],
+        "operatingSystem": "iOS", "applicationCategory": a["schema_category"],
+        "description": a["seo_desc"], "url": canonical,
+        "image": DOMAIN + ver(f"/{slug}/icon.webp"),
+        "screenshot": [DOMAIN + ver(f"/{slug}/screenshots/{fn}") for fn, _ in a["shots"] if has(f"/{slug}/screenshots/{fn}")],
+        "inLanguage": a.get("languages", ["en"]),
+        "isAccessibleForFree": True,
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"},
+        "publisher": {"@id": ORG_ID}, "author": {"@id": ORG_ID},
+    }
+    if released(slug):
+        d["installUrl"] = d["downloadUrl"] = appstore_url(slug)
+        d["offers"]["url"] = appstore_url(slug)
+        d["offers"]["availability"] = "https://schema.org/InStock"
+    else:
+        d["offers"]["availability"] = "https://schema.org/PreOrder"
+    if a.get("kids"):
+        d["audience"] = {"@type": "PeopleAudience", "suggestedMinAge": 6}
+        d["educationalLevel"] = "Beginner (CEFR A1 to B1)"
+        d["teaches"] = "Serbian language, Latin and Cyrillic alphabets"
+    return d
+
+def faq_jsonld(faq):
+    return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in faq]}
+
+def crumbs_jsonld(items):
+    return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "name": n, "item": u} for i, (n, u) in enumerate(items)]}
+
+def faq_html(faq):
+    return "".join(f"<details><summary>{esc(q)}</summary><p>{esc(ans)}</p></details>" for q, ans in faq)
 
 # ---------------------------------------------------------------------------
 # LANDING PAGE
 # ---------------------------------------------------------------------------
+def build_shots(slug):
+    a = APPS[slug]
+    available = [(fn, alt) for fn, alt in a.get("shots") or [] if has(f"/{slug}/screenshots/{fn}")]
+    if not available:
+        return ""
+    w, h = a.get("shots_w", 620), a.get("shots_h", 1347)
+    imgs = "".join(
+        f'<figure class="shot"><img src="{ver(f"/{slug}/screenshots/{fn}")}" alt="{esc(alt)}" '
+        f'width="{w}" height="{h}" loading="lazy" decoding="async"></figure>'
+        for fn, alt in available)
+    return f'''
+<section class="shots-section" data-shots aria-labelledby="shots-title">
+  <div class="shots-head">
+    <div>
+      <p class="eyebrow reveal">See it in action</p>
+      <h2 class="reveal" id="shots-title">Real screens from {esc(a['name'])}.</h2>
+    </div>
+    <div class="shots-nav">
+      <button type="button" data-prev aria-label="Previous screenshots">{svg("left")}</button>
+      <button type="button" data-next aria-label="Next screenshots">{svg("right")}</button>
+    </div>
+  </div>
+  <div class="shots" role="list" aria-label="{esc(a['name'])} screenshots" tabindex="0">{imgs}</div>
+</section>'''
+
+def more_apps(slug):
+    cards = "".join(f'''<a class="card reveal themed" href="/{s}/" style="{theme(APPS[s])}display:flex;gap:16px;align-items:center;padding:20px 22px;">
+        {icon_block(s, 52)}
+        <div><div class="app-card-cat">{esc(APPS[s]['category_label'])}</div><h3 style="font-size:1.18rem;margin-top:2px;">{esc(APPS[s]['name'])}</h3></div>
+      </a>''' for s in ORDER if s != slug)
+    return f'''<section class="section-sm">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow reveal">More from SuiteForge</p><h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.2rem);">Same principles, other corners of life.</h2></div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;">{cards}</div>
+  </div>
+</section>'''
+
 def build_landing(slug):
     a = APPS[slug]
-    theme = f"--accent:{a['accent']};--accent-deep:{a['accent_deep']};--accent-tint:{a['accent_tint']};"
     canonical = f"{DOMAIN}/{slug}/"
+    name = esc(a["name"])
 
-    # Hero: real screenshot if available, else original HTML mock
-    hero_path = os.path.join(ROOT, slug, "screenshots", "hero-home.webp")
-    if os.path.isfile(hero_path):
-        hero_alt = a.get("hero_shot_alt") or f"{a['name']} home screen"
-        # Native dims of hero output are 680x1477 (we encode at 680 wide).
-        hero_block = (
-            f'<div class="phone phone--shot">'
-            f'<div class="phone-screen">'
-            f'<img src="{ver(f"/{slug}/screenshots/hero-home.webp")}" alt="{html.escape(hero_alt)}" '
-            f'width="680" height="1477" loading="eager" fetchpriority="high" decoding="async">'
-            f'</div></div>'
-        )
-        preload_link = (
-            f'<link rel="preload" as="image" href="{ver(f"/{slug}/screenshots/hero-home.webp")}" '
-            f'fetchpriority="high">'
-        )
+    extra_head = ""
+    if has(f"/{slug}/screenshots/hero-home.webp"):
+        extra_head += f'<link rel="preload" as="image" href="{ver(f"/{slug}/screenshots/hero-home.webp")}" fetchpriority="high">\n'
+        back = next((fn for fn, _ in a["shots"] if has(f"/{slug}/screenshots/{fn}")), None)
+        visual = f'''<div class="hero-visual reveal" style="--d:.1s">
+          <span class="ring"></span><span class="ring"></span>
+          <div class="duo">
+            {phone(slug, eager=True)}
+            {f'<div class="phone phone--shot back" aria-hidden="true"><div class="phone-screen"><img src="{ver(f"/{slug}/screenshots/{back}")}" alt="" width="620" height="1347" loading="lazy" decoding="async"></div></div>' if back else ''}
+          </div>
+        </div>'''
     else:
-        hero_block = (
-            f'<div class="phone"><div class="phone-screen">'
-            f'<div class="phone-notch"></div>{a["mock"]}'
-            f'</div></div>'
-        )
-        preload_link = ""
+        visual = f'<div class="hero-visual"><div class="phone"><div class="phone-screen"><div class="phone-notch"></div>{a.get("mock", "")}</div></div></div>'
+    if released(slug):
+        extra_head += f'<meta name="apple-itunes-app" content="app-id={a["appstore_id"]}">\n'
+    favicon = f'<link rel="icon" type="image/webp" href="{ver(f"/{slug}/icon.webp")}">' if has(f"/{slug}/icon.webp") else None
 
-    # Per-landing favicon = the app's own icon (if optimized).
-    favicon_link = ""
-    if os.path.isfile(os.path.join(ROOT, slug, "icon.webp")):
-        favicon_link = f'<link rel="icon" type="image/webp" href="{ver(f"/{slug}/icon.webp")}">'
-    head_extra = preload_link + favicon_link
+    highlights = ""
+    if a.get("highlights"):
+        highlights = '<section class="section-sm" style="padding-top:0;"><div class="wrap"><div class="highlights reveal">' + "".join(
+            f'<div class="highlight"><b>{esc(b)}</b><span>{esc(t)}</span></div>' for b, t in a["highlights"]) + '</div></div></section>'
 
-    faq_items = "".join(
-        f"<details><summary>{html.escape(q)}</summary><p>{html.escape(ans)}</p></details>"
-        for q, ans in a["faq"]
-    )
-    faq_jsonld_items = ",".join(
-        '{"@type":"Question","name":%s,"acceptedAnswer":{"@type":"Answer","text":%s}}' % (
-            jsonstr(q), jsonstr(ans)) for q, ans in a["faq"]
-    )
+    n = len(a["features"])
     features = "".join(
-        f'''<div class="feature reveal">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{svg}</svg></div>
-          <div><h3>{html.escape(t)}</h3><p>{html.escape(d)}</p></div>
-        </div>''' for t, d, svg in a["features"]
-    )
+        f'''<div class="card reveal{' wide' if (n % 2 and i == n - 1) else ''}" style="--d:{(i % 2) * .08:.2f}s">
+          <div class="feature-ico">{svg(ico, "1.8")}</div>
+          <h3>{esc(t)}</h3><p>{esc(d)}</p>
+        </div>''' for i, (t, d, ico) in enumerate(a["features"]))
     steps = "".join(
-        f'''<div class="card reveal" style="text-align:left;">
-          <div style="font-family:var(--serif);font-weight:900;font-size:1.6rem;color:var(--accent);">{i+1}</div>
-          <h3 style="font-family:var(--serif);font-weight:600;font-size:1.18rem;margin:8px 0 4px;">{html.escape(t)}</h3>
-          <p class="muted" style="font-size:.97rem;">{html.escape(d)}</p>
-        </div>''' for i, (t, d) in enumerate(a["steps"])
-    )
+        f'<div class="step reveal" style="--d:{i * .1:.1f}s"><h3>{esc(t)}</h3><p>{esc(d)}</p></div>'
+        for i, (t, d) in enumerate(a["steps"]))
+    perms = "".join(
+        f'<div class="perm reveal"><h3>{svg("lock")}{esc(p)}</h3><p>{esc(d)}</p></div>' for p, d in a["permissions"])
 
-    jsonld = f'''<script type="application/ld+json">
-{{
-  "@context":"https://schema.org","@type":"SoftwareApplication",
-  "name":{jsonstr(a['name'])},
-  "operatingSystem":"iOS","applicationCategory":{jsonstr(a['schema_category'])},
-  "description":{jsonstr(a['seo_desc'])},
-  "url":"{canonical}",
-  "offers":{{"@type":"Offer","price":"0","priceCurrency":"USD"}},
-  "publisher":{{"@type":"Organization","name":"SuiteForge","url":"{DOMAIN}/"}}
-}}
-</script>
-<script type="application/ld+json">
-{{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{faq_jsonld_items}]}}
-</script>
-<script type="application/ld+json">
-{{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
-{{"@type":"ListItem","position":1,"name":"SuiteForge","item":"{DOMAIN}/"}},
-{{"@type":"ListItem","position":2,"name":{jsonstr(a['name'])},"item":"{canonical}"}}]}}
-</script>'''
+    if released(slug):
+        getbar = f'''<div class="getbar" role="complementary" aria-label="Get {name}">
+  {icon_img(slug, 40)}<div><strong>{name}</strong><span>{esc(a["price_note"])}</span></div>
+  <a class="btn btn-primary btn-sm" href="{appstore_url(slug)}">Get</a>
+</div>'''
+        cta_title, cta_text = f"Start with {name} today.", "Free to download. No account. Your data stays yours."
+    else:
+        getbar = ""
+        cta_title, cta_text = f"{name} is coming to the App Store.", "Very soon on iPhone. No account, no ads, and your family's data stays at home."
 
-    return f'''{head(a['seo_title'], a['seo_desc'], canonical, theme, jsonld, head_extra, og_image(slug))}
-{site_header()}
+    jsonld = [app_jsonld(slug), faq_jsonld(a["faq"]),
+              crumbs_jsonld([("SuiteForge", f"{DOMAIN}/"), (a["name"], canonical)])]
 
+    return f'''{head(a['seo_title'], a['seo_desc'], canonical, body_style=theme(a), jsonld=jsonld, extra_head=extra_head, og=og_image(slug), og_alt=f"{a['name']}: {a['tagline']}", favicon=favicon)}
+{site_header(slug)}
+<main id="main">
 <section class="app-hero">
   <div class="wrap">
     <div class="app-hero-grid">
       <div>
         <div class="app-id reveal">
-          {icon_block(slug, 84)}
+          {icon_block(slug, 76, lazy=False)}
           <div>
-            <div class="app-cat">{a['category_label']}</div>
-            <div class="app-name">{a['name']}</div>
+            <div class="app-cat">{esc(a['category_label'])} · iPhone{'' if released(slug) else ' · <span class="tag-soon" style="vertical-align:1px;">Coming soon</span>'}</div>
+            <div class="app-name">{name}</div>
           </div>
         </div>
-        <h1 class="display reveal" style="font-size:clamp(2.2rem,4.6vw,3.4rem);margin:6px 0 18px;">{html.escape(a['tagline'])}</h1>
-        <p class="lede reveal">{html.escape(a['hero_sub'])}</p>
-        <div class="reveal" style="margin-top:26px;">{appstore_badge(slug)}</div>
-        <div class="trust reveal" style="margin-top:24px;">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/></svg> No account</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18M10.6 5.1A9 9 0 0 1 21 12"/></svg> No tracking</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> Works offline</span>
+        <h1 class="reveal">{esc(a['tagline'])}</h1>
+        <p class="lede reveal">{esc(a['hero_sub'])}</p>
+        <div class="cta-row reveal" data-hero>{appstore_badge(slug)}<span class="price-note">{esc(a.get('price_note', ''))}</span></div>
+        <div class="trust reveal">
+          <span>{svg("shield")} No account</span>
+          <span>{svg("noeye")} No tracking</span>
+          <span>{svg("device")} Data stays on your iPhone</span>
         </div>
       </div>
-      <div class="reveal">
-        {hero_block}
-      </div>
+      {visual}
     </div>
   </div>
 </section>
+{highlights}
 {build_shots(slug)}
 <section class="section band">
   <div class="wrap">
-    <p class="eyebrow reveal">What it does</p>
-    <h2 class="reveal" style="margin:10px 0 30px;">Everything you need, nothing you don't.</h2>
-    <div class="grid grid-2">{features}</div>
+    <div class="section-head"><p class="eyebrow reveal">What it does</p><h2 class="reveal">Everything you need, nothing you don't.</h2></div>
+    <div class="bento">{features}</div>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <p class="eyebrow reveal">How it works</p>
-    <h2 class="reveal" style="margin:10px 0 30px;">Three steps, then it's a habit.</h2>
-    <div class="grid grid-3">{steps}</div>
+    <div class="section-head"><p class="eyebrow reveal">How it works</p><h2 class="reveal">Three steps, then it's a habit.</h2></div>
+    <div class="steps">{steps}</div>
   </div>
 </section>
 
-<section class="section band">
-  <div class="wrap" style="max-width:840px;">
-    <p class="eyebrow reveal">Privacy</p>
-    <h2 class="reveal" style="margin:10px 0 18px;">{a['name']} keeps your data on your device.</h2>
-    <p class="muted reveal" style="max-width:60ch;">No SuiteForge account. No analytics. No advertising trackers. Here's exactly what {a['name']} can access, and why:</p>
-    <div class="grid" style="margin-top:24px;gap:14px;">
-      {"".join(f'<div class="card reveal"><h3 style="font-family:var(--sans);font-weight:700;font-size:1.02rem;">{html.escape(p)}</h3><p class="muted" style="font-size:.96rem;margin-top:4px;">{html.escape(d)}</p></div>' for p, d in a["permissions"])}
+<section class="section ink-band">
+  <div class="wrap">
+    <div class="privacy-grid">
+      <div>
+        <p class="eyebrow reveal">Privacy</p>
+        <h2 class="reveal" style="margin-top:12px;">{name} keeps your data on your device.</h2>
+        <p class="reveal" style="margin-top:16px;max-width:46ch;">No SuiteForge account. No analytics. No advertising trackers. Here is exactly what {name} can access, and why.</p>
+        <ul class="checks reveal">
+          <li>{svg("check", "3")} No ads, no analytics, no trackers</li>
+          <li>{svg("check", "3")} Every permission is optional</li>
+          <li>{svg("check", "3")} Nothing stored on our servers</li>
+        </ul>
+        <p class="faint reveal" style="margin-top:26px;">Full details in the <a class="link" href="/{slug}/privacy/">{name} Privacy Policy</a>.</p>
+      </div>
+      <div class="perm-list">{perms}</div>
     </div>
-    <p class="faint reveal" style="margin-top:20px;">Full details in the <a href="/{slug}/privacy/" style="color:var(--accent-deep);text-decoration:underline;text-underline-offset:2px;">{a['name']} Privacy Policy</a>.</p>
   </div>
 </section>
 
 <section class="section">
-  <div class="wrap" style="max-width:840px;">
-    <p class="eyebrow reveal">Questions</p>
-    <h2 class="reveal" style="margin:10px 0 10px;">Frequently asked</h2>
-    <div class="faq reveal" style="margin-top:18px;">{faq_items}</div>
+  <div class="wrap narrow">
+    <div class="section-head"><p class="eyebrow reveal">Questions</p><h2 class="reveal">Frequently asked</h2></div>
+    <div class="faq reveal">{faq_html(a['faq'])}</div>
   </div>
 </section>
 
-<section class="section-sm band">
-  <div class="wrap" style="text-align:center;">
-    <h2 class="reveal" style="margin-bottom:8px;">Start today, calmly.</h2>
-    <p class="muted reveal" style="margin-bottom:22px;">Free to download. No account. Your data stays yours.</p>
-    <div class="reveal" style="display:flex;justify-content:center;">{appstore_badge(slug)}</div>
+<section class="section-sm" id="get">
+  <div class="wrap">
+    <div class="cta-card reveal">
+      {icon_block(slug, 76)}
+      <h2>{cta_title}</h2>
+      <p>{cta_text}</p>
+      <div style="display:flex;justify-content:center;">{appstore_badge(slug)}</div>
+    </div>
+  </div>
+</section>
+{more_apps(slug)}
+</main>
+{site_footer(slug)}
+{getbar}
+{scripts()}'''
+
+# ---------------------------------------------------------------------------
+# HOME PAGE
+# ---------------------------------------------------------------------------
+HOME_FAQ = [
+    ("Does SuiteForge collect my personal data?", "No. SuiteForge apps store everything on your device (some can also sync through your own private iCloud). There are no SuiteForge accounts, no analytics SDKs and no third-party trackers. The only data that leaves your device is the anonymous purchase information Apple and our subscription provider need to manage a subscription."),
+    ("Do I need an account?", "No. SuiteForge apps work immediately on first launch: no sign-up, no email, no password."),
+    ("What kinds of apps does SuiteForge make?", "Focused, single-purpose iPhone apps: Health & Wellness (intermittent fasting, morning routines, step tracking), Productivity (KeepContact, a private personal CRM) and Education (Ježko, Serbian for kids and families). Each app does one thing well and runs on-device."),
+    ("Are the apps free?", "Each app is free to download, with an optional subscription that unlocks advanced features; some also offer a one-time lifetime purchase. You can use the core of every app without paying."),
+    ("Do you make apps for children?", "Yes: Ježko teaches Serbian to children aged 6 to 14 and their families. Like every SuiteForge app, it has no ads, no account and no tracking, and purchases and external links sit behind a parental gate on a child profile."),
+    ("How do I get help or suggest a feature?", f"Every app has a feedback option in its settings, or you can email {CONTACT} directly. We read everything."),
+]
+
+def home_card(slug, layout, i):
+    a = APPS[slug]
+    soon = "" if released(slug) else ' <span class="tag-soon">Coming soon</span>'
+    pills = ""
+    if layout == "feature" and a.get("home_pills"):
+        pills = '<div class="pill-list">' + "".join(f'<span class="pill">{esc(p)}</span>' for p in a["home_pills"]) + "</div>"
+    label = "New · " if layout == "feature" and not released(slug) else ""
+    shot = ""
+    if has(f"/{slug}/screenshots/hero-home.webp"):
+        shot = f'<div class="app-card-shot" aria-hidden="true">{phone(slug, alt="")}</div>'
+    return f'''<a class="app-card app-card--{layout} themed reveal" href="/{slug}/" style="{theme(a)}--d:{(i % 2) * .08:.2f}s">
+        <div class="app-card-body">
+          <div class="app-card-top">{icon_block(slug, 56 if layout != "feature" else 64)}<div><div class="app-card-cat">{label}{esc(a['category_label'])}</div><h3>{esc(a['name'])}{soon}</h3></div></div>
+          <p class="app-card-text">{esc(a['home_blurb'])}</p>
+          {pills}
+          <span class="app-card-more">Discover {esc(a['name'])} {svg("arrow")}</span>
+        </div>
+        {shot}
+      </a>'''
+
+def build_home():
+    title = "SuiteForge — Privacy-first iPhone apps for a calmer life"
+    desc = "Privacy-first iPhone apps for health, habits, relationships and learning: FastClear, RoutineFlow, WalkQuest, KeepContact and Ježko. No accounts, no tracking."
+    canonical = f"{DOMAIN}/"
+    new = next((s for s in ORDER if APPS[s].get("status") == "soon"), None)
+    announce = ""
+    if new:
+        a = APPS[new]
+        announce = f'''<a class="announce reveal" href="/{new}/">{icon_img(new, 26, lazy=False)}<span><b>New: {esc(a['name'])}</b> · {esc(a['category_label'])}, coming soon</span><span class="arrow" aria-hidden="true">→</span></a>'''
+    fan = "".join(phone(s, alt=APPS[s].get("hero_shot_alt"), eager=(k == 1)) for k, s in enumerate(HOME_FAN))
+    stack = "".join(icon_img(s, 34, lazy=False) for s in ORDER)
+    cards = "".join(home_card(s, layout, i) for i, (s, layout) in enumerate(HOME_LAYOUT))
+
+    jsonld = [
+        org_jsonld(),
+        {"@context": "https://schema.org", "@type": "WebSite", "@id": f"{DOMAIN}/#website", "name": "SuiteForge", "url": canonical, "publisher": {"@id": ORG_ID}, "inLanguage": "en"},
+        {"@context": "https://schema.org", "@type": "ItemList", "name": "SuiteForge apps", "itemListElement": [
+            {"@type": "ListItem", "position": i + 1, "url": f"{DOMAIN}/{s}/", "name": APPS[s]["name"]} for i, s in enumerate(ORDER)]},
+        faq_jsonld(HOME_FAQ),
+    ]
+    principles = [
+        ("One job, done well", "Each app solves one problem and stops there. No feature bloat, no endless settings, no feed."),
+        ("Calm by design", "No streak shaming, no red badges, no guilt. Miss a day and nothing breaks: you simply begin again."),
+        ("Fair, honest pricing", "Free to download, a useful free core, an optional subscription, and often a lifetime option. Never ads."),
+    ]
+    principles_html = "".join(
+        f'<div class="card reveal" style="--d:{i * .08:.2f}s"><div class="feature-ico">{svg(ic, "1.8")}</div><h3 style="font-size:1.3rem;margin-bottom:8px;">{esc(t)}</h3><p class="muted" style="font-size:1rem;">{esc(d)}</p></div>'
+        for i, ((t, d), ic) in enumerate(zip(principles, [
+            '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.2"/>',
+            '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>',
+            '<path d="M20 12V7l-8-4-8 4v5c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9z"/><path d="M9 12l2 2 4-4"/>'])))
+
+    return f'''{head(title, desc, canonical, jsonld=jsonld, extra_head=f'<link rel="preload" as="image" href="{ver(f"/{HOME_FAN[1]}/screenshots/hero-home.webp")}" fetchpriority="high">', og_alt="SuiteForge: privacy-first iPhone apps")}
+{site_header()}
+<main id="main">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        {announce}
+        <h1 class="display reveal">Apps for a calmer, <em>quieter</em> life.</h1>
+        <p class="lede reveal">SuiteForge makes small, focused iPhone apps that help you take care of yourself: your health, your habits, your relationships, your family's language. Each one runs on your device. Nothing to sign up for. Nothing watching over your shoulder.</p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-primary" href="#apps">Explore the apps {svg("arrow")}</a>
+          <a class="btn btn-ghost" href="#privacy">Why privacy-first</a>
+        </div>
+        <div class="hero-proof reveal"><span class="icon-stack">{stack}</span><span>{len(ORDER)} apps · Made in France · Zero trackers</span></div>
+      </div>
+      <div class="fan reveal" style="--d:.1s" aria-label="Screens from SuiteForge apps">{fan}</div>
+    </div>
   </div>
 </section>
 
-{site_footer(slug)}'''
+<section class="section band" id="apps">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow reveal">The apps</p><h2 class="reveal">Small tools for the things that matter.</h2><p class="lede reveal">Health, habits, relationships, learning. Different corners of life, the same promise: your data stays yours.</p></div>
+    <div class="apps-grid">{cards}</div>
+  </div>
+</section>
+
+<section class="section ink-band" id="privacy">
+  <div class="wrap">
+    <p class="eyebrow reveal">Why privacy-first</p>
+    <h2 class="reveal" style="margin-top:12px;max-width:18ch;">Your life is yours. Not a dataset.</h2>
+    <div class="stats">
+      <div class="stat reveal"><div class="num">0</div><h3>Accounts</h3><p>No sign-up, no email, no password. There is no SuiteForge login because there is nothing for us to log in to.</p></div>
+      <div class="stat reveal" style="--d:.08s"><div class="num">0</div><h3>Trackers</h3><p>No analytics SDKs, no advertising IDs, no third-party trackers. We don't measure you because we don't need to.</p></div>
+      <div class="stat reveal" style="--d:.16s"><div class="num">100%</div><h3>On your device</h3><p>Your fasts, routines, steps, contacts and lessons live on your iPhone, or in your own private iCloud. Never on our servers.</p></div>
+    </div>
+    <p class="faint reveal" style="margin-top:34px;max-width:72ch;">The one exception: to manage an optional subscription, Apple and our payment provider process an anonymous purchase identifier. It is never linked to your personal content, and each app's privacy policy spells this out in plain language.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow reveal">How we build</p><h2 class="reveal">Fewer features. More care.</h2></div>
+    <div class="grid grid-3">{principles_html}</div>
+  </div>
+</section>
+
+<section class="section band" id="faq">
+  <div class="wrap narrow">
+    <div class="section-head"><p class="eyebrow reveal">Questions</p><h2 class="reveal">Good to know</h2></div>
+    <div class="faq reveal">{faq_html(HOME_FAQ)}</div>
+  </div>
+</section>
+</main>
+{site_footer()}
+{scripts()}'''
 
 # ---------------------------------------------------------------------------
 # LEGAL PAGES
 # ---------------------------------------------------------------------------
 UPDATED = "29 May 2026"
 
-def jsonstr(s):
-    import json
-    return json.dumps(s, ensure_ascii=False)
+def legal_page(slug, kind, title, desc, sections, intro=""):
+    a = APPS[slug]
+    canonical = f"{DOMAIN}/{slug}/{kind}/"
+    body = "".join(f"\n  <h2>{i}. {t}</h2>\n  {c}" for i, (t, c) in enumerate(sections, 1))
+    jsonld = [crumbs_jsonld([("SuiteForge", f"{DOMAIN}/"), (a["name"], f"{DOMAIN}/{slug}/"), (title, canonical)])]
+    return f'''{head(f"{title} — {a['name']}", desc, canonical, body_style=theme(a), jsonld=jsonld, og=og_image(slug))}
+{site_header(slug)}
+<main class="legal" id="main">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">SuiteForge</a><span>/</span><a href="/{slug}/">{esc(a['name'])}</a><span>/</span><span>{title}</span></nav>
+  <h1>{title}</h1>
+  <p class="updated">{esc(a['name'])} · Last updated {a.get('updated', UPDATED)}</p>
+  {intro}{body}
+
+  <p style="margin-top:40px;"><a href="/{slug}/">← Back to {esc(a['name'])}</a></p>
+</main>
+{site_footer(slug)}
+{scripts()}'''
 
 def build_privacy(slug):
     a = APPS[slug]
-    theme = f"--accent:{a['accent']};--accent-deep:{a['accent_deep']};--accent-tint:{a['accent_tint']};"
-    canonical = f"{DOMAIN}/{slug}/privacy/"
-    perms = "".join(
-        f"<h3>{html.escape(p)}</h3><p>{html.escape(d)}</p>" for p, d in a["permissions"]
-    )
-    updated = a.get("updated", UPDATED)
+    name = esc(a["name"])
+    mail = f'<a href="mailto:{CONTACT}">{CONTACT}</a>'
     if a.get("icloud", True):
-        short_storage = f"{a['name']} stores your data on your device, optionally synced through your own private iCloud."
-        storage = f"Everything you create in {a['name']} is stored locally on your device using Apple's on-device frameworks. If you enable iCloud, this data may sync through your own private Apple iCloud account, which SuiteForge cannot access. We do not operate any server that stores your personal content."
+        short_storage = f"{name} stores your data on your device, optionally synced through your own private iCloud."
+        storage = f"Everything you create in {name} is stored locally on your device using Apple's on-device frameworks. If you enable iCloud, this data may sync through your own private Apple iCloud account, which SuiteForge cannot access. We do not operate any server that stores your personal content."
     else:
-        short_storage = f"{a['name']} stores your data on your device only. It does not sync to any cloud."
-        storage = f"Everything you create in {a['name']} is stored locally on your device using Apple's on-device frameworks. {a['name']} does not sync your data to iCloud or to any other cloud service, and we do not operate any server that stores your personal content. If you create a backup or an export, it is a file you choose where to save; backups can be encrypted with a password only you know."
-    ai = ""
-    if slug == "keepcontact":
-        ai = f"""
-  <h3>On-device AI</h3>
-  <p>On iPhones that support Apple Intelligence, {a['name']} uses Apple's on-device language model to summarise a contact, suggest message ideas and spot facts in your notes. Voice notes are transcribed on your device too. This processing happens entirely on your iPhone: your notes and recordings are not sent to SuiteForge, to Apple or to any third party.</p>"""
-    return f'''{head(f"Privacy Policy — {a['name']}", f"How {a['name']} handles your data. Short version: it stays on your device. No accounts, no tracking.", canonical, theme, og=og_image(slug))}
-{site_header()}
-<main class="legal">
-  <h1>Privacy Policy</h1>
-  <p class="updated">{a['name']} · Last updated {updated}</p>
-
-  <div class="callout"><p><strong>The short version.</strong> {short_storage} There is no {a['name']} account. We do not use analytics or advertising trackers, and we never sell your data. The only information that leaves your device is the anonymous purchase data needed to manage an optional subscription.</p></div>
-
-  <h2>1. Who we are</h2>
-  <p>{a['name']} is an iPhone app published by SuiteForge. For any privacy question, contact us at <a href="mailto:suiteforgeops@gmail.com">suiteforgeops@gmail.com</a>.</p>
-
-  <h2>2. Data stored on your device</h2>
-  <p>{storage}</p>{ai}
-
-  <h2>3. Permissions {a['name']} may request</h2>
-  {perms}
-  <p>Each permission is optional, is requested only when relevant, and can be changed at any time in the iOS Settings app.</p>
-
-  <h2>4. Subscriptions and purchases</h2>
-  <p>{a['name']} offers an optional auto-renewing subscription{" and an optional one-time lifetime purchase" if a.get("lifetime") else ""}. Purchases are processed by Apple. To deliver and restore purchases across your devices, we use RevenueCat, Inc. as a service provider. For this purpose only, an anonymous app-user identifier together with purchase and receipt information is processed by Apple and RevenueCat. This information is not linked to your personal content in the app and is not used for advertising. See <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a> and <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat's Privacy Policy</a>.</p>
-
-  <h2>5. What we do not do</h2>
-  <ul>
-    <li>We do not require or create an account.</li>
-    <li>We do not use third-party analytics or advertising SDKs.</li>
-    <li>We do not track you across apps or websites.</li>
-    <li>We do not sell, rent or trade your personal data.</li>
-  </ul>
-
-  <h2>6. Your rights</h2>
-  <p>Because your content is stored on your own device, you remain in control of it at all times: you can edit or delete it within the app, and removing the app removes its local data. As {a['name']} is published from France, the EU General Data Protection Regulation (GDPR) applies to the limited purchase-related processing described above; you may exercise your applicable rights of access, rectification, erasure and objection by contacting <a href="mailto:suiteforgeops@gmail.com">suiteforgeops@gmail.com</a>.</p>
-
-  <h2>7. Children</h2>
-  <p>{a['name']} is not directed to children under 13, and we do not knowingly collect personal data from children.</p>
-
-  <h2>8. Changes to this policy</h2>
-  <p>We may update this policy as the app evolves. Material changes will be reflected here with a new "last updated" date.</p>
-
-  <h2>9. Contact</h2>
-  <p>Questions about this policy? Email <a href="mailto:suiteforgeops@gmail.com">suiteforgeops@gmail.com</a>.</p>
-
-  <p style="margin-top:36px;"><a href="/{slug}/">← Back to {a['name']}</a></p>
-</main>
-{site_footer(slug)}'''
+        short_storage = f"{name} stores your data on your device only. It does not sync to any cloud."
+        storage = f"Everything you create in {name} is stored locally on your device using Apple's on-device frameworks. {name} does not sync your data to iCloud or to any other cloud service, and we do not operate any server that stores your personal content."
+        if slug == "keepcontact":
+            storage += " If you create a backup or an export, it is a file you choose where to save; backups can be encrypted with a password only you know."
+    extra = "".join(f"\n  <h3>{esc(t)}</h3>\n  <p>{esc(d.format(name=a['name']))}</p>" for t, d in a.get("privacy_extra", []))
+    perms = "".join(f"<h3>{esc(p)}</h3><p>{esc(d)}</p>" for p, d in a["permissions"])
+    if a.get("kids"):
+        children = (f"<p>{name} is designed to be used by children together with their parents. We do not collect personal data from anyone, including children: "
+                    f"profile names, recordings and progress are stored only on your device and are never sent to SuiteForge. {name} contains no advertising, "
+                    "no third-party analytics, no chat and no social features.</p>"
+                    "<p>On a child profile, purchases, links that leave the app and sharing are protected by a parental gate. Purchases are made by the adult who "
+                    "holds the Apple Account; the anonymous purchase data described in section 4 relates to that account, not to the child. "
+                    f"If you have any question about your child's use of {name}, contact us at {mail}.</p>")
+    else:
+        children = f"<p>{name} is not directed to children under 13, and we do not knowingly collect personal data from children.</p>"
+    lifetime = " and an optional one-time lifetime purchase" if a.get("lifetime") else ""
+    sections = [
+        ("Who we are", f"<p>{name} is an iPhone app published by SuiteForge. For any privacy question, contact us at {mail}.</p>"),
+        ("Data stored on your device", f"<p>{storage}</p>{extra}"),
+        (f"Permissions {name} may request", f"{perms}<p>Each permission is optional, is requested only when relevant, and can be changed at any time in the iOS Settings app.</p>"),
+        ("Subscriptions and purchases", f'<p>{name} offers an optional auto-renewing subscription{lifetime}. Purchases are processed by Apple. To deliver and restore purchases across your devices, we use RevenueCat, Inc. as a service provider. For this purpose only, an anonymous app-user identifier together with purchase and receipt information is processed by Apple and RevenueCat. This information is not linked to your personal content in the app and is not used for advertising. See <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple\'s Privacy Policy</a> and <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat\'s Privacy Policy</a>.</p>'),
+        ("What we do not do", "<ul><li>We do not require or create an account.</li><li>We do not use third-party analytics or advertising SDKs.</li><li>We do not track you across apps or websites.</li><li>We do not sell, rent or trade your personal data.</li></ul>"),
+        ("Your rights", f"<p>Because your content is stored on your own device, you remain in control of it at all times: you can edit or delete it within the app, and removing the app removes its local data. As {name} is published from France, the EU General Data Protection Regulation (GDPR) applies to the limited purchase-related processing described above; you may exercise your applicable rights of access, rectification, erasure and objection by contacting {mail}.</p>"),
+        ("Children", children),
+        ("Changes to this policy", "<p>We may update this policy as the app evolves. Material changes will be reflected here with a new \"last updated\" date.</p>"),
+        ("Contact", f"<p>Questions about this policy? Email {mail}.</p>"),
+    ]
+    intro = f'<div class="callout"><p><strong>The short version.</strong> {short_storage} There is no {name} account. We do not use analytics or advertising trackers, and we never sell your data. The only information that leaves your device is the anonymous purchase data needed to manage an optional subscription.</p></div>'
+    return legal_page(slug, "privacy", "Privacy Policy",
+                      f"How {a['name']} handles your data. Short version: it stays on your device. No accounts, no tracking.", sections, intro)
 
 def build_terms(slug):
     a = APPS[slug]
-    theme = f"--accent:{a['accent']};--accent-deep:{a['accent_deep']};--accent-tint:{a['accent_tint']};"
-    canonical = f"{DOMAIN}/{slug}/terms/"
-    is_health = a["schema_category"] == "HealthApplication"
-    health_clause = ""
-    if is_health:
-        health_clause = f'''<h2>4. Not medical advice</h2>
-  <p>{a['name']} is provided for general informational and wellness purposes only. It is not a medical device and does not provide medical advice, diagnosis or treatment. Always consult a qualified healthcare professional before making changes to your diet, fasting, exercise or health routine, and especially if you are pregnant, nursing, under 18, or have any medical condition. Never disregard professional medical advice because of something in this app.</p>'''
-    updated = a.get("updated", UPDATED)
-    lifetime = ""
-    if a.get("lifetime"):
-        lifetime = " A one-time lifetime purchase is also available: it is charged once, does not renew, and unlocks the same features for as long as the app is offered."
-    return f'''{head(f"Terms of Use — {a['name']}", f"The terms that apply when you use {a['name']}.", canonical, theme, og=og_image(slug))}
-{site_header()}
-<main class="legal">
-  <h1>Terms of Use</h1>
-  <p class="updated">{a['name']} · Last updated {updated}</p>
-
-  <h2>1. Acceptance</h2>
-  <p>By downloading or using {a['name']} ("the app"), you agree to these Terms of Use. If you do not agree, please do not use the app. The app is published by SuiteForge.</p>
-
-  <h2>2. Licence</h2>
-  <p>SuiteForge grants you a personal, non-transferable, non-exclusive licence to use {a['name']} on Apple devices that you own or control, in accordance with the Apple Media Services Terms and these Terms.</p>
-
-  <h2>3. Subscriptions</h2>
-  <p>{a['name']} is free to download and includes optional auto-renewing subscriptions. Payment is charged to your Apple Account at confirmation of purchase. A subscription renews automatically unless cancelled at least 24 hours before the end of the current period. You can manage or cancel your subscription in your Apple Account settings. Prices are shown in the app before purchase and may vary by region.{lifetime}</p>
-
-  {health_clause}
-
-  <h2>{5 if is_health else 4}. Acceptable use</h2>
-  <p>You agree to use the app only for lawful purposes and not to attempt to disrupt, reverse-engineer or misuse it beyond what applicable law permits.</p>
-
-  <h2>{6 if is_health else 5}. Intellectual property</h2>
-  <p>The app, its design, and the SuiteForge and {a['name']} names and logos are the property of SuiteForge and are protected by intellectual-property law. The content you create within the app belongs to you.</p>
-
-  <h2>{7 if is_health else 6}. Disclaimer and limitation of liability</h2>
-  <p>The app is provided "as is" and "as available" without warranties of any kind, to the fullest extent permitted by law. SuiteForge is not liable for any indirect or consequential loss arising from your use of the app. Nothing in these Terms limits liability that cannot be limited under applicable law.</p>
-
-  <h2>{8 if is_health else 7}. Governing law</h2>
-  <p>These Terms are governed by French law. Mandatory consumer-protection rules of your country of residence continue to apply.</p>
-
-  <h2>{9 if is_health else 8}. Contact</h2>
-  <p>Questions about these Terms? Email <a href="mailto:suiteforgeops@gmail.com">suiteforgeops@gmail.com</a>.</p>
-
-  <p style="margin-top:36px;"><a href="/{slug}/">← Back to {a['name']}</a></p>
-</main>
-{site_footer(slug)}'''
+    name = esc(a["name"])
+    lifetime = " A one-time lifetime purchase is also available: it is charged once, does not renew, and unlocks the same features for as long as the app is offered." if a.get("lifetime") else ""
+    family = " Purchases can be shared with your family through Apple's Family Sharing." if a.get("family_sharing") else ""
+    trial = " If a free trial is offered and you do not cancel at least 24 hours before it ends, the subscription starts automatically at the price shown."
+    sections = [
+        ("Acceptance", f"<p>By downloading or using {name} (\"the app\"), you agree to these Terms of Use. If you do not agree, please do not use the app. The app is published by SuiteForge.</p>"),
+        ("Licence", f"<p>SuiteForge grants you a personal, non-transferable, non-exclusive licence to use {name} on Apple devices that you own or control, in accordance with the Apple Media Services Terms and these Terms.</p>"),
+        ("Subscriptions", f"<p>{name} is free to download and includes optional auto-renewing subscriptions. Payment is charged to your Apple Account at confirmation of purchase. A subscription renews automatically unless cancelled at least 24 hours before the end of the current period. You can manage or cancel your subscription in your Apple Account settings. Prices are shown in the app before purchase and may vary by region.{trial}{lifetime}{family}</p>"),
+    ]
+    if a["schema_category"] == "HealthApplication":
+        sections.append(("Not medical advice", f"<p>{name} is provided for general informational and wellness purposes only. It is not a medical device and does not provide medical advice, diagnosis or treatment. Always consult a qualified healthcare professional before making changes to your diet, fasting, exercise or health routine, and especially if you are pregnant, nursing, under 18, or have any medical condition. Never disregard professional medical advice because of something in this app.</p>"))
+    if a.get("kids"):
+        sections.append(("Use by children", f"<p>{name} is designed for children to use with the involvement of a parent or guardian, who accepts these Terms on their behalf. Purchases must be made by an adult; on a child profile, purchases and links that leave the app are protected by a parental gate.</p>"))
+        sections.append(("Educational content", f"<p>{name} is a learning aid. We take care to make its content accurate and suitable for children, but we do not guarantee any particular level of language proficiency. Voices in the app may be synthesised.</p>"))
+    sections += [
+        ("Acceptable use", "<p>You agree to use the app only for lawful purposes and not to attempt to disrupt, reverse-engineer or misuse it beyond what applicable law permits.</p>"),
+        ("Intellectual property", f"<p>The app, its design, its stories, characters, illustrations and audio, and the SuiteForge and {name} names and logos are the property of SuiteForge and are protected by intellectual-property law. The content you create within the app belongs to you.</p>"),
+        ("Disclaimer and limitation of liability", "<p>The app is provided \"as is\" and \"as available\" without warranties of any kind, to the fullest extent permitted by law. SuiteForge is not liable for any indirect or consequential loss arising from your use of the app. Nothing in these Terms limits liability that cannot be limited under applicable law.</p>"),
+        ("Governing law", "<p>These Terms are governed by French law. Mandatory consumer-protection rules of your country of residence continue to apply.</p>"),
+        ("Contact", f'<p>Questions about these Terms? Email <a href="mailto:{CONTACT}">{CONTACT}</a>.</p>'),
+    ]
+    return legal_page(slug, "terms", "Terms of Use", f"The terms that apply when you use {a['name']}.", sections)
 
 # ---------------------------------------------------------------------------
 # WRITE FILES
@@ -682,24 +1000,22 @@ def write(path, content):
         f.write(content)
     print("  ✓", path)
 
-print("Generating SuiteForge site...")
-for slug in ORDER:
-    write(f"{slug}/index.html", build_landing(slug))
-    write(f"{slug}/privacy/index.html", build_privacy(slug))
-    write(f"{slug}/terms/index.html", build_terms(slug))
+if __name__ == "__main__":
+    print("Generating SuiteForge site...")
+    write("index.html", build_home())
+    for slug in ORDER:
+        write(f"{slug}/index.html", build_landing(slug))
+        write(f"{slug}/privacy/index.html", build_privacy(slug))
+        write(f"{slug}/terms/index.html", build_terms(slug))
 
-# sitemap
-urls = [f"{DOMAIN}/"]
-for slug in ORDER:
-    urls += [f"{DOMAIN}/{slug}/", f"{DOMAIN}/{slug}/privacy/", f"{DOMAIN}/{slug}/terms/"]
-sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-for u in urls:
-    pr = "1.0" if u == f"{DOMAIN}/" else ("0.8" if u.count("/") == 4 else "0.4")
-    sitemap += f"  <url><loc>{u}</loc><changefreq>monthly</changefreq><priority>{pr}</priority></url>\n"
-sitemap += "</urlset>\n"
-write("sitemap.xml", sitemap)
-
-write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n")
-write("CNAME", "suiteforge.app\n")
-
-print("Done.")
+    urls = [(f"{DOMAIN}/", "1.0")]
+    for slug in ORDER:
+        urls += [(f"{DOMAIN}/{slug}/", "0.8"), (f"{DOMAIN}/{slug}/privacy/", "0.3"), (f"{DOMAIN}/{slug}/terms/", "0.3")]
+    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    for u, pr in urls:
+        sitemap += f"  <url><loc>{u}</loc><lastmod>{TODAY}</lastmod><changefreq>monthly</changefreq><priority>{pr}</priority></url>\n"
+    sitemap += "</urlset>\n"
+    write("sitemap.xml", sitemap)
+    write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n")
+    write("CNAME", "suiteforge.app\n")
+    print("Done.")

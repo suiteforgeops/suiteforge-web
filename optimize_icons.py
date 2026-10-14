@@ -12,14 +12,15 @@ import os, sys, glob
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-APPS_ROOT = "/Users/nicolasdojcilovic/Desktop/Business/Applications/SuiteForgeApps"
+APPS_ROOT = "/Users/nicolasdojcilovic/Developer"
 
 # slug -> (absolute source PNG path)
 SOURCES = {
-    "fastclear":   f"{APPS_ROOT}/2.FastClear/Code/FastClear/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
-    "routineflow": f"{APPS_ROOT}/3.RoutineFlow/Code/RoutineFlow/Assets.xcassets/AppIcon.appiconset/AppIcon-Light.png",
-    "walkquest":   f"{APPS_ROOT}/4.WalkQuest/Code/WalkQuest/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
-    "keepcontact": f"{APPS_ROOT}/1.KeepContact/Code/KeepContact/Assets.xcassets/AppIcon.appiconset/AppIcon_1024.png",
+    "fastclear":   f"{APPS_ROOT}/FastClear/FastClear/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
+    "routineflow": f"{APPS_ROOT}/RoutineFlow/RoutineFlow/Assets.xcassets/AppIcon.appiconset/AppIcon-Light.png",
+    "walkquest":   f"{APPS_ROOT}/WalkQuest/WalkQuest/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
+    "keepcontact": f"{APPS_ROOT}/KeepContact/Code/KeepContact/Assets.xcassets/AppIcon.appiconset/AppIcon_1024.png",
+    "jezko":       f"{APPS_ROOT}/Jezko/Code/Jezko/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png",
 }
 
 TARGET_SIDE = 256
@@ -59,6 +60,8 @@ def main():
     print("-" * 78)
     grand = 0
     for slug, src in SOURCES.items():
+        if sys.argv[1:] and slug not in sys.argv[1:]:  # optional: only the apps named
+            continue
         if not os.path.isfile(src):
             print(f"{slug:<14} (source not found: {src})")
             continue

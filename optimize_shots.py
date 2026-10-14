@@ -15,15 +15,15 @@ Skips an app silently if its source/en/ folder is empty.
 Idempotent: re-running overwrites outputs and cleans stale shot-*.webp.
 Never touches source/ files.
 """
-import os, glob, re
+import os, glob, re, sys
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-APPS = ["fastclear", "routineflow", "walkquest", "keepcontact"]
+APPS = ["fastclear", "routineflow", "walkquest", "keepcontact", "jezko"]
 
 CAROUSEL = dict(max_width=620, target_bytes=90 * 1024, start_q=82, min_q=50, step=4, max_count=5)
 # Per-app carousel size override (sources sorted; the home screen is removed)
-MAX_COUNT = {"keepcontact": 6}
+MAX_COUNT = {"keepcontact": 6, "jezko": 9}
 HERO     = dict(max_width=680, target_bytes=120 * 1024, start_q=84, min_q=50, step=4)
 
 
@@ -73,7 +73,7 @@ def main():
     print(f"{'App':<14} {'Role':<10} {'#':>2} {'WxH':>11} {'KB':>7} {'q':>3}  source")
     print("-" * 96)
     summary = {}
-    for slug in APPS:
+    for slug in sys.argv[1:] or APPS:  # optional: only the apps named on the command line
         srcs = sorted_sources(slug)
         if not srcs:
             print(f"{slug:<14} (no sources)")

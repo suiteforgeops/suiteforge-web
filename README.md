@@ -5,17 +5,18 @@ Site statique unique pour `suiteforge.app`. Zéro dépendance externe, zéro CDN
 ## Contenu
 
 ```
-/index.html                  page parent SuiteForge (écosystème, 2 piliers, manifesto privacy, FAQ) — écrite à la main
+/index.html                  page d'accueil SuiteForge (hero, bento des apps, manifesto privacy, FAQ) — générée par build.py
 /<app>/                      landing de l'app      + /privacy/ + /terms/   (générées par build.py)
 /<app>/icon.webp             icône App Store (256 px)
 /<app>/og.png                image de partage de l'app (1200 × 630)
 /<app>/screenshots/          hero-home.webp + shot-N.webp, et source/ (PNG App Store d'origine, en/ et fr/)
 /sitemap.xml  /robots.txt    SEO
 /CNAME                       domaine custom (suiteforge.app)
-/assets/styles.css           design system partagé
-/assets/reveal.js            animation au scroll (progressive enhancement)
-/assets/fonts/               Fraunces + Hanken Grotesk (woff2 auto-hébergés)
-/assets/og-suiteforge.png    image de partage de la page d'accueil (les 4 icônes)
+/assets/styles.css           design system partagé (clair + sombre automatique)
+/assets/reveal.js            apparition au scroll, flèches du carrousel, barre « Get » mobile (progressive enhancement)
+/assets/fonts/               Fraunces + Hanken Grotesk (woff2 auto-hébergés, sous-ensembles latin + latin-ext pour š ž č ć đ)
+/assets/favicon.svg, logo.png, apple-touch-icon.png   marque SuiteForge (logo.png et apple-touch-icon générés par make_og.py)
+/assets/og-suiteforge.png    image de partage de la page d'accueil (les 5 icônes)
 
 /build.py                    générateur des pages — source unique de vérité pour le contenu
 /make_og.py                  génère les images de partage (<app>/og.png + assets/og-suiteforge.png)
@@ -23,7 +24,9 @@ Site statique unique pour `suiteforge.app`. Zéro dépendance externe, zéro CDN
 /optimize_icons.py           icône 1024 de chaque projet Xcode → <app>/icon.webp
 ```
 
-Apps : `fastclear`, `routineflow`, `walkquest`, `keepcontact` (App Store IDs réels dans `build.py`, champ `appstore_id`).
+Apps : `jezko`, `keepcontact`, `fastclear`, `routineflow`, `walkquest` (App Store IDs réels dans `build.py`, champ `appstore_id`).
+
+**Ježko est en « Coming soon »** (`appstore_id: None`, `"status": "soon"`) : badge App Store non cliquable, pas de barre « Get » ni de bannière Smart App Banner. Le jour de la sortie : renseigner `appstore_id`, supprimer `"status"`, relancer `python3 build.py` et pousser.
 
 ## Déploiement GitHub Pages
 
@@ -53,6 +56,7 @@ Une fois en ligne, remplace les URLs Notion par celles-ci dans chaque fiche (App
 | RoutineFlow | `https://suiteforge.app/routineflow/privacy/` | `https://suiteforge.app/routineflow/terms/` |
 | WalkQuest | `https://suiteforge.app/walkquest/privacy/` | `https://suiteforge.app/walkquest/terms/` |
 | KeepContact | `https://suiteforge.app/keepcontact/privacy/` | `https://suiteforge.app/keepcontact/terms/` |
+| Ježko | `https://suiteforge.app/jezko/privacy/` | `https://suiteforge.app/jezko/terms/` |
 
 Le champ Terms est facultatif côté Apple (un EULA standard s'applique sinon), mais pointer vers ta page est plus propre et cohérent avec le footer des landings.
 
@@ -61,12 +65,13 @@ Le champ Terms est facultatif côté Apple (un EULA standard s'applique sinon), 
 Tout le texte vit dans `build.py` (dict `APPS`). Édite, puis :
 
 ```bash
-python3 build.py        # régénère les 12 pages HTML + sitemap
+python3 build.py        # régénère la home, les pages de chaque app + sitemap
 ```
 
-Options par app dans `APPS` (facultatives) : `updated` (date « Last updated » des pages légales, sinon `UPDATED`), `icloud: False` (l'app ne synchronise pas via iCloud : la page Privacy le dit), `lifetime: True` (achat à vie mentionné dans Privacy et Terms).
+Options par app dans `APPS` (facultatives) : `updated` (date « Last updated » des pages légales, sinon `UPDATED`), `icloud: False` (l'app ne synchronise pas via iCloud : la page Privacy le dit), `lifetime: True` (achat à vie mentionné dans Privacy et Terms), `family_sharing: True`, `kids: True` (app pour enfants : sections « Children » et « Use by children » adaptées, `audience` dans le JSON-LD), `status: "soon"` (pas encore sur l'App Store), `privacy_extra` (paragraphes en plus dans la section « Data stored on your device »), `highlights` (les 4 chiffres sous le hero), `home_blurb` / `home_pills` / `price_note`.
 
-`index.html` (page d'accueil) n'est **pas** généré : une modification d'app (couleur, phrase d'accroche) s'y reporte à la main.
+La mise en page de la home se règle avec `HOME_LAYOUT` (carte large `feature` ou demi-carte `half`) et `HOME_FAN` (les 3 écrans du hero).
+
 
 ## Nouvelle version d'une app : captures, icône, image de partage
 
@@ -75,9 +80,9 @@ Options par app dans `APPS` (facultatives) : `updated` (date « Last updated » 
 3. Lancer, dans cet ordre :
 
 ```bash
-python3 optimize_shots.py   # captures → WebP (toutes les apps)
-python3 optimize_icons.py   # icônes Xcode → icon.webp (toutes les apps)
-python3 make_og.py          # images de partage (textes et couleurs dans OG / HOUSE)
+python3 optimize_shots.py jezko   # captures → WebP (sans argument : toutes les apps)
+python3 optimize_icons.py jezko   # icônes Xcode (~/Developer/<App>) → icon.webp
+python3 make_og.py jezko house    # images de partage (textes et couleurs dans OG / HOUSE) ; `marks` = logo
 python3 build.py            # pages HTML
 ```
 
@@ -93,7 +98,8 @@ python3 -m http.server 8000   # puis ouvre http://localhost:8000
 
 ## Ce que ces pages couvrent côté SEO / GEO
 
-- **SEO** : `<title>`/meta par page, canonical, sitemap, et JSON-LD `SoftwareApplication` + `BreadcrumbList` sur chaque landing → Google comprend que c'est une app (catégorie, prix, éditeur).
+- **SEO** : `<title>` (≤ 60 car.) et description (≤ 160) par page, canonical, `robots`, Open Graph complet (dimensions, alt) + Twitter, sitemap avec `lastmod`, Smart App Banner iOS (`apple-itunes-app`) sur les apps publiées, favicon + apple-touch-icon. JSON-LD : `Organization` + `WebSite` + `ItemList` sur la home, `MobileApplication` (icône, captures, lien App Store, langues) + `FAQPage` + `BreadcrumbList` sur chaque landing, `BreadcrumbList` sur les pages légales.
+- **Accessibilité / perf** : lien « Skip to content », focus visible, contenu visible sans JS (l'animation ne cache rien si le script ne tourne pas), images dimensionnées et chargées en lazy, CSS/JS avec cache-busting.
 - **GEO** : bloc FAQ + `FAQPage` structured data avec des réponses factuelles citables (« What's the best app for private intermittent fasting? ») → c'est la surface que ChatGPT/Claude/Perplexity récupèrent.
 - **Privacy = argument marketing** : le « stays on your device / no tracking » est mis en avant partout, pas caché dans le legal.
 

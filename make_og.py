@@ -13,12 +13,21 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 from optimize_icons import SOURCES as ICONS
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-APPS_ROOT = "/Users/nicolasdojcilovic/Desktop/Business/Applications/SuiteForgeApps"
 FONT = "/System/Library/Fonts/SFNSRounded.ttf"
 
 W, H = 1200, 630
 
 OG = {
+    "jezko": {
+        "bg": (217, 72, 59),           # #D9483B — crvena, icon background
+        "glow": (245, 184, 61),        # #F5B83D — suncokret
+        "soft": (255, 226, 216),
+        "shot": "screenshots/source/en/01 home.png",
+        "name": "Ježko",
+        "title": ["Learn Serbian", "with a story."],
+        "sub": "For kids & families, 10 minutes a day",
+        "chips": ["100 lessons", "Latin & Cyrillic", "No ads"],
+    },
     "keepcontact": {
         "bg": (107, 63, 212),          # #6B3FD4 — icon violet
         "glow": (255, 122, 89),        # #FF7A59 — coral
@@ -61,12 +70,12 @@ OG = {
     },
 }
 
-# Home page: the house brand (sage) and the four app icons
+# Home page: the house brand (sage) and the app icons
 HOUSE = {
     "bg": (60, 86, 72),                # #3C5648 — site accent-deep
     "glow": (127, 168, 145),
     "soft": (220, 232, 224),
-    "apps": ["keepcontact", "fastclear", "routineflow", "walkquest"],
+    "apps": ["jezko", "keepcontact", "fastclear", "routineflow", "walkquest"],
     "name": "SuiteForge",
     "title": ["Apps for a calmer,", "quieter life."],
     "sub": "Privacy-first iPhone apps",
@@ -166,25 +175,75 @@ def build_house(c):
     ImageDraw.Draw(glow).ellipse((720, 80, 1240, 600), fill=c["glow"] + (140,))
     img.alpha_composite(glow.filter(ImageFilter.GaussianBlur(110)))
 
-    # 2x2 grid of app icons with soft shadows
-    size, gap = 170, 36
-    gx, gy = 1200 - 72 - 2 * size - gap, (H - 2 * size - gap) // 2
+    # App icons: 3 on top, 2 centred below, with soft shadows
+    size, gap = 128, 26
+    gx = 1200 - 72 - 3 * size - 2 * gap
+    gy = (H - 2 * size - gap) // 2
+    spots = []
+    for i, slug in enumerate(c["apps"]):
+        row, col = divmod(i, 3)
+        x = gx + col * (size + gap) + (row * (size + gap) // 2)
+        spots.append((slug, x, gy + row * (size + gap)))
     shadow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     sd = ImageDraw.Draw(shadow)
-    for i, slug in enumerate(c["apps"]):
-        x, y = gx + (i % 2) * (size + gap), gy + (i // 2) * (size + gap)
-        sd.rounded_rectangle((x + 4, y + 14, x + size + 4, y + size + 14), 40, fill=(10, 20, 15, 110))
+    for slug, x, y in spots:
+        sd.rounded_rectangle((x + 4, y + 14, x + size + 4, y + size + 14), 30, fill=(10, 20, 15, 110))
     img.alpha_composite(shadow.filter(ImageFilter.GaussianBlur(18)))
-    for i, slug in enumerate(c["apps"]):
-        x, y = gx + (i % 2) * (size + gap), gy + (i // 2) * (size + gap)
+    for slug, x, y in spots:
         icon = Image.open(ICONS[slug]).convert("RGBA").resize((size, size), Image.LANCZOS)
-        img.alpha_composite(rounded(icon, 40), (x, y))
+        img.alpha_composite(rounded(icon, 30), (x, y))
 
     text_block(img, c)
     save(img, os.path.join(ROOT, "assets", "og-suiteforge.png"))
 
 
+def s_path(scale):
+    """Centre line of the SuiteForge "S" (same path as the SVG mark, 32-unit grid)."""
+    import math
+    def cubic(p0, p1, p2, p3, n=24):
+        return [tuple((1-t)**3*a + 3*(1-t)**2*t*b + 3*(1-t)*t**2*c + t**3*d for a, b, c, d in zip(p0, p1, p2, p3))
+                for t in (i / n for i in range(n + 1))]
+    def arc(cx, cy, r, a0, a1, n=36):
+        return [(cx + r * math.cos(math.radians(a0 + (a1 - a0) * i / n)), cy + r * math.sin(math.radians(a0 + (a1 - a0) * i / n)))
+                for i in range(n + 1)]
+    pts = (cubic((21, 11.6), (20.5, 9.7), (18.7, 8.5), (16.4, 8.5)) + arc(15.3, 12.4, 3.9, -90, -270)
+           + arc(16.7, 20.2, 3.9, -90, 90) + cubic((15.6, 24.1), (13.3, 24.1), (11.5, 22.9), (11, 21)))
+    return [(x * scale, y * scale) for x, y in pts]
+
+
+def build_marks():
+    """SuiteForge logo (assets/logo.png, 512) and Apple touch icon (assets/apple-touch-icon.png, 180)."""
+    for out, side, radius in (("logo.png", 512, 144), ("apple-touch-icon.png", 180, 0)):
+        big = side * 4
+        grad = Image.new("RGB", (big, big))
+        gd = ImageDraw.Draw(grad)
+        a, b = (93, 130, 112), (60, 86, 72)   # #5D8270 → #3C5648, top-left to bottom-right
+        for i in range(2 * big):
+            t = i / (2 * big)
+            gd.line([(i, 0), (0, i)], fill=tuple(round(x + (y - x) * t) for x, y in zip(a, b)))
+        img = grad.convert("RGBA")
+        d = ImageDraw.Draw(img)
+        scale = big / 32
+        pts = s_path(scale)
+        w = round(2.8 * scale)
+        d.line(pts, fill=(251, 249, 244), width=w, joint="curve")
+        for x, y in pts:  # a disc on every sample: smooth joins and round caps
+            d.ellipse((x - w / 2, y - w / 2, x + w / 2, y + w / 2), fill=(251, 249, 244))
+        if radius:
+            img = rounded(img, radius * 4)
+        img = img.resize((side, side), Image.LANCZOS)
+        path = os.path.join(ROOT, "assets", out)
+        img.save(path, "PNG", optimize=True)
+        print(f"  ✓ assets/{out}")
+
+
 if __name__ == "__main__":
+    import sys
+    only = sys.argv[1:]   # optional: only these share images (e.g. `jezko house marks`)
     for slug, cfg in OG.items():
-        build(slug, cfg)
-    build_house(HOUSE)
+        if not only or slug in only:
+            build(slug, cfg)
+    if not only or "house" in only:
+        build_house(HOUSE)
+    if not only or "marks" in only:
+        build_marks()
