@@ -114,12 +114,15 @@ APPS = {
         "category_label": "Health & Wellness",
         "schema_category": "HealthApplication",
         "appstore_id": "6766101143",
+        # 2.0: iCloud sync (private CloudKit database), Apple Watch, app blocking (Screen Time), lifetime purchase
+        "lifetime": True,
+        "updated": "21 October 2026",
         "accent": "#e8821e", "accent_deep": "#9e540e", "accent_tint": "#fbedd9",
         "icon_svg": '<path d="M12 4a8 8 0 1 1-7.5 5.2"/><path d="M4 4v4h4"/><path d="M12 8v4l2.6 1.6"/>',
-        "tagline": "A morning routine that actually sticks.",
-        "hero_sub": "Design a calm sequence of small steps and move through them one at a time. No streak shaming, no overwhelm — just a gentle flow to start the day on your terms.",
-        "seo_title": "RoutineFlow — Calm morning routine builder for iPhone",
-        "seo_desc": "RoutineFlow helps you build and keep a morning routine on iPhone. Step-by-step flows, gentle reminders, no account and no tracking. All data stays on your device.",
+        "tagline": "Win your mornings before your phone does.",
+        "hero_sub": "RoutineFlow guides your routine step by step, out loud, and keeps Instagram, TikTok and other distracting apps locked until you're done. For a morning (or evening) routine that actually happens — structure, not willpower.",
+        "seo_title": "RoutineFlow — Morning routine timer & app blocker for iPhone",
+        "seo_desc": "RoutineFlow guides your morning routine step by step, out loud, and blocks distracting apps until you're done. Apple Watch, widgets, Siri. No account, no ads.",
         "compare": {
             "checked": "14 October 2026",
             "rivals": ["Routinery", "Fabulous", "Me+"],
@@ -127,44 +130,47 @@ APPS = {
                 ("Data used to track you across other companies' apps and websites", [
                     ("good", "None"), ("bad", "Other data"), ("bad", "Contact info"), ("bad", "Identifiers")]),
                 ("Data collected by the developer (linked to you or not)", [
-                    ("good", "None: Data Not Collected"), ("bad", "Contact info, identifiers, usage, diagnostics"), ("bad", "Location, contact info, usage"), ("bad", "Identifiers, health & fitness, user content, usage")]),
+                    ("good", "Purchases only, not linked to you"), ("bad", "Contact info, identifiers, usage, diagnostics"), ("bad", "Location, contact info, usage"), ("bad", "Identifiers, health & fitness, user content, usage")]),
                 ("Contains advertising", [
                     ("good", "No"), ("bad", "Yes"), ("good", "No"), ("bad", "Yes")]),
                 ("In-app purchases listed", [
-                    ("good", "$2.99 to $14.99"), ("info", "$4.19 to $41.99"), ("info", "$16.99 to $59.99"), ("info", "$7.99 to $69.99")]),
+                    ("good", "$4.99 to $59.99, lifetime option"), ("info", "$4.19 to $41.99"), ("info", "$16.99 to $59.99"), ("info", "$7.99 to $69.99")]),
                 ("Apple Watch app", [
-                    ("bad", "No"), ("good", "Yes"), ("good", "Yes"), ("bad", "No")]),
+                    ("good", "Yes"), ("good", "Yes"), ("good", "Yes"), ("bad", "No")]),
                 ("App languages", [
                     ("info", "English, French"), ("info", "12 languages"), ("info", "7 languages"), ("info", "5 languages")]),
             ],
-            "summary": "According to their App Store privacy labels, RoutineFlow collects no data, while Routinery, Fabulous and Me+ all collect data and use some of it to track you across other companies' apps and websites. Routinery and Me+ also contain ads. RoutineFlow's in-app purchases are listed from $2.99 to $14.99, against up to $41.99 to $69.99 for the others. In exchange, Routinery and Fabulous have an Apple Watch app, and all three are available in more languages.",
-            "note": "RoutineFlow is a calm, step-by-step morning routine that stays on your iPhone. The others add coaching, Watch apps and more languages; RoutineFlow adds nothing that watches you.",
+            "summary": "According to their App Store privacy labels, RoutineFlow only collects anonymous purchase data that is not linked to you, while Routinery, Fabulous and Me+ all collect data and use some of it to track you across other companies' apps and websites. Routinery and Me+ also contain ads. RoutineFlow's in-app purchases are listed from $4.99 to $59.99, including a lifetime option, against up to $41.99 to $69.99 for the others. RoutineFlow, Routinery and Fabulous have an Apple Watch app; Routinery, Fabulous and Me+ are available in more languages.",
+            "note": "RoutineFlow guides your routine and keeps distracting apps locked until it's done, on your iPhone and Apple Watch. The others add coaching and more languages; RoutineFlow adds nothing that watches you.",
         },
-        "home_blurb": "Build a morning routine that actually sticks. One step at a time, calmly, every day.",
-        "price_note": "Free download · optional subscription",
+        "home_blurb": "Your routine, step by step and out loud — with distracting apps locked until you're done.",
+        "price_note": "Free download · Premium with a 7-day trial",
         "highlights": [
-            ("1 step", "On screen at a time, never a wall of tasks"),
-            ("Reminders", "A quiet nudge at the time you pick"),
-            ("No guilt", "Miss a morning, simply begin again"),
+            ("Earn your phone", "Apps unlock when your routine is done"),
+            ("Out loud", "Every step announced, even with the screen locked"),
+            ("12", "Ready-made routines"),
             ("0", "Accounts, ads or trackers"),
         ],
         "features": [
-            ("Build your sequence", "Add the steps that matter to you — water, stretch, journal, meditate — in the order that feels right.", '<path d="M4 6h16M4 12h16M4 18h10"/>'),
-            ("One step at a time", "RoutineFlow shows you a single step, not an intimidating list. Finish it, flow to the next.", '<path d="M5 12h14M13 6l6 6-6 6"/>'),
-            ("Gentle reminders", "A quiet nudge at the time you choose. No badges screaming at you from the Home Screen.", '<path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/>'),
-            ("Progress without pressure", "See the mornings you showed up. Miss one and nothing breaks — you simply begin again.", '<circle cx="12" cy="12" r="8.5"/><path d="M9 12l2 2 4-4"/>'),
+            ("Earn your phone", "Choose the apps to block — Instagram, TikTok, anything that pulls you in. They lock at your routine's time and unlock as soon as you finish. A safety limit and an emergency unlock are built in, and calls are never blocked.", '<rect x="6" y="2.5" width="12" height="19" rx="2.5"/><rect x="9" y="10" width="6" height="5" rx="1"/><path d="M10 10V8.5a2 2 0 0 1 4 0V10"/>'),
+            ("A routine that runs itself", "Each step is announced by voice, with a countdown on the Lock Screen and in the Dynamic Island. See what's next and how much time is left, add a minute or skip a step.", '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M9 2.5h6"/>'),
+            ("On your wrist", "The Apple Watch app shows your current step and taps your wrist at each new one. Mark it done or pause without reaching for your phone.", '<rect x="7" y="6" width="10" height="12" rx="3"/><path d="M9 6l.6-3.5h4.8L15 6M9 18l.6 3.5h4.8L15 18"/>'),
+            ("Ready in seconds", "Start from 12 ready-made routines — energizing morning, calm evening, 4-7-8 breathing, desk break — or build your own. Pick weekdays and a reminder, ask Siri, or start it when your alarm stops.", '<path d="M4 6h16M4 12h16M4 18h10"/>'),
+            ("Keep going", "A streak with one joker a week, statistics by routine and by day, ambient sounds, Lock Screen widgets, and mindful minutes saved to Apple Health.", '<circle cx="12" cy="12" r="8.5"/><path d="M9 12l2 2 4-4"/>'),
+            ("Yours, privately", "No account and no ads. Your routines stay on your devices and sync through your own private iCloud, between your iPhone and iPad.", '<path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6z"/>'),
         ],
         "steps": [
-            ("Design your morning", "Add and reorder the steps you want to do each day."),
-            ("Flow through it", "Each morning, move through your routine one calm step at a time."),
-            ("Keep showing up", "Watch consistency build gently, with no guilt when life happens."),
+            ("Pick your routine", "Start from a template or build your own steps, then choose its days and time."),
+            ("Lock the distractions", "Choose the apps that steal your mornings. They stay locked until your routine is done."),
+            ("Follow the voice", "RoutineFlow announces each step and moves you along, on your iPhone or your wrist."),
         ],
         "faq": [
-            ("Is RoutineFlow free?", "Yes — RoutineFlow is free to download with a free core routine. An optional subscription unlocks multiple routines and advanced options."),
-            ("What's a good private morning routine app?", "RoutineFlow is designed for a calm, private start to the day: no account, no analytics, no trackers, and your routines stay on your own device."),
-            ("Can I have more than one routine?", "You can build a morning routine for free; additional routines (evening, weekend, focus) are part of the optional subscription."),
-            ("How is RoutineFlow different from Routinery, Fabulous or Me+?", "RoutineFlow is built for privacy: its App Store privacy label is \"Data Not Collected\", it has no ads, and its in-app purchases are listed from $2.99 to $14.99. According to their App Store listings, Routinery, Fabulous and Me+ collect data and use some of it to track you, and Routinery and Me+ contain ads; Routinery and Fabulous also offer an Apple Watch app."),
-            ("Does RoutineFlow track me?", "No. There are no analytics or advertising trackers. Your routine data never leaves your device unless you use private iCloud sync."),
+            ("Is RoutineFlow free?", "Yes. RoutineFlow is free to download, with 2 routines of up to 8 steps, voice guidance, the Live Activity, reminders, 3 templates and one free \"Earn your phone\" morning. Premium unlocks everything — unlimited routines, all templates, app blocking every day, statistics, ambient sounds, widgets and the Apple Watch app. Subscriptions come with a 7-day free trial, or you can get Premium for life with a single payment."),
+            ("How does RoutineFlow block apps?", "It uses Apple's Screen Time framework. You choose the apps to block for a routine; they are locked from the routine's time until you finish it. The block always ends — when the routine is done, after a safety limit you set (1 to 4 hours), or with an emergency unlock — and phone calls are never blocked. RoutineFlow never sees which apps you chose."),
+            ("Does RoutineFlow work on Apple Watch?", "Yes. With Premium, the Apple Watch app shows your current step, taps your wrist at each new one, and lets you mark a step done or pause."),
+            ("What's a good private morning routine app?", "RoutineFlow is built for a private start to the day: no account, no analytics, no ads and no trackers. Your routines stay on your devices and in your own private iCloud, which SuiteForge cannot read."),
+            ("How is RoutineFlow different from Routinery, Fabulous or Me+?", "RoutineFlow also blocks distracting apps until your routine is done. On privacy, its App Store label only lists anonymous purchase data, not linked to you, and it has no ads; its in-app purchases are listed from $4.99 to $59.99, including a lifetime option. According to their App Store listings, Routinery, Fabulous and Me+ collect data and use some of it to track you, and Routinery and Me+ contain ads. RoutineFlow, Routinery and Fabulous all have an Apple Watch app."),
+            ("Does RoutineFlow track me?", "No. There are no analytics or advertising trackers. Your routine data stays on your devices and in your private iCloud; the only information that leaves them is the anonymous purchase data needed to manage Premium."),
         ],
         "mock": """
           <div style="flex:1;display:flex;flex-direction:column;gap:12px;padding:26px 20px;">
@@ -175,17 +181,23 @@ APPS = {
             <div style="display:flex;align-items:center;gap:10px;padding:13px;border-radius:12px;background:var(--bg-deep);border:1.5px solid var(--accent);"><span style="width:20px;height:20px;border-radius:50%;border:2px solid var(--accent);"></span><span style="font-size:.84rem;color:var(--ink);font-weight:600;">Journal · now</span></div>
             <div style="display:flex;align-items:center;gap:10px;padding:11px 13px;border-radius:12px;opacity:.5;"><span style="width:20px;height:20px;border-radius:50%;border:2px solid var(--ink-faint);"></span><span style="font-size:.82rem;color:var(--ink-soft);">Meditate</span></div>
           </div>""",
-        "permissions": [
-            ("Notifications", "Used only to remind you to start your routine at the time you set. Optional and configurable in iOS Settings."),
+        "privacy_extra": [
+            ("App blocking (Screen Time)", "If you turn on \"Earn your phone\" for a routine, {name} uses Apple's Screen Time framework to lock the apps you pick until the routine is done. Apple only gives {name} opaque tokens: it never learns which apps or websites you chose, and this information never leaves your device."),
+            ("Apple Watch, Siri and iCloud", "The {name} Apple Watch app receives the routine you are running directly from your iPhone. Siri and Shortcuts requests are handled by Apple. Routines you delete in {name} are also deleted from your iCloud; you can remove all of {name}'s iCloud data in iOS Settings › your name › iCloud."),
         ],
-        "hero_shot_alt": "RoutineFlow home screen listing a Morning Energizer, Evening Wind Down and Workday Reset routine",
+        "permissions": [
+            ("Notifications (optional)", "Used to remind you to start a routine at the time you set and to announce each step of the routine you are running. Scheduled locally on your device."),
+            ("Screen Time (optional)", "Requested only if you turn on \"Earn your phone\", to lock the apps you choose until your routine is done. RoutineFlow never sees which apps you picked. You can turn it off for each routine, or revoke it in iOS Settings."),
+            ("Apple Health (optional, write only)", "If you turn on mindful minutes in Settings, RoutineFlow saves the time spent on meditation and breathing steps to Apple Health. It never reads your Health data. Off by default."),
+        ],
+        "hero_shot_alt": "RoutineFlow Routines screen: Your day card with the next routine, a 12-day streak and a Start button, then Morning Energizer, Evening Wind Down and Workday Reset",
         "shots_type": "brut",
-        "shots_w": 620, "shots_h": 1347,
+        "shots_w": 620, "shots_h": 1348,
         "shots": [
-            ("shot-1.webp", "RoutineFlow guiding through a routine one calm step at a time"),
-            ("shot-2.webp", "RoutineFlow routine editor for adding, reordering and timing each step"),
-            ("shot-3.webp", "RoutineFlow settings screen with reminder time and notification options"),
-            ("shot-4.webp", "RoutineFlow history showing recently completed routines"),
+            ("shot-1.webp", "iPhone Home Screen with Instagram, X, Discord and other social apps locked by RoutineFlow until the routine is done"),
+            ("shot-2.webp", "RoutineFlow running a routine: step 1 of 4, a 02:41 countdown ring, the next step and 26 minutes left"),
+            ("shot-3.webp", "RoutineFlow Progress statistics: 100 routines done, 1,970 minutes, a best streak of 12 and the last 12 weeks"),
+            ("shot-4.webp", "RoutineFlow templates: Energizing morning, Calm morning, 5-minute morning, Calm evening, Screen-free evening"),
         ],
     },
     "walkquest": {

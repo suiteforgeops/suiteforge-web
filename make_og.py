@@ -54,9 +54,9 @@ OG = {
         "soft": (214, 210, 204),
         "shot": "screenshots/source/en/01_home_en.png",
         "name": "RoutineFlow",
-        "title": ["A morning routine", "that actually sticks."],
-        "sub": "One calm step at a time, on iPhone",
-        "chips": ["Step by step", "No account", "No tracking"],
+        "title": ["Win your mornings", "before your phone does."],
+        "sub": "Routine timer & app blocker for iPhone",
+        "chips": ["Spoken steps", "Apps locked until done", "No tracking"],
     },
     "walkquest": {
         "bg": (26, 46, 75),            # #1A2E4B — icon navy
@@ -91,8 +91,8 @@ OG_FR = {
                     "sub": "CRM personnel privé pour iPhone", "chips": ["IA sur l'iPhone", "Sans compte", "100 % hors ligne"]},
     "fastclear": {"shot": "screenshots/source/fr/1_home_fr.png", "title": ["Un minuteur serein", "pour le jeûne."],
                   "sub": "Suivi du jeûne privé pour iPhone", "chips": ["16:8 · 18:6 · OMAD", "Sans compte", "Sans pistage"]},
-    "routineflow": {"shot": "screenshots/source/fr/01_home_fr.png", "title": ["Une routine du matin", "qui tient vraiment."],
-                    "sub": "Une étape calme à la fois, sur iPhone", "chips": ["Pas à pas", "Sans compte", "Sans pistage"]},
+    "routineflow": {"shot": "screenshots/source/fr/01_home_fr.png", "title": ["Gagnez vos matins", "avant votre téléphone."],
+                    "sub": "Minuteur de routine et bloqueur d'apps", "chips": ["Étapes à voix haute", "Apps bloquées", "Sans pistage"]},
     "walkquest": {"shot": "screenshots/source/fr/1. Today FR.png", "title": ["Vos pas du jour,", "une quête tranquille."],
                   "sub": "Défis de pas privés pour iPhone", "chips": ["Pas Apple Santé", "Sans compte", "Sans pistage"]},
 }

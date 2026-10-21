@@ -10,7 +10,7 @@ French version of the site: https://suiteforge.app/fr/
 - [Ježko](https://suiteforge.app/jezko/): Education. Ježko teaches Serbian to kids and families through one story in 100 lessons. Speak out loud, read Latin and Cyrillic, 10 minutes a day. No account, no ads. First 7 lessons free · English & French. Coming soon to the App Store.
 - [KeepContact](https://suiteforge.app/keepcontact/): Productivity. Privacy-first personal CRM for iPhone: who to reach out to each morning, what matters to each person, message ideas from on-device AI. No account, 100% offline. Free for up to 15 contacts · Pro with a 7-day trial. App Store: https://apps.apple.com/app/id6761559776.
 - [FastClear](https://suiteforge.app/fastclear/): Health & Wellness. FastClear is a privacy-first intermittent fasting timer for iPhone. Track 16:8, 18:6, OMAD and custom fasts. No account, no tracking, all data on your device. Free download · optional subscription. App Store: https://apps.apple.com/app/id6762476052.
-- [RoutineFlow](https://suiteforge.app/routineflow/): Health & Wellness. RoutineFlow helps you build and keep a morning routine on iPhone. Step-by-step flows, gentle reminders, no account and no tracking. All data stays on your device. Free download · optional subscription. App Store: https://apps.apple.com/app/id6766101143.
+- [RoutineFlow](https://suiteforge.app/routineflow/): Health & Wellness. RoutineFlow guides your morning routine step by step, out loud, and blocks distracting apps until you're done. Apple Watch, widgets, Siri. No account, no ads. Free download · Premium with a 7-day trial. App Store: https://apps.apple.com/app/id6766101143.
 - [WalkQuest](https://suiteforge.app/walkquest/): Health & Wellness. WalkQuest is a privacy-first step tracker for iPhone: daily walking goals and honest progress from your Apple Health steps. No account, no tracking. Free download · optional subscription. App Store: https://apps.apple.com/app/id6768080009.
 
 ## Ježko
@@ -93,22 +93,25 @@ Questions:
 
 ## RoutineFlow
 
-Design a calm sequence of small steps and move through them one at a time. No streak shaming, no overwhelm — just a gentle flow to start the day on your terms.
+RoutineFlow guides your routine step by step, out loud, and keeps Instagram, TikTok and other distracting apps locked until you're done. For a morning (or evening) routine that actually happens — structure, not willpower.
 
-- Build your sequence: Add the steps that matter to you — water, stretch, journal, meditate — in the order that feels right.
-- One step at a time: RoutineFlow shows you a single step, not an intimidating list. Finish it, flow to the next.
-- Gentle reminders: A quiet nudge at the time you choose. No badges screaming at you from the Home Screen.
-- Progress without pressure: See the mornings you showed up. Miss one and nothing breaks — you simply begin again.
+- Earn your phone: Choose the apps to block — Instagram, TikTok, anything that pulls you in. They lock at your routine's time and unlock as soon as you finish. A safety limit and an emergency unlock are built in, and calls are never blocked.
+- A routine that runs itself: Each step is announced by voice, with a countdown on the Lock Screen and in the Dynamic Island. See what's next and how much time is left, add a minute or skip a step.
+- On your wrist: The Apple Watch app shows your current step and taps your wrist at each new one. Mark it done or pause without reaching for your phone.
+- Ready in seconds: Start from 12 ready-made routines — energizing morning, calm evening, 4-7-8 breathing, desk break — or build your own. Pick weekdays and a reminder, ask Siri, or start it when your alarm stops.
+- Keep going: A streak with one joker a week, statistics by routine and by day, ambient sounds, Lock Screen widgets, and mindful minutes saved to Apple Health.
+- Yours, privately: No account and no ads. Your routines stay on your devices and sync through your own private iCloud, between your iPhone and iPad.
 
-Comparison with Routinery, Fabulous, Me+ (US App Store listings, checked 14 October 2026): According to their App Store privacy labels, RoutineFlow collects no data, while Routinery, Fabulous and Me+ all collect data and use some of it to track you across other companies' apps and websites. Routinery and Me+ also contain ads. RoutineFlow's in-app purchases are listed from $2.99 to $14.99, against up to $41.99 to $69.99 for the others. In exchange, Routinery and Fabulous have an Apple Watch app, and all three are available in more languages.
+Comparison with Routinery, Fabulous, Me+ (US App Store listings, checked 14 October 2026): According to their App Store privacy labels, RoutineFlow only collects anonymous purchase data that is not linked to you, while Routinery, Fabulous and Me+ all collect data and use some of it to track you across other companies' apps and websites. Routinery and Me+ also contain ads. RoutineFlow's in-app purchases are listed from $4.99 to $59.99, including a lifetime option, against up to $41.99 to $69.99 for the others. RoutineFlow, Routinery and Fabulous have an Apple Watch app; Routinery, Fabulous and Me+ are available in more languages.
 
 Questions:
 
-- Is RoutineFlow free? Yes — RoutineFlow is free to download with a free core routine. An optional subscription unlocks multiple routines and advanced options.
-- What's a good private morning routine app? RoutineFlow is designed for a calm, private start to the day: no account, no analytics, no trackers, and your routines stay on your own device.
-- Can I have more than one routine? You can build a morning routine for free; additional routines (evening, weekend, focus) are part of the optional subscription.
-- How is RoutineFlow different from Routinery, Fabulous or Me+? RoutineFlow is built for privacy: its App Store privacy label is "Data Not Collected", it has no ads, and its in-app purchases are listed from $2.99 to $14.99. According to their App Store listings, Routinery, Fabulous and Me+ collect data and use some of it to track you, and Routinery and Me+ contain ads; Routinery and Fabulous also offer an Apple Watch app.
-- Does RoutineFlow track me? No. There are no analytics or advertising trackers. Your routine data never leaves your device unless you use private iCloud sync.
+- Is RoutineFlow free? Yes. RoutineFlow is free to download, with 2 routines of up to 8 steps, voice guidance, the Live Activity, reminders, 3 templates and one free "Earn your phone" morning. Premium unlocks everything — unlimited routines, all templates, app blocking every day, statistics, ambient sounds, widgets and the Apple Watch app. Subscriptions come with a 7-day free trial, or you can get Premium for life with a single payment.
+- How does RoutineFlow block apps? It uses Apple's Screen Time framework. You choose the apps to block for a routine; they are locked from the routine's time until you finish it. The block always ends — when the routine is done, after a safety limit you set (1 to 4 hours), or with an emergency unlock — and phone calls are never blocked. RoutineFlow never sees which apps you chose.
+- Does RoutineFlow work on Apple Watch? Yes. With Premium, the Apple Watch app shows your current step, taps your wrist at each new one, and lets you mark a step done or pause.
+- What's a good private morning routine app? RoutineFlow is built for a private start to the day: no account, no analytics, no ads and no trackers. Your routines stay on your devices and in your own private iCloud, which SuiteForge cannot read.
+- How is RoutineFlow different from Routinery, Fabulous or Me+? RoutineFlow also blocks distracting apps until your routine is done. On privacy, its App Store label only lists anonymous purchase data, not linked to you, and it has no ads; its in-app purchases are listed from $4.99 to $59.99, including a lifetime option. According to their App Store listings, Routinery, Fabulous and Me+ collect data and use some of it to track you, and Routinery and Me+ contain ads. RoutineFlow, Routinery and Fabulous all have an Apple Watch app.
+- Does RoutineFlow track me? No. There are no analytics or advertising trackers. Your routine data stays on your devices and in your private iCloud; the only information that leaves them is the anonymous purchase data needed to manage Premium.
 
 - [Privacy Policy](https://suiteforge.app/routineflow/privacy/)
 - [Terms of Use](https://suiteforge.app/routineflow/terms/)
