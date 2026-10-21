@@ -6,7 +6,7 @@ Generates, in English (root) and French (/fr/): the home page, one landing + pri
 per app; plus 404.html, sitemap.xml, robots.txt, llms.txt, CNAME. French texts: content_fr.py.
 Single source of truth = APPS config below. No external deps.
 """
-import os, html, json, hashlib, datetime
+import os, html, json, hashlib, datetime, math
 from content_fr import FR_APPS, FR_HOME_FAQ
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -510,7 +510,8 @@ def T(en, fr):
     return fr if LANG == "fr" else en
 
 def page_path(key, lang=None):
-    """Site path of a page. key: "home", ("notice",), ("app", slug) or ("legal", slug, "privacy"|"terms")."""
+    """Site path of a page. key: "home", ("notice",), ("app", slug), ("legal", slug, "privacy"|"terms")
+    or ("journey", id) for a WalkQuest journey."""
     lang = lang or LANG
     base = "/fr" if lang == "fr" else ""
     if key == "home":
@@ -519,6 +520,8 @@ def page_path(key, lang=None):
         return f"{base}/{key[1]}/"
     if key[0] == "notice":
         return f"{base}/{'mentions-legales' if lang == 'fr' else 'legal-notice'}/"
+    if key[0] == "journey":
+        return f"{base}/walkquest/v/{key[1]}/"
     return f"{base}/{key[1]}/{LEGAL_SLUG[key[2]][lang]}/"
 
 def page_url(key, lang=None):
@@ -1391,6 +1394,113 @@ def build_404():
 {scripts()}'''
 
 # ---------------------------------------------------------------------------
+# WALKQUEST JOURNEYS — one page per journey, the target of the app's share link
+# (https://suiteforge.app/[fr/]walkquest/v/<id>/, opened in the app as a universal link).
+# Data: walkquest/journeys.json, copied from the Xcode project by sync_walkquest_journeys.py.
+# ---------------------------------------------------------------------------
+with open(os.path.join(ROOT, "walkquest", "journeys.json"), encoding="utf-8") as _f:
+    JOURNEYS = {j["id"]: j for j in json.load(_f)}
+
+APPLE_TEAM_APP_ID = "5CADUTAX9N.com.suiteforge.WalkQuest"
+STRIDE_KM = 0.000762  # the app's average step length (76.2 cm)
+
+def haversine_km(a, b):
+    la1, lo1, la2, lo2 = map(math.radians, (a[0], a[1], b[0], b[1]))
+    h = math.sin((la2 - la1) / 2) ** 2 + math.cos(la1) * math.cos(la2) * math.sin((lo2 - lo1) / 2) ** 2
+    return 2 * 6371 * math.asin(min(1, math.sqrt(h)))
+
+def journey_km(j):
+    """Cumulative distance at each point, as computed in the app."""
+    out = [0.0]
+    for a, b in zip(j["points"], j["points"][1:]):
+        out.append(out[-1] + haversine_km(a, b))
+    return out
+
+def number(value, decimals=0):
+    """1,234.5 in English, 1 234,5 in French (narrow no-break space)."""
+    text = f"{value:,.{decimals}f}"
+    return text.replace(",", " ").replace(".", ",") if LANG == "fr" else text
+
+def journey_svg(j, w=640, h=360, inset=34):
+    """Route drawn like the app's vignettes: terrain, green path, stops, orange arrival."""
+    pts = j["points"]
+    mean_lat = sum(p[0] for p in pts) / len(pts)
+    xs = [p[1] * math.cos(math.radians(mean_lat)) for p in pts]
+    ys = [-p[0] for p in pts]
+    sw, sh = max(max(xs) - min(xs), 1e-9), max(max(ys) - min(ys), 1e-9)
+    scale = min((w - 2 * inset) / sw, (h - 2 * inset) / sh)
+    ox = inset + ((w - 2 * inset) - sw * scale) / 2
+    oy = inset + ((h - 2 * inset) - sh * scale) / 2
+    xy = [(ox + (x - min(xs)) * scale, oy + (y - min(ys)) * scale) for x, y in zip(xs, ys)]
+    line = " ".join(f"{x:.1f},{y:.1f}" for x, y in xy)
+    stops = "".join(
+        f'<circle cx="{xy[s["point"]][0]:.1f}" cy="{xy[s["point"]][1]:.1f}" r="7" fill="#fff" stroke="#059669" stroke-width="4"><title>{esc(s["name"][LANG])}</title></circle>'
+        for s in j["stages"][:-1])
+    ex, ey = xy[-1]
+    title = esc(j["title"][LANG])
+    return (f'<svg class="journey-map" viewBox="0 0 {w} {h}" role="img" aria-label="{T(f"Map of the {title} journey", f"Carte du voyage {title}")}" '
+            f'style="width:100%;height:auto;border-radius:20px;background:#E8EFE6;display:block;margin:28px 0;">'
+            f'<polyline points="{line}" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>'
+            f'<polyline points="{line}" fill="none" stroke="#059669" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>'
+            f'{stops}<circle cx="{ex:.1f}" cy="{ey:.1f}" r="13" fill="#EA580C" stroke="#fff" stroke-width="4"/></svg>')
+
+def build_journey(jid):
+    j = JOURNEYS[jid]
+    key = ("journey", jid)
+    a = A("walkquest")
+    title, region = j["title"][LANG], j["region"][LANG]
+    cum = journey_km(j)
+    km = cum[-1]
+    steps = round(km / STRIDE_KM, -2)
+    days = max(1, math.ceil(km / (10_000 * STRIDE_KM)))
+    km_txt = f"{number(km, 1)} km"
+    steps_txt = number(steps)
+    q = T(f"How many steps is {title}?", f"Combien de pas pour {title} ?")
+    ans = T(f"About {steps_txt} steps ({km_txt}), with an average step of 76 cm. At 10,000 steps a day, that's about {days} day{'s' if days > 1 else ''} of walking.",
+            f"Environ {steps_txt} pas ({km_txt}), avec un pas moyen de 76 cm. À 10 000 pas par jour, cela représente environ {days} jour{'s' if days > 1 else ''} de marche.")
+    access = (T("Included in WalkQuest Premium.", "Inclus dans WalkQuest Premium.") if j["premium"]
+              else T("Free in WalkQuest.", "Gratuit dans WalkQuest."))
+    stops = "".join(
+        f'<li><strong>{esc(s["name"][LANG])}</strong> <span style="color:var(--ink-faint)">· {number(cum[s["point"]], 1)} km</span></li>'
+        for s in j["stages"])
+    page_title = T(f"{title}: a walking journey with WalkQuest", f"{title} : un voyage à pied avec WalkQuest")
+    desc = T(f"Walk {title} ({region}) from home: {km_txt}, {len(j['stages'])} stops, about {steps_txt} steps. WalkQuest turns your everyday steps into real journeys on iPhone.",
+             f"Faites le voyage {title} ({region}) depuis chez vous : {km_txt}, {len(j['stages'])} étapes, environ {steps_txt} pas. WalkQuest transforme vos pas du quotidien en vrais voyages sur iPhone.")
+    extra_head = ""
+    if released("walkquest"):
+        extra_head = f'<meta name="apple-itunes-app" content="app-id={APPS["walkquest"]["appstore_id"]}, app-argument={page_url(key)}">\n'
+    jsonld = [webpage_jsonld(key, page_title, f"{page_url(('app', 'walkquest'))}#app"),
+              crumbs_jsonld([("SuiteForge", page_url("home")), ("WalkQuest", page_url(("app", "walkquest"))), (title, page_url(key))]),
+              faq_jsonld([(q, ans)])]
+    favicon = f'<link rel="icon" type="image/webp" href="{ver("/walkquest/icon.webp")}">' if has("/walkquest/icon.webp") else None
+    return f'''{head(page_title, desc, key, body_style=theme(a), jsonld=jsonld, extra_head=extra_head, og=og_image("walkquest"), favicon=favicon)}
+{site_header(key, "walkquest")}
+<main class="legal" id="main">
+  <nav class="crumbs" aria-label="{T("Breadcrumb", "Fil d'Ariane")}"><a href="{page_path("home")}">SuiteForge</a><span>/</span><a href="{page_path(("app", "walkquest"))}">WalkQuest</a><span>/</span><span>{esc(title)}</span></nav>
+  <p class="eyebrow">{T("WalkQuest journey", "Voyage WalkQuest")}</p>
+  <h1>{esc(title)}</h1>
+  <p class="lede">{esc(region)} · {km_txt} · {len(j["stages"])} {T("stops", "étapes")}</p>
+  {journey_svg(j)}
+  <h2>{esc(q)}</h2>
+  <p>{esc(ans)}</p>
+  <h2>{T("Stops", "Étapes")}</h2>
+  <ol>{stops}</ol>
+  <h2>{T("Walk it from home", "Faites-le depuis chez vous")}</h2>
+  <p>{T("WalkQuest turns the steps your iPhone already counts into real journeys: every step moves you along the map, stop after stop. No account, no ads, and your steps never leave your iPhone.",
+        "WalkQuest transforme les pas que votre iPhone compte déjà en vrais voyages : chaque pas vous fait avancer sur la carte, étape après étape. Pas de compte, pas de publicité, et vos pas ne quittent jamais votre iPhone.")} {access}</p>
+  <p style="margin-top:24px;">{appstore_badge("walkquest")}</p>
+  <p style="margin-top:40px;"><a href="{page_path(("app", "walkquest"))}">← {T("Back to", "Retour à")} WalkQuest</a></p>
+</main>
+{site_footer("walkquest")}
+{scripts()}'''
+
+def apple_app_site_association():
+    """Lets iOS open journey links in the app (universal links)."""
+    return json.dumps({"applinks": {"details": [{"appIDs": [APPLE_TEAM_APP_ID], "components": [
+        {"/": "/walkquest/v/*", "comment": "WalkQuest journey"},
+        {"/": "/fr/walkquest/v/*", "comment": "WalkQuest journey (French)"}]}]}}, indent=1) + "\n"
+
+# ---------------------------------------------------------------------------
 # WRITE FILES
 # ---------------------------------------------------------------------------
 def load_dates():
@@ -1457,6 +1567,7 @@ def all_pages():
     pages = [("home", "1.0"), (("notice",), "0.2")]
     for slug in ORDER:
         pages += [(("app", slug), "0.8"), (("legal", slug, "privacy"), "0.3"), (("legal", slug, "terms"), "0.3")]
+    pages += [(("journey", jid), "0.5") for jid in JOURNEYS]
     return pages
 
 def build_page(key):
@@ -1466,6 +1577,8 @@ def build_page(key):
         return build_notice()
     if key[0] == "app":
         return build_landing(key[1])
+    if key[0] == "journey":
+        return build_journey(key[1])
     return build_privacy(key[1]) if key[2] == "privacy" else build_terms(key[1])
 
 if __name__ == "__main__":
@@ -1492,6 +1605,9 @@ if __name__ == "__main__":
     write("robots.txt", robots + f"Sitemap: {DOMAIN}/sitemap.xml\n")
     write("llms.txt", build_llms_txt())
     write("CNAME", "suiteforge.app\n")
+    # GitHub Pages skips dot-folders unless Jekyll is turned off; .well-known must be served.
+    write(".nojekyll", "")
+    write(".well-known/apple-app-site-association", apple_app_site_association())
     with open(DATES_FILE, "w", encoding="utf-8") as f:
         json.dump(DATES, f, indent=1, sort_keys=True)
     print("Done.")

@@ -1,0 +1,21 @@
+{
+ "applinks": {
+  "details": [
+   {
+    "appIDs": [
+     "5CADUTAX9N.com.suiteforge.WalkQuest"
+    ],
+    "components": [
+     {
+      "/": "/walkquest/v/*",
+      "comment": "WalkQuest journey"
+     },
+     {
+      "/": "/fr/walkquest/v/*",
+      "comment": "WalkQuest journey (French)"
+     }
+    ]
+   }
+  ]
+ }
+}

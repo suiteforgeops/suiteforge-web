@@ -1,0 +1,870 @@
+[
+ {
+  "id": "paris_versailles",
+  "title": {
+   "en": "Paris → Versailles",
+   "fr": "Paris → Versailles"
+  },
+  "region": {
+   "en": "Île-de-France, France",
+   "fr": "Île-de-France, France"
+  },
+  "premium": false,
+  "points": [
+   [
+    48.85837,
+    2.29448
+   ],
+   [
+    48.8558,
+    2.2896
+   ],
+   [
+    48.8538,
+    2.2864
+   ],
+   [
+    48.8506,
+    2.282
+   ],
+   [
+    48.8466,
+    2.277
+   ],
+   [
+    48.8423,
+    2.2716
+   ],
+   [
+    48.8381,
+    2.2635
+   ],
+   [
+    48.8346,
+    2.2566
+   ],
+   [
+    48.8308,
+    2.2485
+   ],
+   [
+    48.8273,
+    2.2381
+   ],
+   [
+    48.8258,
+    2.2299
+   ],
+   [
+    48.8239,
+    2.2223
+   ],
+   [
+    48.8208,
+    2.2128
+   ],
+   [
+    48.8166,
+    2.2023
+   ],
+   [
+    48.8117,
+    2.1916
+   ],
+   [
+    48.8074,
+    2.1783
+   ],
+   [
+    48.8043,
+    2.1662
+   ],
+   [
+    48.8033,
+    2.152
+   ],
+   [
+    48.8042,
+    2.1365
+   ],
+   [
+    48.8047,
+    2.1256
+   ],
+   [
+    48.80487,
+    2.1204
+   ]
+  ],
+  "stages": [
+   {
+    "name": {
+     "en": "Eiffel Tower",
+     "fr": "Tour Eiffel"
+    },
+    "point": 0
+   },
+   {
+    "name": {
+     "en": "Pont Mirabeau",
+     "fr": "Pont Mirabeau"
+    },
+    "point": 4
+   },
+   {
+    "name": {
+     "en": "Île Saint-Germain",
+     "fr": "Île Saint-Germain"
+    },
+    "point": 8
+   },
+   {
+    "name": {
+     "en": "Sèvres",
+     "fr": "Sèvres"
+    },
+    "point": 11
+   },
+   {
+    "name": {
+     "en": "Chaville",
+     "fr": "Chaville"
+    },
+    "point": 14
+   },
+   {
+    "name": {
+     "en": "Viroflay",
+     "fr": "Viroflay"
+    },
+    "point": 16
+   },
+   {
+    "name": {
+     "en": "Palace of Versailles",
+     "fr": "Château de Versailles"
+    },
+    "point": 20
+   }
+  ]
+ },
+ {
+  "id": "nice_seafront",
+  "title": {
+   "en": "Promenade des Anglais",
+   "fr": "Promenade des Anglais"
+  },
+  "region": {
+   "en": "French Riviera, France",
+   "fr": "Côte d'Azur, France"
+  },
+  "premium": false,
+  "points": [
+   [
+    43.6678,
+    7.2155
+   ],
+   [
+    43.6738,
+    7.2242
+   ],
+   [
+    43.68,
+    7.233
+   ],
+   [
+    43.6856,
+    7.2415
+   ],
+   [
+    43.6902,
+    7.2488
+   ],
+   [
+    43.6946,
+    7.258
+   ],
+   [
+    43.6958,
+    7.268
+   ],
+   [
+    43.6947,
+    7.2758
+   ],
+   [
+    43.6938,
+    7.2822
+   ],
+   [
+    43.6965,
+    7.2856
+   ]
+  ],
+  "stages": [
+   {
+    "name": {
+     "en": "Baie des Anges",
+     "fr": "Baie des Anges"
+    },
+    "point": 0
+   },
+   {
+    "name": {
+     "en": "Magnan",
+     "fr": "Magnan"
+    },
+    "point": 4
+   },
+   {
+    "name": {
+     "en": "Hôtel Negresco",
+     "fr": "Hôtel Negresco"
+    },
+    "point": 5
+   },
+   {
+    "name": {
+     "en": "Old Nice",
+     "fr": "Vieux-Nice"
+    },
+    "point": 7
+   },
+   {
+    "name": {
+     "en": "Port Lympia",
+     "fr": "Port Lympia"
+    },
+    "point": 9
+   }
+  ]
+ },
+ {
+  "id": "rome_vatican",
+  "title": {
+   "en": "Colosseum → Vatican",
+   "fr": "Colisée → Vatican"
+  },
+  "region": {
+   "en": "Rome, Italy",
+   "fr": "Rome, Italie"
+  },
+  "premium": true,
+  "points": [
+   [
+    41.89021,
+    12.49223
+   ],
+   [
+    41.8925,
+    12.4853
+   ],
+   [
+    41.896,
+    12.4823
+   ],
+   [
+    41.9009,
+    12.4833
+   ],
+   [
+    41.8986,
+    12.4769
+   ],
+   [
+    41.8992,
+    12.4731
+   ],
+   [
+    41.9031,
+    12.4663
+   ],
+   [
+    41.9022,
+    12.4598
+   ],
+   [
+    41.9022,
+    12.4539
+   ]
+  ],
+  "stages": [
+   {
+    "name": {
+     "en": "Colosseum",
+     "fr": "Colisée"
+    },
+    "point": 0
+   },
+   {
+    "name": {
+     "en": "Roman Forum",
+     "fr": "Forum romain"
+    },
+    "point": 1
+   },
+   {
+    "name": {
+     "en": "Trevi Fountain",
+     "fr": "Fontaine de Trevi"
+    },
+    "point": 3
+   },
+   {
+    "name": {
+     "en": "Pantheon",
+     "fr": "Panthéon"
+    },
+    "point": 4
+   },
+   {
+    "name": {
+     "en": "Piazza Navona",
+     "fr": "Piazza Navona"
+    },
+    "point": 5
+   },
+   {
+    "name": {
+     "en": "Castel Sant'Angelo",
+     "fr": "Château Saint-Ange"
+    },
+    "point": 6
+   },
+   {
+    "name": {
+     "en": "St. Peter's Basilica",
+     "fr": "Basilique Saint-Pierre"
+    },
+    "point": 8
+   }
+  ]
+ },
+ {
+  "id": "london_royal",
+  "title": {
+   "en": "Royal London",
+   "fr": "Londres royal"
+  },
+  "region": {
+   "en": "London, United Kingdom",
+   "fr": "Londres, Royaume-Uni"
+  },
+  "premium": true,
+  "points": [
+   [
+    51.5081,
+    -0.0759
+   ],
+   [
+    51.51,
+    -0.087
+   ],
+   [
+    51.5138,
+    -0.0984
+   ],
+   [
+    51.5113,
+    -0.114
+   ],
+   [
+    51.508,
+    -0.1281
+   ],
+   [
+    51.5007,
+    -0.1246
+   ],
+   [
+    51.5025,
+    -0.135
+   ],
+   [
+    51.5014,
+    -0.1419
+   ],
+   [
+    51.5027,
+    -0.1527
+   ],
+   [
+    51.505,
+    -0.17
+   ],
+   [
+    51.5058,
+    -0.1877
+   ]
+  ],
+  "stages": [
+   {
+    "name": {
+     "en": "Tower of London",
+     "fr": "Tour de Londres"
+    },
+    "point": 0
+   },
+   {
+    "name": {
+     "en": "St Paul's Cathedral",
+     "fr": "Cathédrale Saint-Paul"
+    },
+    "point": 2
+   },
+   {
+    "name": {
+     "en": "Trafalgar Square",
+     "fr": "Trafalgar Square"
+    },
+    "point": 4
+   },
+   {
+    "name": {
+     "en": "Big Ben",
+     "fr": "Big Ben"
+    },
+    "point": 5
+   },
+   {
+    "name": {
+     "en": "Buckingham Palace",
+     "fr": "Palais de Buckingham"
+    },
+    "point": 7
+   },
+   {
+    "name": {
+     "en": "Hyde Park",
+     "fr": "Hyde Park"
+    },
+    "point": 8
+   },
+   {
+    "name": {
+     "en": "Kensington Palace",
+     "fr": "Palais de Kensington"
+    },
+    "point": 10
+   }
+  ]
+ },
+ {
+  "id": "new_york_manhattan",
+  "title": {
+   "en": "Brooklyn → Central Park",
+   "fr": "Brooklyn → Central Park"
+  },
+  "region": {
+   "en": "New York, United States",
+   "fr": "New York, États-Unis"
+  },
+  "premium": true,
+  "points": [
+   [
+    40.7033,
+    -73.9903
+   ],
+   [
+    40.7061,
+    -73.9969
+   ],
+   [
+    40.7128,
+    -74.006
+   ],
+   [
+    40.72,
+    -74.002
+   ],
+   [
+    40.7308,
+    -73.9973
+   ],
+   [
+    40.7411,
+    -73.9897
+   ],
+   [
+    40.7484,
+    -73.9857
+   ],
+   [
+    40.758,
+    -73.9855
+   ],
+   [
+    40.7681,
+    -73.9819
+   ],
+   [
+    40.7718,
+    -73.975
+   ],
+   [
+    40.7756,
+    -73.9718
+   ]
+  ],
+  "stages": [
+   {
+    "name": {
+     "en": "Brooklyn Bridge",
+     "fr": "Pont de Brooklyn"
+    },
+    "point": 0
+   },
+   {
+    "name": {
+     "en": "City Hall",
+     "fr": "City Hall"
+    },
+    "point": 2
+   },
+   {
+    "name": {
+     "en": "Washington Square",
+     "fr": "Washington Square"
+    },
+    "point": 4
+   },
+   {
+    "name": {
+     "en": "Flatiron Building",
+     "fr": "Flatiron Building"
+    },
+    "point": 5
+   },
+   {
+    "name": {
+     "en": "Empire State Building",
+     "fr": "Empire State Building"
+    },
+    "point": 6
+   },
+   {
+    "name": {
+     "en": "Times Square",
+     "fr": "Times Square"
+    },
+    "point": 7
+   },
+   {
+    "name": {
+     "en": "Central Park",
+     "fr": "Central Park"
+    },
+    "point": 10
+   }
+  ]
+ },
+ {
+  "id": "tour_mont_blanc",
+  "title": {
+   "en": "Tour du Mont Blanc",
+   "fr": "Tour du Mont-Blanc"
+  },
+  "region": {
+   "en": "France, Italy, Switzerland",
+   "fr": "France, Italie, Suisse"
+  },
+  "premium": true,
+  "points": [
+   [
+    45.8908,
+    6.7983
+   ],
+   [
+    45.8213,
+    6.728
+   ],
+   [
+    45.744,
+    6.71
+   ],
+   [
+    45.698,
+    6.736
+   ],
+   [
+    45.743,
+    6.845
+   ],
+   [
+    45.7914,
+    6.9722
+   ],
+   [
+    45.855,
+    7.045
+   ],
+   [
+    45.9318,
+    7.096
+   ],
+   [
+    46.027,
+    7.115
+   ],
+   [
+    46.056,
+    6.995
+   ],
+   [
+    45.9817,
+    6.9283
+   ],
+   [
+    45.9237,
+    6.8694
+   ],
+   [
+    45.8908,
+    6.7983
+   ]
+  ],
+  "stages": [
+   {
+    "name": {
+     "en": "Les Houches",
+     "fr": "Les Houches"
+    },
+    "point": 0
+   },
+   {
+    "name": {
+     "en": "Les Contamines",
+     "fr": "Les Contamines"
+    },
+    "point": 1
+   },
+   {
+    "name": {
+     "en": "Les Chapieux",
+     "fr": "Les Chapieux"
+    },
+    "point": 3
+   },
+   {
+    "name": {
+     "en": "Courmayeur",
+     "fr": "Courmayeur"
+    },
+    "point": 5
+   },
+   {
+    "name": {
+     "en": "La Fouly",
+     "fr": "La Fouly"
+    },
+    "point": 7
+   },
+   {
+    "name": {
+     "en": "Champex",
+     "fr": "Champex"
+    },
+    "point": 8
+   },
+   {
+    "name": {
+     "en": "Trient",
+     "fr": "Trient"
+    },
+    "point": 9
+   },
+   {
+    "name": {
+     "en": "Chamonix",
+     "fr": "Chamonix"
+    },
+    "point": 11
+   },
+   {
+    "name": {
+     "en": "Back to Les Houches",
+     "fr": "Retour aux Houches"
+    },
+    "point": 12
+   }
+  ]
+ },
+ {
+  "id": "camino_frances",
+  "title": {
+   "en": "Camino de Santiago",
+   "fr": "Chemin de Compostelle"
+  },
+  "region": {
+   "en": "France, Spain",
+   "fr": "France, Espagne"
+  },
+  "premium": true,
+  "points": [
+   [
+    43.1631,
+    -1.2378
+   ],
+   [
+    43.0092,
+    -1.3197
+   ],
+   [
+    42.8125,
+    -1.6458
+   ],
+   [
+    42.6719,
+    -1.8146
+   ],
+   [
+    42.6714,
+    -2.0322
+   ],
+   [
+    42.4627,
+    -2.445
+   ],
+   [
+    42.4163,
+    -2.7297
+   ],
+   [
+    42.4406,
+    -2.9533
+   ],
+   [
+    42.3439,
+    -3.6969
+   ],
+   [
+    42.2886,
+    -4.1378
+   ],
+   [
+    42.2672,
+    -4.4058
+   ],
+   [
+    42.3375,
+    -4.6033
+   ],
+   [
+    42.3711,
+    -5.03
+   ],
+   [
+    42.5987,
+    -5.5671
+   ],
+   [
+    42.4589,
+    -6.0563
+   ],
+   [
+    42.546,
+    -6.5962
+   ],
+   [
+    42.6066,
+    -6.8105
+   ],
+   [
+    42.7076,
+    -7.043
+   ],
+   [
+    42.7808,
+    -7.4142
+   ],
+   [
+    42.8077,
+    -7.6156
+   ],
+   [
+    42.873,
+    -7.869
+   ],
+   [
+    42.9269,
+    -8.1638
+   ],
+   [
+    42.8805,
+    -8.5457
+   ]
+  ],
+  "stages": [
+   {
+    "name": {
+     "en": "Saint-Jean-Pied-de-Port",
+     "fr": "Saint-Jean-Pied-de-Port"
+    },
+    "point": 0
+   },
+   {
+    "name": {
+     "en": "Roncesvalles",
+     "fr": "Roncevaux"
+    },
+    "point": 1
+   },
+   {
+    "name": {
+     "en": "Pamplona",
+     "fr": "Pampelune"
+    },
+    "point": 2
+   },
+   {
+    "name": {
+     "en": "Logroño",
+     "fr": "Logroño"
+    },
+    "point": 5
+   },
+   {
+    "name": {
+     "en": "Burgos",
+     "fr": "Burgos"
+    },
+    "point": 8
+   },
+   {
+    "name": {
+     "en": "León",
+     "fr": "León"
+    },
+    "point": 13
+   },
+   {
+    "name": {
+     "en": "Astorga",
+     "fr": "Astorga"
+    },
+    "point": 14
+   },
+   {
+    "name": {
+     "en": "O Cebreiro",
+     "fr": "O Cebreiro"
+    },
+    "point": 17
+   },
+   {
+    "name": {
+     "en": "Sarria",
+     "fr": "Sarria"
+    },
+    "point": 18
+   },
+   {
+    "name": {
+     "en": "Santiago de Compostela",
+     "fr": "Saint-Jacques-de-Compostelle"
+    },
+    "point": 22
+   }
+  ]
+ }
+]

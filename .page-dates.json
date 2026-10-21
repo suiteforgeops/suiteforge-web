@@ -79,6 +79,34 @@
   "date": "2026-10-21",
   "hash": "6802d82e206b85a1045ea5a4b2cf7667"
  },
+ "fr/walkquest/v/camino_frances/index.html": {
+  "date": "2026-10-21",
+  "hash": "f8a6e266d7681b59e1f1bfd6edd882ec"
+ },
+ "fr/walkquest/v/london_royal/index.html": {
+  "date": "2026-10-21",
+  "hash": "201616068c7140d04a3c01021597192b"
+ },
+ "fr/walkquest/v/new_york_manhattan/index.html": {
+  "date": "2026-10-21",
+  "hash": "0fd2361e2dcb0c57899cf8e750cc9e0a"
+ },
+ "fr/walkquest/v/nice_seafront/index.html": {
+  "date": "2026-10-21",
+  "hash": "fb5214ef6f37c370093e6fff14496e31"
+ },
+ "fr/walkquest/v/paris_versailles/index.html": {
+  "date": "2026-10-21",
+  "hash": "05d8a2e374023263a03659bc84949515"
+ },
+ "fr/walkquest/v/rome_vatican/index.html": {
+  "date": "2026-10-21",
+  "hash": "84cc9267a8d4a8c032a07a0977fbdf5a"
+ },
+ "fr/walkquest/v/tour_mont_blanc/index.html": {
+  "date": "2026-10-21",
+  "hash": "5ab8396c07fb3fcee5d846a55e048383"
+ },
  "index.html": {
   "date": "2026-10-21",
   "hash": "c809af15d970642eadea1351962273e0"
@@ -134,5 +162,33 @@
  "walkquest/terms/index.html": {
   "date": "2026-10-21",
   "hash": "361fcba3bf5b96688827fc4f9994fb28"
+ },
+ "walkquest/v/camino_frances/index.html": {
+  "date": "2026-10-21",
+  "hash": "d719e7ec07d630354f71b7d8b7efdca1"
+ },
+ "walkquest/v/london_royal/index.html": {
+  "date": "2026-10-21",
+  "hash": "8d86c1167a5749d558db0db358024e6f"
+ },
+ "walkquest/v/new_york_manhattan/index.html": {
+  "date": "2026-10-21",
+  "hash": "a223bac95da488b40e375a9668acfc64"
+ },
+ "walkquest/v/nice_seafront/index.html": {
+  "date": "2026-10-21",
+  "hash": "635b6f108bc86d6d3bea57223359fc6f"
+ },
+ "walkquest/v/paris_versailles/index.html": {
+  "date": "2026-10-21",
+  "hash": "1cf2d4630630854f58b0207b59ffc53d"
+ },
+ "walkquest/v/rome_vatican/index.html": {
+  "date": "2026-10-21",
+  "hash": "bbaa38264d9242206c5fbaed42cfa905"
+ },
+ "walkquest/v/tour_mont_blanc/index.html": {
+  "date": "2026-10-21",
+  "hash": "b5fa1ec4738d323b2dde7232f62e1238"
  }
 }
