@@ -6,7 +6,7 @@ Generates, in English (root) and French (/fr/): the home page, one landing + pri
 per app; plus 404.html, sitemap.xml, robots.txt, llms.txt, CNAME. French texts: content_fr.py.
 Single source of truth = APPS config below. No external deps.
 """
-import os, html, json, hashlib, datetime, math
+import os, html, json, hashlib, datetime, math, base64
 from content_fr import FR_APPS, FR_HOME_FAQ
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -524,6 +524,10 @@ def page_path(key, lang=None):
         return f"{base}/walkquest/v/{key[1]}/"
     if key[0] == "shared_routine":
         return f"{base}/routineflow/r/"
+    if key[0] == "templates":
+        return f"{base}/routineflow/routines/"
+    if key[0] == "template":
+        return f"{base}/routineflow/routines/{key[1].replace('_', '-')}/"
     return f"{base}/{key[1]}/{LEGAL_SLUG[key[2]][lang]}/"
 
 def page_url(key, lang=None):
@@ -931,6 +935,20 @@ def build_compare(slug):
   </div>
 </section>'''
 
+def templates_teaser(slug):
+    """RoutineFlow only: link to the ready-made routine pages."""
+    if slug != "routineflow":
+        return ""
+    names = and_list([t["name"][LANG] for t in ROUTINE_TEMPLATES if not t["premium"]])
+    return f'''<section class="section-sm">
+  <div class="wrap narrow reveal" style="text-align:center;">
+    <p class="eyebrow">{T("Ready-made routines", "Routines prêtes à l'emploi")}</p>
+    <h2 style="margin-top:10px;">{T(f"{len(ROUTINE_TEMPLATES)} routines to start from", f"{len(ROUTINE_TEMPLATES)} routines pour commencer")}</h2>
+    <p style="margin-top:12px;">{T(f"Morning, evening, focus, body and quick breaks, with their steps and durations. Free: {names}.", f"Matin, soir, concentration, corps et pauses express, avec leurs étapes et leurs durées. Gratuites : {names}.")}</p>
+    <p style="margin-top:18px;"><a class="btn btn-ghost" href="{page_path(("templates",))}">{T("See the routines", "Voir les routines")} {svg("arrow")}</a></p>
+  </div>
+</section>'''
+
 def build_landing(slug):
     a = A(slug)
     key = ("app", slug)
@@ -1022,6 +1040,7 @@ def build_landing(slug):
   </div>
 </section>
 
+{templates_teaser(slug)}
 {build_compare(slug)}
 <section class="section{' band' if a.get('compare') else ''}">
   <div class="wrap">
@@ -1536,6 +1555,171 @@ def build_shared_routine():
 <script src="{ver("/assets/routine-share.js")}" defer></script>
 {scripts()}'''
 
+# ---------------------------------------------------------------------------
+# ROUTINEFLOW TEMPLATES — one page per ready-made routine, plus an index, so the
+# routines can be found on the web (2.1 spec §2.5).
+# Data: routineflow/templates.json, copied from the Xcode project by sync_routineflow_templates.py.
+# The app's pitches say "tu"; the site says "vous", hence its own short introductions.
+# ---------------------------------------------------------------------------
+with open(os.path.join(ROOT, "routineflow", "templates.json"), encoding="utf-8") as _f:
+    ROUTINE_TEMPLATES = json.load(_f)
+TEMPLATES_BY_ID = {t["id"]: t for t in ROUTINE_TEMPLATES}
+
+TEMPLATE_INTRO = {
+    "morning_energy": ("A glass of water, some stretching, two minutes of deep breathing and a cool shower: a gentle way to wake your body up before breakfast.",
+                       "Un verre d'eau, quelques étirements, deux minutes de respiration profonde et une douche fraîche : de quoi réveiller le corps en douceur avant le petit-déjeuner."),
+    "morning_calm": ("For a start without rushing: some daylight, ten minutes of meditation, a few lines in a journal, then tea or coffee, slowly.",
+                     "Pour démarrer sans précipitation : un peu de lumière, dix minutes de méditation, quelques lignes de journal, puis un thé ou un café sans se presser."),
+    "morning_express": ("When time is short: a glass of water, three stretches and two minutes to plan the day.",
+                        "Quand le temps manque : un verre d'eau, trois étirements et deux minutes pour planifier la journée."),
+    "evening_calm": ("Prepare tomorrow, turn the screens off, read for ten minutes and breathe: a simple transition into the night.",
+                     "Préparer le lendemain, éteindre les écrans, lire dix minutes et respirer : une transition simple vers la nuit."),
+    "evening_no_screen": ("Half an hour without screens before bed: a quick tidy-up, a warm shower, some reading, then three good things from the day.",
+                          "Une demi-heure sans écran avant de dormir : un petit rangement, une douche chaude, de la lecture, puis trois bonnes choses de la journée."),
+    "skincare_evening": ("Remove makeup, cleanse, then serum and moisturizer: each step with its own timer, so none gets rushed.",
+                         "Démaquillage, nettoyage, sérum et crème hydratante : chaque étape a son minuteur, pour ne rien bâcler."),
+    "desk_break": ("Stand up, look far away, loosen your neck and shoulders, drink some water: a short break between two screen sessions.",
+                   "Se lever, regarder au loin, détendre la nuque et les épaules, boire un verre d'eau : une courte pause entre deux sessions d'écran."),
+    "before_work": ("Clear the desk, set one goal for the session and turn on a Focus mode before you start.",
+                    "Ranger le bureau, fixer un objectif pour la session et activer un mode Concentration avant de commencer."),
+    "mobility_10": ("Six gentle movements, from neck to ankles, to loosen up in ten minutes.",
+                    "Six mouvements doux, de la nuque aux chevilles, pour se dérouiller en dix minutes."),
+    "breathing_478": ("Settle in, then breathe in for 4 seconds, hold for 7 and breathe out for 8, a few minutes in a row.",
+                      "Vous vous installez, puis vous inspirez 4 secondes, retenez 7 et expirez 8, pendant quelques minutes."),
+    "reset_2min": ("A minute of slow breathing, a glass of water, a minute of stretching: a breather when the day gets heavy.",
+                   "Une minute de respiration lente, un verre d'eau, une minute d'étirement : de quoi souffler quand la journée devient lourde."),
+    "slow_weekend": ("Coffee in peace, a walk outside, a call to someone you love and some reading: a weekend morning that takes its time.",
+                     "Un café au calme, une balade dehors, un appel à un proche et un moment de lecture : une matinée de week-end qui prend son temps."),
+}
+assert set(TEMPLATE_INTRO) == set(TEMPLATES_BY_ID), "a template is missing its site introduction"
+
+TEMPLATE_KIND = {
+    "morning": ("morning routine", "routine du matin"),
+    "evening": ("evening routine", "routine du soir"),
+    "focus": ("focus routine", "routine de concentration"),
+    "body": ("body and breathing routine", "routine corps et respiration"),
+    "quick": ("quick routine", "routine express"),
+}
+
+def duration_text(seconds):
+    """5 min, 30 s, 1 min 30 s, 1 h 5 min."""
+    h, rest = divmod(int(seconds), 3600)
+    m, s = divmod(rest, 60)
+    if h:
+        return f"{h} h" + (f" {m} min" if m else "")
+    if m:
+        return f"{m} min" + (f" {s} s" if s else "")
+    return f"{s} s"
+
+def template_seconds(t):
+    return sum(st["seconds"] for st in t["steps"] if st["timed"])
+
+def template_app_link(t):
+    """routineflow://r#… — the shared-routine format of the app (RoutineShareLink.swift)."""
+    payload = {"v": 1, "n": t["name"][LANG], "i": t["icon"], "c": t["color"],
+               "s": [{"n": st["name"][LANG], "i": st["icon"], "d": st["seconds"], "t": st["timed"]} for st in t["steps"]]}
+    data = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    return "routineflow://r#" + base64.urlsafe_b64encode(data).decode("ascii").rstrip("=")
+
+def routineflow_store_link(campaign):
+    country = "fr/" if LANG == "fr" else ""
+    return f"https://apps.apple.com/{country}app/id{APPS['routineflow']['appstore_id']}?ct={campaign}"
+
+def routineflow_badge(campaign):
+    return (f'<a class="appstore" href="{routineflow_store_link(campaign)}" aria-label="{T("Download RoutineFlow on the App Store", "Télécharger RoutineFlow dans l\'App Store")}">'
+            f'{APPLE}<span><small>{T("Download on the", "Télécharger dans l\'")}</small><strong>App Store</strong></span></a>')
+
+def build_template(tid):
+    t = TEMPLATES_BY_ID[tid]
+    key = ("template", tid)
+    a = A("routineflow")
+    name = t["name"][LANG]
+    kind = T(*TEMPLATE_KIND[t["category"]])
+    total = template_seconds(t)
+    count = len(t["steps"])
+    total_txt = duration_text(total)
+    page_title = T(f"{name}: a {total // 60}-minute {kind} in {count} steps — RoutineFlow",
+                   f"{name} : une {kind} de {total // 60} minutes en {count} étapes — RoutineFlow")
+    intro = T(*TEMPLATE_INTRO[tid])
+    desc = f"{intro} {T(f'{count} steps, {total_txt}, guided out loud in RoutineFlow.', f'{count} étapes, {total_txt}, guidées à voix haute dans RoutineFlow.')}"
+    q = T(f"How long does the {name} routine take?", f"Combien de temps dure la routine {name} ?")
+    untimed = sum(1 for st in t["steps"] if not st["timed"])
+    ans = T(f"About {total_txt} for the timed steps" + (f", plus {untimed} step{'s' if untimed > 1 else ''} at your own pace." if untimed else "."),
+            f"Environ {total_txt} pour les étapes minutées" + (f", plus {untimed} étape{'s' if untimed > 1 else ''} à votre rythme." if untimed else "."))
+    steps = "".join(
+        f'<li><strong>{esc(st["name"][LANG])}</strong> <span style="color:var(--ink-faint)">· {duration_text(st["seconds"]) if st["timed"] else T("at your own pace", "à votre rythme")}</span></li>'
+        for st in t["steps"])
+    if t["premium"]:
+        access = T("This routine is included in RoutineFlow Premium: find it in the app under “Explore templates”, ready to use or adjust.",
+                   "Cette routine est incluse dans RoutineFlow Premium : retrouvez-la dans l'app, dans « Explorer les modèles », prête à l'emploi ou à ajuster.")
+        add = ""
+    else:
+        access = T("This routine is free in RoutineFlow: add it in one tap if the app is installed, and adjust the steps to your taste.",
+                   "Cette routine est gratuite dans RoutineFlow : ajoutez-la en un geste si l'app est installée, et ajustez les étapes à votre goût.")
+        add = f'<p style="margin-top:24px;"><a class="btn btn-primary" href="{esc(template_app_link(t))}">{T("Add it to RoutineFlow", "L\'ajouter à RoutineFlow")}</a></p>'
+    jsonld = [webpage_jsonld(key, page_title, f"{page_url(('app', 'routineflow'))}#app"),
+              crumbs_jsonld([("SuiteForge", page_url("home")), ("RoutineFlow", page_url(("app", "routineflow"))),
+                             (T("Routines", "Routines"), page_url(("templates",))), (name, page_url(key))]),
+              faq_jsonld([(q, ans)])]
+    favicon = f'<link rel="icon" type="image/webp" href="{ver("/routineflow/icon.webp")}">' if has("/routineflow/icon.webp") else None
+    return f'''{head(page_title, desc, key, body_style=theme(a), jsonld=jsonld, og=og_image("routineflow"), favicon=favicon)}
+{site_header(key, "routineflow")}
+<main class="legal" id="main">
+  <nav class="crumbs" aria-label="{T("Breadcrumb", "Fil d'Ariane")}"><a href="{page_path("home")}">SuiteForge</a><span>/</span><a href="{page_path(("app", "routineflow"))}">RoutineFlow</a><span>/</span><a href="{page_path(("templates",))}">{T("Routines", "Routines")}</a><span>/</span><span>{esc(name)}</span></nav>
+  <p class="eyebrow">{esc(t["category_name"][LANG])} · {esc(kind)}</p>
+  <h1>{esc(name)}</h1>
+  <p class="lede">{count} {T("steps", "étapes")} · {total_txt}</p>
+  <p>{esc(intro)}</p>
+  <h2>{T("The steps", "Les étapes")}</h2>
+  <ol>{steps}</ol>
+  <h2>{esc(q)}</h2>
+  <p>{esc(ans)}</p>
+  <h2>{T("Do it with RoutineFlow", "La faire avec RoutineFlow")}</h2>
+  <p>{T("RoutineFlow announces each step out loud, runs the timer and moves on by itself, even with the screen locked. It can also keep distracting apps locked until the routine is done.",
+        "RoutineFlow annonce chaque étape à voix haute, lance le minuteur et passe à la suivante tout seul, même écran verrouillé. Il peut aussi bloquer les apps qui distraient tant que la routine n'est pas faite.")} {access}</p>
+  {add}
+  <p style="margin-top:24px;">{routineflow_badge("web_template")}</p>
+  <p style="margin-top:40px;"><a href="{page_path(("templates",))}">← {T("All routines", "Toutes les routines")}</a></p>
+</main>
+{site_footer("routineflow")}
+{scripts()}'''
+
+def build_templates_index():
+    key = ("templates",)
+    a = A("routineflow")
+    page_title = T("Ready-made routines: morning, evening, focus — RoutineFlow",
+                   "Routines prêtes à l'emploi : matin, soir, concentration — RoutineFlow")
+    desc = T(f"{len(ROUTINE_TEMPLATES)} ready-made routines with their steps and durations: morning, evening, focus, body and quick breaks. Free or included in RoutineFlow Premium.",
+             f"{len(ROUTINE_TEMPLATES)} routines prêtes à l'emploi, avec leurs étapes et leurs durées : matin, soir, concentration, corps et pauses express. Gratuites ou incluses dans RoutineFlow Premium.")
+    groups = ""
+    for category in TEMPLATE_KIND:
+        items = [t for t in ROUTINE_TEMPLATES if t["category"] == category]
+        if not items:
+            continue
+        rows = "".join(
+            f'<li><a href="{page_path(("template", t["id"]))}">{esc(t["name"][LANG])}</a> '
+            f'<span style="color:var(--ink-faint)">· {len(t["steps"])} {T("steps", "étapes")} · {duration_text(template_seconds(t))} · '
+            f'{T("Premium", "Premium") if t["premium"] else T("free", "gratuite")}</span></li>'
+            for t in items)
+        groups += f'<h2>{esc(items[0]["category_name"][LANG])}</h2><ul>{rows}</ul>'
+    jsonld = [webpage_jsonld(key, page_title, f"{page_url(('app', 'routineflow'))}#app"),
+              crumbs_jsonld([("SuiteForge", page_url("home")), ("RoutineFlow", page_url(("app", "routineflow"))),
+                             (T("Routines", "Routines"), page_url(key))])]
+    favicon = f'<link rel="icon" type="image/webp" href="{ver("/routineflow/icon.webp")}">' if has("/routineflow/icon.webp") else None
+    return f'''{head(page_title, desc, key, body_style=theme(a), jsonld=jsonld, og=og_image("routineflow"), favicon=favicon)}
+{site_header(key, "routineflow")}
+<main class="legal" id="main">
+  <nav class="crumbs" aria-label="{T("Breadcrumb", "Fil d'Ariane")}"><a href="{page_path("home")}">SuiteForge</a><span>/</span><a href="{page_path(("app", "routineflow"))}">RoutineFlow</a><span>/</span><span>{T("Routines", "Routines")}</span></nav>
+  <p class="eyebrow">RoutineFlow</p>
+  <h1>{T("Ready-made routines", "Routines prêtes à l'emploi")}</h1>
+  <p class="lede">{T("Each one with its steps and durations, to follow as is or adjust. RoutineFlow guides them step by step, out loud.",
+                     "Chacune avec ses étapes et ses durées, à suivre telle quelle ou à ajuster. RoutineFlow les guide pas à pas, à voix haute.")}</p>
+  {groups}
+  <p style="margin-top:32px;">{routineflow_badge("web_template")}</p>
+</main>
+{site_footer("routineflow")}
+{scripts()}'''
+
 def apple_app_site_association():
     """Lets iOS open journey and shared-routine links in the apps (universal links)."""
     return json.dumps({"applinks": {"details": [
@@ -1614,6 +1798,7 @@ def all_pages():
     for slug in ORDER:
         pages += [(("app", slug), "0.8"), (("legal", slug, "privacy"), "0.3"), (("legal", slug, "terms"), "0.3")]
     pages += [(("journey", jid), "0.5") for jid in JOURNEYS]
+    pages += [(("templates",), "0.6")] + [(("template", t["id"]), "0.5") for t in ROUTINE_TEMPLATES]
     return pages
 
 def build_page(key):
@@ -1625,6 +1810,10 @@ def build_page(key):
         return build_landing(key[1])
     if key[0] == "journey":
         return build_journey(key[1])
+    if key[0] == "templates":
+        return build_templates_index()
+    if key[0] == "template":
+        return build_template(key[1])
     return build_privacy(key[1]) if key[2] == "privacy" else build_terms(key[1])
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 {
  "fastclear/index.html": {
   "date": "2026-10-22",
-  "hash": "1bef027b60e9b2156e5626479ef242ef"
+  "hash": "3640a6a25ec8762eb51afc176b7bbd69"
  },
  "fastclear/privacy/index.html": {
   "date": "2026-10-22",
@@ -21,7 +21,7 @@
  },
  "fr/fastclear/index.html": {
   "date": "2026-10-22",
-  "hash": "4c238dc72c548959d17794817ff05c9c"
+  "hash": "5d8029962ece0d7db97022e743569424"
  },
  "fr/index.html": {
   "date": "2026-10-22",
@@ -37,7 +37,7 @@
  },
  "fr/jezko/index.html": {
   "date": "2026-10-22",
-  "hash": "93b4d34d56c2ca7213f8221302612b41"
+  "hash": "fe6a8d96aa879f3b19145c804101b3ac"
  },
  "fr/keepcontact/conditions/index.html": {
   "date": "2026-10-22",
@@ -49,7 +49,7 @@
  },
  "fr/keepcontact/index.html": {
   "date": "2026-10-22",
-  "hash": "f7e71a062ece12ddf31b28948009e900"
+  "hash": "3bd11f0525791e8c247401d23282fca2"
  },
  "fr/mentions-legales/index.html": {
   "date": "2026-10-22",
@@ -65,11 +65,63 @@
  },
  "fr/routineflow/index.html": {
   "date": "2026-10-22",
-  "hash": "f0f4970d8ed2db2d010a5daa1f8a7bb9"
+  "hash": "47d46d774208f5803b15eddff630e2c9"
  },
  "fr/routineflow/r/index.html": {
   "date": "2026-10-22",
   "hash": "e56d887b1f4657b4450eef9281167c8c"
+ },
+ "fr/routineflow/routines/before-work/index.html": {
+  "date": "2026-10-22",
+  "hash": "cc5ba56b0d7c2e38443b2ec34c1a7315"
+ },
+ "fr/routineflow/routines/breathing-478/index.html": {
+  "date": "2026-10-22",
+  "hash": "56b66e8ae1d5484219c46908c1ff41d6"
+ },
+ "fr/routineflow/routines/desk-break/index.html": {
+  "date": "2026-10-22",
+  "hash": "4e81e05148dd02be1a0eab0d6fa60112"
+ },
+ "fr/routineflow/routines/evening-calm/index.html": {
+  "date": "2026-10-22",
+  "hash": "673b67f155d5e4a0a7eb5207936b2014"
+ },
+ "fr/routineflow/routines/evening-no-screen/index.html": {
+  "date": "2026-10-22",
+  "hash": "d5d140fbbef05f25481ffa16b96aa699"
+ },
+ "fr/routineflow/routines/index.html": {
+  "date": "2026-10-22",
+  "hash": "268637a2e96b83c15e080aa19f9f1abc"
+ },
+ "fr/routineflow/routines/mobility-10/index.html": {
+  "date": "2026-10-22",
+  "hash": "a41d3227f26b177acd19f1707409a4ab"
+ },
+ "fr/routineflow/routines/morning-calm/index.html": {
+  "date": "2026-10-22",
+  "hash": "5bfcc8129f00d8dd0edf9c916e6dc689"
+ },
+ "fr/routineflow/routines/morning-energy/index.html": {
+  "date": "2026-10-22",
+  "hash": "5f30c8b5625d2719efd2c64765f1b966"
+ },
+ "fr/routineflow/routines/morning-express/index.html": {
+  "date": "2026-10-22",
+  "hash": "aa28aca7438a0232c7a7400fa7a56124"
+ },
+ "fr/routineflow/routines/reset-2min/index.html": {
+  "date": "2026-10-22",
+  "hash": "5eff190785a87854d4bfb4242941f51e"
+ },
+ "fr/routineflow/routines/skincare-evening/index.html": {
+  "date": "2026-10-22",
+  "hash": "cfd30e699a19d453f71ed20da39886f0"
+ },
+ "fr/routineflow/routines/slow-weekend/index.html": {
+  "date": "2026-10-22",
+  "hash": "1fe3e2ad5344914f9549c05cdc0bc8b0"
  },
  "fr/walkquest/conditions/index.html": {
   "date": "2026-10-22",
@@ -81,7 +133,7 @@
  },
  "fr/walkquest/index.html": {
   "date": "2026-10-22",
-  "hash": "17af47cfb9d70531092cee1e25954a67"
+  "hash": "6aeb785ad6543d9f062b25bf506ace0e"
  },
  "fr/walkquest/v/camino_frances/index.html": {
   "date": "2026-10-22",
@@ -117,7 +169,7 @@
  },
  "jezko/index.html": {
   "date": "2026-10-22",
-  "hash": "23b6f0a2c6d998cc2d87df666fdd500d"
+  "hash": "ae728cb367ae3491f040a27b3b3bca6c"
  },
  "jezko/privacy/index.html": {
   "date": "2026-10-22",
@@ -129,7 +181,7 @@
  },
  "keepcontact/index.html": {
   "date": "2026-10-22",
-  "hash": "30182728d910a6dcef8135104df0e6e7"
+  "hash": "c4461e6a9367b96df5988d7e5e91ac9a"
  },
  "keepcontact/privacy/index.html": {
   "date": "2026-10-22",
@@ -145,7 +197,7 @@
  },
  "routineflow/index.html": {
   "date": "2026-10-22",
-  "hash": "df922ffef356a4c3dee3cc6ca7ca1eaa"
+  "hash": "687e4ae5ee1c8ebea46ee0604efba84e"
  },
  "routineflow/privacy/index.html": {
   "date": "2026-10-22",
@@ -155,13 +207,65 @@
   "date": "2026-10-22",
   "hash": "3e82131be74a33b4f665e7e8b77e1fbd"
  },
+ "routineflow/routines/before-work/index.html": {
+  "date": "2026-10-22",
+  "hash": "0475e05d4d4733e8f5699cf6a5ba255b"
+ },
+ "routineflow/routines/breathing-478/index.html": {
+  "date": "2026-10-22",
+  "hash": "86a31f158c59d8bb93dd0890c4bfa658"
+ },
+ "routineflow/routines/desk-break/index.html": {
+  "date": "2026-10-22",
+  "hash": "aa46be778a5d98f3be991bcd3ecca3d8"
+ },
+ "routineflow/routines/evening-calm/index.html": {
+  "date": "2026-10-22",
+  "hash": "002cfc8886b064cb99e8f59780aca49d"
+ },
+ "routineflow/routines/evening-no-screen/index.html": {
+  "date": "2026-10-22",
+  "hash": "4368e4b8ef806eb99fb58bacfb6c2641"
+ },
+ "routineflow/routines/index.html": {
+  "date": "2026-10-22",
+  "hash": "4b15ff87a79a44a5d5c161a5c6a2f6fa"
+ },
+ "routineflow/routines/mobility-10/index.html": {
+  "date": "2026-10-22",
+  "hash": "f1abcab9b10d9ba509db9e05aa812177"
+ },
+ "routineflow/routines/morning-calm/index.html": {
+  "date": "2026-10-22",
+  "hash": "e3eefcbdb4ad53ddd36dd09ee144c72e"
+ },
+ "routineflow/routines/morning-energy/index.html": {
+  "date": "2026-10-22",
+  "hash": "00ee6e164ce627ae2add7a2e2560305b"
+ },
+ "routineflow/routines/morning-express/index.html": {
+  "date": "2026-10-22",
+  "hash": "69a3970297debbf59e510a6da341db42"
+ },
+ "routineflow/routines/reset-2min/index.html": {
+  "date": "2026-10-22",
+  "hash": "a3e6e2cae2b8d3bffb87c244598ce2c7"
+ },
+ "routineflow/routines/skincare-evening/index.html": {
+  "date": "2026-10-22",
+  "hash": "76edd2d9d499d93c87bef07fb000867e"
+ },
+ "routineflow/routines/slow-weekend/index.html": {
+  "date": "2026-10-22",
+  "hash": "e59ca8207271958af65099413a2123a9"
+ },
  "routineflow/terms/index.html": {
   "date": "2026-10-22",
   "hash": "4f86df4fd34c8c732b475db987780d93"
  },
  "walkquest/index.html": {
   "date": "2026-10-22",
-  "hash": "a3a4f2b8bdcd7a3140162a361447e621"
+  "hash": "f35424f879689e3679437ae1a94c26dd"
  },
  "walkquest/privacy/index.html": {
   "date": "2026-10-22",

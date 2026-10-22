@@ -1,0 +1,677 @@
+[
+ {
+  "id": "morning_energy",
+  "category": "morning",
+  "category_name": {
+   "en": "Morning",
+   "fr": "Matin"
+  },
+  "icon": "sun.max.fill",
+  "color": "#FF9500",
+  "premium": false,
+  "name": {
+   "en": "Energizing morning",
+   "fr": "Matin énergie"
+  },
+  "pitch": {
+   "en": "Wake your body up gently and start the day with energy.",
+   "fr": "Réveille ton corps en douceur et commence la journée avec de l'énergie."
+  },
+  "steps": [
+   {
+    "name": {
+     "en": "Glass of water",
+     "fr": "Verre d'eau"
+    },
+    "icon": "drop.fill",
+    "seconds": 60,
+    "timed": false
+   },
+   {
+    "name": {
+     "en": "Stretching",
+     "fr": "Étirements"
+    },
+    "icon": "figure.flexibility",
+    "seconds": 300,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Deep breathing",
+     "fr": "Respiration profonde"
+    },
+    "icon": "wind",
+    "seconds": 120,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Cool shower",
+     "fr": "Douche fraîche"
+    },
+    "icon": "shower.fill",
+    "seconds": 300,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Breakfast",
+     "fr": "Petit-déjeuner"
+    },
+    "icon": "cup.and.saucer.fill",
+    "seconds": 60,
+    "timed": false
+   }
+  ]
+ },
+ {
+  "id": "morning_calm",
+  "category": "morning",
+  "category_name": {
+   "en": "Morning",
+   "fr": "Matin"
+  },
+  "icon": "sunrise.fill",
+  "color": "#FF2D55",
+  "premium": true,
+  "name": {
+   "en": "Calm morning",
+   "fr": "Matin calme"
+  },
+  "pitch": {
+   "en": "A quiet start: light, meditation and a few lines in your journal.",
+   "fr": "Un départ tout en douceur : lumière, méditation et quelques lignes dans ton journal."
+  },
+  "steps": [
+   {
+    "name": {
+     "en": "Open the curtains",
+     "fr": "Ouvrir les rideaux"
+    },
+    "icon": "sun.horizon.fill",
+    "seconds": 120,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Meditation",
+     "fr": "Méditation"
+    },
+    "icon": "brain.head.profile",
+    "seconds": 600,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Journal",
+     "fr": "Journal"
+    },
+    "icon": "pencil.and.outline",
+    "seconds": 300,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Tea or coffee, slowly",
+     "fr": "Thé ou café, sans se presser"
+    },
+    "icon": "cup.and.saucer.fill",
+    "seconds": 60,
+    "timed": false
+   }
+  ]
+ },
+ {
+  "id": "morning_express",
+  "category": "morning",
+  "category_name": {
+   "en": "Morning",
+   "fr": "Matin"
+  },
+  "icon": "bolt.fill",
+  "color": "#FF9500",
+  "premium": true,
+  "name": {
+   "en": "5-minute morning",
+   "fr": "Matin express"
+  },
+  "pitch": {
+   "en": "For rushed mornings: the essentials in 5 minutes.",
+   "fr": "Pour les matins pressés : l'essentiel en 5 minutes."
+  },
+  "steps": [
+   {
+    "name": {
+     "en": "Glass of water",
+     "fr": "Verre d'eau"
+    },
+    "icon": "drop.fill",
+    "seconds": 60,
+    "timed": false
+   },
+   {
+    "name": {
+     "en": "3 stretches",
+     "fr": "3 étirements"
+    },
+    "icon": "figure.flexibility",
+    "seconds": 180,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Plan your day",
+     "fr": "Planifier la journée"
+    },
+    "icon": "checklist",
+    "seconds": 120,
+    "timed": true
+   }
+  ]
+ },
+ {
+  "id": "evening_calm",
+  "category": "evening",
+  "category_name": {
+   "en": "Evening",
+   "fr": "Soir"
+  },
+  "icon": "moon.stars.fill",
+  "color": "#5856D6",
+  "premium": false,
+  "name": {
+   "en": "Calm evening",
+   "fr": "Soir apaisant"
+  },
+  "pitch": {
+   "en": "Slow down, put screens away and get ready for a good night.",
+   "fr": "Ralentis, range les écrans et prépare une bonne nuit."
+  },
+  "steps": [
+   {
+    "name": {
+     "en": "Prepare tomorrow",
+     "fr": "Préparer demain"
+    },
+    "icon": "checklist",
+    "seconds": 60,
+    "timed": false
+   },
+   {
+    "name": {
+     "en": "Screens off",
+     "fr": "Écrans éteints"
+    },
+    "icon": "iphone.slash",
+    "seconds": 60,
+    "timed": false
+   },
+   {
+    "name": {
+     "en": "Reading",
+     "fr": "Lecture"
+    },
+    "icon": "book.fill",
+    "seconds": 600,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Breathing",
+     "fr": "Respiration"
+    },
+    "icon": "wind",
+    "seconds": 180,
+    "timed": true
+   }
+  ]
+ },
+ {
+  "id": "evening_no_screen",
+  "category": "evening",
+  "category_name": {
+   "en": "Evening",
+   "fr": "Soir"
+  },
+  "icon": "iphone.slash",
+  "color": "#AF52DE",
+  "premium": true,
+  "name": {
+   "en": "Screen-free evening",
+   "fr": "Soir sans écran"
+  },
+  "pitch": {
+   "en": "Half an hour without screens before bed.",
+   "fr": "Une demi-heure sans écran avant de dormir."
+  },
+  "steps": [
+   {
+    "name": {
+     "en": "Quick tidy-up",
+     "fr": "Petit rangement"
+    },
+    "icon": "sparkles",
+    "seconds": 300,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Warm shower",
+     "fr": "Douche chaude"
+    },
+    "icon": "shower.fill",
+    "seconds": 300,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Reading",
+     "fr": "Lecture"
+    },
+    "icon": "book.fill",
+    "seconds": 900,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Three good things today",
+     "fr": "Trois bonnes choses du jour"
+    },
+    "icon": "heart.fill",
+    "seconds": 120,
+    "timed": true
+   }
+  ]
+ },
+ {
+  "id": "skincare_evening",
+  "category": "evening",
+  "category_name": {
+   "en": "Evening",
+   "fr": "Soir"
+  },
+  "icon": "drop.fill",
+  "color": "#00C7BE",
+  "premium": true,
+  "name": {
+   "en": "Evening skincare",
+   "fr": "Skincare du soir"
+  },
+  "pitch": {
+   "en": "Your evening skincare routine, step by step.",
+   "fr": "Ta routine soin du soir, étape par étape."
+  },
+  "steps": [
+   {
+    "name": {
+     "en": "Remove makeup",
+     "fr": "Démaquillage"
+    },
+    "icon": "drop",
+    "seconds": 120,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Cleanse",
+     "fr": "Nettoyage"
+    },
+    "icon": "bubbles.and.sparkles.fill",
+    "seconds": 120,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Serum",
+     "fr": "Sérum"
+    },
+    "icon": "drop.fill",
+    "seconds": 60,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Moisturizer",
+     "fr": "Crème hydratante"
+    },
+    "icon": "hand.raised.fill",
+    "seconds": 120,
+    "timed": true
+   }
+  ]
+ },
+ {
+  "id": "desk_break",
+  "category": "focus",
+  "category_name": {
+   "en": "Workday",
+   "fr": "Journée de travail"
+  },
+  "icon": "desktopcomputer",
+  "color": "#007AFF",
+  "premium": false,
+  "name": {
+   "en": "Desk break",
+   "fr": "Pause bureau"
+  },
+  "pitch": {
+   "en": "5 minutes to rest your eyes, neck and mind.",
+   "fr": "5 minutes pour reposer tes yeux, ta nuque et ta tête."
+  },
+  "steps": [
+   {
+    "name": {
+     "en": "Stand up",
+     "fr": "Se lever"
+    },
+    "icon": "figure.stand",
+    "seconds": 60,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Look far away",
+     "fr": "Regarder au loin"
+    },
+    "icon": "eye.fill",
+    "seconds": 60,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Neck and shoulders",
+     "fr": "Nuque et épaules"
+    },
+    "icon": "figure.cooldown",
+    "seconds": 120,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Drink some water",
+     "fr": "Boire un verre d'eau"
+    },
+    "icon": "drop.fill",
+    "seconds": 60,
+    "timed": false
+   }
+  ]
+ },
+ {
+  "id": "before_work",
+  "category": "focus",
+  "category_name": {
+   "en": "Workday",
+   "fr": "Journée de travail"
+  },
+  "icon": "target",
+  "color": "#34C759",
+  "premium": true,
+  "name": {
+   "en": "Before deep work",
+   "fr": "Avant de travailler"
+  },
+  "pitch": {
+   "en": "Clear your desk and your head before a focus session.",
+   "fr": "Libère ton bureau et ta tête avant une session de concentration."
+  },
+  "steps": [
+   {
+    "name": {
+     "en": "Clear the desk",
+     "fr": "Ranger le bureau"
+    },
+    "icon": "sparkles",
+    "seconds": 120,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "One goal for the session",
+     "fr": "Un objectif pour la session"
+    },
+    "icon": "target",
+    "seconds": 120,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Turn on a Focus mode",
+     "fr": "Activer un mode Concentration"
+    },
+    "icon": "moon.fill",
+    "seconds": 60,
+    "timed": false
+   }
+  ]
+ },
+ {
+  "id": "mobility_10",
+  "category": "body",
+  "category_name": {
+   "en": "Body",
+   "fr": "Corps"
+  },
+  "icon": "figure.flexibility",
+  "color": "#34C759",
+  "premium": true,
+  "name": {
+   "en": "10-minute mobility",
+   "fr": "Mobilité 10 minutes"
+  },
+  "pitch": {
+   "en": "Six gentle moves to loosen up from head to toe.",
+   "fr": "Six mouvements doux pour se dérouiller de la tête aux pieds."
+  },
+  "steps": [
+   {
+    "name": {
+     "en": "Neck rolls",
+     "fr": "Rotations de la nuque"
+    },
+    "icon": "figure.cooldown",
+    "seconds": 90,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Shoulder circles",
+     "fr": "Cercles d'épaules"
+    },
+    "icon": "figure.arms.open",
+    "seconds": 90,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Spine twists",
+     "fr": "Rotations du buste"
+    },
+    "icon": "figure.flexibility",
+    "seconds": 90,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Hip circles",
+     "fr": "Cercles de hanches"
+    },
+    "icon": "figure.cross.training",
+    "seconds": 90,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Hamstring stretch",
+     "fr": "Étirement de l'arrière des jambes"
+    },
+    "icon": "figure.strengthtraining.functional",
+    "seconds": 120,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Ankles and calves",
+     "fr": "Chevilles et mollets"
+    },
+    "icon": "figure.walk",
+    "seconds": 120,
+    "timed": true
+   }
+  ]
+ },
+ {
+  "id": "breathing_478",
+  "category": "body",
+  "category_name": {
+   "en": "Body",
+   "fr": "Corps"
+  },
+  "icon": "wind",
+  "color": "#00C7BE",
+  "premium": true,
+  "name": {
+   "en": "4-7-8 breathing",
+   "fr": "Respiration 4-7-8"
+  },
+  "pitch": {
+   "en": "Breathe in for 4, hold for 7, breathe out for 8. Four minutes to calm down.",
+   "fr": "Inspire 4 secondes, bloque 7, expire 8. Quatre minutes pour s'apaiser."
+  },
+  "steps": [
+   {
+    "name": {
+     "en": "Sit comfortably",
+     "fr": "S'installer confortablement"
+    },
+    "icon": "figure.mind.and.body",
+    "seconds": 30,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "4-7-8 cycles",
+     "fr": "Cycles 4-7-8"
+    },
+    "icon": "wind",
+    "seconds": 180,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Normal breathing",
+     "fr": "Respiration libre"
+    },
+    "icon": "heart.fill",
+    "seconds": 30,
+    "timed": true
+   }
+  ]
+ },
+ {
+  "id": "reset_2min",
+  "category": "quick",
+  "category_name": {
+   "en": "Short & weekend",
+   "fr": "Court et week-end"
+  },
+  "icon": "arrow.clockwise",
+  "color": "#FF3B30",
+  "premium": true,
+  "name": {
+   "en": "2-minute reset",
+   "fr": "Reset 2 minutes"
+  },
+  "pitch": {
+   "en": "Hit pause anytime the day gets heavy.",
+   "fr": "Une pause express quand la journée devient lourde."
+  },
+  "steps": [
+   {
+    "name": {
+     "en": "Breathe slowly",
+     "fr": "Respirer lentement"
+    },
+    "icon": "wind",
+    "seconds": 60,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Drink some water",
+     "fr": "Boire un verre d'eau"
+    },
+    "icon": "drop.fill",
+    "seconds": 60,
+    "timed": false
+   },
+   {
+    "name": {
+     "en": "Stretch",
+     "fr": "S'étirer"
+    },
+    "icon": "figure.flexibility",
+    "seconds": 60,
+    "timed": true
+   }
+  ]
+ },
+ {
+  "id": "slow_weekend",
+  "category": "quick",
+  "category_name": {
+   "en": "Short & weekend",
+   "fr": "Court et week-end"
+  },
+  "icon": "leaf.fill",
+  "color": "#34C759",
+  "premium": true,
+  "name": {
+   "en": "Slow weekend",
+   "fr": "Week-end tranquille"
+  },
+  "pitch": {
+   "en": "A weekend morning that takes its time.",
+   "fr": "Une matinée de week-end qui prend son temps."
+  },
+  "steps": [
+   {
+    "name": {
+     "en": "Coffee in peace",
+     "fr": "Café au calme"
+    },
+    "icon": "cup.and.saucer.fill",
+    "seconds": 600,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Walk outside",
+     "fr": "Balade dehors"
+    },
+    "icon": "figure.walk",
+    "seconds": 1200,
+    "timed": true
+   },
+   {
+    "name": {
+     "en": "Call someone you love",
+     "fr": "Appeler un proche"
+    },
+    "icon": "phone.fill",
+    "seconds": 60,
+    "timed": false
+   },
+   {
+    "name": {
+     "en": "Reading",
+     "fr": "Lecture"
+    },
+    "icon": "book.fill",
+    "seconds": 900,
+    "timed": true
+   }
+  ]
+ }
+]
