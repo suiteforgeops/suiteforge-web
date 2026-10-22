@@ -1526,8 +1526,7 @@ ROUTINEFLOW_APP_ID = "5CADUTAX9N.com.suiteforge.routineflow"
 def build_shared_routine():
     key = ("shared_routine",)
     a = A("routineflow")
-    country = "fr/" if LANG == "fr" else ""
-    store = f"https://apps.apple.com/{country}app/id{APPS['routineflow']['appstore_id']}?ct=shared_routine"
+    store = routineflow_store_link("shared_routine")
     title = T("A routine shared with you — RoutineFlow", "Une routine partagée avec vous — RoutineFlow")
     desc = T("Someone shared a RoutineFlow routine with you. Add it to the app in one tap.",
              "On vous a partagé une routine RoutineFlow. Ajoutez-la à l'app en un geste.")
@@ -1621,9 +1620,13 @@ def template_app_link(t):
     data = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
     return "routineflow://r#" + base64.urlsafe_b64encode(data).decode("ascii").rstrip("=")
 
+APPSTORE_PROVIDER_TOKEN = "128717008"  # App Store Connect campaign links (pt)
+
 def routineflow_store_link(campaign):
+    """Campaign link counted in App Store Connect › Acquisition › Campaigns."""
     country = "fr/" if LANG == "fr" else ""
-    return f"https://apps.apple.com/{country}app/id{APPS['routineflow']['appstore_id']}?ct={campaign}"
+    return (f"https://apps.apple.com/{country}app/apple-store/id{APPS['routineflow']['appstore_id']}"
+            f"?pt={APPSTORE_PROVIDER_TOKEN}&ct={campaign}&mt=8")
 
 def routineflow_badge(campaign):
     return (f'<a class="appstore" href="{routineflow_store_link(campaign)}" aria-label="{T("Download RoutineFlow on the App Store", "Télécharger RoutineFlow dans l\'App Store")}">'
