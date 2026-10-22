@@ -15,6 +15,21 @@
       "comment": "WalkQuest journey (French)"
      }
     ]
+   },
+   {
+    "appIDs": [
+     "5CADUTAX9N.com.suiteforge.routineflow"
+    ],
+    "components": [
+     {
+      "/": "/routineflow/r/*",
+      "comment": "RoutineFlow shared routine"
+     },
+     {
+      "/": "/fr/routineflow/r/*",
+      "comment": "RoutineFlow shared routine (French)"
+     }
+    ]
    }
   ]
  }

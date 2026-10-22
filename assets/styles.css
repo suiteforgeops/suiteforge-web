@@ -477,8 +477,9 @@ a.card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-co
 .legal p, .legal li { color: var(--ink-soft); font-size: 1.02rem; }
 .legal ul, .legal ol { margin: 10px 0 10px 22px; }
 .legal li { margin: 6px 0; }
-.legal a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+.legal a:not(.btn):not(.appstore) { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
 .legal strong { color: var(--ink); }
+.legal .appstore strong { color: inherit; }
 .crumbs { font-size: .9rem; color: var(--ink-faint); margin-bottom: 18px; display: flex; gap: 8px; flex-wrap: wrap; }
 .crumbs a { color: var(--ink-soft); text-decoration: none; }
 .crumbs a:hover { color: var(--accent-ink); }

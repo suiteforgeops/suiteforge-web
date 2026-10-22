@@ -522,6 +522,8 @@ def page_path(key, lang=None):
         return f"{base}/{'mentions-legales' if lang == 'fr' else 'legal-notice'}/"
     if key[0] == "journey":
         return f"{base}/walkquest/v/{key[1]}/"
+    if key[0] == "shared_routine":
+        return f"{base}/routineflow/r/"
     return f"{base}/{key[1]}/{LEGAL_SLUG[key[2]][lang]}/"
 
 def page_url(key, lang=None):
@@ -1494,11 +1496,55 @@ def build_journey(jid):
 {site_footer("walkquest")}
 {scripts()}'''
 
+# ---------------------------------------------------------------------------
+# ROUTINEFLOW SHARED ROUTINE — target of the app's "Share routine" link
+# (https://suiteforge.app/[fr/]routineflow/r/#<data>, opened in the app as a universal link).
+# The routine is in the fragment, never sent to the server: assets/routine-share.js
+# decodes it in the browser. Not indexed (no content without a link).
+# ---------------------------------------------------------------------------
+ROUTINEFLOW_APP_ID = "5CADUTAX9N.com.suiteforge.routineflow"
+
+def build_shared_routine():
+    key = ("shared_routine",)
+    a = A("routineflow")
+    country = "fr/" if LANG == "fr" else ""
+    store = f"https://apps.apple.com/{country}app/id{APPS['routineflow']['appstore_id']}?ct=shared_routine"
+    title = T("A routine shared with you — RoutineFlow", "Une routine partagée avec vous — RoutineFlow")
+    desc = T("Someone shared a RoutineFlow routine with you. Add it to the app in one tap.",
+             "On vous a partagé une routine RoutineFlow. Ajoutez-la à l'app en un geste.")
+    extra_head = f'<meta name="apple-itunes-app" content="app-id={APPS["routineflow"]["appstore_id"]}">\n'
+    favicon = f'<link rel="icon" type="image/webp" href="{ver("/routineflow/icon.webp")}">' if has("/routineflow/icon.webp") else None
+    badge = (f'<a class="appstore" href="{store}" aria-label="{T("Download RoutineFlow on the App Store", "Télécharger RoutineFlow dans l\'App Store")}">'
+             f'{APPLE}<span><small>{T("Download on the", "Télécharger dans l\'")}</small><strong>App Store</strong></span></a>')
+    return f'''{head(title, desc, key, body_style=theme(a), extra_head=extra_head, og=og_image("routineflow"), favicon=favicon, robots="noindex, follow")}
+{site_header(key, "routineflow")}
+<main class="legal" id="main" data-steps="{T("{n} steps", "{n} étapes")}" data-own-pace="{T("at your own pace", "à votre rythme")}">
+  <nav class="crumbs" aria-label="{T("Breadcrumb", "Fil d'Ariane")}"><a href="{page_path("home")}">SuiteForge</a><span>/</span><a href="{page_path(("app", "routineflow"))}">RoutineFlow</a><span>/</span><span>{T("Shared routine", "Routine partagée")}</span></nav>
+  <p class="eyebrow">{T("Shared routine", "Routine partagée")}</p>
+  <h1 id="r-name">{T("A RoutineFlow routine", "Une routine RoutineFlow")}</h1>
+  <p class="lede" id="r-meta"></p>
+  <ol id="r-steps" hidden></ol>
+  <p id="r-error" hidden>{T("This link is incomplete: ask for it again, or copy it in full.", "Ce lien est incomplet : redemandez-le ou copiez-le en entier.")}</p>
+  <p style="margin-top:24px;"><a class="btn btn-primary" id="r-open" href="{page_path(("app", "routineflow"))}">{T("Open in RoutineFlow", "Ouvrir dans RoutineFlow")}</a></p>
+  <h2>{T("Don't have RoutineFlow yet?", "Pas encore RoutineFlow ?")}</h2>
+  <p>{T("Install the app, then come back to this link and tap “Open in RoutineFlow”: the routine is added in one tap. RoutineFlow guides each step out loud and can keep distracting apps locked until you're done.",
+        "Installez l'app, puis revenez sur ce lien et touchez « Ouvrir dans RoutineFlow » : la routine s'ajoute en un geste. RoutineFlow guide chaque étape à voix haute et peut bloquer les apps qui distraient tant que la routine n'est pas faite.")}</p>
+  <p style="margin-top:24px;">{badge}</p>
+  <p style="margin-top:32px;color:var(--ink-faint);">{T("The routine is contained in the link itself: it isn't sent to any server, not even ours.", "La routine est contenue dans le lien lui-même : elle n'est envoyée à aucun serveur, pas même le nôtre.")}</p>
+</main>
+{site_footer("routineflow")}
+<script src="{ver("/assets/routine-share.js")}" defer></script>
+{scripts()}'''
+
 def apple_app_site_association():
-    """Lets iOS open journey links in the app (universal links)."""
-    return json.dumps({"applinks": {"details": [{"appIDs": [APPLE_TEAM_APP_ID], "components": [
-        {"/": "/walkquest/v/*", "comment": "WalkQuest journey"},
-        {"/": "/fr/walkquest/v/*", "comment": "WalkQuest journey (French)"}]}]}}, indent=1) + "\n"
+    """Lets iOS open journey and shared-routine links in the apps (universal links)."""
+    return json.dumps({"applinks": {"details": [
+        {"appIDs": [APPLE_TEAM_APP_ID], "components": [
+            {"/": "/walkquest/v/*", "comment": "WalkQuest journey"},
+            {"/": "/fr/walkquest/v/*", "comment": "WalkQuest journey (French)"}]},
+        {"appIDs": [ROUTINEFLOW_APP_ID], "components": [
+            {"/": "/routineflow/r/*", "comment": "RoutineFlow shared routine"},
+            {"/": "/fr/routineflow/r/*", "comment": "RoutineFlow shared routine (French)"}]}]}}, indent=1) + "\n"
 
 # ---------------------------------------------------------------------------
 # WRITE FILES
@@ -1587,6 +1633,8 @@ if __name__ == "__main__":
         LANG = lang
         for key, _ in all_pages():
             write(file_of(key, lang), build_page(key))
+        # Not in the sitemap: no content without a shared link.
+        write(file_of(("shared_routine",), lang), build_shared_routine())
     LANG = "en"
     write("404.html", build_404())
 
