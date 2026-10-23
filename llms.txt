@@ -11,7 +11,7 @@ French version of the site: https://suiteforge.app/fr/
 - [KeepContact](https://suiteforge.app/keepcontact/): Productivity. Privacy-first personal CRM for iPhone: who to reach out to each morning, what matters to each person, message ideas from on-device AI. No account, 100% offline. Free for up to 15 contacts · Pro with a 7-day trial. App Store: https://apps.apple.com/app/id6761559776.
 - [FastClear](https://suiteforge.app/fastclear/): Health & Wellness. FastClear is a privacy-first intermittent fasting timer for iPhone. Track 16:8, 18:6, OMAD and custom fasts. No account, no tracking, all data on your device. Free download · optional subscription. App Store: https://apps.apple.com/app/id6762476052.
 - [RoutineFlow](https://suiteforge.app/routineflow/): Health & Wellness. RoutineFlow guides your morning routine step by step, out loud, and blocks distracting apps until you're done. Apple Watch, widgets, Siri. No account, no ads. Free download · Premium with a 7-day trial. App Store: https://apps.apple.com/app/id6766101143.
-- [WalkQuest](https://suiteforge.app/walkquest/): Health & Wellness. WalkQuest is a privacy-first step tracker for iPhone: daily walking goals and honest progress from your Apple Health steps. No account, no tracking. Free download · optional subscription. App Store: https://apps.apple.com/app/id6768080009.
+- [WalkQuest](https://suiteforge.app/walkquest/): Health & Wellness. Turn your daily steps into virtual walks on real maps: Paris to Versailles, Rome, New York, the Camino. A private iPhone step counter, no account. Free download · 2 journeys free · Premium or lifetime. App Store: https://apps.apple.com/app/id6768080009.
 
 ## Ježko
 
@@ -119,22 +119,24 @@ Questions:
 
 ## WalkQuest
 
-Set a step goal that fits your life and watch your progress fill in, day after day. No leaderboards, no social pressure — just you, moving a little more.
+WalkQuest turns the steps your iPhone already counts into real walking journeys. Every step of your day moves you along the map, from the Eiffel Tower to Versailles, all the way to Santiago de Compostela.
 
-- Goals that fit you: Start where you are. Set a realistic daily step goal and adjust it as you build momentum.
-- Honest progress: A clean ring shows today at a glance and history shows the trend — no vanity metrics.
-- Reads from Apple Health: WalkQuest uses the step data already on your iPhone. Nothing new to wear, nothing extra to set up.
-- Quietly motivating: Gentle milestones celebrate consistency, not competition. Your walk is nobody else's business.
+- Journeys on real maps: Seven walks across real places, stop by stop: Paris to Versailles, the Promenade des Anglais, Rome, London, New York, the Tour du Mont Blanc and the Camino de Santiago.
+- Every stop, celebrated: Reach a stop and WalkQuest stamps it with a little celebration and a card you can share in one tap. Friends who open your link land on the same journey.
+- A streak that forgives: One missed day a week counts as a rest day, not a broken streak. A daily goal suggested from your last 30 days, and a calendar in shades of green, never a guilt-trip red.
+- Your journey at a glance: Home Screen, Lock Screen and StandBy widgets show today's steps and how far you are from the next stop.
+- Reads from Apple Health: WalkQuest reads the steps and walking distance your iPhone or Apple Watch already records. Read-only: it never writes to Health, and nothing leaves your iPhone.
+- Challenges and trophies: Step challenges over a few days and trophies to unlock along the way, for a little extra motivation.
 
 Comparison with Pedometer++, StepsApp, Pacer (US App Store listings, checked 14 October 2026): According to their App Store listings, WalkQuest has no ads, links no data to your identity, tracks you nowhere and never uses your location, while Pedometer++, StepsApp and Pacer all contain ads and may use your location when the app isn't open. StepsApp and Pacer also use data to track you across other companies' apps and websites, and Pacer links health, location and contact data to your identity. In exchange, all three have an Apple Watch app.
 
 Questions:
 
-- Is WalkQuest free? Yes — WalkQuest is free to download with free daily step tracking. An optional subscription unlocks long-term trends and extra goals.
-- What's a good private step tracker for iPhone? WalkQuest is a privacy-first step tracker: it reads steps from Apple Health on your device, has no account, no analytics and no trackers, and keeps your data local.
-- Do I need an Apple Watch? No. WalkQuest uses the step data your iPhone already records through Apple Health. An Apple Watch simply adds more accurate counts.
-- How is WalkQuest different from Pedometer++, StepsApp or Pacer? According to their App Store listings, WalkQuest has no ads and never uses your location, while Pedometer++, StepsApp and Pacer contain ads and may use your location when the app isn't open; StepsApp and Pacer also use data to track you. WalkQuest's in-app purchases are listed from $2.99 to $14.99. Pedometer++, StepsApp and Pacer offer an Apple Watch app; WalkQuest uses the steps your iPhone and Apple Watch already record in Apple Health.
-- Does WalkQuest sell my activity data? No. WalkQuest never sells or shares your activity data. Your steps stay on your device.
+- Is WalkQuest free? Yes. WalkQuest is free to download, with two full journeys (Paris to Versailles and the Promenade des Anglais), your daily goal, a streak with rest days, 3 challenges, 3 trophies and 30 days of history. Premium unlocks the five other journeys, every challenge and trophy, 12 months of history and the Lock Screen and journey widgets: a monthly or yearly subscription, or a one-time lifetime purchase, shareable with up to 6 people through Family Sharing.
+- How do virtual walking journeys work? WalkQuest adds up the steps and walking distance your iPhone already records in Apple Health and moves you along a real route on the map. You walk wherever you are; the journey advances stop after stop, with a celebration each time you reach one.
+- Do I need GPS or an Apple Watch? No. WalkQuest never uses your location. It reads the steps and distance your iPhone records on its own; an Apple Watch simply makes the counts more accurate.
+- How is WalkQuest different from Pedometer++, StepsApp or Pacer? WalkQuest turns your steps into journeys on real maps. According to their App Store listings, WalkQuest has no ads and never uses your location, while Pedometer++, StepsApp and Pacer contain ads and may use your location when the app isn't open; StepsApp and Pacer also use data to track you. WalkQuest's in-app purchases are listed from $2.99 to $14.99. Pedometer++, StepsApp and Pacer offer an Apple Watch app; WalkQuest uses the steps your iPhone and Apple Watch already record in Apple Health.
+- Does WalkQuest sell my activity data? No. WalkQuest never sells or shares your activity data. Your steps and distance are read from Apple Health and never leave your iPhone.
 
 - [Privacy Policy](https://suiteforge.app/walkquest/privacy/)
 - [Terms of Use](https://suiteforge.app/walkquest/terms/)

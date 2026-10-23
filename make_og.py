@@ -59,14 +59,14 @@ OG = {
         "chips": ["Spoken steps", "Apps locked until done", "No tracking"],
     },
     "walkquest": {
-        "bg": (26, 46, 75),            # #1A2E4B — icon navy
-        "glow": (255, 189, 26),        # #FFBD1A — icon gold
-        "soft": (208, 218, 233),
+        "bg": (15, 27, 45),            # #0F1B2D — 2.0 night navy
+        "glow": (5, 150, 105),         # #059669 — icon route green
+        "soft": (214, 226, 216),
         "shot": "screenshots/source/en/1. Today EN.png",
         "name": "WalkQuest",
-        "title": ["Turn your daily steps", "into a quiet quest."],
-        "sub": "Private step challenges for iPhone",
-        "chips": ["Apple Health steps", "No account", "No tracking"],
+        "title": ["Your steps take you", "somewhere."],
+        "sub": "Walking challenges & virtual walks for iPhone",
+        "chips": ["7 real journeys", "No account", "No tracking"],
     },
 }
 
@@ -93,8 +93,8 @@ OG_FR = {
                   "sub": "Suivi du jeûne privé pour iPhone", "chips": ["16:8 · 18:6 · OMAD", "Sans compte", "Sans pistage"]},
     "routineflow": {"shot": "screenshots/source/fr/01_home_fr.png", "title": ["Gagnez vos matins", "avant votre téléphone."],
                     "sub": "Minuteur de routine et bloqueur d'apps", "chips": ["Étapes à voix haute", "Apps bloquées", "Sans pistage"]},
-    "walkquest": {"shot": "screenshots/source/fr/1. Today FR.png", "title": ["Vos pas du jour,", "une quête tranquille."],
-                  "sub": "Défis de pas privés pour iPhone", "chips": ["Pas Apple Santé", "Sans compte", "Sans pistage"]},
+    "walkquest": {"shot": "screenshots/source/fr/1. Today FR.png", "title": ["Vos pas vous emmènent", "quelque part."],
+                  "sub": "Défis de marche et voyages virtuels", "chips": ["7 vrais voyages", "Sans compte", "Sans pistage"]},
 }
 HOUSE_FR = {"title": ["Des apps pour une", "vie plus sereine."], "sub": "Apps iPhone respectueuses de la vie privée",
             "chips": ["Sans compte", "Sans pistage", "Sur votre iPhone"]}

@@ -202,16 +202,21 @@ APPS = {
     },
     "walkquest": {
         "name": "WalkQuest",
-        "full_name": "Step Tracker: WalkQuest",
+        "full_name": "WalkQuest: Walking Challenges",
         "category_label": "Health & Wellness",
         "schema_category": "HealthApplication",
         "appstore_id": "6768080009",
-        "accent": "#b7892f", "accent_deep": "#7d5f19", "accent_tint": "#f4ebd6",
-        "icon_svg": '<path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/><path d="M9.5 11.5l1.8 1.8 3.2-3.6"/>',
-        "tagline": "Turn your daily steps into a quiet quest.",
-        "hero_sub": "Set a step goal that fits your life and watch your progress fill in, day after day. No leaderboards, no social pressure — just you, moving a little more.",
-        "seo_title": "WalkQuest — Private step tracker for iPhone",
-        "seo_desc": "WalkQuest is a privacy-first step tracker for iPhone: daily walking goals and honest progress from your Apple Health steps. No account, no tracking.",
+        # 2.0 "Voyages": route green #047857 (icon path), terrain #E8EFE6 (icon background)
+        "accent": "#047857", "accent_deep": "#065f46", "accent_tint": "#e3eee6",
+        "icon_svg": '<path d="M5 20c2.5 0 3-4 6.5-4S16 9 19 7"/><circle cx="19" cy="5.5" r="2"/><circle cx="5" cy="20" r="1.4"/>',
+        # 2.0: no iCloud sync, lifetime purchase, Family Sharing
+        "icloud": False,
+        "lifetime": True,
+        "family_sharing": True,
+        "tagline": "Your steps take you somewhere.",
+        "hero_sub": "WalkQuest turns the steps your iPhone already counts into real walking journeys. Every step of your day moves you along the map, from the Eiffel Tower to Versailles, all the way to Santiago de Compostela.",
+        "seo_title": "WalkQuest — Walking challenges & virtual walks for iPhone",
+        "seo_desc": "Turn your daily steps into virtual walks on real maps: Paris to Versailles, Rome, New York, the Camino. A private iPhone step counter, no account.",
         "compare": {
             "checked": "14 October 2026",
             "rivals": ["Pedometer++", "StepsApp", "Pacer"],
@@ -221,7 +226,7 @@ APPS = {
                 ("Data linked to your identity", [
                     ("good", "None"), ("good", "None"), ("good", "None"), ("bad", "Health, location, contacts, contact info, purchases, usage")]),
                 ("Data collected but not linked to you", [
-                    ("info", "Health & fitness"), ("info", "Location, identifiers, usage, diagnostics"), ("info", "Identifiers, usage, diagnostics"), ("info", "Diagnostics")]),
+                    ("good", "None"), ("info", "Location, identifiers, usage, diagnostics"), ("info", "Identifiers, usage, diagnostics"), ("info", "Diagnostics")]),
                 ("Contains advertising", [
                     ("good", "No"), ("bad", "Yes"), ("bad", "Yes"), ("bad", "Yes")]),
                 ("May use your location when the app isn't open", [
@@ -232,59 +237,58 @@ APPS = {
                     ("bad", "No"), ("good", "Yes"), ("good", "Yes"), ("good", "Yes")]),
             ],
             "summary": "According to their App Store listings, WalkQuest has no ads, links no data to your identity, tracks you nowhere and never uses your location, while Pedometer++, StepsApp and Pacer all contain ads and may use your location when the app isn't open. StepsApp and Pacer also use data to track you across other companies' apps and websites, and Pacer links health, location and contact data to your identity. In exchange, all three have an Apple Watch app.",
-            "note": "WalkQuest reads the steps your iPhone already counts and stays out of your way: no ads, no location, no leaderboard. The others add a Watch app and social features.",
+            "note": "WalkQuest reads the steps your iPhone already counts and turns them into journeys on a map: no ads, no location, no leaderboard. The others add a Watch app and social features.",
         },
-        "home_blurb": "Turn your daily steps into a quiet quest. Simple goals, honest progress, no noise.",
-        "price_note": "Free download · optional subscription",
+        "home_blurb": "Your daily steps move you along real journeys on a map: Paris to Versailles, Rome, New York, the Camino.",
+        "price_note": "Free download · 2 journeys free · Premium or lifetime",
         "highlights": [
-            ("Apple Health", "Steps your iPhone already counts"),
-            ("No Watch", "Needed: your iPhone is enough"),
-            ("Milestones", "Challenges and achievements"),
-            ("0", "Leaderboards, ads or trackers"),
+            ("7 journeys", "On real maps, from 4 km to 655 km"),
+            ("Apple Health", "Steps and distance your iPhone already counts"),
+            ("1 rest day", "A week, without breaking your streak"),
+            ("0", "Accounts, ads or trackers"),
         ],
         "features": [
-            ("Goals that fit you", "Start where you are. Set a realistic daily step goal and adjust it as you build momentum.", '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.2"/>'),
-            ("Honest progress", "A clean ring shows today at a glance and history shows the trend — no vanity metrics.", '<path d="M21 12a9 9 0 1 1-9-9" /><path d="M21 4v5h-5"/>'),
-            ("Reads from Apple Health", "WalkQuest uses the step data already on your iPhone. Nothing new to wear, nothing extra to set up.", '<path d="M12 21C7 17 4 14 4 9.5 4 7 6 5 8.5 5c1.6 0 3 .9 3.5 2 .5-1.1 1.9-2 3.5-2C21 5 22 7 22 9.5c0 4.5-3 7.5-8 11.5z"/>'),
-            ("Quietly motivating", "Gentle milestones celebrate consistency, not competition. Your walk is nobody else's business.", '<path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4z"/><path d="M5 5H3v2a3 3 0 0 0 3 3M19 5h2v2a3 3 0 0 1-3 3"/>'),
+            ("Journeys on real maps", "Seven walks across real places, stop by stop: Paris to Versailles, the Promenade des Anglais, Rome, London, New York, the Tour du Mont Blanc and the Camino de Santiago.", '<path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/>'),
+            ("Every stop, celebrated", "Reach a stop and WalkQuest stamps it with a little celebration and a card you can share in one tap. Friends who open your link land on the same journey.", '<path d="M12 2l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 15.4 6.7 18.4l1.2-6L3.4 8.3l6-.7z"/>'),
+            ("A streak that forgives", "One missed day a week counts as a rest day, not a broken streak. A daily goal suggested from your last 30 days, and a calendar in shades of green, never a guilt-trip red.", '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>'),
+            ("Your journey at a glance", "Home Screen, Lock Screen and StandBy widgets show today's steps and how far you are from the next stop.", '<rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="18" height="8" rx="2"/>'),
+            ("Reads from Apple Health", "WalkQuest reads the steps and walking distance your iPhone or Apple Watch already records. Read-only: it never writes to Health, and nothing leaves your iPhone.", '<path d="M12 21C7 17 4 14 4 9.5 4 7 6 5 8.5 5c1.6 0 3 .9 3.5 2 .5-1.1 1.9-2 3.5-2C21 5 22 7 22 9.5c0 4.5-3 7.5-8 11.5z"/>'),
+            ("Challenges and trophies", "Step challenges over a few days and trophies to unlock along the way, for a little extra motivation.", '<path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4z"/><path d="M5 5H3v2a3 3 0 0 0 3 3M19 5h2v2a3 3 0 0 1-3 3"/>'),
         ],
         "steps": [
-            ("Set your goal", "Choose a daily step target that feels achievable today."),
-            ("Walk your day", "WalkQuest reads your steps from Apple Health and fills your ring."),
-            ("Watch it add up", "Small consistent days become a streak you can be proud of."),
+            ("Pick a journey", "Start with Paris to Versailles or the Promenade des Anglais, both free."),
+            ("Walk your day", "Your everyday steps move you along the map. No GPS, no special walk to start."),
+            ("Reach the next stop", "Celebrate each stop, share it if you like, and keep going all the way to the end."),
         ],
         "faq": [
-            ("Is WalkQuest free?", "Yes — WalkQuest is free to download with free daily step tracking. An optional subscription unlocks long-term trends and extra goals."),
-            ("What's a good private step tracker for iPhone?", "WalkQuest is a privacy-first step tracker: it reads steps from Apple Health on your device, has no account, no analytics and no trackers, and keeps your data local."),
-            ("Do I need an Apple Watch?", "No. WalkQuest uses the step data your iPhone already records through Apple Health. An Apple Watch simply adds more accurate counts."),
-            ("How is WalkQuest different from Pedometer++, StepsApp or Pacer?", "According to their App Store listings, WalkQuest has no ads and never uses your location, while Pedometer++, StepsApp and Pacer contain ads and may use your location when the app isn't open; StepsApp and Pacer also use data to track you. WalkQuest's in-app purchases are listed from $2.99 to $14.99. Pedometer++, StepsApp and Pacer offer an Apple Watch app; WalkQuest uses the steps your iPhone and Apple Watch already record in Apple Health."),
-            ("Does WalkQuest sell my activity data?", "No. WalkQuest never sells or shares your activity data. Your steps stay on your device."),
+            ("Is WalkQuest free?", "Yes. WalkQuest is free to download, with two full journeys (Paris to Versailles and the Promenade des Anglais), your daily goal, a streak with rest days, 3 challenges, 3 trophies and 30 days of history. Premium unlocks the five other journeys, every challenge and trophy, 12 months of history and the Lock Screen and journey widgets: a monthly or yearly subscription, or a one-time lifetime purchase, shareable with up to 6 people through Family Sharing."),
+            ("How do virtual walking journeys work?", "WalkQuest adds up the steps and walking distance your iPhone already records in Apple Health and moves you along a real route on the map. You walk wherever you are; the journey advances stop after stop, with a celebration each time you reach one."),
+            ("Do I need GPS or an Apple Watch?", "No. WalkQuest never uses your location. It reads the steps and distance your iPhone records on its own; an Apple Watch simply makes the counts more accurate."),
+            ("How is WalkQuest different from Pedometer++, StepsApp or Pacer?", "WalkQuest turns your steps into journeys on real maps. According to their App Store listings, WalkQuest has no ads and never uses your location, while Pedometer++, StepsApp and Pacer contain ads and may use your location when the app isn't open; StepsApp and Pacer also use data to track you. WalkQuest's in-app purchases are listed from $2.99 to $14.99. Pedometer++, StepsApp and Pacer offer an Apple Watch app; WalkQuest uses the steps your iPhone and Apple Watch already record in Apple Health."),
+            ("Does WalkQuest sell my activity data?", "No. WalkQuest never sells or shares your activity data. Your steps and distance are read from Apple Health and never leave your iPhone."),
         ],
         "mock": """
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:30px 18px;">
             <div style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;">Today</div>
-            <div style="width:150px;height:150px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--accent) 270deg,#e8e2d6 0);">
+            <div style="width:150px;height:150px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--accent) 306deg,#dfe7dd 0);">
               <div style="width:120px;height:120px;border-radius:50%;background:var(--bg-card);display:grid;place-items:center;">
-                <div style="text-align:center;"><div style="font-family:var(--serif);font-weight:900;font-size:1.7rem;color:var(--ink);line-height:1;">7,540</div><div style="font-size:.62rem;color:var(--ink-faint);margin-top:3px;">of 10,000 steps</div></div>
+                <div style="text-align:center;"><div style="font-family:var(--serif);font-weight:900;font-size:1.7rem;color:var(--ink);line-height:1;">8,500</div><div style="font-size:.62rem;color:var(--ink-faint);margin-top:3px;">of 10,000 steps</div></div>
               </div>
             </div>
-            <div style="font-size:.74rem;color:var(--accent-deep);font-weight:600;">75% · keep going</div>
-            <div style="display:flex;gap:5px;margin-top:2px;align-items:flex-end;">
-              <span style="width:7px;height:14px;border-radius:3px;background:var(--accent);"></span><span style="width:7px;height:22px;border-radius:3px;background:var(--accent);"></span><span style="width:7px;height:11px;border-radius:3px;background:#e0dacd;"></span><span style="width:7px;height:26px;border-radius:3px;background:var(--accent);"></span><span style="width:7px;height:18px;border-radius:3px;background:var(--accent);"></span><span style="width:7px;height:24px;border-radius:3px;background:var(--accent);"></span>
-            </div>
+            <div style="font-size:.74rem;color:var(--accent-deep);font-weight:600;">Next stop: Sèvres · 0.2 km</div>
           </div>""",
         "permissions": [
-            ("Apple Health (read steps)", "With your permission, WalkQuest reads your step count from Apple Health to show your daily progress. It never writes to or reads anything else from Health, and you can revoke access in iOS Settings at any time."),
+            ("Apple Health (read steps and walking distance)", "With your permission, WalkQuest reads your step count and walking distance from Apple Health to move you along your journey and show your progress. It never writes to Health or reads anything else from it, and you can revoke access in iOS Settings at any time."),
             ("Notifications", "Used only for the goal reminders and milestones you opt into. Optional."),
         ],
-        "hero_shot_alt": "WalkQuest Today screen showing 8,500 of 10,000 steps and a 12-day streak",
+        "hero_shot_alt": "WalkQuest Today screen: the Paris to Versailles route on a map, 8,500 of 10,000 steps, a 12-day streak and the next stop, Sèvres",
         "shots_type": "brut",
-        "shots_w": 620, "shots_h": 1347,
+        "shots_w": 620, "shots_h": 1348,
         "shots": [
-            ("shot-1.webp", "WalkQuest Challenges screen with optional step-goal challenges"),
-            ("shot-2.webp", "WalkQuest Achievements screen with milestone badges"),
-            ("shot-3.webp", "WalkQuest History screen showing daily step totals over recent days"),
-            ("shot-4.webp", "WalkQuest Settings screen with goal and notification options"),
+            ("shot-1.webp", "WalkQuest Journeys screen listing the 7 journeys, from Paris to Versailles to the Camino de Santiago"),
+            ("shot-2.webp", "WalkQuest celebration for reaching the Sèvres stop, with a share card"),
+            ("shot-3.webp", "WalkQuest Paris to Versailles journey: route map, 14.7 km, 7 stops, about 2 days at your goal"),
+            ("shot-4.webp", "WalkQuest Progress screen: last 30 days in shades of green, with a rest day in the streak"),
         ],
     },
     "keepcontact": {
