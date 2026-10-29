@@ -300,7 +300,7 @@ FR_APPS = {
         ],
         "permissions": [
             ("Micro (facultatif)", "Utilisé seulement quand l'apprenant touche le bouton micro, pour enregistrer une réplique et la comparer au modèle, ou pour dire une phrase en mode Défi. Les enregistrements restent sur votre appareil et ne sont jamais envoyés. Vous pouvez refuser et continuer à utiliser l'app : chaque étape orale peut être passée."),
-            ("Reconnaissance vocale (facultative)", "En mode Défi, Ježko reconnaît les mots prononcés pour attribuer des étoiles. La reconnaissance utilise le moteur vocal d'Apple sur l'appareil : votre voix n'est pas envoyée à SuiteForge."),
+            ("Reconnaissance vocale (facultative)", "En mode Défi, Ježko reconnaît les mots prononcés pour attribuer des étoiles. La reconnaissance se fait entièrement sur votre iPhone, avec le moteur vocal d'Apple intégré à l'appareil. Votre voix et les mots reconnus ne sont jamais envoyés à SuiteForge, à Apple ni à un tiers, et Ježko n'utilise aucun service d'IA tiers."),
             ("Notifications (facultatives)", "Un rappel quotidien pour la leçon, si vous l'activez. Il est programmé localement sur votre iPhone."),
         ],
         "privacy_extra": [

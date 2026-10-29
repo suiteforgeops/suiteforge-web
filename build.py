@@ -421,7 +421,7 @@ APPS = {
         "home_blurb": "Serbian for kids and families, 10 minutes a day. Follow Milena's summer at her grandparents' in Serbia over 100 lessons, speak from day one, and learn to read both alphabets.",
         "home_pills": ["100 lessons · A1 → B1", "Latin & Cyrillic", "Up to 5 profiles", "No ads"],
         "price_note": "First 7 lessons free · English & French",
-        "updated": "14 October 2026",
+        "updated": "29 October 2026",
         "icloud": False,
         "lifetime": True,
         "family_sharing": True,
@@ -458,7 +458,7 @@ APPS = {
         ],
         "permissions": [
             ("Microphone (optional)", "Used only when the learner taps the microphone button, to record a line and compare it with the model, or to say a sentence in Challenge mode. Recordings are stored on your device and are never uploaded. You can refuse and keep using the app: any spoken step can be skipped."),
-            ("Speech recognition (optional)", "In Challenge mode, Ježko recognises the words you say to award stars. Recognition uses Apple's on-device speech framework: your voice is not sent to SuiteForge."),
+            ("Speech recognition (optional)", "In Challenge mode, Ježko recognises the words you say to award stars. Recognition runs entirely on your iPhone, with Apple's on-device speech framework. Your voice and the recognised words are never sent to SuiteForge, to Apple or to any third party, and Ježko uses no third-party AI service."),
             ("Notifications (optional)", "A daily reminder for the lesson, if you turn it on. It is scheduled locally on your iPhone."),
         ],
         "privacy_extra": [
