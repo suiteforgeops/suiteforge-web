@@ -424,6 +424,8 @@ APPS = {
         "updated": "29 October 2026",
         "icloud": False,
         "lifetime": True,
+        # Purchases checked on the device with StoreKit 2 (SuiteForgeKit): no RevenueCat (TD-025).
+        "storekit_native": True,
         "family_sharing": True,
         "kids": True,
         "languages": ["en", "fr"],
@@ -1276,13 +1278,13 @@ def build_privacy(slug):
             f"profile names, recordings and progress are stored only on your device and are never sent to SuiteForge. {name} contains no advertising, "
             "no third-party analytics, no chat and no social features.</p>"
             "<p>On a child profile, purchases, links that leave the app and sharing are protected by a parental gate. Purchases are made by the adult who "
-            "holds the Apple Account; the anonymous purchase data described in section 4 relates to that account, not to the child. "
+            "holds the Apple Account; the purchase data described in section 4 relates to that account, not to the child. "
             f"If you have any question about your child's use of {name}, contact us at {mail}.</p>",
             f"<p>{name} est conçu pour être utilisé par les enfants avec leurs parents. Nous ne collectons de données personnelles sur personne, enfants compris : "
             f"les prénoms des profils, les enregistrements et les progrès sont stockés uniquement sur votre appareil et ne sont jamais envoyés à SuiteForge. {name} ne contient "
             "ni publicité, ni outil d'analyse tiers, ni messagerie, ni fonction sociale.</p>"
             "<p>Sur un profil enfant, les achats, les liens qui sortent de l'app et le partage sont protégés par un contrôle parental. Les achats sont effectués par l'adulte "
-            "titulaire du compte Apple ; les données d'achat anonymes décrites à la section 4 concernent ce compte, et non l'enfant. "
+            "titulaire du compte Apple ; les données d'achat décrites à la section 4 concernent ce compte, et non l'enfant. "
             f"Pour toute question sur l'utilisation de {name} par votre enfant, écrivez-nous à {mail}.</p>")
     else:
         children = T(f"<p>{name} is not directed to children under 13, and we do not knowingly collect personal data from children.</p>",
@@ -1290,6 +1292,18 @@ def build_privacy(slug):
     lifetime = T(" and an optional one-time lifetime purchase", " et un achat unique à vie facultatif") if a.get("lifetime") else ""
     apple_pp = '<a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">' + T("Apple's Privacy Policy", "la politique de confidentialité d'Apple") + "</a>"
     rc_pp = '<a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">' + T("RevenueCat's Privacy Policy", "celle de RevenueCat") + "</a>"
+    if a.get("storekit_native"):
+        purchases = T(
+            f"<p>{name} offers an optional auto-renewing subscription{lifetime}. Purchases are processed entirely by Apple. {name} checks your purchases on your device with Apple's StoreKit framework and uses no third-party purchase service: no purchase information is sent to SuiteForge or to anyone other than Apple. See {apple_pp}.</p>",
+            f"<p>{name} propose un abonnement facultatif à renouvellement automatique{lifetime}. Les achats sont entièrement traités par Apple. {name} vérifie vos achats sur votre appareil avec StoreKit, le cadre d'Apple, et ne fait appel à aucun service d'achat tiers : aucune information d'achat n'est envoyée à SuiteForge ni à quiconque d'autre qu'Apple. Voir {apple_pp}.</p>")
+        leaves = T("Purchases are handled by Apple; nothing else leaves your device.",
+                   "Les achats sont gérés par Apple ; rien d'autre ne quitte votre appareil.")
+    else:
+        purchases = T(
+            f"<p>{name} offers an optional auto-renewing subscription{lifetime}. Purchases are processed by Apple. To deliver and restore purchases across your devices, we use RevenueCat, Inc. as a service provider. For this purpose only, an anonymous app-user identifier together with purchase and receipt information is processed by Apple and RevenueCat. This information is not linked to your personal content in the app and is not used for advertising. See {apple_pp} and {rc_pp}.</p>",
+            f"<p>{name} propose un abonnement facultatif à renouvellement automatique{lifetime}. Les achats sont traités par Apple. Pour délivrer et restaurer vos achats sur vos appareils, nous faisons appel à RevenueCat, Inc. comme prestataire. Pour cette seule finalité, un identifiant d'utilisateur anonyme, accompagné des informations d'achat et de reçu, est traité par Apple et RevenueCat. Ces informations ne sont pas liées à votre contenu personnel dans l'app et ne servent pas à la publicité. Voir {apple_pp} et {rc_pp}.</p>")
+        leaves = T("The only information that leaves your device is the anonymous purchase data needed to manage an optional subscription.",
+                   "Les seules informations qui quittent votre appareil sont les données d'achat anonymes nécessaires pour gérer un abonnement facultatif.")
     sections = [
         (T("Who we are", "Qui sommes-nous"), T(f"<p>{name} is an iPhone app published by {PUBLISHER} under the name SuiteForge, who is the data controller for the processing described below (see the <a href=\"{page_path(('notice',))}\">legal notice</a>). For any privacy question, contact us at {mail}.</p>",
                                                 f"<p>{name} est une app iPhone éditée par {PUBLISHER}, sous le nom SuiteForge, responsable des traitements décrits ci-dessous (voir les <a href=\"{page_path(('notice',))}\">mentions légales</a>). Pour toute question sur la confidentialité, écrivez-nous à {mail}.</p>")),
@@ -1297,9 +1311,7 @@ def build_privacy(slug):
         (T(f"Permissions {name} may request", f"Autorisations que {name} peut demander"),
          perms + T("<p>Each permission is optional, is requested only when relevant, and can be changed at any time in the iOS Settings app.</p>",
                    "<p>Chaque autorisation est facultative, n'est demandée qu'au moment utile et peut être modifiée à tout moment dans l'app Réglages d'iOS.</p>")),
-        (T("Subscriptions and purchases", "Abonnements et achats"), T(
-            f"<p>{name} offers an optional auto-renewing subscription{lifetime}. Purchases are processed by Apple. To deliver and restore purchases across your devices, we use RevenueCat, Inc. as a service provider. For this purpose only, an anonymous app-user identifier together with purchase and receipt information is processed by Apple and RevenueCat. This information is not linked to your personal content in the app and is not used for advertising. See {apple_pp} and {rc_pp}.</p>",
-            f"<p>{name} propose un abonnement facultatif à renouvellement automatique{lifetime}. Les achats sont traités par Apple. Pour délivrer et restaurer vos achats sur vos appareils, nous faisons appel à RevenueCat, Inc. comme prestataire. Pour cette seule finalité, un identifiant d'utilisateur anonyme, accompagné des informations d'achat et de reçu, est traité par Apple et RevenueCat. Ces informations ne sont pas liées à votre contenu personnel dans l'app et ne servent pas à la publicité. Voir {apple_pp} et {rc_pp}.</p>")),
+        (T("Subscriptions and purchases", "Abonnements et achats"), purchases),
         (T("What we do not do", "Ce que nous ne faisons pas"), T(
             "<ul><li>We do not require or create an account.</li><li>We do not use third-party analytics or advertising SDKs.</li><li>We do not track you across apps or websites.</li><li>We do not sell, rent or trade your personal data.</li></ul>",
             "<ul><li>Nous n'exigeons et ne créons aucun compte.</li><li>Nous n'utilisons aucun outil d'analyse ni aucun kit publicitaire tiers.</li><li>Nous ne vous suivons pas d'une app ou d'un site à l'autre.</li><li>Nous ne vendons, ne louons ni n'échangeons vos données personnelles.</li></ul>")),
@@ -1312,8 +1324,8 @@ def build_privacy(slug):
             "<p>Nous pouvons mettre à jour cette politique à mesure que l'app évolue. Toute modification importante figurera ici, avec une nouvelle date de mise à jour.</p>")),
         ("Contact", T(f"<p>Questions about this policy? Email {mail}.</p>", f"<p>Une question sur cette politique ? Écrivez à {mail}.</p>")),
     ]
-    intro = T(f'<div class="callout"><p><strong>The short version.</strong> {short_storage} There is no {name} account. We do not use analytics or advertising trackers, and we never sell your data. The only information that leaves your device is the anonymous purchase data needed to manage an optional subscription.</p></div>',
-              f'<div class="callout"><p><strong>En bref.</strong> {short_storage} Il n\'y a pas de compte {name}. Nous n\'utilisons ni outil d\'analyse ni pisteur publicitaire, et nous ne vendons jamais vos données. Les seules informations qui quittent votre appareil sont les données d\'achat anonymes nécessaires pour gérer un abonnement facultatif.</p></div>')
+    intro = T(f'<div class="callout"><p><strong>The short version.</strong> {short_storage} There is no {name} account. We do not use analytics or advertising trackers, and we never sell your data. {leaves}</p></div>',
+              f'<div class="callout"><p><strong>En bref.</strong> {short_storage} Il n\'y a pas de compte {name}. Nous n\'utilisons ni outil d\'analyse ni pisteur publicitaire, et nous ne vendons jamais vos données. {leaves}</p></div>')
     return legal_page(slug, "privacy", T("Privacy Policy", "Politique de confidentialité"),
                       T(f"How {a['name']} handles your data. Short version: it stays on your device. No accounts, no tracking.",
                         f"Comment {a['name']} traite vos données. En bref : elles restent sur votre appareil. Sans compte, sans pistage."), sections, intro)
