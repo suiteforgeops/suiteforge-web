@@ -480,10 +480,39 @@ APPS = {
             ("shot-8.webp", "Ježko profiles screen: Who's learning today? with four family profiles"),
         ],
     },
+    # Legal pages only for now (LEGAL_ONLY): the landing comes with the App Store screenshots.
+    "crescendo": {
+        "name": "Crescendo",
+        "full_name": "Crescendo – Gym Log & Coach",
+        "category_label": "Health & Fitness",
+        "schema_category": "HealthApplication",
+        "appstore_id": None,
+        "status": "soon",
+        # The app's acid green is a fill colour; links and text use its dark variant.
+        "accent": "#3d6600", "accent_deep": "#2e4d00", "accent_tint": "#eef8d6",
+        "icon_svg": '<path d="M3 12h18"/><rect x="6" y="8" width="3" height="8" rx="1"/><rect x="11" y="6" width="3" height="12" rx="1"/><rect x="16" y="4" width="3" height="16" rx="1"/>',
+        "updated": "31 October 2026",
+        "icloud": True,
+        "lifetime": True,
+        "storekit_native": True,
+        "family_sharing": True,
+        "languages": ["en", "fr"],
+        "permissions": [
+            ("Apple Health, on Apple Watch (optional)", "When you start a workout, Crescendo can start a strength-training workout on your Apple Watch. With your permission, the Watch saves the workout, your heart rate and your active energy to Apple Health, and reads them to show your heart rate during the workout and the calories of the session. This data stays in Apple Health on your devices and is never sent to SuiteForge."),
+            ("Notifications (optional)", "A notification with a sound at the end of each rest period during a workout, scheduled locally on your iPhone. Crescendo sends no other notifications."),
+        ],
+        "privacy_extra": [
+            ("Apple Watch", "During a workout, your iPhone and your Apple Watch exchange the workout and the sets you log directly between your own devices, through Apple's WatchConnectivity framework. Nothing goes through a SuiteForge server."),
+            ("Apple Intelligence (optional)", "If you describe in a sentence how to adapt today's workout, the sentence is analysed on your iPhone by Apple's on-device language model. It is never sent to SuiteForge, to Apple's servers or to any third party."),
+            ("Import, export and erase", "Importing a workout history reads a file you choose, on your iPhone. Exporting creates a CSV or JSON file that you save or share yourself. Settings › Data also lets you erase all your data."),
+        ],
+    },
 }
 
 # Page order of the apps (footer, sitemap, "more apps") and the home page bento.
 ORDER = ["jezko", "keepcontact", "fastclear", "routineflow", "walkquest"]
+# Apps with their legal pages online but no landing yet (privacy and terms needed for App Review).
+LEGAL_ONLY = ["crescendo"]
 HOME_LAYOUT = [("jezko", "feature"), ("keepcontact", "half"), ("fastclear", "half"), ("routineflow", "half"), ("walkquest", "half")]
 HOME_FAN = ["keepcontact", "jezko", "fastclear"]   # the three screens in the home hero
 
@@ -1237,18 +1266,21 @@ def legal_page(slug, kind, title, desc, sections, intro=""):
     key = ("legal", slug, kind)
     canonical = page_url(key)
     body = "".join(f"\n  <h2>{i}. {t}</h2>\n  {c}" for i, (t, c) in enumerate(sections, 1))
-    jsonld = [webpage_jsonld(key, f"{title} — {a['name']}", f"{page_url(('app', slug))}#app"),
-              crumbs_jsonld([("SuiteForge", page_url("home")), (a["name"], page_url(("app", slug))), (title, canonical)])]
+    # Without a landing yet (LEGAL_ONLY), the app's links point to the home page.
+    landing = slug not in LEGAL_ONLY
+    app_key = ("app", slug) if landing else "home"
+    jsonld = [webpage_jsonld(key, f"{title} — {a['name']}", f"{page_url(('app', slug))}#app" if landing else None),
+              crumbs_jsonld([("SuiteForge", page_url("home")), (a["name"], page_url(app_key)), (title, canonical)])]
     updated = human_date(a.get("updated", UPDATED))
     return f'''{head(f"{title} — {a['name']}", desc, key, body_style=theme(a), jsonld=jsonld, og=og_image(slug))}
 {site_header(key, slug)}
 <main class="legal" id="main">
-  <nav class="crumbs" aria-label="{T("Breadcrumb", "Fil d'Ariane")}"><a href="{page_path("home")}">SuiteForge</a><span>/</span><a href="{page_path(("app", slug))}">{esc(a['name'])}</a><span>/</span><span>{title}</span></nav>
+  <nav class="crumbs" aria-label="{T("Breadcrumb", "Fil d'Ariane")}"><a href="{page_path("home")}">SuiteForge</a><span>/</span><a href="{page_path(app_key)}">{esc(a['name'])}</a><span>/</span><span>{title}</span></nav>
   <h1>{title}</h1>
   <p class="updated">{esc(a['name'])} · {T(f"Last updated {updated}", f"Dernière mise à jour : {updated}")}</p>
   {intro}{body}
 
-  <p style="margin-top:40px;"><a href="{page_path(("app", slug))}">← {T("Back to", "Retour à")} {esc(a['name'])}</a></p>
+  <p style="margin-top:40px;"><a href="{page_path(app_key)}">← {T("Back to", "Retour à")} {esc(a['name'] if landing else "SuiteForge")}</a></p>
 </main>
 {site_footer(slug)}
 {scripts()}'''
@@ -1816,6 +1848,8 @@ def all_pages():
     pages = [("home", "1.0"), (("notice",), "0.2")]
     for slug in ORDER:
         pages += [(("app", slug), "0.8"), (("legal", slug, "privacy"), "0.3"), (("legal", slug, "terms"), "0.3")]
+    for slug in LEGAL_ONLY:
+        pages += [(("legal", slug, "privacy"), "0.3"), (("legal", slug, "terms"), "0.3")]
     pages += [(("journey", jid), "0.5") for jid in JOURNEYS]
     pages += [(("templates",), "0.6")] + [(("template", t["id"]), "0.5") for t in ROUTINE_TEMPLATES]
     return pages

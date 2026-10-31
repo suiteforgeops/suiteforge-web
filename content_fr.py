@@ -260,6 +260,18 @@ FR_APPS = {
         },
     },
 
+    "crescendo": {
+        "category_label": "Santé et forme",
+        "permissions": [
+            ("Apple Santé, sur l'Apple Watch (facultatif)", "Quand vous démarrez une séance, Crescendo peut lancer une séance de musculation sur votre Apple Watch. Avec votre autorisation, la montre enregistre la séance, votre fréquence cardiaque et votre énergie active dans Apple Santé, et les relit pour afficher votre fréquence cardiaque pendant la séance et les calories de la séance. Ces données restent dans Apple Santé sur vos appareils et ne sont jamais envoyées à SuiteForge."),
+            ("Notifications (facultatif)", "Une notification avec un son à la fin de chaque repos pendant une séance, programmée localement sur votre iPhone. Crescendo n'envoie aucune autre notification."),
+        ],
+        "privacy_extra": [
+            ("Apple Watch", "Pendant une séance, votre iPhone et votre Apple Watch échangent la séance et les séries que vous notez directement entre vos propres appareils, avec WatchConnectivity, le cadre d'Apple. Rien ne passe par un serveur de SuiteForge."),
+            ("Apple Intelligence (facultatif)", "Si vous décrivez en une phrase comment adapter la séance du jour, la phrase est analysée sur votre iPhone par le modèle de langage d'Apple intégré à l'appareil. Elle n'est jamais envoyée à SuiteForge, aux serveurs d'Apple ni à aucun tiers."),
+            ("Import, export et suppression", "Importer un historique de séances lit un fichier que vous choisissez, sur votre iPhone. Exporter crée un fichier CSV ou JSON que vous enregistrez ou partagez vous-même. Réglages › Données permet aussi de tout supprimer."),
+        ],
+    },
     "jezko": {
         "category_label": "Éducation",
         "tagline": "Le serbe en famille, 10 minutes par jour.",

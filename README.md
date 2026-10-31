@@ -36,6 +36,8 @@ Le site existe en **anglais** (à la racine) et en **français** (sous `/fr/`, p
 
 Apps : `jezko`, `keepcontact`, `fastclear`, `routineflow`, `walkquest` (App Store IDs réels dans `build.py`, champ `appstore_id`).
 
+**Crescendo n'a pour l'instant que ses pages légales** (`LEGAL_ONLY` dans `build.py`) : sa landing viendra avec les captures App Store ; le jour venu, l'ajouter à `ORDER` et `HOME_LAYOUT` et la retirer de `LEGAL_ONLY`.
+
 **Ježko est en « Coming soon »** (`appstore_id: None`, `"status": "soon"`) : badge App Store non cliquable, pas de barre « Get » ni de bannière Smart App Banner. Le jour de la sortie : renseigner `appstore_id`, supprimer `"status"`, relancer `python3 build.py` et pousser.
 
 ## Déploiement GitHub Pages
@@ -67,6 +69,7 @@ Une fois en ligne, remplace les URLs Notion par celles-ci dans chaque fiche (App
 | WalkQuest | `https://suiteforge.app/walkquest/privacy/` | `https://suiteforge.app/walkquest/terms/` |
 | KeepContact | `https://suiteforge.app/keepcontact/privacy/` | `https://suiteforge.app/keepcontact/terms/` |
 | Ježko | `https://suiteforge.app/jezko/privacy/` | `https://suiteforge.app/jezko/terms/` |
+| Crescendo | `https://suiteforge.app/crescendo/privacy/` | `https://suiteforge.app/crescendo/terms/` |
 
 Le champ Terms est facultatif côté Apple (un EULA standard s'applique sinon), mais pointer vers ta page est plus propre et cohérent avec le footer des landings.
 

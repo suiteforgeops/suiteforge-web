@@ -1,4 +1,12 @@
 {
+ "crescendo/privacy/index.html": {
+  "date": "2026-10-31",
+  "hash": "b93c2106fc6f57f6cc977ab82c9b5762"
+ },
+ "crescendo/terms/index.html": {
+  "date": "2026-10-31",
+  "hash": "52091cd2a1c6b3c93701bb7dc97669a4"
+ },
  "fastclear/index.html": {
   "date": "2026-10-23",
   "hash": "a1baf3fd788173bea092f8cf91d323f0"
@@ -10,6 +18,14 @@
  "fastclear/terms/index.html": {
   "date": "2026-10-23",
   "hash": "6b6eec4d933de1933831785dd6e692b5"
+ },
+ "fr/crescendo/conditions/index.html": {
+  "date": "2026-10-31",
+  "hash": "ee45f8e2d9d010abfd238b25d387ee70"
+ },
+ "fr/crescendo/confidentialite/index.html": {
+  "date": "2026-10-31",
+  "hash": "44fd277ef7d3e9e62dee07de3485bf95"
  },
  "fr/fastclear/conditions/index.html": {
   "date": "2026-10-23",
