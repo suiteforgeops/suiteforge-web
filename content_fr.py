@@ -264,6 +264,7 @@ FR_APPS = {
         "category_label": "Santé et forme",
         "permissions": [
             ("Apple Santé, sur l'Apple Watch (facultatif)", "Quand vous démarrez une séance, Crescendo peut lancer une séance de musculation sur votre Apple Watch. Avec votre autorisation, la montre enregistre la séance, votre fréquence cardiaque et votre énergie active dans Apple Santé, et les relit pour afficher votre fréquence cardiaque pendant la séance et les calories de la séance. Ces données restent dans Apple Santé sur vos appareils et ne sont jamais envoyées à SuiteForge."),
+            ("Apple Santé, votre poids (facultatif)", "Quand vous ajoutez une pesée ou demandez à voir vos pesées Santé, Crescendo demande l'autorisation de lire et d'enregistrer votre poids (masse corporelle) dans Apple Santé. Il lit les pesées des 12 derniers mois, celles d'une balance connectée par exemple, pour afficher la courbe de votre poids dans Progrès, sans les recopier dans l'app, et enregistre dans Apple Santé les pesées que vous notez dans Crescendo. Ces données restent dans Apple Santé sur vos appareils et ne sont jamais envoyées à SuiteForge. Supprimer vos données dans Crescendo laisse en place les pesées déjà présentes dans Apple Santé."),
             ("Notifications (facultatif)", "Une notification avec un son à la fin de chaque repos pendant une séance, programmée localement sur votre iPhone. Crescendo n'envoie aucune autre notification."),
         ],
         "privacy_extra": [

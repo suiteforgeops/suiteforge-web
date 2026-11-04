@@ -491,7 +491,7 @@ APPS = {
         # The app's acid green is a fill colour; links and text use its dark variant.
         "accent": "#3d6600", "accent_deep": "#2e4d00", "accent_tint": "#eef8d6",
         "icon_svg": '<path d="M3 12h18"/><rect x="6" y="8" width="3" height="8" rx="1"/><rect x="11" y="6" width="3" height="12" rx="1"/><rect x="16" y="4" width="3" height="16" rx="1"/>',
-        "updated": "31 October 2026",
+        "updated": "4 November 2026",
         "icloud": True,
         "lifetime": True,
         "storekit_native": True,
@@ -499,6 +499,7 @@ APPS = {
         "languages": ["en", "fr"],
         "permissions": [
             ("Apple Health, on Apple Watch (optional)", "When you start a workout, Crescendo can start a strength-training workout on your Apple Watch. With your permission, the Watch saves the workout, your heart rate and your active energy to Apple Health, and reads them to show your heart rate during the workout and the calories of the session. This data stays in Apple Health on your devices and is never sent to SuiteForge."),
+            ("Apple Health, your body weight (optional)", "When you add a weigh-in or ask to see your Health weigh-ins, Crescendo asks for permission to read and save your body weight (body mass) in Apple Health. It reads the weigh-ins of the last 12 months, for example those of a connected scale, to show your weight curve in Progress, without copying them into the app, and saves to Apple Health the weigh-ins you log in Crescendo. This data stays in Apple Health on your devices and is never sent to SuiteForge. Erasing your data in Crescendo leaves the weigh-ins already in Apple Health in place."),
             ("Notifications (optional)", "A notification with a sound at the end of each rest period during a workout, scheduled locally on your iPhone. Crescendo sends no other notifications."),
         ],
         "privacy_extra": [
