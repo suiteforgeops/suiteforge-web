@@ -9,7 +9,7 @@ French version of the site: https://suiteforge.app/fr/
 
 - [Ježko](https://suiteforge.app/jezko/): Education. Ježko teaches Serbian to kids and families through one story in 100 lessons. Speak out loud, read Latin and Cyrillic, 10 minutes a day. No account, no ads. First 7 lessons free · English & French. Coming soon to the App Store.
 - [KeepContact](https://suiteforge.app/keepcontact/): Productivity. Privacy-first personal CRM for iPhone: who to reach out to each morning, what matters to each person, message ideas from on-device AI. No account, 100% offline. Free for up to 15 contacts · Pro with a 7-day trial. App Store: https://apps.apple.com/app/id6761559776.
-- [FastClear](https://suiteforge.app/fastclear/): Health & Wellness. FastClear is a privacy-first intermittent fasting timer for iPhone. Track 16:8, 18:6, OMAD and custom fasts. No account, no tracking, all data on your device. Free download · optional subscription. App Store: https://apps.apple.com/app/id6762476052.
+- [FastClear](https://suiteforge.app/fastclear/): Health & Wellness. FastClear is a simple intermittent fasting timer for iPhone: correctable start time, a goal you can go past, eating window, free Live Activity, widgets. No account, Data Not Collected. Free download · optional Premium, lifetime option. App Store: https://apps.apple.com/app/id6762476052.
 - [RoutineFlow](https://suiteforge.app/routineflow/): Health & Wellness. RoutineFlow guides your morning routine step by step, out loud, and blocks distracting apps until you're done. Apple Watch, widgets, Siri. No account, no ads. Free download · Premium with a 7-day trial. App Store: https://apps.apple.com/app/id6766101143.
 - [WalkQuest](https://suiteforge.app/walkquest/): Health & Wellness. Turn your daily steps into virtual walks on real maps: Paris to Versailles, Rome, New York, the Camino. A private iPhone step counter, no account. Free download · 2 journeys free · Premium or lifetime. App Store: https://apps.apple.com/app/id6768080009.
 
@@ -69,23 +69,23 @@ Questions:
 
 ## FastClear
 
-Pick a fasting protocol, start your timer, and watch your streak grow. No charts you can't read, no noise — just a clear view of where you are in your fast.
+Say when you last ate and your fast starts from that moment. Go past your goal, see your eating window counted down, and keep it all on your lock screen. No account, no tracking.
 
-- Every protocol, one tap: 16:8, 18:6, 20:4, OMAD or a custom window. Switch any time without losing your history.
-- Honest streaks: See completed fasts build into a streak that motivates without guilt-tripping. Miss a day? Pick right back up.
-- Apple Health, your way: Completed fasts can be written to Apple Health so your wellness data stays together — only if you allow it.
-- Widgets that glance: Keep your current fast on your Home Screen. One look tells you how long is left.
+- Start when you really started: Forgot to start the timer? Say when you last ate (now, an hour ago, or any time) and your fast starts from that moment. Correct it later if you need to.
+- A goal you can go past: Your goal is a milestone, not a stop: the fast keeps going until you end it, and the time beyond the goal is counted. Then the eating window opens and counts down.
+- On your lock screen: A free Live Activity and Dynamic Island show your fast as it goes, with an End button. Interactive widgets, a Control Center control and Siri start or end a fast without opening the app.
+- Honest by design: Milestones like ketosis are shown as estimates, with their sources. No weight-loss promises, a free version you can keep using, and your history exportable anytime.
 
-Comparison with Zero, Fastic, BodyFast (US App Store listings, checked 14 October 2026): According to their App Store privacy labels, FastClear collects no data at all, while Zero, Fastic and BodyFast all collect data linked to your identity, including health and fitness data for Zero and Fastic. Fastic and BodyFast also use data to track you across other companies' apps and websites, and contain ads. FastClear's in-app purchases are listed from $3.99 to $24.99, against up to $69.99 to $89.99 for the others. In exchange, Zero, Fastic and BodyFast offer food and calorie tracking, and Zero has an Apple Watch app; FastClear is a fasting timer only.
+Comparison with Zero, Fastic, BodyFast (US App Store listings, checked 14 October 2026): According to their App Store privacy labels, FastClear collects no data at all, while Zero, Fastic and BodyFast all collect data linked to your identity, including health and fitness data for Zero and Fastic. Fastic and BodyFast also use data to track you across other companies' apps and websites, and contain ads. FastClear's in-app purchases are listed from $0.99 to $9.99, with a one-time lifetime option, against up to $69.99 to $89.99 for the others. In exchange, Zero, Fastic and BodyFast offer food and calorie tracking, and Zero has an Apple Watch app; FastClear is a fasting timer only.
 
 Questions:
 
-- Is FastClear free? Yes — FastClear is free to download and the core timer is free to use. An optional subscription unlocks advanced protocols and extended history.
-- What's the best app for private intermittent fasting? FastClear is built specifically for people who want a private fasting timer: it has no account, no analytics and no trackers, and every fast is stored on your own device rather than on a company server.
-- Does FastClear need an internet connection? No. FastClear works fully offline. A connection is only used by Apple to manage an optional subscription.
-- Does FastClear share my fasting data? No. Your fasting history never leaves your device unless you choose to write completed fasts to Apple Health, which stays under your control in the Health app.
-- Does FastClear support 16:8 and OMAD? Yes. FastClear supports 16:8, 18:6, 20:4, OMAD and fully custom fasting windows.
-- How is FastClear different from Zero, Fastic or BodyFast? FastClear is a fasting timer only, built for privacy: its App Store privacy label is "Data Not Collected", it has no ads and no account, and its in-app purchases are listed from $3.99 to $24.99. Zero, Fastic and BodyFast go further with food and calorie tracking (and an Apple Watch app for Zero), but according to their App Store listings they collect data linked to your identity, and Fastic and BodyFast also contain ads and use data to track you.
+- Is FastClear free? Yes. Every protocol, the Live Activity, 30 days of history and the export of your data are free, with no time limit. Premium adds your full history, in-depth statistics and the widgets, as a monthly or yearly subscription (7-day free trial on the yearly plan) or a one-time lifetime purchase.
+- Can I change the start time of a fast? Yes. You can start a fast from when you last ate, correct the start of the fast in progress, and add or edit past fasts in your history.
+- What's the best app for private intermittent fasting? FastClear is built for people who want a private fasting timer: it has no account, no analytics and no trackers, its App Store privacy label is "Data Not Collected", and every fast is stored on your own device rather than on a company server.
+- Does FastClear need an internet connection? No. FastClear works fully offline. A connection is only used by Apple to manage an optional purchase.
+- Does FastClear work with Apple Health? No. FastClear 2.0 doesn't read or write Apple Health: your fasting history stays in the app, on your device, and you can export it at any time.
+- How is FastClear different from Zero, Fastic or BodyFast? FastClear is a fasting timer only, built for privacy: its App Store privacy label is "Data Not Collected", it has no ads and no account, and its in-app purchases are listed from $0.99 to $9.99 with a lifetime option. Zero, Fastic and BodyFast go further with food and calorie tracking (and an Apple Watch app for Zero), but according to their App Store listings they collect data linked to your identity, and Fastic and BodyFast also contain ads and use data to track you.
 
 - [Privacy Policy](https://suiteforge.app/fastclear/privacy/)
 - [Terms of Use](https://suiteforge.app/fastclear/terms/)

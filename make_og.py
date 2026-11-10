@@ -39,14 +39,14 @@ OG = {
         "chips": ["On-device AI", "No account", "100% offline"],
     },
     "fastclear": {
-        "bg": (21, 122, 66),           # #157A42 — deep icon green (white text stays legible)
-        "glow": (52, 199, 89),         # #34C759 — icon green
-        "soft": (205, 238, 216),
+        "bg": (49, 46, 129),           # #312E81 — deep ink indigo (white text stays legible)
+        "glow": (251, 191, 36),        # #FBBF24 — dawn amber of the 2.0 icon
+        "soft": (224, 231, 255),
         "shot": "screenshots/source/en/1_home_en.png",
         "name": "FastClear",
-        "title": ["A calm timer for", "intermittent fasting."],
-        "sub": "Private fasting tracker for iPhone",
-        "chips": ["16:8 · 18:6 · OMAD", "No account", "No tracking"],
+        "title": ["A fasting timer that", "follows your rhythm."],
+        "sub": "Simple fasting timer for iPhone",
+        "chips": ["Live Activity", "No account", "Data Not Collected"],
     },
     "routineflow": {
         "bg": (28, 28, 30),            # #1C1C1E — icon background
@@ -89,8 +89,8 @@ OG_FR = {
               "sub": "Enfants et familles, 10 minutes par jour", "chips": ["100 leçons", "Latin et cyrillique", "Sans pub"]},
     "keepcontact": {"shot": "screenshots/source/fr/KeepContact FR - 1. Accueil.png", "title": ["Restez proche des", "gens qui comptent."],
                     "sub": "CRM personnel privé pour iPhone", "chips": ["IA sur l'iPhone", "Sans compte", "100 % hors ligne"]},
-    "fastclear": {"shot": "screenshots/source/fr/1_home_fr.png", "title": ["Un minuteur serein", "pour le jeûne."],
-                  "sub": "Suivi du jeûne privé pour iPhone", "chips": ["16:8 · 18:6 · OMAD", "Sans compte", "Sans pistage"]},
+    "fastclear": {"shot": "screenshots/source/fr/1_home_fr.png", "title": ["Un minuteur de jeûne", "à votre vrai rythme."],
+                  "sub": "Minuteur de jeûne simple pour iPhone", "chips": ["Live Activity", "Sans compte", "Données non collectées"]},
     "routineflow": {"shot": "screenshots/source/fr/01_home_fr.png", "title": ["Gagnez vos matins", "avant votre téléphone."],
                     "sub": "Minuteur de routine et bloqueur d'apps", "chips": ["Étapes à voix haute", "Apps bloquées", "Sans pistage"]},
     "walkquest": {"shot": "screenshots/source/fr/1. Today FR.png", "title": ["Vos pas vous emmènent", "quelque part."],

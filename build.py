@@ -18,16 +18,16 @@ DOMAIN = "https://suiteforge.app"
 APPS = {
     "fastclear": {
         "name": "FastClear",
-        "full_name": "Fasting Timer: FastClear",
+        "full_name": "Simple Fasting Timer FastClear",
         "category_label": "Health & Wellness",
         "schema_category": "HealthApplication",
         "appstore_id": "6762476052",
-        "accent": "#1f9d57", "accent_deep": "#13703c", "accent_tint": "#e3f3ea",
-        "icon_svg": '<path d="M12 3l7 3v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/><circle cx="12" cy="12" r="3.2"/><path d="M12 10.4V12l1.1.9"/>',
-        "tagline": "A calm timer for intermittent fasting.",
-        "hero_sub": "Pick a fasting protocol, start your timer, and watch your streak grow. No charts you can't read, no noise — just a clear view of where you are in your fast.",
-        "seo_title": "FastClear — Private intermittent fasting timer for iPhone",
-        "seo_desc": "FastClear is a privacy-first intermittent fasting timer for iPhone. Track 16:8, 18:6, OMAD and custom fasts. No account, no tracking, all data on your device.",
+        "accent": "#4338ca", "accent_deep": "#312e81", "accent_tint": "#e0e7ff",
+        "icon_svg": '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5V12l7.4 4.2"/>',
+        "tagline": "A fasting timer that follows your real rhythm.",
+        "hero_sub": "Say when you last ate and your fast starts from that moment. Go past your goal, see your eating window counted down, and keep it all on your lock screen. No account, no tracking.",
+        "seo_title": "FastClear — Simple intermittent fasting timer for iPhone, no account",
+        "seo_desc": "FastClear is a simple intermittent fasting timer for iPhone: correctable start time, a goal you can go past, eating window, free Live Activity, widgets. No account, Data Not Collected.",
         # Comparison table. Facts only, each one read on the competitor's US App Store page
         # (privacy label, "Contains advertising", in-app purchase list, compatibility). Re-check every quarter.
         # Cell = (state, text): "good" / "bad" from the user's point of view, "info" = neutral.
@@ -44,68 +44,71 @@ APPS = {
                 ("Contains advertising", [
                     ("good", "No"), ("good", "No"), ("bad", "Yes"), ("bad", "Yes")]),
                 ("In-app purchases listed", [
-                    ("good", "$3.99 to $24.99"), ("info", "$9.99 to $89.99"), ("info", "$12.99 to $79.99"), ("info", "$11.99 to $69.99")]),
+                    ("good", "$0.99 to $9.99, lifetime option"), ("info", "$9.99 to $89.99"), ("info", "$12.99 to $79.99"), ("info", "$11.99 to $69.99")]),
                 ("Food & calorie tracking", [
                     ("bad", "No, fasting only"), ("good", "Yes"), ("good", "Yes"), ("good", "Yes")]),
                 ("Apple Watch app", [
                     ("bad", "No"), ("good", "Yes"), ("bad", "No"), ("bad", "No")]),
             ],
             # Plain sentences under the table: what an AI assistant quotes (a lone "None" cell means nothing out of context).
-            "summary": "According to their App Store privacy labels, FastClear collects no data at all, while Zero, Fastic and BodyFast all collect data linked to your identity, including health and fitness data for Zero and Fastic. Fastic and BodyFast also use data to track you across other companies' apps and websites, and contain ads. FastClear's in-app purchases are listed from $3.99 to $24.99, against up to $69.99 to $89.99 for the others. In exchange, Zero, Fastic and BodyFast offer food and calorie tracking, and Zero has an Apple Watch app; FastClear is a fasting timer only.",
+            "summary": "According to their App Store privacy labels, FastClear collects no data at all, while Zero, Fastic and BodyFast all collect data linked to your identity, including health and fitness data for Zero and Fastic. Fastic and BodyFast also use data to track you across other companies' apps and websites, and contain ads. FastClear's in-app purchases are listed from $0.99 to $9.99, with a one-time lifetime option, against up to $69.99 to $89.99 for the others. In exchange, Zero, Fastic and BodyFast offer food and calorie tracking, and Zero has an Apple Watch app; FastClear is a fasting timer only.",
             "note": "FastClear does one thing, fasting, and keeps it on your iPhone. If you want meal logging or a Watch app, the others do more; if you want a fasting timer that knows nothing about you, that's FastClear.",
         },
-        "home_blurb": "A clean, focused intermittent-fasting timer. Pick a protocol, start your fast, watch your streak grow.",
-        "price_note": "Free download · optional subscription",
+        "home_blurb": "A simple fasting timer that follows your real rhythm: correctable start, a goal you can go past, the eating window, on your lock screen.",
+        "price_note": "Free download · optional Premium, lifetime option",
+        "updated": "10 November 2026",
+        "lifetime": True,
+        # Purchases checked on the device with StoreKit 2 (SuiteForgeKit): no RevenueCat (TD-025).
+        "storekit_native": True,
+        # Family Sharing on the subscriptions only, not on the lifetime purchase (Nicolas, 10 November 2026).
+        "family_sharing": "subscriptions",
         "highlights": [
-            ("16:8 → OMAD", "Every protocol, or your own window"),
-            ("Widgets", "Your fast on the Home Screen"),
-            ("Apple Health", "Completed fasts, only if you allow it"),
+            ("Full cycle", "Fast, goal, eating window, next fast"),
+            ("Lock screen", "Free Live Activity and Dynamic Island"),
+            ("Edit anytime", "Fix a start time, add a forgotten fast"),
             ("0", "Accounts, ads or trackers"),
         ],
         "features": [
-            ("Every protocol, one tap", "16:8, 18:6, 20:4, OMAD or a custom window. Switch any time without losing your history.", '<circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.2 1.8"/>'),
-            ("Honest streaks", "See completed fasts build into a streak that motivates without guilt-tripping. Miss a day? Pick right back up.", '<path d="M5 13l4 4 10-11"/>'),
-            ("Apple Health, your way", "Completed fasts can be written to Apple Health so your wellness data stays together — only if you allow it.", '<path d="M12 21C7 17 4 14 4 9.5 4 7 6 5 8.5 5c1.6 0 3 .9 3.5 2 .5-1.1 1.9-2 3.5-2C21 5 22 7 22 9.5c0 4.5-3 7.5-8 11.5z"/>'),
-            ("Widgets that glance", "Keep your current fast on your Home Screen. One look tells you how long is left.", '<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>'),
+            ("Start when you really started", "Forgot to start the timer? Say when you last ate (now, an hour ago, or any time) and your fast starts from that moment. Correct it later if you need to.", '<circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.2 1.8"/>'),
+            ("A goal you can go past", "Your goal is a milestone, not a stop: the fast keeps going until you end it, and the time beyond the goal is counted. Then the eating window opens and counts down.", '<path d="M5 13l4 4 10-11"/>'),
+            ("On your lock screen", "A free Live Activity and Dynamic Island show your fast as it goes, with an End button. Interactive widgets, a Control Center control and Siri start or end a fast without opening the app.", '<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>'),
+            ("Honest by design", "Milestones like ketosis are shown as estimates, with their sources. No weight-loss promises, a free version you can keep using, and your history exportable anytime.", '<path d="M12 21C7 17 4 14 4 9.5 4 7 6 5 8.5 5c1.6 0 3 .9 3.5 2 .5-1.1 1.9-2 3.5-2C21 5 22 7 22 9.5c0 4.5-3 7.5-8 11.5z"/>'),
         ],
         "steps": [
-            ("Choose your window", "Tap a protocol or set your own fasting and eating hours."),
-            ("Start the timer", "Your fast runs in the app, in a widget, and on your lock screen."),
-            ("Build the habit", "Each completed fast adds to your streak and, optionally, to Apple Health."),
+            ("Say when you last ate", "Your fast starts from that moment, with 16:8, 18:6, 20:4, OMAD or your own goal."),
+            ("Follow it anywhere", "In the app, on your lock screen, in a widget, or by asking Siri."),
+            ("Keep a true history", "Edit or add past fasts, and watch your streak and stats grow."),
         ],
         "faq": [
-            ("Is FastClear free?", "Yes — FastClear is free to download and the core timer is free to use. An optional subscription unlocks advanced protocols and extended history."),
-            ("What's the best app for private intermittent fasting?", "FastClear is built specifically for people who want a private fasting timer: it has no account, no analytics and no trackers, and every fast is stored on your own device rather than on a company server."),
-            ("Does FastClear need an internet connection?", "No. FastClear works fully offline. A connection is only used by Apple to manage an optional subscription."),
-            ("Does FastClear share my fasting data?", "No. Your fasting history never leaves your device unless you choose to write completed fasts to Apple Health, which stays under your control in the Health app."),
-            ("Does FastClear support 16:8 and OMAD?", "Yes. FastClear supports 16:8, 18:6, 20:4, OMAD and fully custom fasting windows."),
-            ("How is FastClear different from Zero, Fastic or BodyFast?", "FastClear is a fasting timer only, built for privacy: its App Store privacy label is \"Data Not Collected\", it has no ads and no account, and its in-app purchases are listed from $3.99 to $24.99. Zero, Fastic and BodyFast go further with food and calorie tracking (and an Apple Watch app for Zero), but according to their App Store listings they collect data linked to your identity, and Fastic and BodyFast also contain ads and use data to track you."),
+            ("Is FastClear free?", "Yes. Every protocol, the Live Activity, 30 days of history and the export of your data are free, with no time limit. Premium adds your full history, in-depth statistics and the widgets, as a monthly or yearly subscription (7-day free trial on the yearly plan) or a one-time lifetime purchase."),
+            ("Can I change the start time of a fast?", "Yes. You can start a fast from when you last ate, correct the start of the fast in progress, and add or edit past fasts in your history."),
+            ("What's the best app for private intermittent fasting?", "FastClear is built for people who want a private fasting timer: it has no account, no analytics and no trackers, its App Store privacy label is \"Data Not Collected\", and every fast is stored on your own device rather than on a company server."),
+            ("Does FastClear need an internet connection?", "No. FastClear works fully offline. A connection is only used by Apple to manage an optional purchase."),
+            ("Does FastClear work with Apple Health?", "No. FastClear 2.0 doesn't read or write Apple Health: your fasting history stays in the app, on your device, and you can export it at any time."),
+            ("How is FastClear different from Zero, Fastic or BodyFast?", "FastClear is a fasting timer only, built for privacy: its App Store privacy label is \"Data Not Collected\", it has no ads and no account, and its in-app purchases are listed from $0.99 to $9.99 with a lifetime option. Zero, Fastic and BodyFast go further with food and calorie tracking (and an Apple Watch app for Zero), but according to their App Store listings they collect data linked to your identity, and Fastic and BodyFast also contain ads and use data to track you."),
         ],
         "mock": """
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:30px 18px;">
             <div style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;">16 : 8 · Fasting</div>
-            <div style="width:150px;height:150px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--accent) 232deg,#e8e2d6 0);">
+            <div style="width:150px;height:150px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--accent) 304deg,#e0e0ea 0);">
               <div style="width:120px;height:120px;border-radius:50%;background:var(--bg-card);display:grid;place-items:center;">
-                <div style="text-align:center;"><div style="font-family:var(--serif);font-weight:900;font-size:1.9rem;color:var(--ink);line-height:1;">10:18</div><div style="font-size:.62rem;color:var(--ink-faint);margin-top:3px;">elapsed</div></div>
+                <div style="text-align:center;"><div style="font-family:var(--serif);font-weight:900;font-size:1.9rem;color:var(--ink);line-height:1;">13:30</div><div style="font-size:.62rem;color:var(--ink-faint);margin-top:3px;">fasting</div></div>
               </div>
             </div>
-            <div style="font-size:.74rem;color:var(--accent-deep);font-weight:600;">5h 42m to goal</div>
-            <div style="display:flex;gap:6px;margin-top:4px;">
-              <span style="width:9px;height:9px;border-radius:50%;background:var(--accent);"></span><span style="width:9px;height:9px;border-radius:50%;background:var(--accent);"></span><span style="width:9px;height:9px;border-radius:50%;background:var(--accent);"></span><span style="width:9px;height:9px;border-radius:50%;background:#e0dacd;"></span><span style="width:9px;height:9px;border-radius:50%;background:#e0dacd;"></span>
-            </div>
+            <div style="font-size:.74rem;color:var(--accent-deep);font-weight:600;">Goal in 2h 30m</div>
           </div>""",
         "permissions": [
-            ("Apple Health (write only)", "If you allow it, FastClear writes your completed fasting periods to Apple Health. FastClear never reads other health data. This is optional and can be turned off in iOS Settings at any time."),
-            ("Notifications", "Used only to remind you when a fasting or eating window starts or ends. Optional."),
+            ("Notifications", "Used only to tell you when your fasting goal is reached and, if you turn it on, to remind you to start your fast. Created on your iPhone. Optional."),
         ],
-        "hero_shot_alt": "FastClear home screen with a live 16:8 fast at 13 hours 30 minutes, currently in the Ketosis phase",
+        "hero_shot_alt": "FastClear timer with a 16:8 fast at 13 hours 30 minutes, goal in 2 hours 30",
         "shots_type": "brut",
         "shots_w": 620, "shots_h": 1347,
         "shots": [
-            ("shot-1.webp", "FastClear protocol picker with 16:8, 18:6, 20:4, OMAD, 5:2 and a custom option"),
-            ("shot-2.webp", "FastClear history view listing recently completed fasts"),
-            ("shot-3.webp", "FastClear stats screen with longer-term fasting trends"),
-            ("shot-4.webp", "FastClear settings screen with notification and protocol options"),
+            ("shot-1.webp", "FastClear timer past its goal, with the time beyond the goal counted"),
+            ("shot-2.webp", "FastClear eating window counting down after a fast"),
+            ("shot-3.webp", "FastClear Live Activity on the iPhone lock screen, with an End button"),
+            ("shot-4.webp", "FastClear history grouped by week, every fast editable"),
+            ("shot-5.webp", "FastClear statistics with the current streak, best streak and this week"),
         ],
     },
     "routineflow": {
@@ -1372,7 +1375,12 @@ def build_terms(slug):
     name = esc(a["name"])
     lifetime = T(" A one-time lifetime purchase is also available: it is charged once, does not renew, and unlocks the same features for as long as the app is offered.",
                  " Un achat unique à vie est aussi proposé : il est facturé une seule fois, ne se renouvelle pas et débloque les mêmes fonctions tant que l'app est proposée.") if a.get("lifetime") else ""
-    family = T(" Purchases can be shared with your family through Apple's Family Sharing.", " Les achats peuvent être partagés avec votre famille grâce au Partage familial d'Apple.") if a.get("family_sharing") else ""
+    if a.get("family_sharing") == "subscriptions":
+        family = T(" Subscriptions can be shared with your family through Apple's Family Sharing; the lifetime purchase cannot.", " Les abonnements peuvent être partagés avec votre famille grâce au Partage familial d'Apple ; l'achat à vie ne le peut pas.")
+    elif a.get("family_sharing"):
+        family = T(" Purchases can be shared with your family through Apple's Family Sharing.", " Les achats peuvent être partagés avec votre famille grâce au Partage familial d'Apple.")
+    else:
+        family = ""
     trial = T(" If a free trial is offered and you do not cancel at least 24 hours before it ends, the subscription starts automatically at the price shown.",
               " Si un essai gratuit est proposé et que vous ne l'annulez pas au moins 24 heures avant sa fin, l'abonnement démarre automatiquement au prix indiqué.")
     sections = [
