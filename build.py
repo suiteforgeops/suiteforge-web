@@ -505,6 +505,33 @@ APPS = {
         "hero_sub": "Crescendo tells you what to put on the bar for every set, and why: “3 × 12 reached: +2.5 kg”. A lifting log that does the math for you and fits your workout to your day, on iPhone or on your wrist, with no account.",
         "seo_title": "Crescendo — Gym log & progressive overload coach for iPhone",
         "seo_desc": "A workout tracker that suggests the weight for every set and explains why. Programs, Apple Watch, rest timer, progress charts. No account, Data Not Collected.",
+        "compare": {
+            "checked": "11 November 2026",
+            "rivals": ["Hevy", "Strong", "Fitbod"],
+            "rows": [
+                ("Data used to track you across other companies' apps and websites", [
+                    ("good", "None"), ("good", "None"), ("good", "None"), ("bad", "Usage data")]),
+                ("Data linked to your identity", [
+                    ("good", "None: Data Not Collected"), ("bad", "Purchases, usage data, contact info, contacts"),
+                    ("bad", "Health & fitness, purchases, contact info, identifiers, diagnostics, other data"),
+                    ("bad", "Usage data, health & fitness, contact info, user content, identifiers, diagnostics")]),
+                ("Health & fitness data collected by the developer", [
+                    ("good", "No"), ("info", "Not declared"), ("bad", "Yes"), ("bad", "Yes")]),
+                ("Data collected but not linked to you", [
+                    ("good", "None"), ("info", "Identifiers, sensitive info, diagnostics"), ("good", "None"), ("good", "None")]),
+                ("In-app purchases listed", [
+                    ("good", "$3.99 to $44.99, lifetime option"), ("info", "$2.99 to $74.99, lifetime option"),
+                    ("info", "$3.99 to $99.99, lifetime option"), ("info", "$7.99 to $95.99")]),
+                ("Apple Watch app", [
+                    ("good", "Yes"), ("good", "Yes"), ("good", "Yes"), ("good", "Yes")]),
+                ("iPad app", [
+                    ("bad", "No"), ("good", "Yes"), ("bad", "No"), ("bad", "No")]),
+                ("App languages", [
+                    ("info", "English, French"), ("good", "16 languages"), ("good", "11 languages"), ("info", "English, Portuguese, Spanish")]),
+            ],
+            "summary": "According to their App Store privacy labels, Crescendo collects no data, while Hevy, Strong and Fitbod all collect data linked to your identity, including health and fitness data for Strong and Fitbod. Fitbod also uses usage data to track you across other companies' apps and websites. Crescendo's in-app purchases are listed from $3.99 to $44.99, including a lifetime option, against up to $74.99 to $99.99 for the others. In exchange, Hevy and Strong are available in many more languages, and Hevy also runs on iPad.",
+            "note": "All four have an Apple Watch app. Crescendo is the one that collects nothing: no account, and your workouts stay on your devices and in your private iCloud. Hevy adds a social feed, and Hevy and Strong come in many more languages.",
+        },
         "home_blurb": "A lifting log that suggests the weight for every set and tells you why, with your whole workout on Apple Watch.",
         "home_pills": ["300+ exercises", "Apple Watch", "Hevy import", "No account"],
         "price_note": "Free download · no paywall at launch · Premium or lifetime",
@@ -531,6 +558,7 @@ APPS = {
             ("Is Crescendo free?", "Yes. There is no paywall at launch and no account. Free: your tailored program, the editor, 12 programs and 12 ready-made workouts, suggested loads, deloads, effort ratings (RIR), unlimited history, charts, logging body weight, measurements and photos, the Apple Watch app, the rest timer Live Activity, widgets, Siri, Hevy import and export. Premium adds Adapt my workout, Readiness, the weekly review, measurement curves and before and after photos, trends and the Consistency widget: a monthly or yearly subscription (7-day free trial on the yearly plan) or a one-time lifetime purchase, with Family Sharing."),
             ("How does Crescendo choose the weight?", "By double progression: when you reach the top of the rep range on every set, the load goes up, rounded to your equipment; otherwise you aim for more reps at the same weight. Each suggestion comes with its reason in one line, and the next set adjusts if you do too many reps or too few. You always stay in control."),
             ("Do I need an Apple Watch?", "No. Everything works on iPhone alone. With an Apple Watch, you see the set, the load, your rest and your heart rate on your wrist, and the workout is saved to Apple Health."),
+            ("How is Crescendo different from Hevy, Strong or Fitbod?", "Crescendo suggests the weight for every set and explains why, with no account. According to their App Store privacy labels, Crescendo collects no data, while Hevy, Strong and Fitbod collect data linked to your identity, including health and fitness data for Strong and Fitbod, and Fitbod uses data to track you. Crescendo's in-app purchases are listed from $3.99 to $44.99. All four have an Apple Watch app; Hevy and Strong come in more languages, and Hevy also runs on iPad."),
             ("Can I bring my workout history from Hevy?", "Yes. Crescendo imports a Hevy export file on your iPhone, for free, and can export your own history to CSV or JSON at any time."),
             ("Does Crescendo collect my data?", "No. Its App Store privacy label is “Data Not Collected”. There is no account, no analytics and no ads. Your workouts stay on your devices, and in your private iCloud if you turn on sync. Crescendo gives no medical advice."),
         ],
