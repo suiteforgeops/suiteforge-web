@@ -1715,7 +1715,7 @@ def build_guide(gid):
             f'<div><strong><a href="{page_path(("about",))}">{esc(PUBLISHER)}</a></strong>'
             f'<span>{T(f"Published on {published}", f"Publié le {published}")}</span></div></div>\n'
             f'  <p class="lede">{esc(t["lede"])}</p>\n  {body}\n'
-            f'  <h2>{T("Questions parents ask", "Les questions des parents")}</h2>{faq}\n'
+            f'  <h2>{esc(t["faq_title"])}</h2>{faq}\n'
             f'  <h2>{T("Sources", "Sources")}</h2>\n  <ul class="sources">{sources}</ul>\n'
             f'  <p class="guide-cta"><a class="btn btn-primary" href="{page_path(("app", g["app"]))}">{T(f"Discover {app['name']}", f"Découvrir {app['name']}")} {svg("arrow")}</a></p>\n'
             f'</main>\n{site_footer(g["app"])}\n{scripts()}')

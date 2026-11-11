@@ -1,7 +1,7 @@
 {
  "crescendo/index.html": {
   "date": "2026-11-11",
-  "hash": "7d4df30d8f184b69252e1876058c3183"
+  "hash": "61f11dd3c9135ec0214bcd337b98ae28"
  },
  "crescendo/privacy/index.html": {
   "date": "2026-11-11",
@@ -33,7 +33,7 @@
  },
  "fr/crescendo/index.html": {
   "date": "2026-11-11",
-  "hash": "719e303f386d2bab431678719e5bd1ad"
+  "hash": "0042d05d273fcb4812d76cc20b10c9da"
  },
  "fr/fastclear/conditions/index.html": {
   "date": "2026-11-11",
@@ -50,6 +50,10 @@
  "fr/guides/apprendre-le-serbe-a-son-enfant/index.html": {
   "date": "2026-11-11",
   "hash": "fa29c6b0180a84175d4e71568c7083da"
+ },
+ "fr/guides/double-progression/index.html": {
+  "date": "2026-11-11",
+  "hash": "63b1820b5c30cf63f01f60b58b277ad2"
  },
  "fr/index.html": {
   "date": "2026-11-11",
@@ -194,6 +198,10 @@
  "fr/walkquest/v/tour_mont_blanc/index.html": {
   "date": "2026-11-11",
   "hash": "7519aea8c592b8ca1a5287f993519c1b"
+ },
+ "guides/double-progression/index.html": {
+  "date": "2026-11-11",
+  "hash": "1278c947897c59df59fc3e391315f3bd"
  },
  "guides/teach-your-child-serbian/index.html": {
   "date": "2026-11-11",
