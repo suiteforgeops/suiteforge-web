@@ -168,7 +168,8 @@ FR_APPS = {
             ("WalkQuest est-elle gratuite ?", "Oui. WalkQuest est gratuite à télécharger, avec deux voyages complets (Paris → Versailles et la promenade des Anglais), votre objectif quotidien, une série avec jour de repos, 3 défis, 3 trophées et 30 jours d'historique. Premium débloque les cinq autres voyages, tous les défis et trophées, 12 mois d'historique et les widgets de l'écran verrouillé et du voyage : un abonnement mensuel ou annuel, ou un achat unique à vie, partageable avec 6 personnes grâce au partage familial."),
             ("Comment fonctionnent les voyages virtuels à pied ?", "WalkQuest additionne les pas et la distance de marche que votre iPhone enregistre déjà dans Apple Santé, et vous fait avancer sur un vrai parcours. Vous marchez où vous êtes ; le voyage avance étape après étape, avec une célébration à chaque arrivée."),
             ("Faut-il le GPS ou une Apple Watch ?", "Non. WalkQuest n'utilise jamais votre localisation. Elle lit les pas et la distance que votre iPhone enregistre seul ; une Apple Watch rend simplement le comptage plus précis."),
-            ("Quelle différence entre WalkQuest et Pedometer++, StepsApp ou Pacer ?", "WalkQuest transforme vos pas en voyages sur de vraies cartes. D'après leurs fiches App Store, WalkQuest n'a pas de publicité et n'utilise jamais votre localisation, tandis que Pedometer++, StepsApp et Pacer contiennent de la publicité et peuvent utiliser votre localisation quand l'app n'est pas ouverte ; StepsApp et Pacer utilisent aussi des données pour vous suivre. Les achats intégrés de WalkQuest vont de 2,99 € à 17,99 €. Pedometer++, StepsApp et Pacer proposent une app Apple Watch ; WalkQuest utilise les pas que votre iPhone et votre Apple Watch enregistrent déjà dans Apple Santé."),
+            ("Quelle différence entre WalkQuest et Pedometer++, StepsApp ou Pacer ?", "WalkQuest transforme vos pas en voyages sur de vraies cartes. Elle n'utilise jamais votre localisation et ne lie aucune donnée à votre identité, tandis que d'après leurs fiches App Store, Pedometer++, StepsApp et Pacer peuvent utiliser votre localisation quand l'app n'est pas ouverte, et StepsApp et Pacer utilisent aussi des données pour vous suivre. Les achats intégrés de WalkQuest vont de 2,99 € à 19,99 €. Pedometer++, StepsApp et Pacer proposent une app Apple Watch ; WalkQuest utilise les pas que votre iPhone et votre Apple Watch enregistrent déjà dans Apple Santé."),
+
             ("WalkQuest vend-elle mes données d'activité ?", "Non. WalkQuest ne vend ni ne partage jamais vos données d'activité. Vos pas et votre distance sont lus dans Apple Santé et ne quittent jamais votre iPhone."),
         ],
         "permissions": [
@@ -185,15 +186,15 @@ FR_APPS = {
         "compare": {
             "rows": [
                 ("Données utilisées pour vous suivre sur les apps et sites d'autres entreprises", ["Aucune", "Aucune", "Identifiants, données d'utilisation", "Localisation"]),
-                ("Données liées à votre identité", ["Aucune", "Aucune", "Aucune", "Santé, localisation, contacts, coordonnées, achats, utilisation"]),
-                ("Données collectées mais non liées à vous", ["Aucune", "Localisation, identifiants, utilisation, diagnostic", "Identifiants, utilisation, diagnostic", "Diagnostic"]),
-                ("Contient de la publicité", ["Non", "Oui", "Oui", "Oui"]),
+                ("Données liées à votre identité", ["Aucune", "Aucune", "Aucune", "Santé, localisation, contacts, coordonnées, achats, identifiants, contenu, utilisation, diagnostic"]),
+                ("Données collectées mais non liées à vous", ["Achats seulement", "Localisation, identifiants, utilisation, diagnostic", "Identifiants, utilisation, diagnostic", "Diagnostic"]),
                 ("Peut utiliser votre localisation quand l'app n'est pas ouverte", ["Non", "Oui", "Oui", "Oui"]),
-                ("Achats intégrés affichés", ["2,99 € à 17,99 €", "1,99 € à 44,99 €", "0,99 € à 49,99 €", "4,49 € à 32,99 €"]),
+                ("Achats intégrés affichés", ["2,99 € à 19,99 €", "1,99 € à 44,99 €", "0,99 € à 49,99 €", "4,49 € à 29,99 €"]),
                 ("App Apple Watch", ["Non", "Oui", "Oui", "Oui"]),
+                ("Langues de l'app", ["Français, anglais", "12 langues", "31 langues", "17 langues"]),
             ],
-            "summary": "D'après leurs fiches App Store, WalkQuest n'a pas de publicité, ne lie aucune donnée à votre identité, ne vous suit nulle part et n'utilise jamais votre localisation, tandis que Pedometer++, StepsApp et Pacer contiennent toutes de la publicité et peuvent utiliser votre localisation quand l'app n'est pas ouverte. StepsApp et Pacer utilisent aussi des données pour vous suivre sur les apps et sites d'autres entreprises, et Pacer lie des données de santé, de localisation et de contact à votre identité. En contrepartie, toutes trois ont une app Apple Watch.",
-            "note": "WalkQuest lit les pas que votre iPhone compte déjà et en fait des voyages sur une carte : pas de publicité, pas de localisation, pas de classement. Les autres ajoutent une app Watch et des fonctions sociales.",
+            "summary": "WalkQuest ne lie aucune donnée à votre identité, ne vous suit nulle part et n'utilise jamais votre localisation ; elle ne collecte que des données d'achat anonymes, non liées à vous, pour gérer Premium. D'après leurs fiches App Store, Pedometer++, StepsApp et Pacer peuvent toutes utiliser votre localisation quand l'app n'est pas ouverte, StepsApp et Pacer utilisent des données pour vous suivre sur les apps et sites d'autres entreprises, et Pacer lie des données de santé, de localisation et de contact à votre identité. En contrepartie, toutes trois ont une app Apple Watch et existent dans bien plus de langues.",
+            "note": "WalkQuest lit les pas que votre iPhone compte déjà et en fait des voyages sur une carte : pas de publicité, pas de localisation, pas de classement. Les autres ajoutent une app Watch et plus de langues.",
         },
     },
 
