@@ -49,4 +49,48 @@
     window.addEventListener("resize", update);
     update();
   });
+
+  // 5. Home hero: the apps take turns in the fan of phones. Paused on hover, keyboard focus,
+  // off screen and in a hidden tab; never runs when the visitor asks for reduced motion.
+  var fan = document.querySelector("[data-fan]");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (fan && !reduce) {
+    var phones = Array.prototype.slice.call(fan.querySelectorAll(".phone"));
+    var label = fan.querySelector("[data-fan-label]");
+    var centre = 1, hold = 0, visible = true, timer = null;
+    var slots = ["fan-l", "fan-c", "fan-r", "fan-off"];
+    function place() {
+      var n = phones.length;
+      phones.forEach(function (p, i) {
+        var d = (i - centre + n) % n;
+        var slot = d === 0 ? "fan-c" : d === 1 ? "fan-r" : d === n - 1 ? "fan-l" : "fan-off";
+        slots.forEach(function (c) { p.classList.toggle(c, c === slot); });
+        if (slot === "fan-off") p.setAttribute("aria-hidden", "true"); else p.removeAttribute("aria-hidden");
+      });
+      if (label) {
+        label.classList.add("swap");
+        setTimeout(function () {
+          var p = phones[centre];
+          label.querySelector("span").textContent = p.getAttribute("data-name");
+          label.setAttribute("href", p.getAttribute("data-href"));
+          label.classList.remove("swap");
+        }, 300);
+      }
+    }
+    function tick() {
+      if (hold || !visible || document.hidden) return;
+      centre = (centre + 1) % phones.length;
+      place();
+    }
+    function pause() { hold++; }
+    function resume() { hold = Math.max(0, hold - 1); }
+    fan.addEventListener("mouseenter", pause);
+    fan.addEventListener("mouseleave", resume);
+    fan.addEventListener("focusin", pause);
+    fan.addEventListener("focusout", resume);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(fan);
+    }
+    timer = setInterval(tick, 4500);
+  }
 })();

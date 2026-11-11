@@ -259,13 +259,22 @@ a.card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-co
 
 /* fan of real screens */
 .fan { position: relative; height: 600px; }
-.fan .phone { position: absolute; top: 50%; left: 50%; width: 236px; margin: 0; max-width: none;
-  transition: transform .6s var(--ease); }
-.fan .phone:nth-child(1) { transform: translate(-108%, -46%) rotate(-9deg); }
-.fan .phone:nth-child(2) { transform: translate(-50%, -54%); z-index: 2; width: 256px; }
-.fan .phone:nth-child(3) { transform: translate(8%, -46%) rotate(9deg); }
-.fan:hover .phone:nth-child(1) { transform: translate(-116%, -47%) rotate(-11deg); }
-.fan:hover .phone:nth-child(3) { transform: translate(16%, -47%) rotate(11deg); }
+/* Every app has a phone; its slot (left, centre, right, off) says where it sits. reveal.js turns
+   the slots every few seconds; without JS (or with reduced motion) the first three stay put. */
+.fan .phone { position: absolute; top: 50%; left: 50%; width: 256px; margin: 0; max-width: none;
+  transition: transform .9s var(--ease), opacity .9s var(--ease); }
+.fan .fan-l { transform: translate(-112%, -45%) rotate(-9deg) scale(.92); z-index: 1; }
+.fan .fan-c { transform: translate(-50%, -54%); z-index: 2; }
+.fan .fan-r { transform: translate(12%, -45%) rotate(9deg) scale(.92); z-index: 1; }
+.fan .fan-off { transform: translate(-50%, -50%) scale(.8); opacity: 0; z-index: 0; pointer-events: none; }
+.fan:hover .fan-l { transform: translate(-120%, -46%) rotate(-11deg) scale(.92); }
+.fan:hover .fan-r { transform: translate(20%, -46%) rotate(11deg) scale(.92); }
+.fan-label { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); z-index: 3;
+  display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 999px;
+  background: var(--bg-card); border: 1px solid var(--line); color: var(--ink); font-weight: 600; font-size: .9rem;
+  text-decoration: none; white-space: nowrap; box-shadow: 0 8px 20px -10px rgba(0,0,0,.35); transition: opacity .3s; }
+.fan-label svg { width: 15px; height: 15px; }
+.fan-label.swap { opacity: 0; }
 .fan::before { content: ""; position: absolute; inset: 12% 8%; border-radius: 50%;
   background: radial-gradient(closest-side, var(--accent-glow), transparent); filter: blur(10px); }
 
@@ -575,7 +584,7 @@ a.card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-co
 @media (prefers-reduced-motion: reduce) {
   .js .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
-  .fan .phone, .app-card, .shot, .btn { transition: none !important; }
+  .fan .phone, .fan-label, .app-card, .shot, .btn { transition: none !important; }
 }
 
 /* ---- Responsive ---- */
@@ -618,9 +627,10 @@ a.card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-co
   .app-card, .app-card--half, .app-card--feature { grid-column: 1 / -1; }
   .app-card { min-height: 0; }
   .fan { height: 420px; }
-  .fan .phone { width: 168px; border-radius: 30px; padding: 7px; }
+  .fan .phone { width: 184px; border-radius: 30px; padding: 7px; }
   .fan .phone .phone-screen { border-radius: 24px; }
-  .fan .phone:nth-child(2) { width: 184px; }
+  .fan { margin-bottom: 30px; }
+  .fan-label { bottom: -36px; }
 }
 @media (max-width: 520px) {
   body { font-size: 17px; }

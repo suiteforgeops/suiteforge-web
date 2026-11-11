@@ -782,12 +782,13 @@ def icon_block(slug, size=56, lazy=True):
     return (f'<div class="app-icon" style="width:{size}px;height:{size}px;border-radius:{r}px;">'
             f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">{a["icon_svg"]}</svg></div>')
 
-def phone(slug, alt=None, cls="", eager=False):
-    """Phone frame around the app's hero screenshot."""
+def phone(slug, alt=None, cls="", eager=False, attrs=""):
+    """Phone frame around the app's hero screenshot. eager: True (first screen, high priority), "now" (load
+    at once, normal priority) or False (lazy)."""
     a = A(slug)
     alt = alt if alt is not None else (a.get("hero_shot_alt") or a["name"])
-    load = 'loading="eager" fetchpriority="high"' if eager else 'loading="lazy"'
-    return (f'<div class="phone phone--shot {cls}"><div class="phone-screen">'
+    load = 'loading="eager" fetchpriority="high"' if eager is True else 'loading="eager"' if eager == "now" else 'loading="lazy"'
+    return (f'<div class="phone phone--shot {cls}"{attrs}><div class="phone-screen">'
             f'<img src="{ver(shot(slug, "hero-home.webp"))}" alt="{esc(alt)}" width="680" height="1478" {load} decoding="async">'
             f'</div></div>')
 
@@ -1263,7 +1264,16 @@ def build_home():
         a = A(new)
         announce = (f'''<a class="announce" href="{page_path(("app", new))}">{icon_img(new, 26, lazy=False)}<span><b>{T("New: ", "Nouveau : ")}{esc(a['name'])}</b> · '''
                     f'''{esc(a['category_label'])}{T(", coming soon", ", bientôt disponible")}</span><span class="arrow" aria-hidden="true">→</span></a>''')
-    fan = "".join(phone(s, alt=A(s).get("hero_shot_alt"), eager=(k == 1)) for k, s in enumerate(HOME_FAN))
+    # Hero fan: HOME_FAN first (left, centre, right without JS), then the other apps, which reveal.js turns in.
+    fan_apps = HOME_FAN + [s for s in ORDER if s not in HOME_FAN]
+    slots = ["fan-l", "fan-c", "fan-r"]
+    fan = "".join(
+        phone(s, alt=A(s).get("hero_shot_alt"), eager=True if k == 1 else "now" if k < 3 else False, cls=slots[k] if k < 3 else "fan-off",
+              attrs=f' data-name="{esc(A(s)["name"])}" data-href="{page_path(("app", s))}"' + ("" if k < 3 else ' aria-hidden="true"'))
+        for k, s in enumerate(fan_apps))
+    centre = A(fan_apps[1])
+    fan += (f'<a class="fan-label" href="{page_path(("app", fan_apps[1]))}" data-fan-label>'
+            f'<span>{esc(centre["name"])}</span>{svg("arrow")}</a>')
     stack = "".join(icon_img(s, 34, lazy=False) for s in ORDER)
     cards = "".join(home_card(s, layout, i) for i, (s, layout) in enumerate(HOME_LAYOUT))
 
@@ -1304,7 +1314,7 @@ def build_home():
         </div>
         <div class="hero-proof"><span class="icon-stack">{stack}</span><span>{T(f"{len(ORDER)} apps · Made in France · Zero trackers", f"{len(ORDER)} apps · Conçues en France · Zéro pisteur")}</span></div>
       </div>
-      <div class="fan" aria-label="{T("Screens from SuiteForge apps", "Écrans des apps SuiteForge")}">{fan}</div>
+      <div class="fan" data-fan aria-label="{T("Screens from SuiteForge apps", "Écrans des apps SuiteForge")}">{fan}</div>
     </div>
   </div>
 </section>
