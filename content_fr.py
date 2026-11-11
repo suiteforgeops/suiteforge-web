@@ -378,7 +378,7 @@ FR_APPS = {
             ("Les adultes peuvent-ils aussi apprendre le serbe avec Ježko ?", "Oui. Ježko est conçu pour les enfants, mais chaque membre de la famille peut avoir son propre profil, adultes compris, et avancer à son rythme. Des parents qui apprennent en même temps que leurs enfants, c'est exactement l'idée."),
             ("Ježko est-il adapté aux enfants ?", "Ježko n'a ni publicité, ni compte, ni messagerie, ni pistage. Les prénoms des profils, les enregistrements et les progrès restent sur votre appareil. Sur un profil enfant, les achats, les liens externes et le partage sont protégés par un contrôle parental."),
             ("Ježko fonctionne-t-il hors ligne ?", "Oui. Les leçons et leur audio sont intégrés à l'app : Ježko fonctionne sans connexion. Une connexion sert seulement à acheter ou restaurer Ježko Famille."),
-            ("Peut-on apprendre le serbe sur Duolingo ?", "Non. En octobre 2026, le catalogue de cours de Duolingo ne propose pas le serbe. Parmi les apps qui l'enseignent : Drops et Ling, qui couvrent de nombreuses langues et contiennent de la publicité, et Ježko, qui enseigne uniquement le serbe, aux enfants et à leur famille, à travers une histoire en 100 leçons, sans publicité et sans collecte de données."),
+            ("Peut-on apprendre le serbe sur Duolingo ?", "Non. En novembre 2026, le catalogue de cours de Duolingo ne propose pas le serbe. Parmi les apps qui l'enseignent : Drops et Ling, qui couvrent de nombreuses langues et, d'après leurs fiches App Store, utilisent des données pour vous suivre, et Ježko, qui enseigne uniquement le serbe, aux enfants et à leur famille, à travers une histoire en 100 leçons, sans publicité et sans collecte de données."),
             ("Dans quelles langues Ježko est-il disponible ?", "Ježko enseigne le serbe ; l'app et toutes les traductions sont disponibles en français et en anglais."),
         ],
         "permissions": [
@@ -403,12 +403,11 @@ FR_APPS = {
         "compare": {
             "rows": [
                 ("Cours de serbe", ["Oui : 100 leçons, du A1 au B1", "Non", "Oui", "Oui"]),
-                ("Données utilisées pour vous suivre sur les apps et sites d'autres entreprises", ["Aucune", "Localisation, coordonnées, contenu, identifiants, utilisation, achats", "Coordonnées, identifiants, utilisation", "Coordonnées, identifiants, utilisation, achats"]),
-                ("Données liées à votre identité", ["Aucune", "Localisation, contacts, coordonnées, infos financières, contenu, utilisation", "Coordonnées, identifiants, utilisation, diagnostic", "Identifiants, utilisation, achats, diagnostic"]),
-                ("Contient de la publicité", ["Non", "Oui", "Oui", "Oui"]),
+                ("Données utilisées pour vous suivre sur les apps et sites d'autres entreprises", ["Aucune", "Achats, localisation, coordonnées, contenu, identifiants, utilisation, diagnostic, autres données", "Coordonnées, identifiants, utilisation", "Achats, coordonnées, identifiants, utilisation, diagnostic"]),
+                ("Données liées à votre identité", ["Aucune", "Achats, localisation, contacts, coordonnées, infos financières, contenu, historique de recherche, identifiants, utilisation, diagnostic, autres données", "Coordonnées, identifiants, utilisation, diagnostic, autres données", "Achats, identifiants, utilisation, diagnostic"]),
                 ("Autres langues à apprendre", ["Non, serbe uniquement", "Oui, plus de 40", "Oui", "Oui"]),
             ],
-            "summary": "Duolingo ne propose pas de cours de serbe. Drops et Ling en proposent un, parmi de nombreuses langues, mais d'après leurs fiches App Store, toutes deux contiennent de la publicité, utilisent des données pour vous suivre sur les apps et sites d'autres entreprises et lient des données à votre identité, tout comme Duolingo. Ježko enseigne uniquement le serbe, à travers une histoire en 100 leçons pour les enfants et leur famille, sans publicité, sans compte et sans collecte de données.",
+            "summary": "Duolingo ne propose pas de cours de serbe. Drops et Ling en proposent un, parmi de nombreuses langues, mais d'après leurs étiquettes de confidentialité sur l'App Store, toutes deux utilisent des données pour vous suivre sur les apps et sites d'autres entreprises et lient des données à votre identité, tout comme Duolingo. Ježko enseigne uniquement le serbe, à travers une histoire en 100 leçons pour les enfants et leur famille, sans publicité, sans compte et sans collecte de données.",
             "source": "Ježko n'est pas encore sur l'App Store : sa colonne reflète la conception de l'app et sa politique de confidentialité. Cours de Duolingo : catalogue public de Duolingo.",
             "note": "Les grandes apps enseignent des dizaines de langues à tout le monde. Ježko en enseigne une, le serbe, aux enfants et à leur famille, à travers une histoire.",
         },

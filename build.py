@@ -29,7 +29,8 @@ APPS = {
         "seo_title": "FastClear — Simple intermittent fasting timer for iPhone, no account",
         "seo_desc": "FastClear is a simple intermittent fasting timer for iPhone: correctable start time, a goal you can go past, eating window, free Live Activity, widgets. No account, Data Not Collected.",
         # Comparison table. Facts only, each one read on the competitor's US App Store page
-        # (privacy label, "Contains advertising", in-app purchase list, compatibility). Re-check every quarter.
+        # (privacy label, in-app purchase list, compatibility, languages, location notice). Re-check every quarter.
+        # Since November 2026 the web pages no longer show "Contains ads": no advertising row without a source.
         # Cell = (state, text): "good" / "bad" from the user's point of view, "info" = neutral.
         "compare": {
             "checked": "11 November 2026",
@@ -417,21 +418,19 @@ APPS = {
         "seo_title": "Ježko: Learn Serbian for kids & families — iPhone app",
         "seo_desc": "Ježko teaches Serbian to kids and families through one story in 100 lessons. Speak out loud, read Latin and Cyrillic, 10 minutes a day. No account, no ads.",
         "compare": {
-            "checked": "14 October 2026",
+            "checked": "11 November 2026",
             "rivals": ["Duolingo", "Drops", "Ling"],
             "rows": [
                 ("Serbian course", [
                     ("good", "Yes: 100 lessons, A1 to B1"), ("bad", "No"), ("good", "Yes"), ("good", "Yes")]),
                 ("Data used to track you across other companies' apps and websites", [
-                    ("good", "None"), ("bad", "Location, contact info, user content, identifiers, usage, purchases"), ("bad", "Contact info, identifiers, usage"), ("bad", "Contact info, identifiers, usage, purchases")]),
+                    ("good", "None"), ("bad", "Purchases, location, contact info, user content, identifiers, usage, diagnostics, other data"), ("bad", "Contact info, identifiers, usage"), ("bad", "Purchases, contact info, identifiers, usage, diagnostics")]),
                 ("Data linked to your identity", [
-                    ("good", "None"), ("bad", "Location, contacts, contact info, financial info, user content, usage"), ("bad", "Contact info, identifiers, usage, diagnostics"), ("bad", "Identifiers, usage, purchases, diagnostics")]),
-                ("Contains advertising", [
-                    ("good", "No"), ("bad", "Yes"), ("bad", "Yes"), ("bad", "Yes")]),
+                    ("good", "None"), ("bad", "Purchases, location, contacts, contact info, financial info, user content, search history, identifiers, usage, diagnostics, other data"), ("bad", "Contact info, identifiers, usage, diagnostics, other data"), ("bad", "Purchases, identifiers, usage, diagnostics")]),
                 ("Other languages to learn", [
                     ("bad", "No, Serbian only"), ("good", "Yes, 40+"), ("good", "Yes"), ("good", "Yes")]),
             ],
-            "summary": "Duolingo does not offer a Serbian course. Drops and Ling do, as part of many languages, but according to their App Store listings both contain ads, use data to track you across other companies' apps and websites, and link data to your identity, as does Duolingo. Ježko teaches only Serbian, through one story told over 100 lessons for children and their families, with no ads, no account and no data collected.",
+            "summary": "Duolingo does not offer a Serbian course. Drops and Ling do, as part of many languages, but according to their App Store privacy labels both use data to track you across other companies' apps and websites and link data to your identity, as does Duolingo. Ježko teaches only Serbian, through one story told over 100 lessons for children and their families, with no ads, no account and no data collected.",
             "source": "Ježko is not on the App Store yet: its column reflects how the app is built and its privacy policy. Duolingo's courses: Duolingo's public course catalog.",
             "note": "The big apps teach dozens of languages to everyone. Ježko teaches one, Serbian, to children and their families, through a story.",
         },
@@ -472,7 +471,7 @@ APPS = {
             ("Can adults learn Serbian with Ježko too?", "Yes. Ježko is designed for children, but each family member can have their own profile, adults included, and progress at their own pace. Parents learning alongside their children is exactly the idea."),
             ("Is Ježko safe for children?", "Ježko has no ads, no account, no chat and no tracking. Profile names, recordings and progress stay on your device. On a child profile, purchases, external links and sharing are behind a parental gate."),
             ("Does Ježko work offline?", "Yes. The lessons and their audio are built into the app, so Ježko works without a connection. A connection is only used to buy or restore Ježko Family."),
-            ("Can I learn Serbian on Duolingo?", "No. As of October 2026, Duolingo's course catalog has no Serbian course. Apps that teach Serbian include Drops and Ling, which cover many languages and contain ads, and Ježko, which teaches only Serbian, to children and their families, through one story over 100 lessons, with no ads and no data collected."),
+            ("Can I learn Serbian on Duolingo?", "No. As of November 2026, Duolingo's course catalog has no Serbian course. Apps that teach Serbian include Drops and Ling, which cover many languages and, according to their App Store listings, use data to track you, and Ježko, which teaches only Serbian, to children and their families, through one story over 100 lessons, with no ads and no data collected."),
             ("Which languages does Ježko support?", "Ježko teaches Serbian, with the app and every translation available in English and in French."),
         ],
         "permissions": [

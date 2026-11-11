@@ -25,7 +25,7 @@ Your child understands baka and deka but doesn't dare answer? Ježko turns Serbi
 - Grammar without memorising rules: Words come first. Then 25 short “Behind the scenes” cards explain why we say “volim čokoladu”, each with a mini quiz, and games put the words to work: pairs, missing word, sentences in order.
 - Made for the whole family: Up to 5 profiles on one iPhone, for children aged 6 to 14 and for adults. Spaced repetition brings every word back at the right time, and a parent area shows progress, sentences said out loud and the week's activity.
 
-Comparison with Duolingo, Drops, Ling (US App Store listings, checked 14 October 2026): Duolingo does not offer a Serbian course. Drops and Ling do, as part of many languages, but according to their App Store listings both contain ads, use data to track you across other companies' apps and websites, and link data to your identity, as does Duolingo. Ježko teaches only Serbian, through one story told over 100 lessons for children and their families, with no ads, no account and no data collected.
+Comparison with Duolingo, Drops, Ling (US App Store listings, checked 11 November 2026): Duolingo does not offer a Serbian course. Drops and Ling do, as part of many languages, but according to their App Store privacy labels both use data to track you across other companies' apps and websites and link data to your identity, as does Duolingo. Ježko teaches only Serbian, through one story told over 100 lessons for children and their families, with no ads, no account and no data collected.
 
 Questions:
 
@@ -35,7 +35,7 @@ Questions:
 - Can adults learn Serbian with Ježko too? Yes. Ježko is designed for children, but each family member can have their own profile, adults included, and progress at their own pace. Parents learning alongside their children is exactly the idea.
 - Is Ježko safe for children? Ježko has no ads, no account, no chat and no tracking. Profile names, recordings and progress stay on your device. On a child profile, purchases, external links and sharing are behind a parental gate.
 - Does Ježko work offline? Yes. The lessons and their audio are built into the app, so Ježko works without a connection. A connection is only used to buy or restore Ježko Family.
-- Can I learn Serbian on Duolingo? No. As of October 2026, Duolingo's course catalog has no Serbian course. Apps that teach Serbian include Drops and Ling, which cover many languages and contain ads, and Ježko, which teaches only Serbian, to children and their families, through one story over 100 lessons, with no ads and no data collected.
+- Can I learn Serbian on Duolingo? No. As of November 2026, Duolingo's course catalog has no Serbian course. Apps that teach Serbian include Drops and Ling, which cover many languages and, according to their App Store listings, use data to track you, and Ježko, which teaches only Serbian, to children and their families, through one story over 100 lessons, with no ads and no data collected.
 - Which languages does Ježko support? Ježko teaches Serbian, with the app and every translation available in English and in French.
 
 - [Privacy Policy](https://suiteforge.app/jezko/privacy/)
