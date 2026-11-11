@@ -889,6 +889,7 @@ def site_footer(slug=None):
         col = f'''<h4>SuiteForge</h4>
         <ul>
           <li><a href="{page_path(("about",))}">{T("Why SuiteForge", "Pourquoi SuiteForge")}</a></li>
+          <li><a href="{FOUNDER_LINKEDIN}" rel="me noopener" target="_blank">{T("Nicolas on LinkedIn", "Nicolas sur LinkedIn")}</a></li>
           <li><a href="{home}#privacy">{T("Our privacy approach", "Notre approche de la vie privée")}</a></li>
           <li><a href="{home}#faq">FAQ</a></li>
           <li><a href="mailto:{CONTACT}">Contact</a></li>
@@ -1561,12 +1562,13 @@ def build_notice():
 # unless he asks for it.
 # ---------------------------------------------------------------------------
 # His LinkedIn profile: shown on the about page, in the footer and in the Organization/Person data once set.
-FOUNDER_LINKEDIN = None
+FOUNDER_LINKEDIN = "https://www.linkedin.com/in/nicolas-dojcilovic-8a957895/"
+FOUNDER_PHOTO = "/assets/nicolas.webp"          # 480 px square, no metadata; nicolas-160.webp for small sizes
 FOUNDER_ID = f"{DOMAIN}/#founder"
 
 def founder_jsonld():
     d = {"@context": "https://schema.org", "@type": "Person", "@id": FOUNDER_ID, "name": PUBLISHER,
-         "url": page_url(("about",)), "worksFor": {"@id": ORG_ID},
+         "url": page_url(("about",)), "worksFor": {"@id": ORG_ID}, "image": DOMAIN + FOUNDER_PHOTO,
          "jobTitle": T("Founder of SuiteForge, iPhone app maker", "Fondateur de SuiteForge, créateur d'apps iPhone"),
          "homeLocation": {"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": "Garches", "addressCountry": "FR"}}}
     if FOUNDER_LINKEDIN:
@@ -1593,8 +1595,9 @@ def why_block(slug):
     return (f'<section class="section-sm"><div class="wrap"><figure class="why reveal">'
             f'<p class="eyebrow">{T(f"Why I made {name}", f"Pourquoi j’ai fait {name}")}</p>'
             f'<blockquote><p>{esc(T(*WHY[slug]))}</p></blockquote>'
-            f'<figcaption>{esc(PUBLISHER)}, {T("who makes SuiteForge", "qui fait SuiteForge")} · '
-            f'<a href="{page_path(("about",))}">{T("Why I make these apps", "Pourquoi je fais ces apps")}</a></figcaption>'
+            f'<figcaption><img src="{ver("/assets/nicolas-160.webp")}" alt="" width="40" height="40" loading="lazy" decoding="async">'
+            f'<span>{esc(PUBLISHER)}, {T("who makes SuiteForge", "qui fait SuiteForge")} · '
+            f'<a href="{page_path(("about",))}">{T("Why I make these apps", "Pourquoi je fais ces apps")}</a></span></figcaption>'
             f'</figure></div></section>')
 
 def build_about():
@@ -1635,7 +1638,10 @@ def build_about():
             f'<main class="legal" id="main">\n'
             f'  <nav class="crumbs" aria-label="{T("Breadcrumb", "Fil d’Ariane")}"><a href="{page_path("home")}">SuiteForge</a><span>/</span><span>{title}</span></nav>\n'
             f'  <p class="eyebrow">{title}</p>\n  <h1>{h1}</h1>\n'
-            f'  <p class="updated">{esc(PUBLISHER)}, {T("founder", "fondateur")}</p>\n  {body}\n</main>\n'
+            f'  <div class="byline"><img src="{ver("/assets/nicolas-160.webp")}" alt="{esc(PUBLISHER)}" width="72" height="72" fetchpriority="high">'
+            f'<div><strong>{esc(PUBLISHER)}</strong><span>{T("Founder of SuiteForge · Garches, France", "Fondateur de SuiteForge · Garches, France")}</span>'
+            + (f'<a href="{FOUNDER_LINKEDIN}" rel="me noopener" target="_blank">LinkedIn</a>' if FOUNDER_LINKEDIN else "")
+            + f'</div></div>\n  {body}\n</main>\n'
             f'{site_footer()}\n{scripts()}')
 
 

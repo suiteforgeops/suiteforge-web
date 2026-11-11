@@ -587,6 +587,15 @@ a.card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-co
 .why figcaption { margin-top: 14px; color: var(--ink-faint); font-size: .95rem; }
 .why figcaption a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
 .legal > .eyebrow { margin-bottom: 8px; }
+.why figcaption { display: flex; align-items: center; gap: 10px; }
+.why figcaption img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.byline { display: flex; align-items: center; gap: 16px; margin: 6px 0 36px; }
+.byline img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid var(--line); }
+.byline div { display: flex; flex-direction: column; gap: 2px; }
+.byline strong { color: var(--ink); }
+.byline span { color: var(--ink-faint); font-size: .95rem; }
+.byline a { font-size: .95rem; }
+
 
 /* ---- Reveal animation (only when JS runs; content stays visible otherwise) ---- */
 .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0s); }
