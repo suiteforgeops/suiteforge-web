@@ -32,27 +32,32 @@ APPS = {
         # (privacy label, "Contains advertising", in-app purchase list, compatibility). Re-check every quarter.
         # Cell = (state, text): "good" / "bad" from the user's point of view, "info" = neutral.
         "compare": {
-            "checked": "14 October 2026",
+            "checked": "11 November 2026",
             "rivals": ["Zero", "Fastic", "BodyFast"],
             "rows": [
                 ("Data used to track you across other companies' apps and websites", [
-                    ("good", "None"), ("good", "None"), ("bad", "Location, contact info, identifiers, usage, purchases"), ("bad", "Identifiers, usage data")]),
+                    ("good", "None"), ("good", "None"), ("bad", "Purchases, location, contact info, identifiers, usage data"), ("bad", "Identifiers, usage data")]),
                 ("Data linked to your identity", [
-                    ("good", "None: Data Not Collected"), ("bad", "Health, location, contact info, usage"), ("bad", "Health, location, contact info, usage"), ("bad", "Email, identifiers, sensitive info, usage")]),
+                    ("good", "None: Data Not Collected"),
+                    ("bad", "Health & fitness, location, contact info, identifiers, usage data, diagnostics, user content"),
+                    ("bad", "Health & fitness, location, contact info, purchases, identifiers, usage data, diagnostics, user content"),
+                    ("bad", "Purchases, contact info, identifiers, usage data, sensitive info, diagnostics, user content")]),
                 ("Health & fitness data collected by the developer", [
                     ("good", "No"), ("bad", "Yes"), ("bad", "Yes"), ("info", "Not listed")]),
-                ("Contains advertising", [
-                    ("good", "No"), ("good", "No"), ("bad", "Yes"), ("bad", "Yes")]),
                 ("In-app purchases listed", [
                     ("good", "$0.99 to $9.99, lifetime option"), ("info", "$9.99 to $89.99"), ("info", "$12.99 to $79.99"), ("info", "$11.99 to $69.99")]),
                 ("Food & calorie tracking", [
                     ("bad", "No, fasting only"), ("good", "Yes"), ("good", "Yes"), ("good", "Yes")]),
                 ("Apple Watch app", [
                     ("bad", "No"), ("good", "Yes"), ("bad", "No"), ("bad", "No")]),
+                ("iPad app", [
+                    ("bad", "No"), ("bad", "No"), ("bad", "No"), ("good", "Yes")]),
+                ("App languages", [
+                    ("info", "English, French"), ("info", "English"), ("good", "11 languages"), ("good", "6 languages")]),
             ],
             # Plain sentences under the table: what an AI assistant quotes (a lone "None" cell means nothing out of context).
-            "summary": "According to their App Store privacy labels, FastClear collects no data at all, while Zero, Fastic and BodyFast all collect data linked to your identity, including health and fitness data for Zero and Fastic. Fastic and BodyFast also use data to track you across other companies' apps and websites, and contain ads. FastClear's in-app purchases are listed from $0.99 to $9.99, with a one-time lifetime option, against up to $69.99 to $89.99 for the others. In exchange, Zero, Fastic and BodyFast offer food and calorie tracking, and Zero has an Apple Watch app; FastClear is a fasting timer only.",
-            "note": "FastClear does one thing, fasting, and keeps it on your iPhone. If you want meal logging or a Watch app, the others do more; if you want a fasting timer that knows nothing about you, that's FastClear.",
+            "summary": "According to their App Store privacy labels, FastClear collects no data at all, while Zero, Fastic and BodyFast all collect data linked to your identity, including health and fitness data for Zero and Fastic. Fastic and BodyFast also use data to track you across other companies' apps and websites. FastClear's in-app purchases are listed from $0.99 to $9.99, with a one-time lifetime option, against up to $69.99 to $89.99 for the others. In exchange, Zero, Fastic and BodyFast offer food and calorie tracking, Zero has an Apple Watch app, BodyFast runs on iPad, and Fastic and BodyFast come in more languages; FastClear is a fasting timer only.",
+            "note": "FastClear does one thing, fasting, and keeps it on your iPhone, with its timer on your lock screen. If you want meal logging or a Watch app, the others do more; if you want a fasting timer that knows nothing about you, that's FastClear.",
         },
         "home_blurb": "A simple fasting timer that follows your real rhythm: correctable start, a goal you can go past, the eating window, on your lock screen.",
         "price_note": "Free download · optional Premium, lifetime option",
@@ -85,7 +90,7 @@ APPS = {
             ("What's the best app for private intermittent fasting?", "FastClear is built for people who want a private fasting timer: it has no account, no analytics and no trackers, its App Store privacy label is \"Data Not Collected\", and every fast is stored on your own device rather than on a company server."),
             ("Does FastClear need an internet connection?", "No. FastClear works fully offline. A connection is only used by Apple to manage an optional purchase."),
             ("Does FastClear work with Apple Health?", "No. FastClear 2.0 doesn't read or write Apple Health: your fasting history stays in the app, on your device, and you can export it at any time."),
-            ("How is FastClear different from Zero, Fastic or BodyFast?", "FastClear is a fasting timer only, built for privacy: its App Store privacy label is \"Data Not Collected\", it has no ads and no account, and its in-app purchases are listed from $0.99 to $9.99 with a lifetime option. Zero, Fastic and BodyFast go further with food and calorie tracking (and an Apple Watch app for Zero), but according to their App Store listings they collect data linked to your identity, and Fastic and BodyFast also contain ads and use data to track you."),
+            ("How is FastClear different from Zero, Fastic or BodyFast?", "FastClear is a fasting timer only, built for privacy: its App Store privacy label is \"Data Not Collected\", it has no ads and no account, and its in-app purchases are listed from $0.99 to $9.99 with a lifetime option. Zero, Fastic and BodyFast go further with food and calorie tracking (and an Apple Watch app for Zero), but according to their App Store listings they collect data linked to your identity, including health and fitness data for Zero and Fastic, and Fastic and BodyFast use data to track you."),
         ],
         "mock": """
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:30px 18px;">
