@@ -604,7 +604,9 @@ ORDER = ["jezko", "keepcontact", "crescendo", "fastclear", "routineflow", "walkq
 # Apps with their legal pages online but no landing yet (privacy and terms needed for App Review).
 LEGAL_ONLY = []
 HOME_LAYOUT = [("jezko", "feature"), ("keepcontact", "half"), ("fastclear", "half"), ("crescendo", "feature"), ("routineflow", "half"), ("walkquest", "half")]
-HOME_FAN = ["keepcontact", "jezko", "fastclear"]   # the three screens in the home hero
+HOME_FAN = ["keepcontact", "jezko", "fastclear"]
+# Home banner: the app just released (empty: the next "coming soon" app). Change it at each launch.
+ANNOUNCE = "crescendo"   # the three screens in the home hero
 
 TODAY = datetime.date.today().isoformat()
 # Replaced in write() by the date the page content last changed (see DATES_FILE).
@@ -1236,8 +1238,23 @@ HOME_FAQ_EN = [
     ("How do I get help or suggest a feature?", f"Every app has a feedback option in its settings, or you can email {CONTACT} directly. We read everything."),
 ]
 
+def purchase_note():
+    """Who sees purchase data, app by app: StoreKit 2 apps check purchases on the device with Apple only;
+    apps still embedding RevenueCat send it an anonymous purchase identifier (TD-025)."""
+    native = [APPS[s]["name"] for s in ORDER if APPS[s].get("storekit_native")]
+    legacy = [APPS[s]["name"] for s in ORDER if not APPS[s].get("storekit_native")]
+    text = T(f"{and_list(native)} check purchases on your iPhone with Apple only.",
+             f"{and_list(native)} vérifient les achats sur votre iPhone, avec Apple uniquement.")
+    if legacy:
+        text += T(f" {and_list(legacy)} still use a subscription provider, RevenueCat, which receives an anonymous purchase identifier, never linked to your content, until they switch to Apple-only purchases.",
+                  f" {and_list(legacy)} passent encore par un prestataire d'abonnement, RevenueCat, qui reçoit un identifiant d'achat anonyme, jamais lié à votre contenu, jusqu'à leur passage aux achats gérés par Apple seul.")
+    return text
+
 def home_faq():
-    return FR_HOME_FAQ if LANG == "fr" else HOME_FAQ_EN
+    faq = list(FR_HOME_FAQ if LANG == "fr" else HOME_FAQ_EN)
+    q, a = faq[0]
+    faq[0] = (q, a.split(T(" The only data", " Les seules données"))[0] + " " + purchase_note())
+    return faq
 
 def home_card(slug, layout, i):
     a = A(slug)
@@ -1265,12 +1282,14 @@ def build_home():
     desc = T("Privacy-first iPhone apps for health, fitness, habits, relationships and learning: FastClear, RoutineFlow, WalkQuest, Crescendo, KeepContact and Ježko. No accounts, no tracking.",
              "Apps iPhone respectueuses de la vie privée : santé, sport, habitudes, relations et apprentissage. FastClear, RoutineFlow, WalkQuest, Crescendo, KeepContact et Ježko. Sans compte.")
     canonical = page_url(key)
-    new = next((s for s in ORDER if APPS[s].get("status") == "soon"), None)
+    # Banner above the title: the latest release (ANNOUNCE), else the next app to come.
+    new = ANNOUNCE if ANNOUNCE in ORDER else next((s for s in ORDER if APPS[s].get("status") == "soon"), None)
     announce = ""
     if new:
         a = A(new)
+        when = T(", now on the App Store", ", disponible sur l'App Store") if released(new) else T(", coming soon", ", bientôt disponible")
         announce = (f'''<a class="announce" href="{page_path(("app", new))}">{icon_img(new, 26, lazy=False)}<span><b>{T("New: ", "Nouveau : ")}{esc(a['name'])}</b> · '''
-                    f'''{esc(a['category_label'])}{T(", coming soon", ", bientôt disponible")}</span><span class="arrow" aria-hidden="true">→</span></a>''')
+                    f'''{esc(a['category_label'])}{when}</span><span class="arrow" aria-hidden="true">→</span></a>''')
     # Hero fan: HOME_FAN first (left, centre, right without JS), then the other apps, which reveal.js turns in.
     fan_apps = HOME_FAN + [s for s in ORDER if s not in HOME_FAN]
     slots = ["fan-l", "fan-c", "fan-r"]
@@ -1342,7 +1361,7 @@ def build_home():
       <div class="stat reveal" style="--d:.08s"><div class="num">0</div><h3>{T("Trackers", "Pisteur")}</h3><p>{T("No analytics SDKs, no advertising IDs, no third-party trackers. We don't measure you because we don't need to.", "Pas d'outil d'analyse, pas d'identifiant publicitaire, pas de pisteur tiers. Nous ne vous mesurons pas, parce que nous n'en avons pas besoin.")}</p></div>
       <div class="stat reveal" style="--d:.16s"><div class="num">100 %</div><h3>{T("On your device", "Sur votre appareil")}</h3><p>{T("Your fasts, routines, steps, workouts, contacts and lessons live on your iPhone, or in your own private iCloud. Never on our servers.", "Vos jeûnes, routines, pas, séances, contacts et leçons vivent sur votre iPhone, ou dans votre propre iCloud privé. Jamais sur nos serveurs.")}</p></div>
     </div>
-    <p class="faint reveal" style="margin-top:34px;max-width:72ch;">{T("The one exception: to manage an optional subscription, Apple and our payment provider process an anonymous purchase identifier. It is never linked to your personal content, and each app's privacy policy spells this out in plain language.", "La seule exception : pour gérer un abonnement facultatif, Apple et notre prestataire de paiement traitent un identifiant d'achat anonyme. Il n'est jamais lié à votre contenu personnel, et la politique de confidentialité de chaque app l'explique en termes simples.")}</p>
+    <p class="faint reveal" style="margin-top:34px;max-width:72ch;">{purchase_note()} {T("Each app's privacy policy spells this out in plain language.", "La politique de confidentialité de chaque app l'explique en termes simples.")}</p>
   </div>
 </section>
 
