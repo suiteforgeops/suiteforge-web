@@ -359,7 +359,7 @@ APPS = {
         ],
         "faq": [
             ("Is KeepContact free?", "Yes. KeepContact is free to download, and you can track up to 15 contacts and 3 reminders for free. KeepContact Pro removes the limits and unlocks the on-device AI, voice notes, the morning brief, the health score, circles, statistics, messages to several people and encrypted backups. Exporting all your data and your year in review, every December, are free. The yearly subscription comes with a 7-day free trial, or you can get Pro for life with a single payment."),
-            ("What's a good private personal CRM app?", "KeepContact is a privacy-first personal CRM for iPhone: no account, no server, no analytics and no trackers. Every name, note and reminder is stored on your device, and its App Store privacy label is \"Data Not Collected\"."),
+            ("What's a good private personal CRM app?", "KeepContact is a privacy-first personal CRM for iPhone: no account, no server, no analytics and no trackers. Every name, note and reminder is stored on your device, and its App Store privacy label is “Data Not Collected”."),
             ("Does KeepContact upload my contacts?", "No. KeepContact never uploads your contacts or notes. It works offline and your data stays on your iPhone. Backups are files you save yourself, and can be encrypted with a password only you know."),
             ("How does the AI work without sending my data?", "KeepContact uses Apple's on-device AI model. Summaries, message ideas and the facts it picks up from your notes are generated on your iPhone; your notes stay on it. It requires an iPhone that supports Apple Intelligence; the rest of the app works on any iPhone running a supported iOS version."),
             ("How is KeepContact different from Dex, Mesh (Clay) or Contacts Journal?", "KeepContact's App Store privacy label is \"Data Not Collected\": your contacts and notes never leave your iPhone. According to their App Store listings, Dex and Mesh (Clay) collect your contacts and link them to your identity, and Contacts Journal collects identifiers and diagnostics. KeepContact's in-app purchases are listed from $4.99 to $49.99, including a lifetime option. Contacts Journal offers an Apple Watch app and team plans; cloud CRMs sync across devices, which KeepContact deliberately does not."),
@@ -486,14 +486,12 @@ APPS = {
             ("shot-8.webp", "Ježko profiles screen: Who's learning today? with four family profiles"),
         ],
     },
-    # Legal pages only for now (LEGAL_ONLY): the landing comes with the App Store screenshots.
     "crescendo": {
         "name": "Crescendo",
         "full_name": "Crescendo – Gym Log & Coach",
         "category_label": "Health & Fitness",
         "schema_category": "HealthApplication",
-        "appstore_id": None,
-        "status": "soon",
+        "appstore_id": "6829281997",
         # The app's acid green is a fill colour; links and text use its dark variant.
         "accent": "#3d6600", "accent_deep": "#2e4d00", "accent_tint": "#eef8d6",
         "icon_svg": '<path d="M3 12h18"/><rect x="6" y="8" width="3" height="8" rx="1"/><rect x="11" y="6" width="3" height="12" rx="1"/><rect x="16" y="4" width="3" height="16" rx="1"/>',
@@ -503,6 +501,49 @@ APPS = {
         "storekit_native": True,
         "family_sharing": True,
         "languages": ["en", "fr"],
+        "tagline": "The right weight for every set.",
+        "hero_sub": "Crescendo tells you what to put on the bar for every set, and why: “3 × 12 reached: +2.5 kg”. A lifting log that does the math for you and fits your workout to your day, on iPhone or on your wrist, with no account.",
+        "seo_title": "Crescendo — Gym log & progressive overload coach for iPhone",
+        "seo_desc": "A workout tracker that suggests the weight for every set and explains why. Programs, Apple Watch, rest timer, progress charts. No account, Data Not Collected.",
+        "home_blurb": "A lifting log that suggests the weight for every set and tells you why, with your whole workout on Apple Watch.",
+        "home_pills": ["300+ exercises", "Apple Watch", "Hevy import", "No account"],
+        "price_note": "Free download · no paywall at launch · Premium or lifetime",
+        "highlights": [
+            ("Every set", "A suggested load, with the reason in one line"),
+            ("300+", "Exercises, explained and illustrated"),
+            ("Apple Watch", "Set, load, rest and heart rate on your wrist"),
+            ("0", "Accounts, ads or trackers"),
+        ],
+        "features": [
+            ("The right load, explained", "Crescendo looks at your last session and suggests today's weight by double progression, rounded to your equipment, with the reason in one line. Too many reps or too few, and the next set adjusts. Deloads when fatigue builds up, a lighter comeback after a break.", '<path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/>'),
+            ("Your program in three questions", "Goal, days per week, session length, equipment, level, joints to spare: Crescendo builds a program from proven templates. Or pick one of 12 programs and 12 ready-made workouts, at the gym, at home or on the road. Everything can be edited.", '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/>'),
+            ("Your whole workout on your wrist", "On Apple Watch: the set, the load, your rest and your heart rate, with the workout saved to Health. On iPhone, the rest timer runs as a Live Activity and in the Dynamic Island, with a sound when rest is over.", '<rect x="7" y="6" width="10" height="12" rx="3"/><path d="M9 6l1-3h4l1 3M9 18l1 3h4l1-3M12 10v2l1.5 1"/>'),
+            ("A workout that fits your day", "Short on time, a machine taken, a joint to spare: the workout adjusts and one tap undoes it. On tired days, Readiness offers a lighter session from how you feel, or from your sleep and heart data in Health. Premium, with three adaptations on us to try it.", '<path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="4"/>'),
+            ("Your progress and your body", "Unlimited history, a chart per exercise (estimated 1RM, best set, volume), a consistency calendar and weekly sets per muscle. Body weight, 9 measurements and progress photos, which never go to your photo library and can be locked with Face ID.", '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'),
+            ("Your data is yours", "No account, no ads, no tracking. Your workouts stay on your device, and in your private iCloud if you turn on sync. Import your Hevy history, export to CSV or JSON, and erase everything from Settings.", '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>'),
+        ],
+        "steps": [
+            ("Answer three questions", "Or pick a ready-made program. Crescendo builds your week of workouts."),
+            ("Start your workout", "On iPhone or Apple Watch. Each set shows the weight to lift and why."),
+            ("Log and move on", "Rest timer, records celebrated, and the next session's loads already worked out."),
+        ],
+        "faq": [
+            ("Is Crescendo free?", "Yes. There is no paywall at launch and no account. Free: your tailored program, the editor, 12 programs and 12 ready-made workouts, suggested loads, deloads, effort ratings (RIR), unlimited history, charts, logging body weight, measurements and photos, the Apple Watch app, the rest timer Live Activity, widgets, Siri, Hevy import and export. Premium adds Adapt my workout, Readiness, the weekly review, measurement curves and before and after photos, trends and the Consistency widget: a monthly or yearly subscription (7-day free trial on the yearly plan) or a one-time lifetime purchase, with Family Sharing."),
+            ("How does Crescendo choose the weight?", "By double progression: when you reach the top of the rep range on every set, the load goes up, rounded to your equipment; otherwise you aim for more reps at the same weight. Each suggestion comes with its reason in one line, and the next set adjusts if you do too many reps or too few. You always stay in control."),
+            ("Do I need an Apple Watch?", "No. Everything works on iPhone alone. With an Apple Watch, you see the set, the load, your rest and your heart rate on your wrist, and the workout is saved to Apple Health."),
+            ("Can I bring my workout history from Hevy?", "Yes. Crescendo imports a Hevy export file on your iPhone, for free, and can export your own history to CSV or JSON at any time."),
+            ("Does Crescendo collect my data?", "No. Its App Store privacy label is “Data Not Collected”. There is no account, no analytics and no ads. Your workouts stay on your devices, and in your private iCloud if you turn on sync. Crescendo gives no medical advice."),
+        ],
+        "hero_shot_alt": "Crescendo Today screen: Upper body A, about 41 minutes, Start workout, and the first exercise with its suggested load, 22 kg",
+        "shots_w": 620, "shots_h": 1348,
+        "shots": [
+            ("shot-1.webp", "Crescendo workout in progress: dumbbell bench press, the next set at 24 kg and the rest timer at 1:19"),
+            ("shot-2.webp", "Crescendo Readiness: Drained today, one fewer set per exercise offered with Go lighter"),
+            ("shot-3.webp", "Crescendo Progress: hack squat estimated 1RM curve, new records and sets in the last 7 days"),
+            ("shot-4.webp", "Crescendo weekly review: 4 of 4 planned sessions, 63 working sets, 4 new records"),
+            ("shot-5.webp", "Crescendo body tracking: body weight curve and body measurements"),
+            ("shot-6.webp", "Crescendo templates: ready-made programs for the gym, home dumbbells and bodyweight"),
+        ],
         "permissions": [
             ("Apple Health, on Apple Watch (optional)", "When you start a workout, Crescendo can start a strength-training workout on your Apple Watch. With your permission, the Watch saves the workout, your heart rate and your active energy to Apple Health, and reads them to show your heart rate during the workout and the calories of the session. This data stays in Apple Health on your devices and is never sent to SuiteForge."),
             ("Apple Health, your body weight (optional)", "When you add a weigh-in or ask to see your Health weigh-ins, Crescendo asks for permission to read and save your body weight (body mass) in Apple Health. It reads the weigh-ins of the last 12 months, for example those of a connected scale, to show your weight curve in Progress, without copying them into the app, and saves to Apple Health the weigh-ins you log in Crescendo. This data stays in Apple Health on your devices and is never sent to SuiteForge. Erasing your data in Crescendo leaves the weigh-ins already in Apple Health in place."),
@@ -521,10 +562,10 @@ APPS = {
 }
 
 # Page order of the apps (footer, sitemap, "more apps") and the home page bento.
-ORDER = ["jezko", "keepcontact", "fastclear", "routineflow", "walkquest"]
+ORDER = ["jezko", "keepcontact", "crescendo", "fastclear", "routineflow", "walkquest"]
 # Apps with their legal pages online but no landing yet (privacy and terms needed for App Review).
-LEGAL_ONLY = ["crescendo"]
-HOME_LAYOUT = [("jezko", "feature"), ("keepcontact", "half"), ("fastclear", "half"), ("routineflow", "half"), ("walkquest", "half")]
+LEGAL_ONLY = []
+HOME_LAYOUT = [("jezko", "feature"), ("keepcontact", "half"), ("fastclear", "half"), ("crescendo", "feature"), ("routineflow", "half"), ("walkquest", "half")]
 HOME_FAN = ["keepcontact", "jezko", "fastclear"]   # the three screens in the home hero
 
 TODAY = datetime.date.today().isoformat()
@@ -1143,7 +1184,7 @@ def build_landing(slug):
 HOME_FAQ_EN = [
     ("Does SuiteForge collect my personal data?", "No. SuiteForge apps store everything on your device (some can also sync through your own private iCloud). There are no SuiteForge accounts, no analytics SDKs and no third-party trackers. The only data that leaves your device is the anonymous purchase information Apple and our subscription provider need to manage a subscription."),
     ("Do I need an account?", "No. SuiteForge apps work immediately on first launch: no sign-up, no email, no password."),
-    ("What kinds of apps does SuiteForge make?", "Focused, single-purpose iPhone apps: Health & Wellness (intermittent fasting, morning routines, step tracking), Productivity (KeepContact, a private personal CRM) and Education (Ježko, Serbian for kids and families). Each app does one thing well and runs on-device."),
+    ("What kinds of apps does SuiteForge make?", "Focused, single-purpose iPhone apps: Health & Wellness (intermittent fasting, morning routines, step tracking), Health & Fitness (Crescendo, a strength-training log), Productivity (KeepContact, a private personal CRM) and Education (Ježko, Serbian for kids and families). Each app does one thing well and runs on-device."),
     ("Are the apps free?", "Each app is free to download, with an optional subscription that unlocks advanced features; some also offer a one-time lifetime purchase. You can use the core of every app without paying."),
     ("Do you make apps for children?", "Yes: Ježko teaches Serbian to children aged 6 to 14 and their families. Like every SuiteForge app, it has no ads, no account and no tracking, and purchases and external links sit behind a parental gate on a child profile."),
     ("How do I get help or suggest a feature?", f"Every app has a feedback option in its settings, or you can email {CONTACT} directly. We read everything."),
@@ -1175,8 +1216,8 @@ def home_card(slug, layout, i):
 def build_home():
     key = "home"
     title = T("SuiteForge — Privacy-first iPhone apps for a calmer life", "SuiteForge : apps iPhone privées pour une vie plus sereine")
-    desc = T("Privacy-first iPhone apps for health, habits, relationships and learning: FastClear, RoutineFlow, WalkQuest, KeepContact and Ježko. No accounts, no tracking.",
-             "Apps iPhone respectueuses de la vie privée : santé, habitudes, relations et apprentissage. FastClear, RoutineFlow, WalkQuest, KeepContact et Ježko. Sans compte.")
+    desc = T("Privacy-first iPhone apps for health, fitness, habits, relationships and learning: FastClear, RoutineFlow, WalkQuest, Crescendo, KeepContact and Ježko. No accounts, no tracking.",
+             "Apps iPhone respectueuses de la vie privée : santé, sport, habitudes, relations et apprentissage. FastClear, RoutineFlow, WalkQuest, Crescendo, KeepContact et Ježko. Sans compte.")
     canonical = page_url(key)
     new = next((s for s in ORDER if APPS[s].get("status") == "soon"), None)
     announce = ""
@@ -1244,7 +1285,7 @@ def build_home():
     <div class="stats">
       <div class="stat reveal"><div class="num">0</div><h3>{T("Accounts", "Compte")}</h3><p>{T("No sign-up, no email, no password. There is no SuiteForge login because there is nothing for us to log in to.", "Pas d'inscription, pas d'e-mail, pas de mot de passe. Il n'y a pas de connexion SuiteForge parce qu'il n'y a rien à quoi se connecter.")}</p></div>
       <div class="stat reveal" style="--d:.08s"><div class="num">0</div><h3>{T("Trackers", "Pisteur")}</h3><p>{T("No analytics SDKs, no advertising IDs, no third-party trackers. We don't measure you because we don't need to.", "Pas d'outil d'analyse, pas d'identifiant publicitaire, pas de pisteur tiers. Nous ne vous mesurons pas, parce que nous n'en avons pas besoin.")}</p></div>
-      <div class="stat reveal" style="--d:.16s"><div class="num">100 %</div><h3>{T("On your device", "Sur votre appareil")}</h3><p>{T("Your fasts, routines, steps, contacts and lessons live on your iPhone, or in your own private iCloud. Never on our servers.", "Vos jeûnes, routines, pas, contacts et leçons vivent sur votre iPhone, ou dans votre propre iCloud privé. Jamais sur nos serveurs.")}</p></div>
+      <div class="stat reveal" style="--d:.16s"><div class="num">100 %</div><h3>{T("On your device", "Sur votre appareil")}</h3><p>{T("Your fasts, routines, steps, workouts, contacts and lessons live on your iPhone, or in your own private iCloud. Never on our servers.", "Vos jeûnes, routines, pas, séances, contacts et leçons vivent sur votre iPhone, ou dans votre propre iCloud privé. Jamais sur nos serveurs.")}</p></div>
     </div>
     <p class="faint reveal" style="margin-top:34px;max-width:72ch;">{T("The one exception: to manage an optional subscription, Apple and our payment provider process an anonymous purchase identifier. It is never linked to your personal content, and each app's privacy policy spells this out in plain language.", "La seule exception : pour gérer un abonnement facultatif, Apple et notre prestataire de paiement traitent un identifiant d'achat anonyme. Il n'est jamais lié à votre contenu personnel, et la politique de confidentialité de chaque app l'explique en termes simples.")}</p>
   </div>

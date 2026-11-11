@@ -262,6 +262,48 @@ FR_APPS = {
 
     "crescendo": {
         "category_label": "Santé et forme",
+        "tagline": "La bonne charge à chaque série.",
+        "hero_sub": "Crescendo vous dit quelle charge mettre à chaque série, et pourquoi : « 3 × 12 atteints : +2,5 kg ». Un carnet de musculation qui fait le calcul à votre place et adapte la séance à votre journée, sur l'iPhone ou au poignet, sans compte.",
+        "seo_title": "Crescendo : carnet de musculation et surcharge progressive sur iPhone",
+        "seo_desc": "Un carnet de muscu qui propose la charge de chaque série et dit pourquoi. Programmes, Apple Watch, minuteur de repos, progrès. Sans compte, données non collectées.",
+        "home_blurb": "Un carnet de musculation qui propose la charge de chaque série et dit pourquoi, avec toute la séance sur l'Apple Watch.",
+        "home_pills": ["300+ exercices", "Apple Watch", "Import Hevy", "Sans compte"],
+        "price_note": "Téléchargement gratuit · aucun paywall au lancement · Premium ou à vie",
+        "highlights": [
+            ("Chaque série", "Une charge proposée, et sa raison en une ligne"),
+            ("300+", "Exercices expliqués et illustrés"),
+            ("Apple Watch", "Série, charge, repos et fréquence cardiaque au poignet"),
+            ("0", "Compte, publicité ou traceur"),
+        ],
+        "features": [
+            ("La bonne charge, expliquée", "Crescendo regarde votre dernière séance et propose la charge du jour par double progression, arrondie à votre matériel, avec la raison en une ligne. Trop de répétitions ou pas assez : la série suivante s'ajuste. Un deload quand la fatigue s'accumule, une reprise allégée après une pause."),
+            ("Votre programme en trois questions", "Objectif, jours par semaine, durée, matériel, niveau, zones à ménager : Crescendo construit un programme à partir de modèles éprouvés. Ou choisissez parmi 12 programmes et 12 séances toutes faites, en salle, à la maison ou en voyage. Tout se modifie."),
+            ("Toute la séance au poignet", "Sur l'Apple Watch : la série, la charge, le repos et votre fréquence cardiaque, et la séance s'enregistre dans Santé. Sur l'iPhone, le minuteur de repos s'affiche en Live Activity et dans la Dynamic Island, avec un son à la fin du repos."),
+            ("Une séance qui suit votre journée", "Moins de temps, une machine prise, une zone à ménager : la séance s'ajuste et s'annule d'un geste. Les jours de fatigue, la forme du jour propose une séance plus légère d'après votre ressenti, ou votre sommeil et votre cœur lus dans Santé. Premium, avec trois adaptations offertes pour essayer."),
+            ("Vos progrès et votre corps", "Historique illimité, courbe par exercice (1RM estimé, meilleure série, volume), calendrier de régularité et séries de la semaine par muscle. Poids, 9 mensurations et photos de progression, qui ne vont jamais dans votre photothèque et se verrouillent avec Face ID."),
+            ("Vos données vous appartiennent", "Sans compte, sans publicité, sans pistage. Vos séances restent sur votre appareil, et dans votre iCloud privé si vous activez la synchronisation. Import de votre historique Hevy, export CSV ou JSON, et suppression complète depuis les réglages."),
+        ],
+        "steps": [
+            ("Répondez à trois questions", "Ou choisissez un programme tout prêt. Crescendo construit votre semaine de séances."),
+            ("Lancez la séance", "Sur l'iPhone ou l'Apple Watch. Chaque série affiche la charge à soulever et pourquoi."),
+            ("Notez et enchaînez", "Minuteur de repos, records célébrés, et les charges de la séance suivante déjà calculées."),
+        ],
+        "faq": [
+            ("Crescendo est-il gratuit ?", "Oui. Aucun paywall au lancement, aucun compte. Gratuit : votre programme sur mesure, l'éditeur, 12 programmes et 12 séances toutes faites, les charges proposées, le deload, le ressenti (RIR), l'historique illimité, les graphiques, la saisie du poids, des mensurations et des photos, l'app Apple Watch, le minuteur de repos en Live Activity, les widgets, Siri, l'import Hevy et l'export. Premium ajoute Adapter ma séance, la forme du jour, le bilan de semaine, les courbes des mesures et les photos avant / après, les tendances et le widget Régularité : abonnement mensuel ou annuel (essai gratuit de 7 jours sur l'annuel) ou achat unique à vie, avec le partage familial."),
+            ("Comment Crescendo choisit-il la charge ?", "Par double progression : quand vous atteignez le haut de la fourchette de répétitions sur toutes les séries, la charge monte, arrondie à votre matériel ; sinon, vous visez plus de répétitions à la même charge. Chaque proposition vient avec sa raison en une ligne, et la série suivante s'ajuste si vous faites trop de répétitions ou pas assez. Vous gardez toujours la main."),
+            ("Faut-il une Apple Watch ?", "Non. Tout fonctionne avec l'iPhone seul. Avec une Apple Watch, vous voyez la série, la charge, le repos et votre fréquence cardiaque au poignet, et la séance s'enregistre dans Apple Santé."),
+            ("Puis-je reprendre mon historique Hevy ?", "Oui. Crescendo importe gratuitement un fichier d'export Hevy sur votre iPhone, et peut exporter votre propre historique en CSV ou JSON à tout moment."),
+            ("Crescendo collecte-t-il mes données ?", "Non. Son étiquette de confidentialité sur l'App Store indique « Données non collectées ». Pas de compte, pas de mesure d'audience, pas de publicité. Vos séances restent sur vos appareils, et dans votre iCloud privé si vous activez la synchronisation. Crescendo ne donne aucun conseil médical."),
+        ],
+        "hero_shot_alt": "Écran Aujourd'hui de Crescendo : Haut du corps A, environ 41 minutes, Démarrer la séance, et le premier exercice avec sa charge proposée, 22 kg",
+        "shots": [
+            "Séance Crescendo en cours : développé couché haltères, la série suivante à 24 kg et le minuteur de repos à 1:19",
+            "Forme du jour dans Crescendo : « À plat » aujourd'hui, une série de moins par exercice proposée",
+            "Progrès dans Crescendo : courbe du 1RM estimé au hack squat, nouveaux records et séries des 7 derniers jours",
+            "Bilan de semaine Crescendo : 4 séances prévues sur 4, 63 séries de travail, 4 nouveaux records",
+            "Suivi du corps dans Crescendo : courbe du poids et mensurations",
+            "Modèles Crescendo : programmes tout prêts pour la salle, les haltères à la maison et le poids du corps",
+        ],
         "permissions": [
             ("Apple Santé, sur l'Apple Watch (facultatif)", "Quand vous démarrez une séance, Crescendo peut lancer une séance de musculation sur votre Apple Watch. Avec votre autorisation, la montre enregistre la séance, votre fréquence cardiaque et votre énergie active dans Apple Santé, et les relit pour afficher votre fréquence cardiaque pendant la séance et les calories de la séance. Ces données restent dans Apple Santé sur vos appareils et ne sont jamais envoyées à SuiteForge."),
             ("Apple Santé, votre poids (facultatif)", "Quand vous ajoutez une pesée ou demandez à voir vos pesées Santé, Crescendo demande l'autorisation de lire et d'enregistrer votre poids (masse corporelle) dans Apple Santé. Il lit les pesées des 12 derniers mois, celles d'une balance connectée par exemple, pour afficher la courbe de votre poids dans Progrès, sans les recopier dans l'app, et enregistre dans Apple Santé les pesées que vous notez dans Crescendo. Ces données restent dans Apple Santé sur vos appareils et ne sont jamais envoyées à SuiteForge. Supprimer vos données dans Crescendo laisse en place les pesées déjà présentes dans Apple Santé."),
@@ -352,7 +394,7 @@ FR_APPS = {
 FR_HOME_FAQ = [
     ("SuiteForge collecte-t-il mes données personnelles ?", "Non. Les apps SuiteForge enregistrent tout sur votre appareil (certaines peuvent aussi se synchroniser via votre propre iCloud privé). Il n'y a ni compte SuiteForge, ni outil d'analyse, ni pisteur tiers. Les seules données qui quittent votre appareil sont les informations d'achat anonymes dont Apple et notre prestataire d'abonnement ont besoin pour gérer un abonnement."),
     ("Faut-il créer un compte ?", "Non. Les apps SuiteForge fonctionnent dès le premier lancement : pas d'inscription, pas d'e-mail, pas de mot de passe."),
-    ("Quel genre d'apps fait SuiteForge ?", "Des apps iPhone concentrées sur un seul usage : santé et bien-être (jeûne intermittent, routine du matin, podomètre), productivité (KeepContact, un CRM personnel privé) et éducation (Ježko, le serbe pour les enfants et leur famille). Chaque app fait une chose, bien, et fonctionne sur l'appareil."),
+    ("Quel genre d'apps fait SuiteForge ?", "Des apps iPhone concentrées sur un seul usage : santé et bien-être (jeûne intermittent, routine du matin, podomètre), santé et forme (Crescendo, un carnet de musculation), productivité (KeepContact, un CRM personnel privé) et éducation (Ježko, le serbe pour les enfants et leur famille). Chaque app fait une chose, bien, et fonctionne sur l'appareil."),
     ("Les apps sont-elles gratuites ?", "Chaque app est gratuite à télécharger, avec un abonnement facultatif qui débloque des fonctions avancées ; certaines proposent aussi un achat unique à vie. Vous pouvez utiliser l'essentiel de chaque app sans payer."),
     ("Faites-vous des apps pour les enfants ?", "Oui : Ježko apprend le serbe aux enfants de 6 à 14 ans et à leur famille. Comme toutes les apps SuiteForge, elle n'a ni publicité, ni compte, ni pistage, et les achats et liens externes sont protégés par un contrôle parental sur un profil enfant."),
     ("Comment obtenir de l'aide ou proposer une idée ?", "Chaque app a une option de retour dans ses réglages, ou vous pouvez écrire directement à suiteforgeops@gmail.com. Nous lisons tout."),

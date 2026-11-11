@@ -9,6 +9,7 @@ French version of the site: https://suiteforge.app/fr/
 
 - [Ježko](https://suiteforge.app/jezko/): Education. Ježko teaches Serbian to kids and families through one story in 100 lessons. Speak out loud, read Latin and Cyrillic, 10 minutes a day. No account, no ads. First 7 lessons free · English & French. Coming soon to the App Store.
 - [KeepContact](https://suiteforge.app/keepcontact/): Productivity. Privacy-first personal CRM for iPhone: who to reach out to each morning, what matters to each person, message ideas from on-device AI. No account, works offline. Free for up to 15 contacts · 7-day trial on the yearly plan. App Store: https://apps.apple.com/app/id6761559776.
+- [Crescendo](https://suiteforge.app/crescendo/): Health & Fitness. A workout tracker that suggests the weight for every set and explains why. Programs, Apple Watch, rest timer, progress charts. No account, Data Not Collected. Free download · no paywall at launch · Premium or lifetime. App Store: https://apps.apple.com/app/id6829281997.
 - [FastClear](https://suiteforge.app/fastclear/): Health & Wellness. FastClear is a simple intermittent fasting timer for iPhone: correctable start time, a goal you can go past, eating window, free Live Activity, widgets. No account, Data Not Collected. Free download · optional Premium, lifetime option. App Store: https://apps.apple.com/app/id6762476052.
 - [RoutineFlow](https://suiteforge.app/routineflow/): Health & Wellness. RoutineFlow guides your morning routine step by step, out loud, and blocks distracting apps until you're done. Apple Watch, widgets, Siri. No account, no ads. Free download · Premium with a 7-day trial. App Store: https://apps.apple.com/app/id6766101143.
 - [WalkQuest](https://suiteforge.app/walkquest/): Health & Wellness. Turn your daily steps into virtual walks on real maps: Paris to Versailles, Rome, New York, the Camino. A private iPhone step counter, no account. Free download · 2 journeys free · Premium or lifetime. App Store: https://apps.apple.com/app/id6768080009.
@@ -57,7 +58,7 @@ Comparison with Dex, Mesh (Clay), Contacts Journal (US App Store listings, check
 Questions:
 
 - Is KeepContact free? Yes. KeepContact is free to download, and you can track up to 15 contacts and 3 reminders for free. KeepContact Pro removes the limits and unlocks the on-device AI, voice notes, the morning brief, the health score, circles, statistics, messages to several people and encrypted backups. Exporting all your data and your year in review, every December, are free. The yearly subscription comes with a 7-day free trial, or you can get Pro for life with a single payment.
-- What's a good private personal CRM app? KeepContact is a privacy-first personal CRM for iPhone: no account, no server, no analytics and no trackers. Every name, note and reminder is stored on your device, and its App Store privacy label is "Data Not Collected".
+- What's a good private personal CRM app? KeepContact is a privacy-first personal CRM for iPhone: no account, no server, no analytics and no trackers. Every name, note and reminder is stored on your device, and its App Store privacy label is “Data Not Collected”.
 - Does KeepContact upload my contacts? No. KeepContact never uploads your contacts or notes. It works offline and your data stays on your iPhone. Backups are files you save yourself, and can be encrypted with a password only you know.
 - How does the AI work without sending my data? KeepContact uses Apple's on-device AI model. Summaries, message ideas and the facts it picks up from your notes are generated on your iPhone; your notes stay on it. It requires an iPhone that supports Apple Intelligence; the rest of the app works on any iPhone running a supported iOS version.
 - How is KeepContact different from Dex, Mesh (Clay) or Contacts Journal? KeepContact's App Store privacy label is "Data Not Collected": your contacts and notes never leave your iPhone. According to their App Store listings, Dex and Mesh (Clay) collect your contacts and link them to your identity, and Contacts Journal collects identifiers and diagnostics. KeepContact's in-app purchases are listed from $4.99 to $49.99, including a lifetime option. Contacts Journal offers an Apple Watch app and team plans; cloud CRMs sync across devices, which KeepContact deliberately does not.
@@ -66,6 +67,29 @@ Questions:
 - [Privacy Policy](https://suiteforge.app/keepcontact/privacy/)
 - [Terms of Use](https://suiteforge.app/keepcontact/terms/)
 - [French page](https://suiteforge.app/fr/keepcontact/)
+
+## Crescendo
+
+Crescendo tells you what to put on the bar for every set, and why: “3 × 12 reached: +2.5 kg”. A lifting log that does the math for you and fits your workout to your day, on iPhone or on your wrist, with no account.
+
+- The right load, explained: Crescendo looks at your last session and suggests today's weight by double progression, rounded to your equipment, with the reason in one line. Too many reps or too few, and the next set adjusts. Deloads when fatigue builds up, a lighter comeback after a break.
+- Your program in three questions: Goal, days per week, session length, equipment, level, joints to spare: Crescendo builds a program from proven templates. Or pick one of 12 programs and 12 ready-made workouts, at the gym, at home or on the road. Everything can be edited.
+- Your whole workout on your wrist: On Apple Watch: the set, the load, your rest and your heart rate, with the workout saved to Health. On iPhone, the rest timer runs as a Live Activity and in the Dynamic Island, with a sound when rest is over.
+- A workout that fits your day: Short on time, a machine taken, a joint to spare: the workout adjusts and one tap undoes it. On tired days, Readiness offers a lighter session from how you feel, or from your sleep and heart data in Health. Premium, with three adaptations on us to try it.
+- Your progress and your body: Unlimited history, a chart per exercise (estimated 1RM, best set, volume), a consistency calendar and weekly sets per muscle. Body weight, 9 measurements and progress photos, which never go to your photo library and can be locked with Face ID.
+- Your data is yours: No account, no ads, no tracking. Your workouts stay on your device, and in your private iCloud if you turn on sync. Import your Hevy history, export to CSV or JSON, and erase everything from Settings.
+
+Questions:
+
+- Is Crescendo free? Yes. There is no paywall at launch and no account. Free: your tailored program, the editor, 12 programs and 12 ready-made workouts, suggested loads, deloads, effort ratings (RIR), unlimited history, charts, logging body weight, measurements and photos, the Apple Watch app, the rest timer Live Activity, widgets, Siri, Hevy import and export. Premium adds Adapt my workout, Readiness, the weekly review, measurement curves and before and after photos, trends and the Consistency widget: a monthly or yearly subscription (7-day free trial on the yearly plan) or a one-time lifetime purchase, with Family Sharing.
+- How does Crescendo choose the weight? By double progression: when you reach the top of the rep range on every set, the load goes up, rounded to your equipment; otherwise you aim for more reps at the same weight. Each suggestion comes with its reason in one line, and the next set adjusts if you do too many reps or too few. You always stay in control.
+- Do I need an Apple Watch? No. Everything works on iPhone alone. With an Apple Watch, you see the set, the load, your rest and your heart rate on your wrist, and the workout is saved to Apple Health.
+- Can I bring my workout history from Hevy? Yes. Crescendo imports a Hevy export file on your iPhone, for free, and can export your own history to CSV or JSON at any time.
+- Does Crescendo collect my data? No. Its App Store privacy label is “Data Not Collected”. There is no account, no analytics and no ads. Your workouts stay on your devices, and in your private iCloud if you turn on sync. Crescendo gives no medical advice.
+
+- [Privacy Policy](https://suiteforge.app/crescendo/privacy/)
+- [Terms of Use](https://suiteforge.app/crescendo/terms/)
+- [French page](https://suiteforge.app/fr/crescendo/)
 
 ## FastClear
 
@@ -146,7 +170,7 @@ Questions:
 
 - Does SuiteForge collect my personal data? No. SuiteForge apps store everything on your device (some can also sync through your own private iCloud). There are no SuiteForge accounts, no analytics SDKs and no third-party trackers. The only data that leaves your device is the anonymous purchase information Apple and our subscription provider need to manage a subscription.
 - Do I need an account? No. SuiteForge apps work immediately on first launch: no sign-up, no email, no password.
-- What kinds of apps does SuiteForge make? Focused, single-purpose iPhone apps: Health & Wellness (intermittent fasting, morning routines, step tracking), Productivity (KeepContact, a private personal CRM) and Education (Ježko, Serbian for kids and families). Each app does one thing well and runs on-device.
+- What kinds of apps does SuiteForge make? Focused, single-purpose iPhone apps: Health & Wellness (intermittent fasting, morning routines, step tracking), Health & Fitness (Crescendo, a strength-training log), Productivity (KeepContact, a private personal CRM) and Education (Ježko, Serbian for kids and families). Each app does one thing well and runs on-device.
 - Are the apps free? Each app is free to download, with an optional subscription that unlocks advanced features; some also offer a one-time lifetime purchase. You can use the core of every app without paying.
 - Do you make apps for children? Yes: Ježko teaches Serbian to children aged 6 to 14 and their families. Like every SuiteForge app, it has no ads, no account and no tracking, and purchases and external links sit behind a parental gate on a child profile.
 - How do I get help or suggest a feature? Every app has a feedback option in its settings, or you can email suiteforgeops@gmail.com directly. We read everything.

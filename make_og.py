@@ -68,6 +68,16 @@ OG = {
         "sub": "Walking challenges & virtual walks for iPhone",
         "chips": ["7 real journeys", "No account", "No tracking"],
     },
+    "crescendo": {
+        "bg": (18, 18, 18),            # #121212 — the app's near-black
+        "glow": (201, 242, 59),        # #C9F23B — acid green of the icon and buttons
+        "soft": (226, 236, 200),
+        "shot": "screenshots/source/en/1. Today EN.png",
+        "name": "Crescendo",
+        "title": ["The right weight", "for every set."],
+        "sub": "Gym log & progressive overload coach",
+        "chips": ["Apple Watch", "No account", "Data Not Collected"],
+    },
 }
 
 # Home page: the house brand (sage) and the app icons
@@ -75,7 +85,7 @@ HOUSE = {
     "bg": (60, 86, 72),                # #3C5648 — site accent-deep
     "glow": (127, 168, 145),
     "soft": (220, 232, 224),
-    "apps": ["jezko", "keepcontact", "fastclear", "routineflow", "walkquest"],
+    "apps": ["jezko", "keepcontact", "crescendo", "fastclear", "routineflow", "walkquest"],
     "name": "SuiteForge",
     "title": ["Apps for a calmer,", "quieter life."],
     "sub": "Privacy-first iPhone apps",
@@ -95,6 +105,8 @@ OG_FR = {
                     "sub": "Minuteur de routine et bloqueur d'apps", "chips": ["Étapes à voix haute", "Apps bloquées", "Sans pistage"]},
     "walkquest": {"shot": "screenshots/source/fr/1. Today FR.png", "title": ["Vos pas vous emmènent", "quelque part."],
                   "sub": "Défis de marche et voyages virtuels", "chips": ["7 vrais voyages", "Sans compte", "Sans pistage"]},
+    "crescendo": {"shot": "screenshots/source/fr/1. Today FR.png", "title": ["La bonne charge", "à chaque série."],
+                  "sub": "Carnet de musculation et surcharge progressive", "chips": ["Apple Watch", "Sans compte", "Données non collectées"]},
 }
 HOUSE_FR = {"title": ["Des apps pour une", "vie plus sereine."], "sub": "Apps iPhone respectueuses de la vie privée",
             "chips": ["Sans compte", "Sans pistage", "Sur votre iPhone"]}
@@ -192,14 +204,16 @@ def build_house(c, out="og-suiteforge.png"):
     ImageDraw.Draw(glow).ellipse((720, 80, 1240, 600), fill=c["glow"] + (140,))
     img.alpha_composite(glow.filter(ImageFilter.GaussianBlur(110)))
 
-    # App icons: 3 on top, 2 centred below, with soft shadows
+    # App icons: rows of 3, a shorter last row centred, with soft shadows
     size, gap = 128, 26
     gx = 1200 - 72 - 3 * size - 2 * gap
     gy = (H - 2 * size - gap) // 2
     spots = []
+    n = len(c["apps"])
     for i, slug in enumerate(c["apps"]):
         row, col = divmod(i, 3)
-        x = gx + col * (size + gap) + (row * (size + gap) // 2)
+        in_row = min(3, n - row * 3)
+        x = gx + col * (size + gap) + ((3 - in_row) * (size + gap) // 2)
         spots.append((slug, x, gy + row * (size + gap)))
     shadow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     sd = ImageDraw.Draw(shadow)

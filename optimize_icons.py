@@ -21,6 +21,7 @@ SOURCES = {
     "walkquest":   f"{APPS_ROOT}/WalkQuest/WalkQuest/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
     "keepcontact": f"{APPS_ROOT}/KeepContact/Code/KeepContact/Assets.xcassets/AppIcon.appiconset/AppIcon_1024.png",
     "jezko":       f"{APPS_ROOT}/Jezko/Code/Jezko/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png",
+    "crescendo":   f"{APPS_ROOT}/GymLog/GymLog/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
 }
 
 TARGET_SIDE = 256

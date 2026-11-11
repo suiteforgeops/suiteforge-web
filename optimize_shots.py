@@ -19,11 +19,11 @@ import os, glob, re, sys
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-APPS = ["fastclear", "routineflow", "walkquest", "keepcontact", "jezko"]
+APPS = ["fastclear", "routineflow", "walkquest", "keepcontact", "jezko", "crescendo"]
 
 CAROUSEL = dict(max_width=620, target_bytes=90 * 1024, start_q=82, min_q=50, step=4, max_count=5)
 # Per-app carousel size override (sources sorted; the home screen is removed)
-MAX_COUNT = {"keepcontact": 6, "jezko": 9, "fastclear": 6}
+MAX_COUNT = {"keepcontact": 6, "jezko": 9, "fastclear": 6, "crescendo": 7}
 HERO     = dict(max_width=680, target_bytes=120 * 1024, start_q=84, min_q=50, step=4)
 
 

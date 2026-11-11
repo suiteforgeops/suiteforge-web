@@ -34,9 +34,9 @@ Le site existe en **anglais** (à la racine) et en **français** (sous `/fr/`, p
 /optimize_icons.py           icône 1024 de chaque projet Xcode → <app>/icon.webp
 ```
 
-Apps : `jezko`, `keepcontact`, `fastclear`, `routineflow`, `walkquest` (App Store IDs réels dans `build.py`, champ `appstore_id`).
+Apps : `jezko`, `keepcontact`, `crescendo`, `fastclear`, `routineflow`, `walkquest` (App Store IDs réels dans `build.py`, champ `appstore_id`).
 
-**Crescendo n'a pour l'instant que ses pages légales** (`LEGAL_ONLY` dans `build.py`) : sa landing viendra avec les captures App Store ; le jour venu, l'ajouter à `ORDER` et `HOME_LAYOUT` et la retirer de `LEGAL_ONLY`.
+**Nouvelle app avant sa sortie** : ses pages légales peuvent être publiées seules (`LEGAL_ONLY` dans `build.py`) pour la review d'Apple ; à la sortie, l'ajouter à `ORDER` et `HOME_LAYOUT` et la retirer de `LEGAL_ONLY` (fait pour Crescendo le 11/11/2026 : captures brutes de `GymLog/ASO/Screenshots`, sans comparatif pour l'instant).
 
 **Ježko est en « Coming soon »** (`appstore_id: None`, `"status": "soon"`) : badge App Store non cliquable, pas de barre « Get » ni de bannière Smart App Banner. Le jour de la sortie : renseigner `appstore_id`, supprimer `"status"`, relancer `python3 build.py` et pousser.
 
