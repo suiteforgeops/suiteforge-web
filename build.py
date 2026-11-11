@@ -319,7 +319,7 @@ APPS = {
         # Publish with the 1.7.0 release: 1.6.0 still embeds RevenueCat.
         "storekit_native": True,
         "compare": {
-            "checked": "14 October 2026",
+            "checked": "11 November 2026",
             "rivals": ["Dex", "Mesh (Clay)", "Contacts Journal"],
             "rows": [
                 ("Data linked to your identity", [
@@ -328,14 +328,18 @@ APPS = {
                     ("good", "No"), ("bad", "Yes"), ("bad", "Yes"), ("good", "No")]),
                 ("Data collected but not linked to you", [
                     ("good", "None"), ("info", "Diagnostics"), ("info", "Diagnostics"), ("info", "Identifiers, diagnostics")]),
+                ("May use your location when the app isn't open", [
+                    ("good", "No"), ("good", "No"), ("good", "No"), ("bad", "Yes")]),
                 ("In-app purchases listed", [
                     ("good", "$4.99 to $49.99, lifetime option"), ("info", "$19.99 to $239.99"), ("info", "$19.99 to $119.99"), ("info", "$9.99 to $399.99, team plans")]),
                 ("Apple Watch app", [
                     ("bad", "No"), ("bad", "No"), ("bad", "No"), ("good", "Yes")]),
+                ("iPad app", [
+                    ("bad", "No"), ("good", "Yes"), ("good", "Yes"), ("good", "Yes")]),
                 ("App languages", [
                     ("good", "English, French"), ("info", "English"), ("info", "English"), ("info", "English")]),
             ],
-            "summary": "According to their App Store privacy labels, KeepContact collects no data, while Dex and Mesh (Clay) collect your contacts and link them, with other data, to your identity. Contacts Journal links no data to you but collects identifiers and diagnostics, and also offers an Apple Watch app and team plans. KeepContact's in-app purchases are listed from $4.99 to $49.99, including a lifetime option, against up to $119.99 to $399.99 for the others.",
+            "summary": "According to their App Store privacy labels, KeepContact collects no data, while Dex and Mesh (Clay) collect your contacts and link them, with other data, to your identity. Contacts Journal links no data to you but collects identifiers and diagnostics, and may use your location even when it isn't open; it also offers an Apple Watch app and team plans, and Dex, Mesh (Clay) and Contacts Journal all run on iPad. KeepContact's in-app purchases are listed from $4.99 to $49.99, including a lifetime option, against up to $119.99 to $399.99 for the others.",
             "note": "Your address book is the most personal data on your iPhone. KeepContact never sends it anywhere; cloud CRMs sync it to their servers to work across devices.",
         },
         "home_blurb": "A private personal CRM. Each morning, who to reach out to and what to say — written by your iPhone's on-device AI.",
@@ -367,7 +371,7 @@ APPS = {
             ("What's a good private personal CRM app?", "KeepContact is a privacy-first personal CRM for iPhone: no account, no server, no analytics and no trackers. Every name, note and reminder is stored on your device, and its App Store privacy label is “Data Not Collected”."),
             ("Does KeepContact upload my contacts?", "No. KeepContact never uploads your contacts or notes. It works offline and your data stays on your iPhone. Backups are files you save yourself, and can be encrypted with a password only you know."),
             ("How does the AI work without sending my data?", "KeepContact uses Apple's on-device AI model. Summaries, message ideas and the facts it picks up from your notes are generated on your iPhone; your notes stay on it. It requires an iPhone that supports Apple Intelligence; the rest of the app works on any iPhone running a supported iOS version."),
-            ("How is KeepContact different from Dex, Mesh (Clay) or Contacts Journal?", "KeepContact's App Store privacy label is \"Data Not Collected\": your contacts and notes never leave your iPhone. According to their App Store listings, Dex and Mesh (Clay) collect your contacts and link them to your identity, and Contacts Journal collects identifiers and diagnostics. KeepContact's in-app purchases are listed from $4.99 to $49.99, including a lifetime option. Contacts Journal offers an Apple Watch app and team plans; cloud CRMs sync across devices, which KeepContact deliberately does not."),
+            ("How is KeepContact different from Dex, Mesh (Clay) or Contacts Journal?", "KeepContact's App Store privacy label is \"Data Not Collected\": your contacts and notes never leave your iPhone. According to their App Store listings, Dex and Mesh (Clay) collect your contacts and link them to your identity, and Contacts Journal collects identifiers and diagnostics and may use your location even when it isn't open. KeepContact's in-app purchases are listed from $4.99 to $49.99, including a lifetime option. Contacts Journal offers an Apple Watch app and team plans, the three others also run on iPad, and cloud CRMs sync across devices, which KeepContact deliberately does not."),
             ("Does KeepContact sync with iCloud?", "Not at the moment. KeepContact keeps everything on your iPhone. To move your data to another iPhone, KeepContact Pro includes a backup in Settings, which you can encrypt with your own password. Anyone can export all their data as a file, for free."),
         ],
         "mock": """
