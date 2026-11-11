@@ -652,6 +652,8 @@ def page_path(key, lang=None):
         return f"{base}/{'pourquoi' if lang == 'fr' else 'why'}/"
     if key[0] == "guide":
         return f"{base}/guides/{GUIDE_BY_ID[key[1]]['slug'][lang]}/"
+    if key[0] == "guides":
+        return f"{base}/guides/"
     if key[0] == "journey":
         return f"{base}/walkquest/v/{key[1]}/"
     if key[0] == "shared_routine":
@@ -868,6 +870,7 @@ def site_header(key, slug=None):
     <a class="brand" href="{home}"{current}>{MARK} SuiteForge</a>
     <nav class="nav" aria-label="{T("Main", "Navigation principale")}">
       <a href="{home}#apps">Apps</a>
+      <a href="{page_path(("guides",))}">Guides</a>
       <a href="{page_path(("about",))}" class="hide-sm">{T("Why", "Pourquoi")}</a>
       <a href="{home}#privacy" class="hide-sm">{T("Privacy", "Confidentialité")}</a>
       <a href="{home}#faq" class="hide-sm">FAQ</a>
@@ -893,6 +896,7 @@ def site_footer(slug=None):
     else:
         col = f'''<h4>SuiteForge</h4>
         <ul>
+          <li><a href="{page_path(("guides",))}">Guides</a></li>
           <li><a href="{page_path(("about",))}">{T("Why SuiteForge", "Pourquoi SuiteForge")}</a></li>
           <li><a href="{FOUNDER_LINKEDIN}" rel="me noopener" target="_blank">{T("Nicolas on LinkedIn", "Nicolas sur LinkedIn")}</a></li>
           <li><a href="{home}#privacy">{T("Our privacy approach", "Notre approche de la vie privée")}</a></li>
@@ -1377,6 +1381,14 @@ def build_home():
   </div>
 </section>
 
+<section class="section" id="guides">
+  <div class="wrap">
+    <div class="section-head"><p class="eyebrow reveal">Guides</p><h2 class="reveal">{T("Guides for real questions.", "Des guides pour de vraies questions.")}</h2></div>
+    <div class="guide-grid">{guide_cards(GUIDES)}</div>
+    <p class="reveal" style="margin-top:22px;"><a class="link" href="{page_path(("guides",))}">{T("All guides", "Tous les guides")} →</a></p>
+  </div>
+</section>
+
 <section class="section band" id="faq">
   <div class="wrap narrow">
     <div class="section-head"><p class="eyebrow reveal">{T("Questions", "Questions")}</p><h2 class="reveal">{T("Good to know", "Bon à savoir")}</h2></div>
@@ -1705,11 +1717,11 @@ def build_guide(gid):
                "about": {"@id": f"{page_url(('app', g['app']))}#app"},
                "citation": [u for _, u in g["sources"]]}
     jsonld = [article, founder_jsonld(), faq_jsonld(t["faq"]),
-              crumbs_jsonld([("SuiteForge", page_url("home")), (app["name"], page_url(("app", g["app"]))), (t["title"], page_url(key))])]
+              crumbs_jsonld([("SuiteForge", page_url("home")), ("Guides", page_url(("guides",))), (t["title"], page_url(key))])]
     return (f'{head(t["seo_title"], t["desc"], key, body_style=theme(app), jsonld=jsonld, og=og_image(g["app"]))}\n{site_header(key, g["app"])}\n'
             f'<main class="legal guide" id="main">\n'
             f'  <nav class="crumbs" aria-label="{T("Breadcrumb", "Fil d’Ariane")}"><a href="{page_path("home")}">SuiteForge</a><span>/</span>'
-            f'<a href="{page_path(("app", g["app"]))}">{esc(app["name"])}</a><span>/</span><span>{T("Guide", "Guide")}</span></nav>\n'
+            f'<a href="{page_path(("guides",))}">Guides</a><span>/</span><span>{esc(app["name"])}</span></nav>\n'
             f'  <p class="eyebrow">{T("Guide", "Guide")}</p>\n  <h1>{esc(t["title"])}</h1>\n'
             f'  <div class="byline"><img src="{ver("/assets/nicolas-160.webp")}" alt="{esc(PUBLISHER)}" width="72" height="72">'
             f'<div><strong><a href="{page_path(("about",))}">{esc(PUBLISHER)}</a></strong>'
@@ -1719,6 +1731,36 @@ def build_guide(gid):
             f'  <h2>{T("Sources", "Sources")}</h2>\n  <ul class="sources">{sources}</ul>\n'
             f'  <p class="guide-cta"><a class="btn btn-primary" href="{page_path(("app", g["app"]))}">{T(f"Discover {app['name']}", f"Découvrir {app['name']}")} {svg("arrow")}</a></p>\n'
             f'</main>\n{site_footer(g["app"])}\n{scripts()}')
+
+
+def guide_cards(gs):
+    return "".join(
+        f'<a class="guide-card reveal" href="{page_path(("guide", g["id"]))}" style="{theme(A(g["app"]))}">'
+        f'<span class="guide-app">{icon_img(g["app"], 24)}{esc(APPS[g["app"]]["name"])}</span>'
+        f'<h3>{esc(guide_text(g)["title"])}</h3><p>{esc(guide_text(g)["desc"])}</p>'
+        f'<span class="guide-more">{T("Read the guide", "Lire le guide")} {svg("arrow")}</span></a>'
+        for g in gs)
+
+def build_guides_index():
+    key = ("guides",)
+    title = T("Guides", "Guides")
+    h1 = T("Guides for real questions.", "Des guides pour de vraies questions.")
+    lede = T("Practical answers, sourced and dated, to the questions behind each app. Written by Nicolas, who makes SuiteForge.",
+             "Des réponses pratiques, sourcées et datées, aux questions derrière chaque app. Écrites par Nicolas, qui fait SuiteForge.")
+    items = {"@context": "https://schema.org", "@type": "ItemList", "name": title,
+             "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": page_url(("guide", g["id"])), "name": guide_text(g)["title"]}
+                                 for i, g in enumerate(GUIDES)]}
+    page = webpage_jsonld(key, f"{title} — SuiteForge", ORG_ID)
+    page["@type"] = "CollectionPage"
+    jsonld = [page, items, crumbs_jsonld([("SuiteForge", page_url("home")), (title, page_url(key))])]
+    desc = T("SuiteForge guides: teach your child Serbian, double progression at the gym, and more. Practical, sourced answers by the maker of the apps.",
+             "Les guides SuiteForge : apprendre le serbe à son enfant, la double progression en musculation, et d'autres. Des réponses pratiques et sourcées.")
+    return (f'{head(f"{title} — SuiteForge", desc, key, jsonld=jsonld)}\n{site_header(key)}\n'
+            f'<main id="main" class="section"><div class="wrap">\n'
+            f'  <div class="section-head"><p class="eyebrow">{title}</p><h1 class="display" style="font-size:clamp(2.4rem,5vw,3.6rem);margin-top:14px;">{h1}</h1>'
+            f'<p class="lede">{lede}</p></div>\n'
+            f'  <div class="guide-grid">{guide_cards(GUIDES)}</div>\n'
+            f'</div></main>\n{site_footer()}\n{scripts()}')
 
 
 def build_404():
@@ -1731,7 +1773,7 @@ def build_404():
       <p class="eyebrow">Error 404 · Erreur 404</p>
       <h1 class="display" style="font-size:clamp(2.4rem,5vw,3.6rem);margin-top:14px;">This page wandered off.</h1>
       <p class="lede">The link may be old or mistyped. Here is where everything lives now.</p>
-      <p class="lede" lang="fr" style="margin-top:6px;">Cette page s'est égarée. Le lien est peut-être ancien ou mal saisi : <a class="link" href="/fr/">voir le site en français</a>.</p>
+      <p class="lede" lang="fr" style="margin-top:6px;">Cette page s'est égarée. Le lien est peut-être ancien ou mal saisi&nbsp;: <a class="link" href="/fr/">voir le site en français</a>.</p>
       <div class="hero-cta"><a class="btn btn-primary" href="/">Back to SuiteForge {svg("arrow")}</a></div>
     </div>
     <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;">{app_tiles(reveal=False)}</div>
@@ -2135,7 +2177,7 @@ AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-Searc
 def all_pages():
     """Every indexable page: (key, sitemap priority)."""
     pages = [("home", "1.0"), (("about",), "0.7"), (("notice",), "0.2")]
-    pages += [(("guide", g["id"]), "0.7") for g in GUIDES]
+    pages += [(("guides",), "0.7")] + [(("guide", g["id"]), "0.7") for g in GUIDES]
     for slug in ORDER:
         pages += [(("app", slug), "0.8"), (("legal", slug, "privacy"), "0.3"), (("legal", slug, "terms"), "0.3")]
     for slug in LEGAL_ONLY:
@@ -2153,6 +2195,8 @@ def build_page(key):
         return build_about()
     if key[0] == "guide":
         return build_guide(key[1])
+    if key[0] == "guides":
+        return build_guides_index()
     if key[0] == "app":
         return build_landing(key[1])
     if key[0] == "journey":
