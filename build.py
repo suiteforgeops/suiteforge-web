@@ -8,6 +8,7 @@ Single source of truth = APPS config below. No external deps.
 """
 import os, html, json, hashlib, datetime, math, base64
 from content_fr import FR_APPS, FR_HOME_FAQ
+from guides import GUIDES
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DOMAIN = "https://suiteforge.app"
@@ -649,6 +650,8 @@ def page_path(key, lang=None):
         return f"{base}/{'mentions-legales' if lang == 'fr' else 'legal-notice'}/"
     if key[0] == "about":
         return f"{base}/{'pourquoi' if lang == 'fr' else 'why'}/"
+    if key[0] == "guide":
+        return f"{base}/guides/{GUIDE_BY_ID[key[1]]['slug'][lang]}/"
     if key[0] == "journey":
         return f"{base}/walkquest/v/{key[1]}/"
     if key[0] == "shared_routine":
@@ -1209,6 +1212,7 @@ def build_landing(slug):
     <div class="faq reveal">{faq_html(a['faq'])}</div>
   </div>
 </section>
+{guide_links(slug)}
 
 <section class="section-sm" id="get">
   <div class="wrap">
@@ -1664,6 +1668,59 @@ def build_about():
             f'{site_footer()}\n{scripts()}')
 
 
+# ---------------------------------------------------------------------------
+# GUIDES (guides.py): long-form answers to real questions, signed by Nicolas.
+# ---------------------------------------------------------------------------
+GUIDE_BY_ID = {g["id"]: g for g in GUIDES}
+
+def guide_text(g):
+    return g["fr"] if LANG == "fr" else g["en"]
+
+def guides_for(slug):
+    return [g for g in GUIDES if g["app"] == slug]
+
+def guide_links(slug):
+    """Short block on a landing that points to its guides."""
+    gs = guides_for(slug)
+    if not gs:
+        return ""
+    items = "".join(f'<li><a href="{page_path(("guide", g["id"]))}">{esc(guide_text(g)["title"])}</a> <span class="faint">· {esc(guide_text(g)["desc"])}</span></li>' for g in gs)
+    return (f'<section class="section-sm"><div class="wrap narrow"><div class="guide-links reveal">'
+            f'<p class="eyebrow">{T("Guide", "Guide")}</p><ul>{items}</ul></div></div></section>')
+
+def build_guide(gid):
+    g = GUIDE_BY_ID[gid]
+    t = guide_text(g)
+    key = ("guide", gid)
+    app = A(g["app"])
+    published = human_date(g["published"])
+    body = "".join(f"\n  <h2>{esc(h)}</h2>\n  {c}" for h, c in t["sections"])
+    faq = "".join(f"\n  <h3>{esc(q)}</h3>\n  <p>{esc(a)}</p>" for q, a in t["faq"])
+    sources = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{esc(n)}</a></li>' for n, u in g["sources"])
+    article = {"@context": "https://schema.org", "@type": "Article", "@id": f"{page_url(key)}#article",
+               "headline": t["title"], "description": t["desc"], "inLanguage": LANG,
+               "mainEntityOfPage": page_url(key), "image": og_image(g["app"]),
+               "datePublished": iso(g["published"]), "dateModified": MODIFIED,
+               "author": {"@id": FOUNDER_ID}, "publisher": {"@id": ORG_ID},
+               "about": {"@id": f"{page_url(('app', g['app']))}#app"},
+               "citation": [u for _, u in g["sources"]]}
+    jsonld = [article, founder_jsonld(), faq_jsonld(t["faq"]),
+              crumbs_jsonld([("SuiteForge", page_url("home")), (app["name"], page_url(("app", g["app"]))), (t["title"], page_url(key))])]
+    return (f'{head(t["seo_title"], t["desc"], key, body_style=theme(app), jsonld=jsonld, og=og_image(g["app"]))}\n{site_header(key, g["app"])}\n'
+            f'<main class="legal guide" id="main">\n'
+            f'  <nav class="crumbs" aria-label="{T("Breadcrumb", "Fil d’Ariane")}"><a href="{page_path("home")}">SuiteForge</a><span>/</span>'
+            f'<a href="{page_path(("app", g["app"]))}">{esc(app["name"])}</a><span>/</span><span>{T("Guide", "Guide")}</span></nav>\n'
+            f'  <p class="eyebrow">{T("Guide", "Guide")}</p>\n  <h1>{esc(t["title"])}</h1>\n'
+            f'  <div class="byline"><img src="{ver("/assets/nicolas-160.webp")}" alt="{esc(PUBLISHER)}" width="72" height="72">'
+            f'<div><strong><a href="{page_path(("about",))}">{esc(PUBLISHER)}</a></strong>'
+            f'<span>{T(f"Published on {published}", f"Publié le {published}")}</span></div></div>\n'
+            f'  <p class="lede">{esc(t["lede"])}</p>\n  {body}\n'
+            f'  <h2>{T("Questions parents ask", "Les questions des parents")}</h2>{faq}\n'
+            f'  <h2>{T("Sources", "Sources")}</h2>\n  <ul class="sources">{sources}</ul>\n'
+            f'  <p class="guide-cta"><a class="btn btn-primary" href="{page_path(("app", g["app"]))}">{T(f"Discover {app['name']}", f"Découvrir {app['name']}")} {svg("arrow")}</a></p>\n'
+            f'</main>\n{site_footer(g["app"])}\n{scripts()}')
+
+
 def build_404():
     """GitHub Pages serves /404.html for any unknown URL (with a 404 status). Bilingual, English first."""
     return f'''{head("Page not found — SuiteForge", "This page doesn't exist. Find SuiteForge's privacy-first iPhone apps here.", "home", robots="noindex, follow")}
@@ -2048,8 +2105,12 @@ def build_llms_txt():
            "before making iPhone apps, without a developer background. He makes apps to create, have fun and learn while "
            "being useful, and builds the apps he needs for himself and his family:", ""]
     out += [f"- {APPS[s]['name']}, in his words: \"{WHY[s][0]}\"" for s in ORDER if s in WHY]
-    out += ["", f"More: [Why SuiteForge]({page_url(('about',), 'en')})" + (f" · [LinkedIn]({FOUNDER_LINKEDIN})" if FOUNDER_LINKEDIN else ""),
-            "", "## Apps", ""]
+    out += ["", f"More: [Why SuiteForge]({page_url(('about',), 'en')})" + (f" · [LinkedIn]({FOUNDER_LINKEDIN})" if FOUNDER_LINKEDIN else ""), ""]
+    if GUIDES:
+        out += ["## Guides", ""]
+        out += [f"- [{g['en']['title']}]({page_url(('guide', g['id']), 'en')}) (French: {page_url(('guide', g['id']), 'fr')}): {g['en']['desc']}" for g in GUIDES]
+        out += [""]
+    out += ["## Apps", ""]
     for slug in ORDER:
         a = APPS[slug]
         status = f"App Store: {appstore_url(slug)}" if released(slug) else "Coming soon to the App Store"
@@ -2074,6 +2135,7 @@ AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-Searc
 def all_pages():
     """Every indexable page: (key, sitemap priority)."""
     pages = [("home", "1.0"), (("about",), "0.7"), (("notice",), "0.2")]
+    pages += [(("guide", g["id"]), "0.7") for g in GUIDES]
     for slug in ORDER:
         pages += [(("app", slug), "0.8"), (("legal", slug, "privacy"), "0.3"), (("legal", slug, "terms"), "0.3")]
     for slug in LEGAL_ONLY:
@@ -2089,6 +2151,8 @@ def build_page(key):
         return build_notice()
     if key[0] == "about":
         return build_about()
+    if key[0] == "guide":
+        return build_guide(key[1])
     if key[0] == "app":
         return build_landing(key[1])
     if key[0] == "journey":

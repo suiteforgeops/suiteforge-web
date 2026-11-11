@@ -29,6 +29,7 @@ Le site existe en **anglais** (à la racine) et en **français** (sous `/fr/`, p
 /assets/og-suiteforge.png    image de partage de la page d'accueil (les 5 icônes)
 
 /build.py                    générateur des pages — source unique de vérité pour le contenu
+/guides.py                   guides (/guides/<slug>/, /fr/guides/<slug>/) : réponses longues à de vraies questions, sourcées, signées par Nicolas ; un guide par mois
 /make_og.py                  génère les images de partage (<app>/og.png + assets/og-suiteforge.png)
 /optimize_shots.py           PNG App Store → WebP du site (hero + carrousel)
 /optimize_icons.py           icône 1024 de chaque projet Xcode → <app>/icon.webp
