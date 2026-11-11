@@ -132,23 +132,23 @@ APPS = {
         "seo_title": "RoutineFlow — Morning routine timer & app blocker for iPhone",
         "seo_desc": "RoutineFlow guides your morning routine step by step, out loud, and blocks distracting apps until you're done. Apple Watch, widgets, Siri. No account, no ads.",
         "compare": {
-            "checked": "14 October 2026",
+            "checked": "11 November 2026",
             "rivals": ["Routinery", "Fabulous", "Me+"],
             "rows": [
                 ("Data used to track you across other companies' apps and websites", [
                     ("good", "None"), ("bad", "Other data"), ("bad", "Contact info"), ("bad", "Identifiers")]),
                 ("Data collected by the developer (linked to you or not)", [
-                    ("good", "Purchases only, not linked to you"), ("bad", "Contact info, identifiers, usage, diagnostics"), ("bad", "Location, contact info, usage"), ("bad", "Identifiers, health & fitness, user content, usage")]),
-                ("Contains advertising", [
-                    ("good", "No"), ("bad", "Yes"), ("good", "No"), ("bad", "Yes")]),
+                    ("good", "Purchases only, not linked to you"), ("bad", "Other data, contact info, identifiers, usage, diagnostics"), ("bad", "Location, contact info, usage"), ("bad", "Identifiers, health & fitness, user content, usage, diagnostics")]),
                 ("In-app purchases listed", [
-                    ("good", "$4.99 to $59.99, lifetime option"), ("info", "$4.19 to $41.99"), ("info", "$16.99 to $59.99"), ("info", "$7.99 to $69.99")]),
+                    ("good", "$4.99 to $59.99, lifetime option"), ("info", "$0.99 to $49.99"), ("info", "$16.99 to $59.99"), ("info", "$7.99 to $69.99")]),
                 ("Apple Watch app", [
                     ("good", "Yes"), ("good", "Yes"), ("good", "Yes"), ("bad", "No")]),
+                ("iPad app", [
+                    ("bad", "No"), ("good", "Yes"), ("bad", "No"), ("bad", "No")]),
                 ("App languages", [
-                    ("info", "English, French"), ("info", "12 languages"), ("info", "7 languages"), ("info", "5 languages")]),
+                    ("info", "English, French"), ("good", "13 languages"), ("good", "7 languages"), ("good", "5 languages")]),
             ],
-            "summary": "According to their App Store privacy labels, RoutineFlow only collects anonymous purchase data that is not linked to you, while Routinery, Fabulous and Me+ all collect data and use some of it to track you across other companies' apps and websites. Routinery and Me+ also contain ads. RoutineFlow's in-app purchases are listed from $4.99 to $59.99, including a lifetime option, against up to $41.99 to $69.99 for the others. RoutineFlow, Routinery and Fabulous have an Apple Watch app; Routinery, Fabulous and Me+ are available in more languages.",
+            "summary": "RoutineFlow only collects anonymous purchase data, not linked to you, to handle its subscriptions. According to their App Store privacy labels, Routinery, Fabulous and Me+ all collect data and use some of it to track you across other companies' apps and websites. RoutineFlow's in-app purchases are listed from $4.99 to $59.99, including a lifetime option, against up to $49.99 to $69.99 for the others. RoutineFlow, Routinery and Fabulous have an Apple Watch app; Routinery also runs on iPad, and Routinery, Fabulous and Me+ are available in more languages.",
             "note": "RoutineFlow guides your routine and keeps distracting apps locked until it's done, on your iPhone and Apple Watch. The others add coaching and more languages; RoutineFlow adds nothing that watches you.",
         },
         "home_blurb": "Your routine, step by step and out loud — with distracting apps locked until you're done.",
@@ -177,7 +177,7 @@ APPS = {
             ("How does RoutineFlow block apps?", "It uses Apple's Screen Time framework. You choose the apps to block for a routine; they are locked from the routine's time until you finish it. The block always ends — when the routine is done, after a safety limit you set (1 to 4 hours), or with an emergency unlock — and phone calls are never blocked. RoutineFlow never sees which apps you chose."),
             ("Does RoutineFlow work on Apple Watch?", "Yes. With Premium, the Apple Watch app shows your current step, taps your wrist at each new one, and lets you mark a step done or pause."),
             ("What's a good private morning routine app?", "RoutineFlow is built for a private start to the day: no account, no analytics, no ads and no trackers. Your routines stay on your devices and in your own private iCloud, which SuiteForge cannot read."),
-            ("How is RoutineFlow different from Routinery, Fabulous or Me+?", "RoutineFlow also blocks distracting apps until your routine is done. On privacy, its App Store label only lists anonymous purchase data, not linked to you, and it has no ads; its in-app purchases are listed from $4.99 to $59.99, including a lifetime option. According to their App Store listings, Routinery, Fabulous and Me+ collect data and use some of it to track you, and Routinery and Me+ contain ads. RoutineFlow, Routinery and Fabulous all have an Apple Watch app."),
+            ("How is RoutineFlow different from Routinery, Fabulous or Me+?", "RoutineFlow also blocks distracting apps until your routine is done. On privacy, it only collects anonymous purchase data, not linked to you, and it has no ads; its in-app purchases are listed from $4.99 to $59.99, including a lifetime option. According to their App Store listings, Routinery, Fabulous and Me+ collect data and use some of it to track you. RoutineFlow, Routinery and Fabulous all have an Apple Watch app."),
             ("Does RoutineFlow track me?", "No. There are no analytics or advertising trackers. Your routine data stays on your devices and in your private iCloud; the only information that leaves them is the anonymous purchase data needed to manage Premium."),
         ],
         "mock": """
