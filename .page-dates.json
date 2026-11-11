@@ -1,330 +1,338 @@
 {
  "crescendo/index.html": {
   "date": "2026-11-11",
-  "hash": "90f19958f10fdf7e7aa1b37d212a73b7"
+  "hash": "0bc1fe655bfb054ad4216880d11205f6"
  },
  "crescendo/privacy/index.html": {
   "date": "2026-11-11",
-  "hash": "705d33a22b4d37a2e83a94cdfacdce46"
+  "hash": "c1db692f68358c777b77c63db3415d8d"
  },
  "crescendo/terms/index.html": {
   "date": "2026-11-11",
-  "hash": "21dc3f506860657340d7b4eb03ad76cb"
+  "hash": "40f4b06b14c3da55b28ab9eccd1f888d"
  },
  "fastclear/index.html": {
   "date": "2026-11-11",
-  "hash": "c28ebe700f121579944ee22061c34ab5"
+  "hash": "81d45f8cf770b8260779ea8e45d9ee21"
  },
  "fastclear/privacy/index.html": {
   "date": "2026-11-11",
-  "hash": "9cadeecbe5f56f098de194c68b6494c4"
+  "hash": "89085b1cbcbdbf3445123240a4cd4e2b"
  },
  "fastclear/terms/index.html": {
   "date": "2026-11-11",
-  "hash": "d418534342dac47fe5f879c74a821f11"
+  "hash": "b44a56a79dcbfb9a4bfc79fd36cf8448"
  },
  "fr/crescendo/conditions/index.html": {
   "date": "2026-11-11",
-  "hash": "7af51117300e3b5e4bfcbaaf9881265c"
+  "hash": "4cd149bd86b16c45d6b33b96a8a04b00"
  },
  "fr/crescendo/confidentialite/index.html": {
   "date": "2026-11-11",
-  "hash": "dfcc56c7ad58c407bd4b3bed61d8c3e2"
+  "hash": "f07c49c529ccaa1e658ee5c1273abd11"
  },
  "fr/crescendo/index.html": {
   "date": "2026-11-11",
-  "hash": "f0f981dce2c9f4fe8cd1b0a53e397b77"
+  "hash": "82e5ad106b80dc8e53114767a7777572"
  },
  "fr/fastclear/conditions/index.html": {
   "date": "2026-11-11",
-  "hash": "79cabd23d71902ee1463b690f2ca0234"
+  "hash": "6db8fd2cc6d887dbcd2e28face876d15"
  },
  "fr/fastclear/confidentialite/index.html": {
   "date": "2026-11-11",
-  "hash": "4290f41101306aefadf1305617c0f2e9"
+  "hash": "94e991160ae520039ca50a4daec67423"
  },
  "fr/fastclear/index.html": {
   "date": "2026-11-11",
-  "hash": "70bfcf8bc11aeb3b4dae3f141d1a0cf3"
+  "hash": "2cce2a21fe16219f74d10d7401225954"
  },
  "fr/index.html": {
   "date": "2026-11-11",
-  "hash": "34624ce9ec614b8678349202ba854bb9"
+  "hash": "2641f0fe706c2ae1e5854ae07b3a4054"
  },
  "fr/jezko/conditions/index.html": {
   "date": "2026-11-11",
-  "hash": "7d0c55f0bab23664ea0c8ab986fe037f"
+  "hash": "a59906b9631dbc5b404b0d8d9f2f61c2"
  },
  "fr/jezko/confidentialite/index.html": {
   "date": "2026-11-11",
-  "hash": "3c5b8aeac68cf895e6eb7a775749c887"
+  "hash": "81cd53a8d37c6a0ee1a4eacc85642d11"
  },
  "fr/jezko/index.html": {
   "date": "2026-11-11",
-  "hash": "ad38a5d5bbf41d38bc4a3fa181ec7bea"
+  "hash": "9164c11bbdcb621aae5443516b439edf"
  },
  "fr/keepcontact/conditions/index.html": {
   "date": "2026-11-11",
-  "hash": "d8ea27e3dac67269e1ec9f178d5ed62b"
+  "hash": "7e5c2a998cd2c8750315b5ebd5ef2aa4"
  },
  "fr/keepcontact/confidentialite/index.html": {
   "date": "2026-11-11",
-  "hash": "9c00c96b98fea78e92a1864b8222b4ca"
+  "hash": "5b2df14fdc4b9f534a9c8e3646d9ef9e"
  },
  "fr/keepcontact/index.html": {
   "date": "2026-11-11",
-  "hash": "592416aa4f4d8cdf9f1a56e3424dce71"
+  "hash": "2dbf8ba887496399cfcc2b56eb8a983b"
  },
  "fr/mentions-legales/index.html": {
   "date": "2026-11-11",
-  "hash": "4b09511ca3b9f57a93ade7d401ee9de8"
+  "hash": "3295da6d86f97ecb2f96edf5fbd81f35"
+ },
+ "fr/pourquoi/index.html": {
+  "date": "2026-11-11",
+  "hash": "6a75291a7dcff3a0e51e19dcc286d95d"
  },
  "fr/routineflow/conditions/index.html": {
   "date": "2026-11-11",
-  "hash": "fee68c28fcf0f8a8258834e68f9b3771"
+  "hash": "bf495060a5ba10efebbfd31720ef178c"
  },
  "fr/routineflow/confidentialite/index.html": {
   "date": "2026-11-11",
-  "hash": "713115e27f0faf878fd15cdb58231934"
+  "hash": "48a0e75e6befab961f9c76f6635b912c"
  },
  "fr/routineflow/index.html": {
   "date": "2026-11-11",
-  "hash": "7de5d869905029c94a44a43ca633614f"
+  "hash": "00ad57837e93659320e257504dbd3150"
  },
  "fr/routineflow/r/index.html": {
   "date": "2026-11-11",
-  "hash": "f60e42478ffd1fcf2554b079bcd0345a"
+  "hash": "3acd1095a5b79eca1227b669187d816b"
  },
  "fr/routineflow/routines/before-work/index.html": {
   "date": "2026-11-11",
-  "hash": "c237eb20eb236bd804dbe7119fdd4ab0"
+  "hash": "4ffdc1ee0a7a2e254ec2cd759b6f538b"
  },
  "fr/routineflow/routines/breathing-478/index.html": {
   "date": "2026-11-11",
-  "hash": "b3870f5577122d84d82076dbb2a6617f"
+  "hash": "6d232060f2b93b628a7477570189a740"
  },
  "fr/routineflow/routines/desk-break/index.html": {
   "date": "2026-11-11",
-  "hash": "3925c808e99d19af3d2e01900c0c1d83"
+  "hash": "3704f58ea872435d62a6ad46858b5cc1"
  },
  "fr/routineflow/routines/evening-calm/index.html": {
   "date": "2026-11-11",
-  "hash": "5e93028433393c29d8e3c29d5590830f"
+  "hash": "e9f7de5e9e8e57b16bd04f58d7cee2bd"
  },
  "fr/routineflow/routines/evening-no-screen/index.html": {
   "date": "2026-11-11",
-  "hash": "7b519d696bb30564f094ba69ca913564"
+  "hash": "c599470ff70393f73387f13ebfda820f"
  },
  "fr/routineflow/routines/index.html": {
   "date": "2026-11-11",
-  "hash": "bc4f02222b1009e0550abd918efb9e04"
+  "hash": "ec374950e2736d50adc80f205e3f4ff8"
  },
  "fr/routineflow/routines/mobility-10/index.html": {
   "date": "2026-11-11",
-  "hash": "1e16542b2242e13c9f0d9da986d7afbc"
+  "hash": "344aaca59e0fcd6bb9351fc2f132d063"
  },
  "fr/routineflow/routines/morning-calm/index.html": {
   "date": "2026-11-11",
-  "hash": "ea8c66dfdf5eebdc0082444da5bfe790"
+  "hash": "53c7f37b0d4285ae03bd9ee7f5ac1caf"
  },
  "fr/routineflow/routines/morning-energy/index.html": {
   "date": "2026-11-11",
-  "hash": "a9149a684b714509bde3ab6222d7c053"
+  "hash": "3098e8a73d6cefefee3aaaf77d950d35"
  },
  "fr/routineflow/routines/morning-express/index.html": {
   "date": "2026-11-11",
-  "hash": "6bc4ea8c3f2ad0b0f474726ae1a16f32"
+  "hash": "f8be2339a7d3076ae24d8cc2578ba5ab"
  },
  "fr/routineflow/routines/reset-2min/index.html": {
   "date": "2026-11-11",
-  "hash": "c7e4abeca1cb459f09d4c9db614153ef"
+  "hash": "2954ae25bcd41e9e6a0e4ef17e0b6eb4"
  },
  "fr/routineflow/routines/skincare-evening/index.html": {
   "date": "2026-11-11",
-  "hash": "7bf9e17911c5363ca81bd5e39e1a2826"
+  "hash": "0f272ee61fddcbd3f6eee4295073eb24"
  },
  "fr/routineflow/routines/slow-weekend/index.html": {
   "date": "2026-11-11",
-  "hash": "a6f724108891acd7856ffc28736664a7"
+  "hash": "bcdc8b969f5b499fe88786d474f52fd7"
  },
  "fr/walkquest/conditions/index.html": {
   "date": "2026-11-11",
-  "hash": "d63a877a9bac7f7e905f7fe43e4ff8a6"
+  "hash": "51d2cf3eecdc2662af748408e9a4b8d2"
  },
  "fr/walkquest/confidentialite/index.html": {
   "date": "2026-11-11",
-  "hash": "d3f6f30efdfaf8e482cf9d3a2513f905"
+  "hash": "0581a682228c2fa9400f7ea4d324e048"
  },
  "fr/walkquest/index.html": {
   "date": "2026-11-11",
-  "hash": "904020e21fdcbbbba30cf5751b94988a"
+  "hash": "5f5bdfdfd84c2992ea665904e6e93d87"
  },
  "fr/walkquest/v/camino_frances/index.html": {
   "date": "2026-11-11",
-  "hash": "cf92ec63f2d64c81692c3ade07bb8825"
+  "hash": "4a58b2bda0f951e189bfc8af3d14eea0"
  },
  "fr/walkquest/v/london_royal/index.html": {
   "date": "2026-11-11",
-  "hash": "f3af2b9c4d03bb7f184defe536ba70d4"
+  "hash": "85ab73b89addef24eae28d0618d24faa"
  },
  "fr/walkquest/v/new_york_manhattan/index.html": {
   "date": "2026-11-11",
-  "hash": "01003f848b3b62ec1966662847926b0a"
+  "hash": "a363a5c7f7b5a02ef61418c3bff5632a"
  },
  "fr/walkquest/v/nice_seafront/index.html": {
   "date": "2026-11-11",
-  "hash": "fd84f60dd66da375cc5a94915f75906b"
+  "hash": "8c785148f11c78c390cb7b0d5aa9169c"
  },
  "fr/walkquest/v/paris_versailles/index.html": {
   "date": "2026-11-11",
-  "hash": "e95bad42b149e075864f6cd69c9f279e"
+  "hash": "0d5efb3868dbb3369f2312033924ecc5"
  },
  "fr/walkquest/v/rome_vatican/index.html": {
   "date": "2026-11-11",
-  "hash": "c5130fbd41faef0291d72135dc60c65c"
+  "hash": "b0dcf9f399aa1a7767725e36970df27b"
  },
  "fr/walkquest/v/tour_mont_blanc/index.html": {
   "date": "2026-11-11",
-  "hash": "3a08a8ec89dda56d578e72b1e9fff414"
+  "hash": "11ab24729ec2105fe530ce1733e0b81f"
  },
  "index.html": {
   "date": "2026-11-11",
-  "hash": "e4bab7d35e28f51b8f9393531c396b7b"
+  "hash": "10419e1a8833717b65daf911bd76ade0"
  },
  "jezko/index.html": {
   "date": "2026-11-11",
-  "hash": "27405f4e2d347819bb96f5ac2e3c42ae"
+  "hash": "516142410fb30bd5762a853e9274b7f5"
  },
  "jezko/privacy/index.html": {
   "date": "2026-11-11",
-  "hash": "3b7c3d57155fafe297896e8caee96d05"
+  "hash": "d1ba84d127e6541eb59120c9ba13952b"
  },
  "jezko/terms/index.html": {
   "date": "2026-11-11",
-  "hash": "5dcab5aba6184488926a7a0e8ccd3339"
+  "hash": "ca23d5b64fe0bcfa3efb8fa3ae593d4a"
  },
  "keepcontact/index.html": {
   "date": "2026-11-11",
-  "hash": "dc5d895e42bb5acf424e80492b8ab320"
+  "hash": "3ec8fe40712a8384f3fb86e04e18dbf2"
  },
  "keepcontact/privacy/index.html": {
   "date": "2026-11-11",
-  "hash": "5976f52401685fc6e251c5033d967ad1"
+  "hash": "c40246477dc8b0e58ec130b2596da08e"
  },
  "keepcontact/terms/index.html": {
   "date": "2026-11-11",
-  "hash": "6864d0eb047cccd70f2dc870cfce50f4"
+  "hash": "81677bc552d9b27333b2030118ddf6b5"
  },
  "legal-notice/index.html": {
   "date": "2026-11-11",
-  "hash": "8febd655ae7c645649d603123dfd073b"
+  "hash": "c9147c62f7f40e792b25fe5cd9f836b4"
  },
  "routineflow/index.html": {
   "date": "2026-11-11",
-  "hash": "ac7ab9b4fc2df0619e9a99e3cb89bc94"
+  "hash": "6a71b502e58feb253b6923ce9ffed8e1"
  },
  "routineflow/privacy/index.html": {
   "date": "2026-11-11",
-  "hash": "ef5557d252a8fc34c00886108084a00f"
+  "hash": "a3a134f6b4ff6e56a3f7677ecdba1983"
  },
  "routineflow/r/index.html": {
   "date": "2026-11-11",
-  "hash": "cb020e1fa72f6dd5b2e1256d65804bec"
+  "hash": "185f7c64f9e710d64fe6925c0b8e0505"
  },
  "routineflow/routines/before-work/index.html": {
   "date": "2026-11-11",
-  "hash": "1be8e09d9fb70429b94b12e416ed8404"
+  "hash": "50c9e988111a08c5506bab8fccd8ff74"
  },
  "routineflow/routines/breathing-478/index.html": {
   "date": "2026-11-11",
-  "hash": "ad859c812892410de41f13d6fb4049ce"
+  "hash": "c780ae5f4191ce773365dd8b4c9e31f9"
  },
  "routineflow/routines/desk-break/index.html": {
   "date": "2026-11-11",
-  "hash": "002667cbf6e28da1199e893036a88a86"
+  "hash": "433cdaea8443de9038a74e2b45c45f35"
  },
  "routineflow/routines/evening-calm/index.html": {
   "date": "2026-11-11",
-  "hash": "6b42bf03858abd7d9711420d18aeeec7"
+  "hash": "18213e547fd28dd24411b2d104e54d90"
  },
  "routineflow/routines/evening-no-screen/index.html": {
   "date": "2026-11-11",
-  "hash": "ea88a3d0e6c349e33cf993401cd77e33"
+  "hash": "55d890c7573b2d15051eb09e1accbac9"
  },
  "routineflow/routines/index.html": {
   "date": "2026-11-11",
-  "hash": "3e9a4386ebf53b36579d4d90c8a479c1"
+  "hash": "7c11591142078cbfd0e97d56f4889604"
  },
  "routineflow/routines/mobility-10/index.html": {
   "date": "2026-11-11",
-  "hash": "9153774d7feac4148b9cd76a35638e8f"
+  "hash": "5bc7f79d83cb47a0068d6b268883f08c"
  },
  "routineflow/routines/morning-calm/index.html": {
   "date": "2026-11-11",
-  "hash": "94bf6eb71f4dc8fd28c6074e30c63c61"
+  "hash": "9ebd9f58a8764d1f07cc62dd76248337"
  },
  "routineflow/routines/morning-energy/index.html": {
   "date": "2026-11-11",
-  "hash": "82879783c907121b6acab8eecc65bdfa"
+  "hash": "5ece106a7a5044d7cc9b846b1b69ea1f"
  },
  "routineflow/routines/morning-express/index.html": {
   "date": "2026-11-11",
-  "hash": "42d6ac82d4999e0f93818063efd8c9e3"
+  "hash": "6dc0bd10d663c92c6bebd61988e677f5"
  },
  "routineflow/routines/reset-2min/index.html": {
   "date": "2026-11-11",
-  "hash": "0b0632d971388efd72440f16b1e7c837"
+  "hash": "4886cb43bf970b4aae800504e2354235"
  },
  "routineflow/routines/skincare-evening/index.html": {
   "date": "2026-11-11",
-  "hash": "64430122dad9ed35b8b61644282fef0b"
+  "hash": "fdbbeb82d7eb3d79d108362b604c99c8"
  },
  "routineflow/routines/slow-weekend/index.html": {
   "date": "2026-11-11",
-  "hash": "51b21ca4c8c4cd5e6396df7d8d4dd1b1"
+  "hash": "8f24d3af9c27da246388919d24de9d12"
  },
  "routineflow/terms/index.html": {
   "date": "2026-11-11",
-  "hash": "a730a6b1c9b52e04a7f3293e55ac558a"
+  "hash": "6aad124fc599ea65a0aaa99254607f04"
  },
  "walkquest/index.html": {
   "date": "2026-11-11",
-  "hash": "9ccc70760a5a898ebfd1eb1d819bc619"
+  "hash": "281bb690f33a9c62de4a462097e3c140"
  },
  "walkquest/privacy/index.html": {
   "date": "2026-11-11",
-  "hash": "3a63a6bea5f3b1e0a23fbcf9815ee780"
+  "hash": "01a4918979eb524da75720442727dddd"
  },
  "walkquest/terms/index.html": {
   "date": "2026-11-11",
-  "hash": "c6d7e191da08690d47e81a8d9b7a9885"
+  "hash": "b0473cdba6457c024caace034e3a8ce5"
  },
  "walkquest/v/camino_frances/index.html": {
   "date": "2026-11-11",
-  "hash": "1cdbb3793d3e04daa7a5d1c04c008dae"
+  "hash": "39f77c5183cf6d544c18217d857bc429"
  },
  "walkquest/v/london_royal/index.html": {
   "date": "2026-11-11",
-  "hash": "59492d2801f38f63034b16e9bf4a3f3d"
+  "hash": "1f502e13dfc861fc9ffc19f16e2e6ab4"
  },
  "walkquest/v/new_york_manhattan/index.html": {
   "date": "2026-11-11",
-  "hash": "aa8556251e65604d22615b660e8243f8"
+  "hash": "20a1b3e891725b2b3322c3fd43f7c1e5"
  },
  "walkquest/v/nice_seafront/index.html": {
   "date": "2026-11-11",
-  "hash": "9cd15a835d1ff2efabcb45e15391e8b6"
+  "hash": "ad1a2da7781d212e17c56bef167b3213"
  },
  "walkquest/v/paris_versailles/index.html": {
   "date": "2026-11-11",
-  "hash": "d4361afad0e7406ca6234fb6bab4e907"
+  "hash": "7c8022fa3c354b753a719528f64380e3"
  },
  "walkquest/v/rome_vatican/index.html": {
   "date": "2026-11-11",
-  "hash": "f63b0682e58b2c1d2618eefc183bc9d3"
+  "hash": "002bfdccfe58091d1640c218aff0b4e8"
  },
  "walkquest/v/tour_mont_blanc/index.html": {
   "date": "2026-11-11",
-  "hash": "81e6feb6d239d9bcec1db67e9f944575"
+  "hash": "4bfae145afc2f972270a936520a18753"
+ },
+ "why/index.html": {
+  "date": "2026-11-11",
+  "hash": "8173c980d840acc1835b128378ef29d2"
  }
 }

@@ -5,6 +5,17 @@
 Contact: suiteforgeops@gmail.com
 French version of the site: https://suiteforge.app/fr/
 
+## About
+
+SuiteForge is one person: Nicolas Dojcilovic, who lives near Paris, is Franco-Serbian and spent 25 years in banking before making iPhone apps, without a developer background. He makes apps to create, have fun and learn while being useful, and builds the apps he needs for himself and his family:
+
+- Ježko, in his words: "My daughter is 10. She understands Serbian when her grandparents speak, but she doesn't dare answer. I didn't find an app made for her, so I made Ježko: one story, one hedgehog, ten minutes a day."
+- Crescendo, in his words: "I go to the gym at least three times a week, in short 30-minute sessions. Crescendo started as my own lifting log: I wanted it to tell me what to put on the bar, and why."
+- RoutineFlow, in his words: "I use RoutineFlow every morning. It walks me through my routine and keeps my phone out of the way until I'm done."
+- WalkQuest, in his words: "I've never seen myself as sporty, but I try to stay active: when I stop moving, my back lets me know in the morning. My floor is 5,000 steps a day. WalkQuest gives those steps somewhere to go."
+
+More: [Why SuiteForge](https://suiteforge.app/why/)
+
 ## Apps
 
 - [Ježko](https://suiteforge.app/jezko/): Education. Ježko teaches Serbian to kids and families through one story in 100 lessons. Speak out loud, read Latin and Cyrillic, 10 minutes a day. No account, no ads. First 7 lessons free · English & French. Coming soon to the App Store.

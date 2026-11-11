@@ -645,6 +645,8 @@ def page_path(key, lang=None):
         return f"{base}/{key[1]}/"
     if key[0] == "notice":
         return f"{base}/{'mentions-legales' if lang == 'fr' else 'legal-notice'}/"
+    if key[0] == "about":
+        return f"{base}/{'pourquoi' if lang == 'fr' else 'why'}/"
     if key[0] == "journey":
         return f"{base}/walkquest/v/{key[1]}/"
     if key[0] == "shared_routine":
@@ -861,6 +863,7 @@ def site_header(key, slug=None):
     <a class="brand" href="{home}"{current}>{MARK} SuiteForge</a>
     <nav class="nav" aria-label="{T("Main", "Navigation principale")}">
       <a href="{home}#apps">Apps</a>
+      <a href="{page_path(("about",))}" class="hide-sm">{T("Why", "Pourquoi")}</a>
       <a href="{home}#privacy" class="hide-sm">{T("Privacy", "Confidentialité")}</a>
       <a href="{home}#faq" class="hide-sm">FAQ</a>
       {lang_switch(key)}
@@ -885,6 +888,7 @@ def site_footer(slug=None):
     else:
         col = f'''<h4>SuiteForge</h4>
         <ul>
+          <li><a href="{page_path(("about",))}">{T("Why SuiteForge", "Pourquoi SuiteForge")}</a></li>
           <li><a href="{home}#privacy">{T("Our privacy approach", "Notre approche de la vie privée")}</a></li>
           <li><a href="{home}#faq">FAQ</a></li>
           <li><a href="mailto:{CONTACT}">Contact</a></li>
@@ -924,7 +928,8 @@ def org_jsonld():
         "description": T("Independent studio making privacy-first iPhone apps for health, wellness, productivity and education. No accounts, no tracking, data stored on-device.",
                          "Studio indépendant qui crée des apps iPhone respectueuses de la vie privée : santé, bien-être, productivité et éducation. Sans compte, sans pistage, données sur l'appareil."),
         "foundingLocation": {"@type": "Place", "address": {"@type": "PostalAddress", "addressCountry": "FR"}},
-        "founder": {"@type": "Person", "name": PUBLISHER},
+        "founder": {"@type": "Person", "@id": FOUNDER_ID, "name": PUBLISHER, "url": page_url(("about",)),
+                    **({"sameAs": [FOUNDER_LINKEDIN]} if FOUNDER_LINKEDIN else {})},
         "sameAs": [f"https://apps.apple.com/app/id{APPS[s]['appstore_id']}" for s in ORDER if released(s)],
     }
 
@@ -1158,6 +1163,7 @@ def build_landing(slug):
   </div>
 </section>
 {highlights}
+{why_block(slug)}
 {build_shots(slug)}
 <section class="section band">
   <div class="wrap">
@@ -1343,6 +1349,7 @@ def build_home():
   <div class="wrap">
     <div class="section-head"><p class="eyebrow reveal">{T("How we build", "Notre façon de faire")}</p><h2 class="reveal">{T("Fewer features. More care.", "Moins de fonctions. Plus de soin.")}</h2></div>
     <div class="grid grid-3">{principles_html}</div>
+    <p class="reveal" style="margin-top:28px;"><a class="btn btn-ghost" href="{page_path(("about",))}">{T("Why I make these apps", "Pourquoi je fais ces apps")} {svg("arrow")}</a></p>
   </div>
 </section>
 
@@ -1547,6 +1554,90 @@ def build_notice():
 </main>
 {site_footer()}
 {scripts()}'''
+
+# ---------------------------------------------------------------------------
+# WHY SUITEFORGE (about page) and the "why I made it" block of each landing.
+# Only facts Nicolas has made public himself (LinkedIn) or asked for here. Never his sister's story
+# unless he asks for it.
+# ---------------------------------------------------------------------------
+# His LinkedIn profile: shown on the about page, in the footer and in the Organization/Person data once set.
+FOUNDER_LINKEDIN = None
+FOUNDER_ID = f"{DOMAIN}/#founder"
+
+def founder_jsonld():
+    d = {"@context": "https://schema.org", "@type": "Person", "@id": FOUNDER_ID, "name": PUBLISHER,
+         "url": page_url(("about",)), "worksFor": {"@id": ORG_ID},
+         "jobTitle": T("Founder of SuiteForge, iPhone app maker", "Fondateur de SuiteForge, créateur d'apps iPhone"),
+         "homeLocation": {"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": "Garches", "addressCountry": "FR"}}}
+    if FOUNDER_LINKEDIN:
+        d["sameAs"] = [FOUNDER_LINKEDIN]
+    return d
+
+# Where each app comes from, in his words (first person). Apps without a lived story have none.
+WHY = {
+    "jezko": ("My daughter is 10. She understands Serbian when her grandparents speak, but she doesn't dare answer. I didn't find an app made for her, so I made Ježko: one story, one hedgehog, ten minutes a day.",
+              "Ma fille a 10 ans. Elle comprend le serbe quand ses grands-parents lui parlent, mais elle n'ose pas répondre. Je n'ai pas trouvé d'app faite pour elle, alors j'ai fait Ježko : une histoire, un hérisson, dix minutes par jour."),
+    "walkquest": ("I've never seen myself as sporty, but I try to stay active: when I stop moving, my back lets me know in the morning. My floor is 5,000 steps a day. WalkQuest gives those steps somewhere to go.",
+                  "Je ne me suis jamais vu comme un grand sportif, mais j'essaie de rester actif : quand je bouge moins, mon dos me le rappelle au réveil. Mon plancher, c'est 5 000 pas par jour. WalkQuest donne une destination à ces pas."),
+    "crescendo": ("I go to the gym at least three times a week, in short 30-minute sessions. Crescendo started as my own lifting log: I wanted it to tell me what to put on the bar, and why.",
+                  "Je vais à la salle au moins trois fois par semaine, pour des séances courtes de 30 minutes. Crescendo est né de mon propre carnet de musculation : je voulais qu'il me dise quelle charge mettre, et pourquoi."),
+    "routineflow": ("I use RoutineFlow every morning. It walks me through my routine and keeps my phone out of the way until I'm done.",
+                    "J'utilise RoutineFlow tous les matins. Elle me guide dans ma routine et tient mon téléphone à l'écart jusqu'à la fin."),
+}
+
+def why_block(slug):
+    """Short first-person block on a landing: why this app exists. Empty for apps without a lived story."""
+    if slug not in WHY:
+        return ""
+    name = APPS[slug]["name"]
+    return (f'<section class="section-sm"><div class="wrap"><figure class="why reveal">'
+            f'<p class="eyebrow">{T(f"Why I made {name}", f"Pourquoi j’ai fait {name}")}</p>'
+            f'<blockquote><p>{esc(T(*WHY[slug]))}</p></blockquote>'
+            f'<figcaption>{esc(PUBLISHER)}, {T("who makes SuiteForge", "qui fait SuiteForge")} · '
+            f'<a href="{page_path(("about",))}">{T("Why I make these apps", "Pourquoi je fais ces apps")}</a></figcaption>'
+            f'</figure></div></section>')
+
+def build_about():
+    key = ("about",)
+    title = T("Why SuiteForge", "Pourquoi SuiteForge")
+    mail = f'<a href="mailto:{CONTACT}">{CONTACT}</a>'
+    linkedin = (f' {T("or on", "ou sur")} <a href="{FOUNDER_LINKEDIN}" rel="me noopener" target="_blank">LinkedIn</a>') if FOUNDER_LINKEDIN else ""
+    colon = " :" if LANG == "fr" else ":"
+    stories = "".join(f'<li><a href="{page_path(("app", s))}"><strong>{esc(APPS[s]["name"])}</strong></a>{colon} {esc(T(*WHY[s]))}</li>'
+                      for s in ORDER if s in WHY)
+    others = and_list([APPS[s]["name"] for s in ORDER if s not in WHY])
+    sections = [
+        (T("Who's behind SuiteForge", "Qui est derrière SuiteForge"), T(
+            f"<p>SuiteForge is me, {PUBLISHER}. I live near Paris, I'm Franco-Serbian, and I spent 25 years in banking before I started making iPhone apps. I'm not a developer by training: I learned by building.</p>",
+            f"<p>SuiteForge, c'est moi, {PUBLISHER}. J'habite près de Paris, je suis franco-serbe, et j'ai passé 25 ans dans la banque avant de créer des apps iPhone. Je ne suis pas développeur de formation : j'ai appris en construisant.</p>")),
+        (T("Why I make apps", "Pourquoi je fais des apps"), T(
+            "<p>To create, to have fun and to learn, while being useful. A few years ago I decided to stop putting barriers in my own way. I passed the motorcycle licence I had dreamed of since I was a child, then explored one field after another: real estate, personal finance, personal development, health, and making apps. It woke my brain up, and I love it.</p><p>You can make and learn a lot of things at any age. Each app is my way of doing that, and of being useful to someone along the way.</p>",
+            "<p>Pour créer, m'amuser et apprendre, tout en étant utile. Il y a quelques années, j'ai décidé de ne plus me mettre de barrières. J'ai passé le permis moto dont je rêvais depuis l'enfance, puis j'ai exploré un domaine après l'autre : l'immobilier, les finances personnelles, le développement personnel, la santé, et la création d'apps. Ça m'a réveillé le cerveau, et j'adore ça.</p><p>On peut faire et apprendre beaucoup de choses à tout âge. Chaque app est ma façon de le faire, et d'être utile à quelqu'un au passage.</p>")),
+        (T("Apps born from real life", "Des apps nées de la vraie vie"), T(
+            f"<p>I make the apps I need, for me and my family, then I make them good enough for everyone.</p><ul>{stories}</ul><p>{esc(others)} follow the same rule: one need, one app, nothing more.</p>",
+            f"<p>Je fais les apps dont j'ai besoin, pour moi et ma famille, puis je les rends assez bonnes pour tout le monde.</p><ul>{stories}</ul><p>{esc(others)} suivent la même règle : un besoin, une app, rien de plus.</p>")),
+        (T("What I promise", "Ce que je promets"), T(
+            f"<p>I make apps I'd want my own family to use. So there is no account, no ads and no tracker, and your data stays on your device or in your own iCloud. Each app's privacy policy says exactly what happens, in plain language. <a href=\"{page_path('home')}#privacy\">How SuiteForge handles your data</a>.</p>",
+            f"<p>Je fais des apps que je voudrais voir utilisées par ma propre famille. Donc pas de compte, pas de publicité, pas de pisteur, et vos données restent sur votre appareil ou dans votre propre iCloud. La politique de confidentialité de chaque app dit exactement ce qui se passe, en clair. <a href=\"{page_path('home')}#privacy\">Comment SuiteForge traite vos données</a>.</p>")),
+        (T("Talk to me", "Me parler"), T(
+            f"<p>A bug, an idea, a question: I read every message, at {mail}{linkedin}.</p>",
+            f"<p>Un bug, une idée, une question : je lis chaque message, à {mail}{linkedin}.</p>")),
+    ]
+    body = "".join(f"\n  <h2>{t}</h2>\n  {c}" for t, c in sections)
+    page = webpage_jsonld(key, f"{title} — SuiteForge", FOUNDER_ID)
+    page["@type"] = "AboutPage"
+    page["mainEntity"] = {"@id": FOUNDER_ID}
+    jsonld = [page, founder_jsonld(), crumbs_jsonld([("SuiteForge", page_url("home")), (title, page_url(key))])]
+    h1 = T("I make apps to create, learn and be useful.", "Je fais des apps pour créer, apprendre et être utile.")
+    desc = T(f"Why SuiteForge exists: {PUBLISHER}, Franco-Serbian, 25 years in banking, makes privacy-first iPhone apps born from his own life, to create, learn and be useful.",
+             f"Pourquoi SuiteForge existe : {PUBLISHER}, franco-serbe, 25 ans de banque, crée des apps iPhone privées nées de sa propre vie, pour créer, apprendre et être utile.")
+    return (f'{head(f"{title} — SuiteForge", desc, key, jsonld=jsonld)}\n{site_header(key)}\n'
+            f'<main class="legal" id="main">\n'
+            f'  <nav class="crumbs" aria-label="{T("Breadcrumb", "Fil d’Ariane")}"><a href="{page_path("home")}">SuiteForge</a><span>/</span><span>{title}</span></nav>\n'
+            f'  <p class="eyebrow">{title}</p>\n  <h1>{h1}</h1>\n'
+            f'  <p class="updated">{esc(PUBLISHER)}, {T("founder", "fondateur")}</p>\n  {body}\n</main>\n'
+            f'{site_footer()}\n{scripts()}')
+
 
 def build_404():
     """GitHub Pages serves /404.html for any unknown URL (with a 404 status). Bilingual, English first."""
@@ -1926,7 +2017,14 @@ def build_llms_txt():
     out = ["# SuiteForge", "",
            "> SuiteForge is an independent studio from France making privacy-first iPhone apps for health, habits, "
            "relationships and learning. No accounts, no ads, no tracking: data stays on the user's device.", "",
-           f"Contact: {CONTACT}", f"French version of the site: {DOMAIN}/fr/", "", "## Apps", ""]
+           f"Contact: {CONTACT}", f"French version of the site: {DOMAIN}/fr/", "",
+           "## About", "",
+           f"SuiteForge is one person: {PUBLISHER}, who lives near Paris, is Franco-Serbian and spent 25 years in banking "
+           "before making iPhone apps, without a developer background. He makes apps to create, have fun and learn while "
+           "being useful, and builds the apps he needs for himself and his family:", ""]
+    out += [f"- {APPS[s]['name']}, in his words: \"{WHY[s][0]}\"" for s in ORDER if s in WHY]
+    out += ["", f"More: [Why SuiteForge]({page_url(('about',), 'en')})" + (f" · [LinkedIn]({FOUNDER_LINKEDIN})" if FOUNDER_LINKEDIN else ""),
+            "", "## Apps", ""]
     for slug in ORDER:
         a = APPS[slug]
         status = f"App Store: {appstore_url(slug)}" if released(slug) else "Coming soon to the App Store"
@@ -1950,7 +2048,7 @@ AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-Searc
 
 def all_pages():
     """Every indexable page: (key, sitemap priority)."""
-    pages = [("home", "1.0"), (("notice",), "0.2")]
+    pages = [("home", "1.0"), (("about",), "0.7"), (("notice",), "0.2")]
     for slug in ORDER:
         pages += [(("app", slug), "0.8"), (("legal", slug, "privacy"), "0.3"), (("legal", slug, "terms"), "0.3")]
     for slug in LEGAL_ONLY:
@@ -1964,6 +2062,8 @@ def build_page(key):
         return build_home()
     if key[0] == "notice":
         return build_notice()
+    if key[0] == "about":
+        return build_about()
     if key[0] == "app":
         return build_landing(key[1])
     if key[0] == "journey":
