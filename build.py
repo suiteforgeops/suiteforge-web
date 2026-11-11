@@ -304,12 +304,15 @@ APPS = {
         "accent": "#6b3fd4", "accent_deep": "#5530b0", "accent_tint": "#ece5fa",
         "icon_svg": '<path d="M4 5h11a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H9l-4 3v-3H4z"/><path d="M17 9h3v8h-1v3l-4-3h-4"/>',
         "tagline": "Stay close to the people who matter.",
-        "hero_sub": "A friend you meant to call. A former colleague you never followed up with. KeepContact turns \"I should reach out\" into a simple daily habit — and helps you know what to say when you do. No cloud, no account, no server.",
+        "hero_sub": "A friend you meant to call. A former colleague you never followed up with. KeepContact turns \"I should reach out\" into a simple daily habit — and helps you know what to say when you do. No account, no server, no tracking.",
         "seo_title": "KeepContact — Private personal CRM with on-device AI",
-        "seo_desc": "Privacy-first personal CRM for iPhone: who to reach out to each morning, what matters to each person, message ideas from on-device AI. No account, 100% offline.",
-        "updated": "11 October 2026",
+        "seo_desc": "Privacy-first personal CRM for iPhone: who to reach out to each morning, what matters to each person, message ideas from on-device AI. No account, works offline.",
+        "updated": "11 November 2026",
         "icloud": False,
         "lifetime": True,
+        # 1.7.0: purchases checked on the device with StoreKit 2 (SuiteForgeKit), RevenueCat removed (TD-025).
+        # Publish with the 1.7.0 release: 1.6.0 still embeds RevenueCat.
+        "storekit_native": True,
         "compare": {
             "checked": "14 October 2026",
             "rivals": ["Dex", "Mesh (Clay)", "Contacts Journal"],
@@ -321,22 +324,22 @@ APPS = {
                 ("Data collected but not linked to you", [
                     ("good", "None"), ("info", "Diagnostics"), ("info", "Diagnostics"), ("info", "Identifiers, diagnostics")]),
                 ("In-app purchases listed", [
-                    ("good", "$4.99 to $69.99, lifetime option"), ("info", "$19.99 to $239.99"), ("info", "$19.99 to $119.99"), ("info", "$9.99 to $399.99, team plans")]),
+                    ("good", "$4.99 to $49.99, lifetime option"), ("info", "$19.99 to $239.99"), ("info", "$19.99 to $119.99"), ("info", "$9.99 to $399.99, team plans")]),
                 ("Apple Watch app", [
                     ("bad", "No"), ("bad", "No"), ("bad", "No"), ("good", "Yes")]),
                 ("App languages", [
                     ("good", "English, French"), ("info", "English"), ("info", "English"), ("info", "English")]),
             ],
-            "summary": "According to their App Store privacy labels, KeepContact collects no data, while Dex and Mesh (Clay) collect your contacts and link them, with other data, to your identity. Contacts Journal links no data to you but collects identifiers and diagnostics, and also offers an Apple Watch app and team plans. KeepContact's in-app purchases are listed from $4.99 to $69.99, including a lifetime option, against up to $119.99 to $399.99 for the others.",
+            "summary": "According to their App Store privacy labels, KeepContact collects no data, while Dex and Mesh (Clay) collect your contacts and link them, with other data, to your identity. Contacts Journal links no data to you but collects identifiers and diagnostics, and also offers an Apple Watch app and team plans. KeepContact's in-app purchases are listed from $4.99 to $49.99, including a lifetime option, against up to $119.99 to $399.99 for the others.",
             "note": "Your address book is the most personal data on your iPhone. KeepContact never sends it anywhere; cloud CRMs sync it to their servers to work across devices.",
         },
         "home_blurb": "A private personal CRM. Each morning, who to reach out to and what to say — written by your iPhone's on-device AI.",
-        "price_note": "Free for up to 15 contacts · Pro with a 7-day trial",
+        "price_note": "Free for up to 15 contacts · 7-day trial on the yearly plan",
         "highlights": [
             ("On-device AI", "Summaries and message ideas, on your iPhone"),
             ("Score /100", "Your relationship health at a glance"),
             ("15 free", "Contacts tracked, no time limit"),
-            ("100% offline", "No server, no account, no sync"),
+            ("Works offline", "No server, no account, no sync"),
         ],
         "privacy_extra": [
             ("On-device AI", "On iPhones that support Apple Intelligence, {name} uses Apple's on-device language model to summarise a contact, suggest message ideas and spot facts in your notes. Voice notes are transcribed on your device too. This processing happens entirely on your iPhone: your notes and recordings are not sent to SuiteForge, to Apple or to any third party."),
@@ -355,12 +358,12 @@ APPS = {
             ("Log it in a tap", "After the call or the coffee, log it in one tap or dictate a voice note. Next time, you pick up right where you left off."),
         ],
         "faq": [
-            ("Is KeepContact free?", "Yes. KeepContact is free to download, and you can track up to 15 contacts and 3 reminders for free. KeepContact Pro removes the limits and unlocks the on-device AI, voice notes, the morning brief, the health score, circles, statistics, messages to several people and encrypted backups. Your year in review, every December, is free. Subscriptions come with a 7-day free trial, or you can get Pro for life with a single payment."),
+            ("Is KeepContact free?", "Yes. KeepContact is free to download, and you can track up to 15 contacts and 3 reminders for free. KeepContact Pro removes the limits and unlocks the on-device AI, voice notes, the morning brief, the health score, circles, statistics, messages to several people and encrypted backups. Exporting all your data and your year in review, every December, are free. The yearly subscription comes with a 7-day free trial, or you can get Pro for life with a single payment."),
             ("What's a good private personal CRM app?", "KeepContact is a privacy-first personal CRM for iPhone: no account, no server, no analytics and no trackers. Every name, note and reminder is stored on your device, and its App Store privacy label is \"Data Not Collected\"."),
-            ("Does KeepContact upload my contacts?", "No. KeepContact never uploads your contacts or notes. It works 100% offline and everything stays on your iPhone. Backups are files you save yourself, and can be encrypted with a password only you know."),
-            ("How does the AI work without sending my data?", "KeepContact uses Apple's on-device AI model. Summaries, message ideas and the facts it picks up from your notes are generated on your iPhone; your notes never leave it. It requires an iPhone that supports Apple Intelligence; the rest of the app works on any iPhone running a supported iOS version."),
-            ("How is KeepContact different from Dex, Mesh (Clay) or Contacts Journal?", "KeepContact's App Store privacy label is \"Data Not Collected\": your contacts and notes never leave your iPhone. According to their App Store listings, Dex and Mesh (Clay) collect your contacts and link them to your identity, and Contacts Journal collects identifiers and diagnostics. KeepContact's in-app purchases are listed from $4.99 to $69.99, including a lifetime option. Contacts Journal offers an Apple Watch app and team plans; cloud CRMs sync across devices, which KeepContact deliberately does not."),
-            ("Does KeepContact sync with iCloud?", "Not at the moment. KeepContact keeps everything on your iPhone. To move your data to another iPhone, KeepContact Pro includes a backup in Settings, which you can encrypt with your own password."),
+            ("Does KeepContact upload my contacts?", "No. KeepContact never uploads your contacts or notes. It works offline and your data stays on your iPhone. Backups are files you save yourself, and can be encrypted with a password only you know."),
+            ("How does the AI work without sending my data?", "KeepContact uses Apple's on-device AI model. Summaries, message ideas and the facts it picks up from your notes are generated on your iPhone; your notes stay on it. It requires an iPhone that supports Apple Intelligence; the rest of the app works on any iPhone running a supported iOS version."),
+            ("How is KeepContact different from Dex, Mesh (Clay) or Contacts Journal?", "KeepContact's App Store privacy label is \"Data Not Collected\": your contacts and notes never leave your iPhone. According to their App Store listings, Dex and Mesh (Clay) collect your contacts and link them to your identity, and Contacts Journal collects identifiers and diagnostics. KeepContact's in-app purchases are listed from $4.99 to $49.99, including a lifetime option. Contacts Journal offers an Apple Watch app and team plans; cloud CRMs sync across devices, which KeepContact deliberately does not."),
+            ("Does KeepContact sync with iCloud?", "Not at the moment. KeepContact keeps everything on your iPhone. To move your data to another iPhone, KeepContact Pro includes a backup in Settings, which you can encrypt with your own password. Anyone can export all their data as a file, for free."),
         ],
         "mock": """
           <div style="flex:1;display:flex;flex-direction:column;gap:11px;padding:24px 18px;">
