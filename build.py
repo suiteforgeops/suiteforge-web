@@ -614,6 +614,9 @@ TODAY = datetime.date.today().isoformat()
 MODIFIED = "__DATE_MODIFIED__"
 DATES_FILE = os.path.join(ROOT, ".page-dates.json")
 CONTACT = "suiteforgeops@gmail.com"
+# IndexNow (Bing, Yandex, Seznam, Naver): this key is published at /<key>.txt to prove the site is ours.
+# indexnow.py sends the pages changed on a given day. Not secret: anyone can read the file.
+INDEXNOW_KEY = "0129f6eb3246014fe60e7fb9196cd18a"
 # Legal publisher: SuiteForge is a trade name, not a company. Same identity as the App Store
 # "trader" details (EU Digital Services Act) of the apps.
 PUBLISHER = "Nicolas Dojcilovic"
@@ -2233,6 +2236,7 @@ if __name__ == "__main__":
     write("robots.txt", robots + f"Sitemap: {DOMAIN}/sitemap.xml\n")
     write("llms.txt", build_llms_txt())
     write("CNAME", "suiteforge.app\n")
+    write(f"{INDEXNOW_KEY}.txt", INDEXNOW_KEY)
     # GitHub Pages skips dot-folders unless Jekyll is turned off; .well-known must be served.
     write(".nojekyll", "")
     write(".well-known/apple-app-site-association", apple_app_site_association())
