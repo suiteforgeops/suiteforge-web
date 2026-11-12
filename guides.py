@@ -532,4 +532,107 @@ GUIDES = [
             ],
         },
     },
+
+    {
+        "id": "fasting-16-8",
+        "app": "fastclear",
+        "published": "12 November 2026",
+        "slug": {"en": "16-8-intermittent-fasting", "fr": "jeune-intermittent-16-8"},
+        "sources": [
+            ("Lowe et al., « Effects of Time-Restricted Eating on Weight Loss and Other Metabolic Parameters (TREAT) », JAMA Internal Medicine 180 (11), 2020",
+             "https://pubmed.ncbi.nlm.nih.gov/32986097/"),
+            ("de Cabo, Mattson, « Effects of Intermittent Fasting on Health, Aging, and Disease », New England Journal of Medicine 381, 2019",
+             "https://doi.org/10.1056/NEJMra1905136"),
+            ("Johns Hopkins Medicine, « Intermittent Fasting: What is it, and how does it work? »",
+             "https://www.hopkinsmedicine.org/health/wellness-and-prevention/intermittent-fasting-what-is-it-and-how-does-it-work"),
+        ],
+        "en": {
+            "title": "16:8 intermittent fasting: when to start counting, and what it really does",
+            "seo_title": "16:8 intermittent fasting: when to start counting, what breaks a fast",
+            "desc": "16:8 fasting in plain words: when the 16 hours start, what you can drink, how to choose your eating window, what research really shows, and who shouldn't fast.",
+            "lede": "16:8 is the most popular form of intermittent fasting: 16 hours without eating, then an 8-hour eating window. The idea is simple; the details are where people get stuck. When does the fast start? Does coffee break it? And what does it actually do? Here are clear answers, including the less exciting ones.",
+            "faq_title": "Questions people ask",
+            "sections": [
+                ("16:8 in one sentence",
+                 "<p>You go 16 hours without eating, then eat within an 8-hour window, every day or on the days you choose. In practice, the night does most of the work: if you finish dinner at 8 pm and eat again at noon, that's 16 hours.</p>"),
+                ("When the 16 hours start",
+                 "<p>The fast starts with your <strong>last bite</strong>, not when you go to bed or when you remember to start a timer. Sleep counts. If you forgot to start your timer, simply set the start time to when you actually finished eating: what matters is the real time, not the button.</p>"
+                 "<p>Nothing magic happens at exactly 16:00:00. If one day you stop at 15 hours, or go on to 17, the fast still counts.</p>"),
+                ("What breaks a fast, and what doesn't",
+                 "<p>During the fasting hours, Johns Hopkins Medicine lists water and zero-calorie drinks such as black coffee and tea as permitted. Sparkling water and plain herbal tea fall in the same category.</p>"
+                 "<p>Anything with calories ends the fast: milk in your coffee, sugar, juice, a snack, a smoothie. Drinks with sweeteners are debated; if you want to keep things simple, stick to water, black coffee and plain tea.</p>"),
+                ("Choose a window that fits your life",
+                 "<p>The best window is the one you can keep. Common options:</p>"
+                 "<ul>"
+                 "<li><strong>Noon to 8 pm:</strong> skip breakfast, keep family dinner. The most common choice.</li>"
+                 "<li><strong>10 am to 6 pm:</strong> a late breakfast and an early dinner.</li>"
+                 "<li><strong>8 am to 4 pm:</strong> for early risers who don't mind a light evening.</li>"
+                 "</ul>"
+                 "<p>Social life matters: if Friday dinners are late, shift the window that day rather than giving up. Regularity helps more than perfection.</p>"),
+                ("What research really shows",
+                 "<p>The honest answer is less spectacular than many apps suggest. In the TREAT trial, published in 2020 in JAMA Internal Medicine, 116 adults with overweight or obesity were randomised either to eat only between noon and 8 pm, or to eat three structured meals a day, for 12 weeks. The 16:8 group lost about 0.9 kg and the meals group about 0.7 kg: the difference between the two was not significant. The authors concluded that time-restricted eating alone was not more effective for weight loss than eating throughout the day.</p>"
+                 "<p>A 2019 review in the New England Journal of Medicine by Rafael de Cabo and Mark Mattson describes promising effects of intermittent fasting on metabolism, many of them observed in animals, while human trials have mostly been short. Timelines you may see for “milestones” such as ketosis or autophagy come largely from that kind of research: treat them as rough orders of magnitude, not promises.</p>"
+                 "<p>In other words, 16:8 is a framework. It helps some people eat more regularly and snack less in the evening; what you eat in the window still matters.</p>"),
+                ("Who shouldn't fast",
+                 "<p>Johns Hopkins Medicine advises against intermittent fasting for children and teenagers under 18, and for people with a history of eating disorders, and warns that people with type 1 diabetes who take insulin risk dangerously low blood sugar while fasting. Pregnancy and breastfeeding, which increase energy needs, call for advice from your doctor or midwife. If you take regular medication or have a health condition, talk to your doctor before starting.</p>"),
+                ("A timer that follows your real rhythm",
+                 "<p><a href=\"/fastclear/\">FastClear</a> is the fasting timer I make for exactly these details. You can correct the start time if you started late, go past your goal without the timer “ending”, and see your eating window counted down. A Live Activity keeps the fast on your lock screen, for free.</p>"
+                 "<p>All protocols, the Live Activity, 30 days of history and the export are free; Premium adds your full history, statistics and widgets. No account, no ads, and FastClear gives no medical advice.</p>"),
+            ],
+            "faq": [
+                ("When does a 16:8 fast start?",
+                 "With your last bite of food, not when you go to bed. If you finish dinner at 8 pm, your fast ends at noon the next day. If you forgot to start your timer, set the start to when you actually stopped eating."),
+                ("Does black coffee break a fast?",
+                 "No. Johns Hopkins Medicine lists water and zero-calorie drinks such as black coffee and tea as permitted during fasting periods. Milk, sugar or anything with calories ends the fast."),
+                ("Does 16:8 fasting help you lose weight?",
+                 "Not necessarily more than other ways of eating. In the TREAT trial (JAMA Internal Medicine, 2020), 12 weeks of eating between noon and 8 pm did not lead to significantly more weight loss than three meals a day. It can help some people structure their eating; what you eat still matters."),
+                ("Do I have to fast every day?",
+                 "No. Many people fast on weekdays and relax at weekends, or shift their window on social evenings. A rhythm you can keep is better than a perfect one you give up."),
+            ],
+        },
+        "fr": {
+            "title": "Jeûne intermittent 16:8 : quand commencer à compter, et ce qu'il fait vraiment",
+            "seo_title": "Jeûne 16:8 : quand commencer à compter, ce qui rompt le jeûne",
+            "desc": "Le jeûne 16:8 expliqué simplement : quand commencent les 16 heures, ce qu'on peut boire, comment choisir sa fenêtre, ce que montre vraiment la recherche, et qui ne doit pas jeûner.",
+            "lede": "Le 16:8 est la forme la plus courante de jeûne intermittent : 16 heures sans manger, puis une fenêtre de repas de 8 heures. L'idée est simple ; c'est dans les détails qu'on bloque. Quand commence le jeûne ? Le café le rompt-il ? Et qu'est-ce qu'il fait vraiment ? Voici des réponses claires, y compris les moins enthousiasmantes.",
+            "faq_title": "Les questions qu'on se pose",
+            "sections": [
+                ("Le 16:8 en une phrase",
+                 "<p>On passe 16 heures sans manger, puis on mange dans une fenêtre de 8 heures, chaque jour ou les jours qu'on choisit. En pratique, la nuit fait l'essentiel du travail : si vous finissez de dîner à 20 h et remangez à midi, cela fait 16 heures.</p>"),
+                ("Quand commencent les 16 heures",
+                 "<p>Le jeûne commence à votre <strong>dernière bouchée</strong>, pas au coucher ni au moment où vous pensez à lancer un minuteur. Le sommeil compte. Si vous avez oublié de lancer votre minuteur, réglez simplement le début sur l'heure à laquelle vous avez vraiment fini de manger : c'est l'heure réelle qui compte, pas le bouton.</p>"
+                 "<p>Rien de magique ne se produit à 16 h 00 min 00 s. Si un jour vous vous arrêtez à 15 heures, ou continuez jusqu'à 17, le jeûne compte quand même.</p>"),
+                ("Ce qui rompt le jeûne, et ce qui ne le rompt pas",
+                 "<p>Pendant les heures de jeûne, Johns Hopkins Medicine indique que l'eau et les boissons sans calories comme le café noir et le thé sont permises. L'eau gazeuse et les tisanes nature entrent dans la même catégorie.</p>"
+                 "<p>Tout ce qui apporte des calories met fin au jeûne : le lait dans le café, le sucre, un jus, un en-cas, un smoothie. Les boissons aux édulcorants font débat ; pour rester simple, tenez-vous-en à l'eau, au café noir et au thé nature.</p>"),
+                ("Choisir une fenêtre qui colle à votre vie",
+                 "<p>La meilleure fenêtre est celle que vous pouvez tenir. Les options courantes :</p>"
+                 "<ul>"
+                 "<li><strong>De midi à 20 h :</strong> on saute le petit-déjeuner, on garde le dîner en famille. Le choix le plus courant.</li>"
+                 "<li><strong>De 10 h à 18 h :</strong> un petit-déjeuner tardif et un dîner tôt.</li>"
+                 "<li><strong>De 8 h à 16 h :</strong> pour les lève-tôt que des soirées légères ne gênent pas.</li>"
+                 "</ul>"
+                 "<p>La vie sociale compte : si le dîner du vendredi se termine tard, décalez la fenêtre ce jour-là plutôt que d'abandonner. La régularité aide plus que la perfection.</p>"),
+                ("Ce que montre vraiment la recherche",
+                 "<p>La réponse honnête est moins spectaculaire que ce que promettent beaucoup d'apps. Dans l'essai TREAT, publié en 2020 dans JAMA Internal Medicine, 116 adultes en surpoids ou en obésité ont été répartis au hasard entre manger seulement de midi à 20 h, ou prendre trois repas structurés par jour, pendant 12 semaines. Le groupe 16:8 a perdu environ 0,9 kg et le groupe repas environ 0,7 kg : la différence entre les deux n'était pas significative. Les auteurs ont conclu que restreindre la fenêtre de repas, seul, n'était pas plus efficace pour perdre du poids que manger tout au long de la journée.</p>"
+                 "<p>Une revue publiée en 2019 dans le New England Journal of Medicine par Rafael de Cabo et Mark Mattson décrit des effets prometteurs du jeûne intermittent sur le métabolisme, dont beaucoup observés chez l'animal, alors que les essais chez l'humain ont surtout été de courte durée. Les délais qu'on voit parfois pour des « repères » comme la cétose ou l'autophagie viennent en grande partie de ce type de recherches : prenez-les comme des ordres de grandeur, pas comme des promesses.</p>"
+                 "<p>Autrement dit, le 16:8 est un cadre. Il aide certaines personnes à manger plus régulièrement et à grignoter moins le soir ; ce que vous mangez dans la fenêtre compte toujours.</p>"),
+                ("Qui ne devrait pas jeûner",
+                 "<p>Johns Hopkins Medicine déconseille le jeûne intermittent aux enfants et adolescents de moins de 18 ans et aux personnes ayant un passé de troubles du comportement alimentaire, et avertit que les personnes avec un diabète de type 1 sous insuline risquent une hypoglycémie dangereuse pendant le jeûne. La grossesse et l'allaitement, qui augmentent les besoins en énergie, demandent l'avis de votre médecin ou de votre sage-femme. Si vous prenez un traitement régulier ou avez un problème de santé, parlez-en à votre médecin avant de commencer.</p>"),
+                ("Un minuteur qui suit votre vrai rythme",
+                 "<p><a href=\"/fr/fastclear/\">FastClear</a> est le minuteur de jeûne que je fais pour exactement ces détails. Vous pouvez corriger l'heure de début si vous avez lancé le minuteur en retard, dépasser votre objectif sans que le minuteur « s'arrête », et voir votre fenêtre de repas décomptée. Une Live Activity garde le jeûne sur l'écran verrouillé, gratuitement.</p>"
+                 "<p>Tous les protocoles, la Live Activity, 30 jours d'historique et l'export sont gratuits ; Premium ajoute l'historique complet, les statistiques et les widgets. Sans compte, sans publicité, et FastClear ne donne aucun conseil médical.</p>"),
+            ],
+            "faq": [
+                ("Quand commence un jeûne 16:8 ?",
+                 "À votre dernière bouchée, pas au coucher. Si vous finissez de dîner à 20 h, votre jeûne se termine à midi le lendemain. Si vous avez oublié de lancer votre minuteur, réglez le début sur l'heure où vous avez vraiment arrêté de manger."),
+                ("Le café noir rompt-il le jeûne ?",
+                 "Non. Johns Hopkins Medicine indique que l'eau et les boissons sans calories comme le café noir et le thé sont permises pendant le jeûne. Le lait, le sucre ou tout ce qui apporte des calories met fin au jeûne."),
+                ("Le jeûne 16:8 fait-il maigrir ?",
+                 "Pas forcément plus qu'une autre façon de manger. Dans l'essai TREAT (JAMA Internal Medicine, 2020), 12 semaines à manger de midi à 20 h n'ont pas fait perdre significativement plus de poids que trois repas par jour. Il peut aider certaines personnes à structurer leur alimentation ; ce qu'on mange compte toujours."),
+                ("Faut-il jeûner tous les jours ?",
+                 "Non. Beaucoup de gens jeûnent en semaine et se relâchent le week-end, ou décalent leur fenêtre les soirs de sortie. Un rythme qu'on tient vaut mieux qu'un rythme parfait qu'on abandonne."),
+            ],
+        },
+    },
 ]

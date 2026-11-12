@@ -12,8 +12,8 @@
   "hash": "eefd66e580e7de888fa4434a4e097eef"
  },
  "fastclear/index.html": {
-  "date": "2026-11-11",
-  "hash": "ebce5adaa76e02dd39999837515defc6"
+  "date": "2026-11-12",
+  "hash": "814bfa2a220d3cdaca11639cc8c7c84d"
  },
  "fastclear/privacy/index.html": {
   "date": "2026-11-11",
@@ -44,8 +44,8 @@
   "hash": "7ee15d2b028c568ff3d22d6a14319d0f"
  },
  "fr/fastclear/index.html": {
-  "date": "2026-11-11",
-  "hash": "b89e9e423c343f398b257477aff1063e"
+  "date": "2026-11-12",
+  "hash": "b238b37277d8b56ee6ec402afbd5c01c"
  },
  "fr/guides/apprendre-le-serbe-a-son-enfant/index.html": {
   "date": "2026-11-11",
@@ -65,7 +65,11 @@
  },
  "fr/guides/index.html": {
   "date": "2026-11-12",
-  "hash": "27915b0e9e44510d583706a72848c75a"
+  "hash": "3d0ac87dc1e55d191182c4ce5dc998b5"
+ },
+ "fr/guides/jeune-intermittent-16-8/index.html": {
+  "date": "2026-11-12",
+  "hash": "3d16b4b476a9bdfb6d13ecd9a3b01e00"
  },
  "fr/guides/routine-du-matin-qui-tient/index.html": {
   "date": "2026-11-12",
@@ -73,7 +77,7 @@
  },
  "fr/index.html": {
   "date": "2026-11-12",
-  "hash": "6c1a0b5c65f61b132328a0b51004e832"
+  "hash": "83dd7b7793fad1cb722c38dae163c658"
  },
  "fr/jezko/conditions/index.html": {
   "date": "2026-11-11",
@@ -215,6 +219,10 @@
   "date": "2026-11-11",
   "hash": "e45b2519bc36e5f3af6bc28de3d6c42a"
  },
+ "guides/16-8-intermittent-fasting/index.html": {
+  "date": "2026-11-12",
+  "hash": "0ccfcb3b914b673a35ba12a5d87bdde7"
+ },
  "guides/camino-de-santiago-steps/index.html": {
   "date": "2026-11-12",
   "hash": "47834948ca3086a20d3df3231a05161a"
@@ -225,7 +233,7 @@
  },
  "guides/index.html": {
   "date": "2026-11-12",
-  "hash": "f379c3482caee3b1e168d31fe897da36"
+  "hash": "6957f20ca87b32aa51bc22c8b53a04ea"
  },
  "guides/keep-in-touch-with-friends/index.html": {
   "date": "2026-11-12",
@@ -241,7 +249,7 @@
  },
  "index.html": {
   "date": "2026-11-12",
-  "hash": "fb2ee918957a179ff3e46f673c5d52b7"
+  "hash": "37da6890348f0c291b706689c91e216e"
  },
  "jezko/index.html": {
   "date": "2026-11-11",
