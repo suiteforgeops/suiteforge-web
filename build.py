@@ -126,7 +126,12 @@ APPS = {
         "appstore_id": "6766101143",
         # 2.0: iCloud sync (private CloudKit database), Apple Watch, app blocking (Screen Time), lifetime purchase
         "lifetime": True,
-        "updated": "21 October 2026",
+        "updated": "12 November 2026",
+        # 2.2: purchases checked on the device with StoreKit 2 (SuiteForgeKit), RevenueCat removed (TD-025).
+        # 2.1, live until 2.2 ships, still embeds RevenueCat: the policy says so (revenuecat_until).
+        "storekit_native": True,
+        "revenuecat_until": "2.1",
+        "storekit_since": "2.2",
         "accent": "#e8821e", "accent_deep": "#9e540e", "accent_tint": "#fbedd9",
         "icon_svg": '<path d="M12 4a8 8 0 1 1-7.5 5.2"/><path d="M4 4v4h4"/><path d="M12 8v4l2.6 1.6"/>',
         "tagline": "Win your mornings before your phone does.",
@@ -1252,8 +1257,9 @@ HOME_FAQ_EN = [
 def purchase_note():
     """Who sees purchase data, app by app: StoreKit 2 apps check purchases on the device with Apple only;
     apps still embedding RevenueCat send it an anonymous purchase identifier (TD-025)."""
-    native = [APPS[s]["name"] for s in ORDER if APPS[s].get("storekit_native")]
-    legacy = [APPS[s]["name"] for s in ORDER if not APPS[s].get("storekit_native")]
+    # An app whose live version still embeds RevenueCat (revenuecat_until) stays in the legacy list.
+    native = [APPS[s]["name"] for s in ORDER if APPS[s].get("storekit_native") and not APPS[s].get("revenuecat_until")]
+    legacy = [APPS[s]["name"] for s in ORDER if not APPS[s].get("storekit_native") or APPS[s].get("revenuecat_until")]
     text = T(f"{and_list(native)} check purchases on your iPhone with Apple only.",
              f"{and_list(native)} vérifient les achats sur votre iPhone, avec Apple uniquement.")
     if legacy:
@@ -1476,6 +1482,16 @@ def build_privacy(slug):
             f"<p>{name} propose un abonnement facultatif à renouvellement automatique{lifetime}. Les achats sont entièrement traités par Apple. {name} vérifie vos achats sur votre appareil avec StoreKit, le cadre d'Apple, et ne fait appel à aucun service d'achat tiers : aucune information d'achat n'est envoyée à SuiteForge ni à quiconque d'autre qu'Apple. Voir {apple_pp}.</p>")
         leaves = T("Purchases are handled by Apple; nothing else leaves your device.",
                    "Les achats sont gérés par Apple ; rien d'autre ne quitte votre appareil.")
+        if a.get("revenuecat_until"):
+            v = a["revenuecat_until"]
+            since = a["storekit_since"]
+            purchases = purchases.replace(f"<p>{name} offers", f"<p>Since version {since}, {name} offers", 1).replace(
+                f"<p>{name} propose", f"<p>Depuis la version {since}, {name} propose", 1)
+            purchases += T(
+                f"<p>Versions up to {v} use RevenueCat, Inc. as a service provider to deliver and restore purchases: an anonymous app-user identifier together with purchase and receipt information is processed by Apple and RevenueCat, is not linked to your personal content, and is never used for advertising or tracking. See {rc_pp}. Updating the app ends this processing; your subscription and purchases are kept, as they are held by Apple.</p>",
+                f"<p>Les versions jusqu'à la {v} font appel à RevenueCat, Inc. comme prestataire pour délivrer et restaurer vos achats : un identifiant d'utilisateur anonyme, accompagné des informations d'achat et de reçu, est traité par Apple et RevenueCat ; il n'est pas lié à votre contenu personnel et n'est jamais utilisé pour la publicité ni le pistage. Voir la <a href=\"https://www.revenuecat.com/privacy\" target=\"_blank\" rel=\"noopener\">politique de confidentialité de RevenueCat</a>. Mettre à jour l'app met fin à ce traitement ; votre abonnement et vos achats sont conservés, car ils sont détenus par Apple.</p>")
+            leaves = T(f"Purchases are handled by Apple; nothing else leaves your device (versions up to {v}: see section 4).",
+                       f"Les achats sont gérés par Apple ; rien d'autre ne quitte votre appareil (versions jusqu'à la {v} : voir la section 4).")
     else:
         purchases = T(
             f"<p>{name} offers an optional auto-renewing subscription{lifetime}. Purchases are processed by Apple. To deliver and restore purchases across your devices, we use RevenueCat, Inc. as a service provider. For this purpose only, an anonymous app-user identifier together with purchase and receipt information is processed by Apple and RevenueCat. This information is not linked to your personal content in the app and is not used for advertising. See {apple_pp} and {rc_pp}.</p>",
