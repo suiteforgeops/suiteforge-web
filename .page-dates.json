@@ -59,13 +59,17 @@
   "date": "2026-11-11",
   "hash": "7e29de579f882654f72900235af7e80a"
  },
+ "fr/guides/garder-le-contact-avec-ses-amis/index.html": {
+  "date": "2026-11-12",
+  "hash": "52623b143a4693a94d59bd177189dada"
+ },
  "fr/guides/index.html": {
   "date": "2026-11-12",
-  "hash": "e197b2ec0b4a393e12de416b04c884d3"
+  "hash": "719a097f110b07604e2ccd9a44399a8f"
  },
  "fr/index.html": {
   "date": "2026-11-12",
-  "hash": "8add3d9ee83ece77176d284280fe8599"
+  "hash": "10b86fc51ffb441c21ef75f4ce504785"
  },
  "fr/jezko/conditions/index.html": {
   "date": "2026-11-11",
@@ -88,8 +92,8 @@
   "hash": "7f491192ca65b399e5bf9cf35c4a7718"
  },
  "fr/keepcontact/index.html": {
-  "date": "2026-11-11",
-  "hash": "819294a154f527d4315efdaa6efa94fa"
+  "date": "2026-11-12",
+  "hash": "98017e316bb1e227ab58fe98c346d699"
  },
  "fr/mentions-legales/index.html": {
   "date": "2026-11-11",
@@ -217,7 +221,11 @@
  },
  "guides/index.html": {
   "date": "2026-11-12",
-  "hash": "fcffd2392bdef5b500353ca342dcc1e3"
+  "hash": "d2b2c77ef5959503a7a3861758e55a21"
+ },
+ "guides/keep-in-touch-with-friends/index.html": {
+  "date": "2026-11-12",
+  "hash": "64b78bcb766d2498781b47eea169931e"
  },
  "guides/teach-your-child-serbian/index.html": {
   "date": "2026-11-11",
@@ -225,7 +233,7 @@
  },
  "index.html": {
   "date": "2026-11-12",
-  "hash": "a13ba04a907e7a443e6345d8522e2b47"
+  "hash": "c7624627985f79f1249ff0ce21657f2b"
  },
  "jezko/index.html": {
   "date": "2026-11-11",
@@ -240,8 +248,8 @@
   "hash": "a883692a63c59d505df6479bafa47ce8"
  },
  "keepcontact/index.html": {
-  "date": "2026-11-11",
-  "hash": "6e000e0c72a77e7ba65bfd7ca7f05386"
+  "date": "2026-11-12",
+  "hash": "65ecd4574a0f3a0f5b0558297dc028a1"
  },
  "keepcontact/privacy/index.html": {
   "date": "2026-11-11",

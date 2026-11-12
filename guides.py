@@ -336,4 +336,101 @@ GUIDES = [
             ],
         },
     },
+
+    {
+        "id": "keep-in-touch",
+        "app": "keepcontact",
+        "published": "12 November 2026",
+        "slug": {"en": "keep-in-touch-with-friends", "fr": "garder-le-contact-avec-ses-amis"},
+        "sources": [
+            ("Liu, Rim, Min, Min, « The Surprise of Reaching Out: Appreciated More Than We Think », Journal of Personality and Social Psychology 124 (4), 2023 (APA press release)",
+             "https://www.apa.org/news/press/releases/2022/07/friends-enjoy-being-reached"),
+            ("Jeffrey A. Hall, « How many hours does it take to make a friend? », Journal of Social and Personal Relationships, 2018 (University of Kansas release)",
+             "https://news.ku.edu/news/article/2018/03/06/study-reveals-number-hours-it-takes-make-friend"),
+            ("Holt-Lunstad, Smith, Layton, « Social Relationships and Mortality Risk: A Meta-analytic Review », PLoS Medicine, 2010",
+             "https://doaj.org/article/c9833ba608474b048444b92ae7ee48ad"),
+        ],
+        "en": {
+            "title": "How to keep in touch with friends when you're busy",
+            "seo_title": "How to keep in touch with friends when you're busy",
+            "desc": "You think of them but never write? What research says about reaching out, how often to do it, what to say in 30 seconds, and simple rituals that keep friendships alive.",
+            "lede": "A friend you meant to call. A former colleague you never followed up with. Most of us think about the people who matter far more often than we tell them. Here is what research says, and a few simple habits that change it.",
+            "faq_title": "Questions people ask",
+            "sections": [
+                ("We think of them, but we don't write",
+                 "<p>The hardest part is rarely knowing what to say: it's the feeling that it's been too long, that the message will be awkward, or that the other person won't care.</p>"
+                 "<p>Research says otherwise. In a series of experiments published in 2022 in the Journal of Personality and Social Psychology, Peggy Liu and her colleagues found that people consistently underestimate how much others appreciate being reached out to, with a short message, a note or a small gift. And the more unexpected the message, the more it's appreciated: an old friend you haven't spoken to in a while is exactly the person who will be glad to hear from you.</p>"),
+                ("Why it's worth the effort",
+                 "<p>Friendships take time to build. Jeffrey Hall, at the University of Kansas, estimated that it takes about 50 hours together to go from acquaintance to casual friend, about 90 hours to become friends, and more than 200 hours to become close friends. That time is an investment you don't want to lose to silence.</p>"
+                 "<p>And it matters beyond the pleasure of it. A 2010 meta-analysis by Julianne Holt-Lunstad and colleagues, covering 148 studies and more than 300,000 people, found that people with stronger social relationships were more likely to survive over the period studied, an effect the authors describe as comparable to well-known risk factors.</p>"),
+                ("Choose who, and how often",
+                 "<p>You can't keep up with everyone, and you don't need to. Start with a short list: the five to fifteen people you would genuinely miss. A few years ago, I sorted out my own circle and moved away from people who constantly criticise; it left more room for the others.</p>"
+                 "<p>Then give each person a rhythm that fits the relationship: every week or two for the closest, every month for good friends, every few months for the people you don't want to lose touch with. There is no right number; what counts is that it's realistic for you.</p>"),
+                ("A 30-second message is enough",
+                 "<p>You don't need a long catch-up. A short, specific message does the job:</p>"
+                 "<ul>"
+                 "<li>“Saw this and thought of you. How did the move go?”</li>"
+                 "<li>“It's been too long! Coffee next week?”</li>"
+                 "<li>“Happy birthday! How's the new job treating you?”</li>"
+                 "</ul>"
+                 "<p>The secret is the detail: the move, the new job, the child who started school. Write down what people tell you after each conversation, and you'll always have something to say next time.</p>"),
+                ("Rituals rather than willpower",
+                 "<p>Good intentions fade; habits stay. Attach reaching out to something you already do: a message during your Sunday morning coffee, a call on the walk home on Thursdays, birthdays in your calendar with a reminder the day before. Two or three people a week is enough to keep a whole circle alive over a year.</p>"),
+                ("A tool to remember for you",
+                 "<p>A notebook and your phone's reminders can do the job. <a href=\"/keepcontact/\">KeepContact</a> is the app I make for it: you choose a rhythm for each person, and it shows you who is overdue. It keeps birthdays, the things that matter to each person and the thread of your conversations. With Pro, a morning brief puts one person first with a short summary, and its on-device AI suggests a first sentence when you're stuck.</p>"
+                 "<p>It's free for up to 15 contacts, which is enough for the short list above. Everything stays on your iPhone: no account, no server, and your address book is never uploaded.</p>"),
+            ],
+            "faq": [
+                ("Is it weird to reach out to someone after years of silence?",
+                 "Less than you think. Research by Peggy Liu and colleagues shows that people appreciate being contacted more than senders expect, and even more so when the message is a surprise. A short, warm message is usually welcome."),
+                ("How often should I contact a friend?",
+                 "There is no universal rule. Choose a rhythm per person: every week or two for the closest, every month for good friends, every few months for others. A realistic rhythm you keep beats an ambitious one you abandon."),
+                ("What can I say when I don't know what to write?",
+                 "Mention something they told you last time, a shared memory, or something you saw that made you think of them, then ask a simple question. Keeping short notes after each conversation makes this easy."),
+                ("Do I need an app to keep in touch?",
+                 "No. A notebook and calendar reminders work. An app helps when your list grows, by remembering rhythms, birthdays and what each person told you."),
+            ],
+        },
+        "fr": {
+            "title": "Garder le contact avec ses amis quand on n'a pas le temps",
+            "seo_title": "Garder le contact avec ses amis quand on manque de temps",
+            "desc": "Vous pensez à eux mais n'écrivez jamais ? Ce que dit la recherche, à quel rythme reprendre contact, quoi écrire en 30 secondes, et des rituels qui entretiennent l'amitié.",
+            "lede": "Un ami qu'on voulait appeler. Un ancien collègue qu'on n'a jamais relancé. On pense aux gens qui comptent bien plus souvent qu'on ne le leur dit. Voici ce que dit la recherche, et quelques habitudes simples qui changent ça.",
+            "faq_title": "Les questions qu'on se pose",
+            "sections": [
+                ("On pense à eux, mais on n'écrit pas",
+                 "<p>Le plus difficile est rarement de savoir quoi dire : c'est l'impression que cela fait trop longtemps, que le message sera gênant, ou que l'autre s'en moquera.</p>"
+                 "<p>La recherche dit le contraire. Dans une série d'expériences publiées en 2022 dans le Journal of Personality and Social Psychology, Peggy Liu et ses collègues ont montré qu'on sous-estime systématiquement à quel point les autres apprécient qu'on prenne de leurs nouvelles, par un court message, un mot ou un petit cadeau. Et plus le message est inattendu, plus il est apprécié : un vieil ami à qui l'on n'a pas parlé depuis longtemps est justement celui qui sera content d'avoir de vos nouvelles.</p>"),
+                ("Pourquoi ça vaut l'effort",
+                 "<p>Une amitié prend du temps à construire. Jeffrey Hall, de l'université du Kansas, a estimé qu'il faut environ 50 heures passées ensemble pour passer de connaissance à copain, environ 90 heures pour devenir amis, et plus de 200 heures pour devenir amis proches. Ce temps est un investissement qu'on n'a pas envie de perdre dans le silence.</p>"
+                 "<p>Et cela compte au-delà du plaisir. Une méta-analyse de Julianne Holt-Lunstad et ses collègues, publiée en 2010 et portant sur 148 études et plus de 300 000 personnes, a montré que les personnes aux liens sociaux plus forts avaient davantage de chances de survie sur la période étudiée, un effet que les auteurs jugent comparable à celui de facteurs de risque bien connus.</p>"),
+                ("Choisir qui, et à quel rythme",
+                 "<p>On ne peut pas suivre tout le monde, et ce n'est pas nécessaire. Commencez par une courte liste : les cinq à quinze personnes qui vous manqueraient vraiment. Il y a quelques années, j'ai fait le tri dans mon entourage et je me suis éloigné des gens qui critiquent sans cesse ; cela a laissé plus de place aux autres.</p>"
+                 "<p>Donnez ensuite à chacun un rythme adapté à la relation : toutes les une ou deux semaines pour les plus proches, chaque mois pour les bons amis, tous les quelques mois pour ceux avec qui vous ne voulez pas perdre le lien. Il n'y a pas de bon chiffre ; ce qui compte, c'est qu'il soit réaliste pour vous.</p>"),
+                ("Un message de 30 secondes suffit",
+                 "<p>Pas besoin d'un long rattrapage. Un message court et précis fait l'affaire :</p>"
+                 "<ul>"
+                 "<li>« J'ai vu ça et j'ai pensé à toi. Ça s'est bien passé, le déménagement ? »</li>"
+                 "<li>« Ça fait trop longtemps ! Un café la semaine prochaine ? »</li>"
+                 "<li>« Joyeux anniversaire ! Et ce nouveau boulot, ça se passe comment ? »</li>"
+                 "</ul>"
+                 "<p>Le secret, c'est le détail : le déménagement, le nouveau travail, l'enfant qui vient d'entrer à l'école. Notez ce que les gens vous racontent après chaque conversation, et vous aurez toujours quelque chose à dire la fois suivante.</p>"),
+                ("Des rituels plutôt que de la volonté",
+                 "<p>Les bonnes intentions s'effacent ; les habitudes restent. Accrochez la prise de nouvelles à quelque chose que vous faites déjà : un message pendant le café du dimanche matin, un appel sur le trajet du retour le jeudi, les anniversaires dans votre agenda avec un rappel la veille. Deux ou trois personnes par semaine suffisent à entretenir tout un cercle sur une année.</p>"),
+                ("Un outil qui se souvient pour vous",
+                 "<p>Un carnet et les rappels de votre téléphone peuvent suffire. <a href=\"/fr/keepcontact/\">KeepContact</a> est l'app que je fais pour ça : vous choisissez un rythme pour chaque personne, et elle vous montre qui attend de vos nouvelles. Elle garde les anniversaires, ce qui compte pour chacun et le fil de vos échanges. Avec Pro, un point du matin met une personne en avant avec un court résumé, et son IA intégrée à l'iPhone propose une première phrase quand vous séchez.</p>"
+                 "<p>Elle est gratuite jusqu'à 15 contacts, ce qui suffit pour la courte liste ci-dessus. Tout reste sur votre iPhone : pas de compte, pas de serveur, et votre carnet d'adresses n'est jamais envoyé nulle part.</p>"),
+            ],
+            "faq": [
+                ("Est-ce bizarre de reprendre contact après des années de silence ?",
+                 "Moins qu'on ne le croit. Les travaux de Peggy Liu et ses collègues montrent que les gens apprécient d'être contactés davantage que ne l'imagine celui qui écrit, et encore plus quand le message est une surprise. Un message court et chaleureux est en général bien reçu."),
+                ("À quelle fréquence prendre des nouvelles d'un ami ?",
+                 "Il n'y a pas de règle universelle. Choisissez un rythme par personne : toutes les une ou deux semaines pour les plus proches, chaque mois pour les bons amis, tous les quelques mois pour les autres. Un rythme réaliste et tenu vaut mieux qu'un rythme ambitieux abandonné."),
+                ("Que dire quand on ne sait pas quoi écrire ?",
+                 "Rappelez quelque chose qu'il vous a raconté la dernière fois, un souvenir commun, ou une chose vue qui vous a fait penser à lui, puis posez une question simple. Prendre quelques notes après chaque conversation rend cela facile."),
+                ("Faut-il une app pour garder le contact ?",
+                 "Non. Un carnet et des rappels dans l'agenda fonctionnent. Une app aide quand la liste s'allonge, en retenant les rythmes, les anniversaires et ce que chacun vous a dit."),
+            ],
+        },
+    },
 ]
