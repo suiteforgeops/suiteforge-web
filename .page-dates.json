@@ -65,11 +65,15 @@
  },
  "fr/guides/index.html": {
   "date": "2026-11-12",
-  "hash": "719a097f110b07604e2ccd9a44399a8f"
+  "hash": "27915b0e9e44510d583706a72848c75a"
+ },
+ "fr/guides/routine-du-matin-qui-tient/index.html": {
+  "date": "2026-11-12",
+  "hash": "858bb21275b779b58fe726d80880a4e8"
  },
  "fr/index.html": {
   "date": "2026-11-12",
-  "hash": "10b86fc51ffb441c21ef75f4ce504785"
+  "hash": "6c1a0b5c65f61b132328a0b51004e832"
  },
  "fr/jezko/conditions/index.html": {
   "date": "2026-11-11",
@@ -112,8 +116,8 @@
   "hash": "77f5202db5bad91f4ceeaa88304d809f"
  },
  "fr/routineflow/index.html": {
-  "date": "2026-11-11",
-  "hash": "abc4d051d68ddb7619f2ce16118c9550"
+  "date": "2026-11-12",
+  "hash": "e2047f1808597c0f233b741875e691bd"
  },
  "fr/routineflow/r/index.html": {
   "date": "2026-11-11",
@@ -221,11 +225,15 @@
  },
  "guides/index.html": {
   "date": "2026-11-12",
-  "hash": "d2b2c77ef5959503a7a3861758e55a21"
+  "hash": "f379c3482caee3b1e168d31fe897da36"
  },
  "guides/keep-in-touch-with-friends/index.html": {
   "date": "2026-11-12",
   "hash": "64b78bcb766d2498781b47eea169931e"
+ },
+ "guides/morning-routine-that-sticks/index.html": {
+  "date": "2026-11-12",
+  "hash": "3df860860003fa09e29d87c2324a64cb"
  },
  "guides/teach-your-child-serbian/index.html": {
   "date": "2026-11-11",
@@ -233,7 +241,7 @@
  },
  "index.html": {
   "date": "2026-11-12",
-  "hash": "c7624627985f79f1249ff0ce21657f2b"
+  "hash": "fb2ee918957a179ff3e46f673c5d52b7"
  },
  "jezko/index.html": {
   "date": "2026-11-11",
@@ -264,8 +272,8 @@
   "hash": "0d5e116f6f0c26277e87b3ae5c6c18e9"
  },
  "routineflow/index.html": {
-  "date": "2026-11-11",
-  "hash": "492b86ef1fc4c26567bdc77460b5f47c"
+  "date": "2026-11-12",
+  "hash": "b49e3b49b4dcdeedda9bb440350f7fa2"
  },
  "routineflow/privacy/index.html": {
   "date": "2026-11-11",

@@ -433,4 +433,103 @@ GUIDES = [
             ],
         },
     },
+
+    {
+        "id": "morning-routine",
+        "app": "routineflow",
+        "published": "12 November 2026",
+        "slug": {"en": "morning-routine-that-sticks", "fr": "routine-du-matin-qui-tient"},
+        "sources": [
+            ("Lally, van Jaarsveld, Potts, Wardle, « How are habits formed: Modelling habit formation in the real world », European Journal of Social Psychology 40 (6), 2010 (British Psychological Society summary)",
+             "https://bps.org.uk/research-digest/how-form-habit"),
+            ("Gollwitzer, Sheeran, « Implementation Intentions and Goal Achievement: A Meta-analysis of Effects and Processes », Advances in Experimental Social Psychology 38, 2006",
+             "https://kops.uni-konstanz.de/server/api/core/bitstreams/eb48c8cf-7855-478e-90ec-1ea6d44f8252/content"),
+        ],
+        "en": {
+            "title": "How to build a morning routine that sticks",
+            "seo_title": "How to build a morning routine that sticks (before your phone wins)",
+            "desc": "Why morning routines fail, how long a habit really takes to form, how to start with 10 minutes, and how to keep your phone out of the way until you're done.",
+            "lede": "You set the alarm early, you have a plan, and twenty minutes later you're still scrolling in bed. Morning routines rarely fail for lack of motivation: they fail because they're too big, too vague, and because the phone gets there first. Here is what research says, and how to build one that holds.",
+            "faq_title": "Questions people ask",
+            "sections": [
+                ("Why morning routines fall apart",
+                 "<p>Most routines start too ambitious: an hour of sport, meditation, journaling and reading, from day one. After a short night, the whole thing feels impossible, so you skip it, and the next day it's harder to start again. And in between, the phone on the nightstand offers something easier: messages, news, a feed that never ends.</p>"
+                 "<p>A routine that holds is short, precise and protected from the phone.</p>"),
+                ("How long a habit really takes",
+                 "<p>The “21 days to form a habit” you often read has no solid basis. In 2010, Phillippa Lally and her colleagues at University College London followed participants who chose a new daily habit, such as drinking a glass of water at breakfast or going for a run before dinner. It took them 66 days on average for the behaviour to become automatic, with very wide differences: from 18 to 254 days depending on the person and the habit.</p>"
+                 "<p>Two findings help: missing one day didn't significantly harm the process, and more complex behaviours took longer to become automatic. In other words: start simple, and don't give up after a missed morning.</p>"),
+                ("Start small: three steps, ten minutes",
+                 "<p>Choose three steps you can do even on a bad day, and give each one a duration. For example:</p>"
+                 "<ul>"
+                 "<li>A glass of water: 1 minute.</li>"
+                 "<li>Three stretches: 3 minutes.</li>"
+                 "<li>Plan the day: 2 minutes.</li>"
+                 "</ul>"
+                 "<p>That's the <a href=\"/routineflow/routines/morning-express/\">5-minute morning</a>. When it's automatic, add a step: deep breathing, a cool shower, reading. The <a href=\"/routineflow/routines/morning-energy/\">Energizing morning</a> is a good next level. Times matter: a step with a duration ends, a vague intention never does.</p>"),
+                ("Decide in advance: “when X, I do Y”",
+                 "<p>Psychologists call it an implementation intention: a plan in the form “when this happens, I do that”. In their 2006 meta-analysis of 94 tests, Peter Gollwitzer and Paschal Sheeran found that this kind of plan helped people act on their goals; a 2024 update suggests the effect is more modest than first estimated, but real.</p>"
+                 "<p>For the morning: “when my alarm rings, I get up and drink a glass of water”, “when I've had my coffee, I start the routine”. Hook the routine to something that already happens every day.</p>"),
+                ("Keep the phone out of the way",
+                 "<p>The simplest solution is physical: charge your phone outside the bedroom and use a separate alarm clock. If that's not possible, iPhone's Screen Time lets you limit apps by time slot, and some apps go further by locking the distracting apps until your routine is done. Either way, the rule is the same: the routine first, the phone after.</p>"),
+                ("On the days it doesn't happen",
+                 "<p>You'll miss mornings: illness, travel, a sleepless night. According to Lally's study, a single missed day doesn't undo the habit; what breaks it is giving up after the miss. Have a minimal version for bad days (just the glass of water and one stretch) and pick up the full routine the next day.</p>"),
+                ("With RoutineFlow",
+                 "<p>I use <a href=\"/routineflow/\">RoutineFlow</a> every morning. It guides your routine step by step, out loud, with a timer for each step, and keeps the apps you choose (Instagram, TikTok, news) locked until the routine is done. The block always ends, when you finish or after a safety limit you set.</p>"
+                 "<p>The free version includes 2 routines of up to 8 steps, voice guidance, the Live Activity, reminders, 3 templates and one free “Earn your phone” morning; Premium unlocks app blocking every day, all templates and the Apple Watch app. No account and no ads.</p>"),
+            ],
+            "faq": [
+                ("How long does it take for a morning routine to become a habit?",
+                 "There's no fixed number. In Phillippa Lally's 2010 study, it took 66 days on average for a new daily behaviour to become automatic, from 18 to 254 days depending on the person and the habit. Simple routines become automatic faster."),
+                ("What should I do if I miss a morning?",
+                 "Pick it up again the next day. Lally's study found that missing one day didn't significantly affect habit formation; giving up after a miss is what breaks it. Keep a minimal version for bad days."),
+                ("How many steps should a morning routine have?",
+                 "Start with three steps and about ten minutes, simple enough to do on a bad day. Add a step only when the routine feels automatic."),
+                ("How do I stop checking my phone first thing in the morning?",
+                 "Charge it outside the bedroom and use a separate alarm clock, or use Screen Time or an app that locks distracting apps until your routine is done. Hooking the routine to your alarm (“when it rings, I get up and drink water”) also helps."),
+            ],
+        },
+        "fr": {
+            "title": "Une routine du matin qui tient, avant que le téléphone ne gagne",
+            "seo_title": "Routine du matin : comment la tenir (avant que le téléphone ne gagne)",
+            "desc": "Pourquoi les routines du matin échouent, combien de temps il faut vraiment pour une habitude, commencer par 10 minutes, et tenir le téléphone à l'écart jusqu'à la fin.",
+            "lede": "Le réveil sonne tôt, vous avez un plan, et vingt minutes plus tard vous faites encore défiler votre écran au lit. Les routines du matin échouent rarement par manque de motivation : elles échouent parce qu'elles sont trop longues, trop floues, et parce que le téléphone arrive en premier. Voici ce que dit la recherche, et comment en construire une qui tient.",
+            "faq_title": "Les questions qu'on se pose",
+            "sections": [
+                ("Pourquoi les routines du matin s'écroulent",
+                 "<p>La plupart des routines démarrent trop ambitieuses : une heure de sport, de méditation, de journal et de lecture, dès le premier jour. Après une nuit courte, tout semble impossible, alors on saute, et le lendemain il est plus dur de recommencer. Et entre-temps, le téléphone sur la table de nuit propose plus facile : les messages, les infos, un fil sans fin.</p>"
+                 "<p>Une routine qui tient est courte, précise et protégée du téléphone.</p>"),
+                ("Combien de temps il faut vraiment pour une habitude",
+                 "<p>Les « 21 jours pour prendre une habitude » qu'on lit souvent ne reposent sur rien de solide. En 2010, Phillippa Lally et ses collègues de l'University College London ont suivi des participants qui avaient choisi une nouvelle habitude quotidienne, comme boire un verre d'eau au petit-déjeuner ou courir avant le dîner. Il leur a fallu en moyenne 66 jours pour que le geste devienne automatique, avec de très grands écarts : de 18 à 254 jours selon les personnes et les habitudes.</p>"
+                 "<p>Deux résultats aident : rater un jour n'a pas nui de façon significative, et les gestes plus complexes ont mis plus de temps à devenir automatiques. Autrement dit : commencez simple, et n'abandonnez pas après un matin raté.</p>"),
+                ("Commencer petit : trois étapes, dix minutes",
+                 "<p>Choisissez trois étapes que vous pouvez faire même un mauvais jour, et donnez une durée à chacune. Par exemple :</p>"
+                 "<ul>"
+                 "<li>Un verre d'eau : 1 minute.</li>"
+                 "<li>Trois étirements : 3 minutes.</li>"
+                 "<li>Planifier la journée : 2 minutes.</li>"
+                 "</ul>"
+                 "<p>C'est le <a href=\"/fr/routineflow/routines/morning-express/\">Matin express</a>. Quand il devient automatique, ajoutez une étape : respiration profonde, douche fraîche, lecture. Le <a href=\"/fr/routineflow/routines/morning-energy/\">Matin énergie</a> est un bon palier suivant. Les durées comptent : une étape chronométrée se termine, une intention floue jamais.</p>"),
+                ("Décider d'avance : « quand X, je fais Y »",
+                 "<p>Les psychologues parlent d'intention de mise en œuvre : un plan de la forme « quand ceci arrive, je fais cela ». Dans leur méta-analyse de 2006 portant sur 94 tests, Peter Gollwitzer et Paschal Sheeran ont montré que ce type de plan aidait à passer à l'acte ; une mise à jour de 2024 juge l'effet plus modeste qu'estimé au départ, mais réel.</p>"
+                 "<p>Pour le matin : « quand mon réveil sonne, je me lève et je bois un verre d'eau », « quand j'ai bu mon café, je lance la routine ». Accrochez la routine à quelque chose qui arrive déjà chaque jour.</p>"),
+                ("Tenir le téléphone à l'écart",
+                 "<p>La solution la plus simple est physique : chargez votre téléphone hors de la chambre et utilisez un vrai réveil. Si ce n'est pas possible, Temps d'écran sur iPhone permet de limiter des apps par plage horaire, et certaines apps vont plus loin en bloquant les apps qui distraient jusqu'à la fin de la routine. Dans tous les cas, la règle est la même : la routine d'abord, le téléphone ensuite.</p>"),
+                ("Les jours où ça ne se fait pas",
+                 "<p>Vous raterez des matins : maladie, voyage, nuit blanche. D'après l'étude de Lally, un jour manqué ne défait pas l'habitude ; ce qui la casse, c'est d'abandonner après. Prévoyez une version minimale pour les mauvais jours (juste le verre d'eau et un étirement), et reprenez la routine complète le lendemain.</p>"),
+                ("Avec RoutineFlow",
+                 "<p>J'utilise <a href=\"/fr/routineflow/\">RoutineFlow</a> tous les matins. Elle vous guide pas à pas, à voix haute, avec un minuteur pour chaque étape, et garde bloquées les apps que vous choisissez (Instagram, TikTok, les infos) jusqu'à la fin de la routine. Le blocage se termine toujours, quand vous finissez ou après une limite de sécurité que vous fixez.</p>"
+                 "<p>La version gratuite comprend 2 routines de 8 étapes au plus, le guidage vocal, la Live Activity, les rappels, 3 modèles et une matinée « Gagnez votre téléphone » offerte ; Premium débloque le blocage des apps tous les jours, tous les modèles et l'app Apple Watch. Sans compte et sans publicité.</p>"),
+            ],
+            "faq": [
+                ("Combien de temps faut-il pour qu'une routine du matin devienne une habitude ?",
+                 "Il n'y a pas de chiffre fixe. Dans l'étude de Phillippa Lally (2010), il a fallu en moyenne 66 jours pour qu'un nouveau geste quotidien devienne automatique, de 18 à 254 jours selon les personnes et les habitudes. Les routines simples deviennent automatiques plus vite."),
+                ("Que faire si je rate un matin ?",
+                 "Reprendre le lendemain. L'étude de Lally a montré que rater un jour ne nuisait pas de façon significative à la formation de l'habitude ; c'est l'abandon après le raté qui la casse. Gardez une version minimale pour les mauvais jours."),
+                ("Combien d'étapes doit compter une routine du matin ?",
+                 "Commencez par trois étapes et une dizaine de minutes, assez simples pour les faire un mauvais jour. N'ajoutez une étape que quand la routine devient automatique."),
+                ("Comment ne plus prendre son téléphone dès le réveil ?",
+                 "Chargez-le hors de la chambre et utilisez un vrai réveil, ou servez-vous de Temps d'écran ou d'une app qui bloque les apps qui distraient jusqu'à la fin de la routine. Accrocher la routine au réveil (« quand il sonne, je me lève et je bois de l'eau ») aide aussi."),
+            ],
+        },
+    },
 ]
