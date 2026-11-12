@@ -291,7 +291,7 @@ FR_APPS = {
         },
         "home_blurb": "Un carnet de musculation qui propose la charge de chaque série et dit pourquoi, avec toute la séance sur l'Apple Watch.",
         "home_pills": ["300+ exercices", "Apple Watch", "Import Hevy", "Sans compte"],
-        "price_note": "Téléchargement gratuit · aucun paywall au lancement · Premium ou à vie",
+        "price_note": "Téléchargement gratuit · aucun paywall à l'ouverture · Premium ou à vie",
         "highlights": [
             ("Chaque série", "Une charge proposée, et sa raison en une ligne"),
             ("300+", "Exercices expliqués et illustrés"),
@@ -312,7 +312,7 @@ FR_APPS = {
             ("Notez et enchaînez", "Minuteur de repos, records célébrés, et les charges de la séance suivante déjà calculées."),
         ],
         "faq": [
-            ("Crescendo est-il gratuit ?", "Oui. Aucun paywall au lancement, aucun compte. Gratuit : votre programme sur mesure, l'éditeur, 12 programmes et 12 séances toutes faites, les charges proposées, le deload, le ressenti (RIR), l'historique illimité, les graphiques, la saisie du poids, des mensurations et des photos, l'app Apple Watch, le minuteur de repos en Live Activity, les widgets, Siri, l'import Hevy et l'export. Premium ajoute Adapter ma séance, la forme du jour, le bilan de semaine, les courbes des mesures et les photos avant / après, les tendances et le widget Régularité : abonnement mensuel ou annuel (essai gratuit de 7 jours sur l'annuel) ou achat unique à vie, avec le partage familial."),
+            ("Crescendo est-il gratuit ?", "Oui, l'essentiel est gratuit, sans compte et sans paywall à l'ouverture de l'app. Gratuit : votre programme sur mesure, l'éditeur, 12 programmes et 12 séances toutes faites, les charges proposées, le deload, le ressenti (RIR), l'historique illimité, les graphiques, la saisie du poids, des mensurations et des photos, l'app Apple Watch, le minuteur de repos en Live Activity, les widgets, Siri, l'import Hevy et l'export. Premium ajoute Adapter ma séance, la forme du jour, le bilan de semaine, les courbes des mesures et les photos avant / après, les tendances et le widget Régularité : abonnement mensuel ou annuel (essai gratuit de 7 jours sur l'annuel) ou achat unique à vie, avec le partage familial."),
             ("Comment Crescendo choisit-il la charge ?", "Par double progression : quand vous atteignez le haut de la fourchette de répétitions sur toutes les séries, la charge monte, arrondie à votre matériel ; sinon, vous visez plus de répétitions à la même charge. Chaque proposition vient avec sa raison en une ligne, et la série suivante s'ajuste si vous faites trop de répétitions ou pas assez. Vous gardez toujours la main."),
             ("Faut-il une Apple Watch ?", "Non. Tout fonctionne avec l'iPhone seul. Avec une Apple Watch, vous voyez la série, la charge, le repos et votre fréquence cardiaque au poignet, et la séance s'enregistre dans Apple Santé."),
             ("Quelle différence entre Crescendo et Hevy, Strong ou Fitbod ?", "Crescendo propose la charge de chaque série et dit pourquoi, sans compte. D'après leurs étiquettes de confidentialité sur l'App Store, Crescendo ne collecte aucune donnée, tandis que Hevy, Strong et Fitbod collectent des données liées à votre identité, dont des données de santé et de forme pour Strong et Fitbod, et Fitbod utilise des données pour vous suivre. Les achats intégrés de Crescendo vont de 3,99 € à 49,99 €. Les quatre ont une app Apple Watch ; Hevy et Strong existent dans plus de langues, et Hevy fonctionne aussi sur iPad."),
