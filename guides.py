@@ -227,4 +227,113 @@ GUIDES = [
             ],
         },
     },
+
+    {
+        "id": "camino-steps",
+        "app": "walkquest",
+        "published": "12 November 2026",
+        "slug": {"en": "camino-de-santiago-steps", "fr": "compostelle-combien-de-pas"},
+        "sources": [
+            ("Ayuntamiento de Pamplona, « Saint-Jean-Pied-de-Port / Donibane Garazi » (Camino Francés, 773 km to Santiago)",
+             "https://www.pamplona.es/en/caminodesantiago/caminofrances/sanjuanpiedepuerto"),
+            ("Oficina del Peregrino de Santiago, « The Compostela »",
+             "https://oficinadelperegrino.com/en/?p=292"),
+            ("Apple Developer, « walkingStepLength » (HealthKit)",
+             "https://developer.apple.com/documentation/healthkit/hkquantitytypeidentifier/walkingsteplength"),
+        ],
+        "en": {
+            "title": "How many steps is the Camino de Santiago?",
+            "seo_title": "How many steps is the Camino de Santiago? The real numbers",
+            "desc": "From Saint-Jean-Pied-de-Port to Santiago: 773 km, about a million steps. How to work it out with your own step length, how long it takes, and how to walk it from home.",
+            "lede": "From Saint-Jean-Pied-de-Port to Santiago de Compostela, the Camino Francés covers about 773 km. In steps, that's roughly a million. Here is how to work it out with your own stride, how long it takes on the way or at home, and what the Compostela requires.",
+            "faq_title": "Questions walkers ask",
+            "sections": [
+                ("The short answer: about a million steps",
+                 "<p>The Camino Francés, the most walked route to Santiago, starts in Saint-Jean-Pied-de-Port in the French Basque Country and covers about 773 km across northern Spain, according to the city of Pamplona's official Camino site. Guidebooks give figures between about 770 and 790 km, depending on detours and where you sleep.</p>"
+                 "<p>With a typical walking step of 70 to 80 cm, that's between about 970,000 and 1.1 million steps. Call it a million.</p>"),
+                ("Work it out with your own step",
+                 "<p>The number of steps in a kilometre is simply 1,000 divided by your step length in metres:</p>"
+                 "<ul>"
+                 "<li>70 cm step: about 1,430 steps per km, so about 1.1 million steps for the Camino.</li>"
+                 "<li>75 cm step: about 1,330 steps per km, about 1.03 million steps.</li>"
+                 "<li>80 cm step: 1,250 steps per km, about 970,000 steps.</li>"
+                 "</ul>"
+                 "<p>You don't need to guess yours: on iPhone 8 and later, the Health app records your walking step length automatically when you walk steadily on flat ground. You'll find it in Health, under Mobility. With a backpack and on hills, your step gets shorter, so count a little more.</p>"),
+                ("How long it takes",
+                 "<p><strong>On the way:</strong> many pilgrims walk 20 to 25 km a day. At 25 km a day, 773 km take about 31 days of walking; at 20 km a day, about 39. Add rest days, and the full Camino Francés is often a five-week trip.</p>"
+                 "<p><strong>At home, with your daily steps</strong> (75 cm step):</p>"
+                 "<ul>"
+                 "<li>5,000 steps a day (3.75 km): about 206 days, nearly 7 months.</li>"
+                 "<li>8,000 steps a day (6 km): about 129 days, a little over 4 months.</li>"
+                 "<li>10,000 steps a day (7.5 km): about 103 days, under 3 and a half months.</li>"
+                 "</ul>"
+                 "<p>My own floor is 5,000 steps a day: walking the Camino from home would take me about seven months, one ordinary day at a time.</p>"),
+                ("The main stages of the Camino Francés",
+                 "<p>From the Pyrenees to Galicia, the route goes through Roncesvalles, just after the climb over the mountains, then Pamplona, Logroño, Burgos, the plateau of the meseta to León, Astorga, the mountain village of O Cebreiro on the way into Galicia, Sarria, and finally Santiago de Compostela.</p>"),
+                ("The Compostela: the last 100 km",
+                 "<p>To receive the Compostela, the certificate given by the Pilgrim's Office in Santiago, you must walk at least the last 100 km of a recognised route (200 km by bike), and get your pilgrim's passport, the credencial, stamped along the way: twice a day on that last stretch, according to the Pilgrim's Office. That's why so many pilgrims start in Sarria, a little over 100 km from Santiago.</p>"
+                 "<p>A virtual walk, however long, doesn't earn the Compostela: it's a way to prepare, to dream, or to walk the Camino when you can't leave.</p>"),
+                ("Walk it from home",
+                 "<p>I made <a href=\"/walkquest/\">WalkQuest</a> to give my daily steps somewhere to go. Its Camino de Santiago journey follows the same towns, from Saint-Jean-Pied-de-Port to Santiago, and moves you along the map with the walking distance your iPhone or Apple Watch already records in Apple Health. Each stop is celebrated as you reach it.</p>"
+                 "<p>To be clear about the numbers: the journey in WalkQuest is 655 km, because it joins the ten towns on a simplified route, while the real path winds for about 773 km. It's one of WalkQuest's Premium journeys; two journeys are free. Nothing leaves your iPhone, and there's no account.</p>"),
+            ],
+            "faq": [
+                ("How many steps are there in a kilometre?",
+                 "1,000 divided by your step length in metres: about 1,330 steps with a 75 cm step, 1,430 with a 70 cm step, 1,250 with an 80 cm step. The Health app on iPhone measures your own walking step length under Mobility."),
+                ("How many steps is the Camino Francés from Saint-Jean-Pied-de-Port?",
+                 "About 773 km, so roughly a million steps: between about 970,000 and 1.1 million depending on your step length."),
+                ("Can I get the Compostela by walking the Camino virtually?",
+                 "No. The Compostela requires walking at least the last 100 km of a recognised route in person, with a stamped credencial. A virtual walk is a way to prepare or to enjoy the route from home."),
+                ("Why is the Camino 655 km in WalkQuest and 773 km on the ground?",
+                 "WalkQuest joins the main towns of the Camino Francés on a simplified route, which is shorter than the real path with all its bends. The towns and their order are the same."),
+            ],
+        },
+        "fr": {
+            "title": "Compostelle : combien de pas pour aller jusqu'à Saint-Jacques ?",
+            "seo_title": "Chemin de Compostelle : combien de pas ? Les vrais chiffres",
+            "desc": "De Saint-Jean-Pied-de-Port à Saint-Jacques : 773 km, environ un million de pas. Le calcul avec votre propre pas, le temps qu'il faut, et le marcher depuis chez soi.",
+            "lede": "De Saint-Jean-Pied-de-Port à Saint-Jacques-de-Compostelle, le chemin français fait environ 773 km. En pas, cela fait à peu près un million. Voici comment le calculer avec votre propre foulée, combien de temps il faut sur le chemin ou chez soi, et ce que demande la Compostela.",
+            "faq_title": "Les questions des marcheurs",
+            "sections": [
+                ("La réponse courte : environ un million de pas",
+                 "<p>Le chemin français (Camino Francés), le plus parcouru vers Saint-Jacques, part de Saint-Jean-Pied-de-Port, au Pays basque, et traverse le nord de l'Espagne sur environ 773 km, d'après le site officiel du Chemin de la ville de Pampelune. Les guides donnent des chiffres entre 770 et 790 km environ, selon les détours et les lieux d'étape.</p>"
+                 "<p>Avec un pas de marche courant de 70 à 80 cm, cela fait entre 970 000 et 1,1 million de pas environ. Disons un million.</p>"),
+                ("Le calcul avec votre propre pas",
+                 "<p>Le nombre de pas dans un kilomètre, c'est 1 000 divisé par la longueur de votre pas en mètres :</p>"
+                 "<ul>"
+                 "<li>Pas de 70 cm : environ 1 430 pas par km, soit environ 1,1 million de pas pour le Chemin.</li>"
+                 "<li>Pas de 75 cm : environ 1 330 pas par km, environ 1,03 million de pas.</li>"
+                 "<li>Pas de 80 cm : 1 250 pas par km, environ 970 000 pas.</li>"
+                 "</ul>"
+                 "<p>Inutile de deviner le vôtre : sur iPhone 8 et ultérieur, l'app Santé enregistre automatiquement la longueur de votre pas quand vous marchez régulièrement sur terrain plat. Vous la trouvez dans Santé, rubrique Mobilité. Avec un sac à dos et en montée, le pas raccourcit : comptez un peu plus.</p>"),
+                ("Combien de temps il faut",
+                 "<p><strong>Sur le chemin :</strong> beaucoup de pèlerins marchent 20 à 25 km par jour. À 25 km par jour, 773 km demandent environ 31 jours de marche ; à 20 km par jour, environ 39. Avec les jours de repos, le chemin français complet est souvent un voyage de cinq semaines.</p>"
+                 "<p><strong>Chez soi, avec ses pas du quotidien</strong> (pas de 75 cm) :</p>"
+                 "<ul>"
+                 "<li>5 000 pas par jour (3,75 km) : environ 206 jours, près de 7 mois.</li>"
+                 "<li>8 000 pas par jour (6 km) : environ 129 jours, un peu plus de 4 mois.</li>"
+                 "<li>10 000 pas par jour (7,5 km) : environ 103 jours, moins de 3 mois et demi.</li>"
+                 "</ul>"
+                 "<p>Mon plancher, c'est 5 000 pas par jour : marcher le Chemin depuis chez moi me prendrait donc environ sept mois, une journée ordinaire après l'autre.</p>"),
+                ("Les grandes étapes du chemin français",
+                 "<p>Des Pyrénées à la Galice, le chemin passe par Roncevaux, juste après la traversée de la montagne, puis Pampelune, Logroño, Burgos, le plateau de la meseta jusqu'à León, Astorga, le village de montagne d'O Cebreiro à l'entrée de la Galice, Sarria, et enfin Saint-Jacques-de-Compostelle.</p>"),
+                ("La Compostela : les 100 derniers kilomètres",
+                 "<p>Pour recevoir la Compostela, le certificat remis par le bureau des pèlerins de Saint-Jacques, il faut avoir marché au moins les 100 derniers kilomètres d'un chemin reconnu (200 km à vélo), et faire tamponner sa credencial, le passeport du pèlerin, en chemin : deux fois par jour sur ce dernier tronçon, d'après le bureau des pèlerins. C'est pourquoi tant de pèlerins partent de Sarria, à un peu plus de 100 km de Saint-Jacques.</p>"
+                 "<p>Une marche virtuelle, aussi longue soit-elle, ne donne pas droit à la Compostela : c'est une façon de se préparer, de rêver, ou de marcher le Chemin quand on ne peut pas partir.</p>"),
+                ("Le marcher depuis chez soi",
+                 "<p>J'ai fait <a href=\"/fr/walkquest/\">WalkQuest</a> pour donner une destination à mes pas du quotidien. Son voyage du Chemin de Compostelle suit les mêmes villes, de Saint-Jean-Pied-de-Port à Saint-Jacques, et vous fait avancer sur la carte avec la distance de marche que votre iPhone ou votre Apple Watch enregistre déjà dans Apple Santé. Chaque étape atteinte est célébrée.</p>"
+                 "<p>Pour être clair sur les chiffres : le voyage fait 655 km dans WalkQuest, parce qu'il relie les dix villes par un tracé simplifié, alors que le vrai chemin serpente sur environ 773 km. C'est l'un des voyages Premium de WalkQuest ; deux voyages sont gratuits. Rien ne quitte votre iPhone, et il n'y a pas de compte.</p>"),
+            ],
+            "faq": [
+                ("Combien de pas dans un kilomètre ?",
+                 "1 000 divisé par la longueur de votre pas en mètres : environ 1 330 pas avec un pas de 75 cm, 1 430 avec un pas de 70 cm, 1 250 avec un pas de 80 cm. L'app Santé de l'iPhone mesure la longueur de votre pas dans la rubrique Mobilité."),
+                ("Combien de pas pour le chemin français depuis Saint-Jean-Pied-de-Port ?",
+                 "Environ 773 km, soit à peu près un million de pas : entre 970 000 et 1,1 million environ selon la longueur de votre pas."),
+                ("Peut-on obtenir la Compostela en marchant le Chemin virtuellement ?",
+                 "Non. La Compostela demande d'avoir marché soi-même au moins les 100 derniers kilomètres d'un chemin reconnu, avec une credencial tamponnée. Une marche virtuelle sert à se préparer ou à profiter du parcours depuis chez soi."),
+                ("Pourquoi le Chemin fait-il 655 km dans WalkQuest et 773 km sur le terrain ?",
+                 "WalkQuest relie les principales villes du chemin français par un tracé simplifié, plus court que le vrai chemin avec tous ses détours. Les villes et leur ordre sont les mêmes."),
+            ],
+        },
+    },
 ]

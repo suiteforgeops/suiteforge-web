@@ -51,17 +51,21 @@
   "date": "2026-11-11",
   "hash": "e8b629580ecf1888b7486066be1dd7df"
  },
+ "fr/guides/compostelle-combien-de-pas/index.html": {
+  "date": "2026-11-12",
+  "hash": "2ec8aac41ec964e126611d969e702d7d"
+ },
  "fr/guides/double-progression/index.html": {
   "date": "2026-11-11",
   "hash": "7e29de579f882654f72900235af7e80a"
  },
  "fr/guides/index.html": {
-  "date": "2026-11-11",
-  "hash": "3f1abf116f07dc971a94788448d0a5ac"
+  "date": "2026-11-12",
+  "hash": "e197b2ec0b4a393e12de416b04c884d3"
  },
  "fr/index.html": {
-  "date": "2026-11-11",
-  "hash": "d1918fdc95fc11c70f6cc8d57e2881be"
+  "date": "2026-11-12",
+  "hash": "8add3d9ee83ece77176d284280fe8599"
  },
  "fr/jezko/conditions/index.html": {
   "date": "2026-11-11",
@@ -172,8 +176,8 @@
   "hash": "8fb81faa6c54781e2a513f205f731f3b"
  },
  "fr/walkquest/index.html": {
-  "date": "2026-11-11",
-  "hash": "385c5e7d2dd5f1e34e73b38ea726b676"
+  "date": "2026-11-12",
+  "hash": "7d796d5c6eb4c3eee6331b3cd9a4f761"
  },
  "fr/walkquest/v/camino_frances/index.html": {
   "date": "2026-11-11",
@@ -203,21 +207,25 @@
   "date": "2026-11-11",
   "hash": "e45b2519bc36e5f3af6bc28de3d6c42a"
  },
+ "guides/camino-de-santiago-steps/index.html": {
+  "date": "2026-11-12",
+  "hash": "47834948ca3086a20d3df3231a05161a"
+ },
  "guides/double-progression/index.html": {
   "date": "2026-11-11",
   "hash": "9da4b583b297e3cc7d31b2abfbb630f2"
  },
  "guides/index.html": {
-  "date": "2026-11-11",
-  "hash": "f589b479742a7b62d635ea196bc368d5"
+  "date": "2026-11-12",
+  "hash": "fcffd2392bdef5b500353ca342dcc1e3"
  },
  "guides/teach-your-child-serbian/index.html": {
   "date": "2026-11-11",
   "hash": "c12d8a28457bf3892b3e9ab5fd67f62c"
  },
  "index.html": {
-  "date": "2026-11-11",
-  "hash": "04b06a2d38ce3b0c18e628f55e34c571"
+  "date": "2026-11-12",
+  "hash": "a13ba04a907e7a443e6345d8522e2b47"
  },
  "jezko/index.html": {
   "date": "2026-11-11",
@@ -316,8 +324,8 @@
   "hash": "0a4937af1734213447f1e5e5095edeb8"
  },
  "walkquest/index.html": {
-  "date": "2026-11-11",
-  "hash": "93cc42d29e3664d9fbf600fbd3452bde"
+  "date": "2026-11-12",
+  "hash": "aa09d8c06d61b5011e23fe3ad4c12ec1"
  },
  "walkquest/privacy/index.html": {
   "date": "2026-11-11",
