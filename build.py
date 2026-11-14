@@ -603,12 +603,40 @@ APPS = {
             ("Import, export and erase", "Importing a workout history reads a file you choose, on your iPhone. Exporting creates a CSV or JSON file that you save or share yourself. Settings › Data also lets you erase all your data."),
         ],
     },
+    # Legal pages only for now (LEGAL_ONLY): the landing comes with the App Store screenshots.
+    "noctis": {
+        "name": "Noctis",
+        "full_name": "Snoring & Breathing: Noctis",
+        "category_label": "Health & Fitness",
+        "schema_category": "HealthApplication",
+        "appstore_id": None,
+        "status": "soon",
+        # The app's lavender is for a dark night palette; links and text use its deep variant.
+        "accent": "#624de3", "accent_deep": "#4a37b8", "accent_tint": "#efecff",
+        "icon_svg": '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
+        "updated": "14 November 2026",
+        "icloud": False,
+        "lifetime": True,
+        # Purchases checked on the device with StoreKit 2 (SuiteForgeKit): no RevenueCat.
+        "storekit_native": True,
+        "family_sharing": False,
+        "languages": ["en", "fr"],
+        "permissions": [
+            ("Microphone", "Noctis uses the microphone only during a night you start, to measure noisy breathing and, while the app stays open with the phone face down, snoring. The sound is analysed on your iPhone as it comes in and is not kept, except short audio extracts of notable moments (only when the phone lies face down), saved in the app so you can replay them. No sound is ever uploaded. Without the microphone, Noctis cannot measure your night."),
+            ("Apple Health (optional, Premium)", "If you turn on Health sync in Settings, Noctis asks for permission to save each night's sleep period and average breathing rate to Apple Health, and to read your sleep analysis. This version of Noctis does not read any Health data. This data stays in Apple Health on your devices and is never sent to SuiteForge."),
+            ("Notifications (optional)", "An evening bedtime reminder, if you turn it on, scheduled locally on your iPhone. Noctis sends no other notifications."),
+        ],
+        "privacy_extra": [
+            ("Your nights and audio extracts", "Each night's measurements (sound level, noisy breathing, snoring, breathing rate), your notes and evening habits, and the audio extracts are stored only on your device. They are never sent to SuiteForge or to anyone else. Deleting the app deletes them."),
+            ("Sound analysis on your iPhone", "Noisy breathing is detected by Noctis's own signal processing, and snoring is confirmed by Apple's built-in sound classifier (SoundAnalysis). Both run on your iPhone, with no server and no third-party service."),
+        ],
+    },
 }
 
 # Page order of the apps (footer, sitemap, "more apps") and the home page bento.
 ORDER = ["jezko", "keepcontact", "crescendo", "fastclear", "routineflow", "walkquest"]
 # Apps with their legal pages online but no landing yet (privacy and terms needed for App Review).
-LEGAL_ONLY = []
+LEGAL_ONLY = ["noctis"]
 HOME_LAYOUT = [("jezko", "feature"), ("keepcontact", "half"), ("fastclear", "half"), ("crescendo", "feature"), ("routineflow", "half"), ("walkquest", "half")]
 HOME_FAN = ["keepcontact", "jezko", "fastclear"]
 # Home banner: the app just released (empty: the next "coming soon" app). Change it at each launch.

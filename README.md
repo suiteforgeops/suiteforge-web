@@ -72,6 +72,7 @@ Une fois en ligne, remplace les URLs Notion par celles-ci dans chaque fiche (App
 | KeepContact | `https://suiteforge.app/keepcontact/privacy/` | `https://suiteforge.app/keepcontact/terms/` |
 | Ježko | `https://suiteforge.app/jezko/privacy/` | `https://suiteforge.app/jezko/terms/` |
 | Crescendo | `https://suiteforge.app/crescendo/privacy/` | `https://suiteforge.app/crescendo/terms/` |
+| Noctis | `https://suiteforge.app/noctis/privacy/` | `https://suiteforge.app/noctis/terms/` |
 
 Le champ Terms est facultatif côté Apple (un EULA standard s'applique sinon), mais pointer vers ta page est plus propre et cohérent avec le footer des landings.
 

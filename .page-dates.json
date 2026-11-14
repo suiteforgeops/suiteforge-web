@@ -107,6 +107,14 @@
   "date": "2026-11-11",
   "hash": "d19d46d61f4ee7674e48e5ebc8937548"
  },
+ "fr/noctis/conditions/index.html": {
+  "date": "2026-11-14",
+  "hash": "ba443e458e935b53684bdbe5165b06d2"
+ },
+ "fr/noctis/confidentialite/index.html": {
+  "date": "2026-11-14",
+  "hash": "e408e78b852f00468c78ef9e6a66d6a5"
+ },
  "fr/pourquoi/index.html": {
   "date": "2026-11-11",
   "hash": "527e092bfa270cfaf505fbdf0f100b08"
@@ -278,6 +286,14 @@
  "legal-notice/index.html": {
   "date": "2026-11-11",
   "hash": "0d5e116f6f0c26277e87b3ae5c6c18e9"
+ },
+ "noctis/privacy/index.html": {
+  "date": "2026-11-14",
+  "hash": "2b1d45686e1107ade10a08e659c4a0a8"
+ },
+ "noctis/terms/index.html": {
+  "date": "2026-11-14",
+  "hash": "af080245d3e8b673c1d4fb264a2bbf3e"
  },
  "routineflow/index.html": {
   "date": "2026-11-12",

@@ -267,6 +267,18 @@ FR_APPS = {
         },
     },
 
+    "noctis": {
+        "category_label": "Santé et forme",
+        "permissions": [
+            ("Microphone", "Noctis n'utilise le micro que pendant une nuit que vous lancez, pour mesurer la respiration bruyante et, quand l'app reste ouverte téléphone face contre la table, le ronflement. Le son est analysé sur votre iPhone au fur et à mesure et n'est pas conservé, sauf de courts extraits audio des moments marquants (seulement téléphone face contre la table), enregistrés dans l'app pour que vous puissiez les réécouter. Aucun son n'est jamais envoyé. Sans le micro, Noctis ne peut pas mesurer votre nuit."),
+            ("Apple Santé (facultatif, Premium)", "Si vous activez la synchronisation Santé dans les Réglages, Noctis demande l'autorisation d'enregistrer dans Apple Santé la période de sommeil et la fréquence respiratoire moyenne de chaque nuit, et de lire votre analyse du sommeil. Cette version de Noctis ne lit aucune donnée de Santé. Ces données restent dans Apple Santé sur vos appareils et ne sont jamais envoyées à SuiteForge."),
+            ("Notifications (facultatif)", "Un rappel du coucher le soir, si vous l'activez, programmé localement sur votre iPhone. Noctis n'envoie aucune autre notification."),
+        ],
+        "privacy_extra": [
+            ("Vos nuits et vos extraits audio", "Les mesures de chaque nuit (niveau sonore, respiration bruyante, ronflement, fréquence respiratoire), vos notes et vos habitudes de la veille, ainsi que les extraits audio, sont enregistrés uniquement sur votre appareil. Ils ne sont jamais envoyés à SuiteForge ni à personne d'autre. Supprimer l'app les supprime."),
+            ("Analyse du son sur votre iPhone", "La respiration bruyante est détectée par le traitement du signal propre à Noctis, et le ronflement est confirmé par le classifieur sonore intégré d'Apple (SoundAnalysis). Les deux tournent sur votre iPhone, sans serveur ni service tiers."),
+        ],
+    },
     "crescendo": {
         "category_label": "Santé et forme",
         "tagline": "La bonne charge à chaque série.",
