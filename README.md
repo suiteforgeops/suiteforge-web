@@ -40,7 +40,7 @@ Apps : `jezko`, `keepcontact`, `crescendo`, `fastclear`, `routineflow`, `walkque
 
 **Nouvelle app avant sa sortie** : ses pages légales peuvent être publiées seules (`LEGAL_ONLY` dans `build.py`) pour la review d'Apple ; à la sortie, l'ajouter à `ORDER` et `HOME_LAYOUT` et la retirer de `LEGAL_ONLY` (fait pour Crescendo le 11/11/2026 : captures brutes de `GymLog/ASO/Screenshots`, sans comparatif pour l'instant).
 
-**Ježko est en « Coming soon »** (`appstore_id: None`, `"status": "soon"`) : badge App Store non cliquable, pas de barre « Get » ni de bannière Smart App Banner. Le jour de la sortie : renseigner `appstore_id`, supprimer `"status"`, relancer `python3 build.py` et pousser.
+**Ježko est en ligne depuis le 23/11/2026** (`appstore_id` 6822418848). Pour une prochaine app « Coming soon » : `appstore_id: None` et `"status": "soon"` (badge non cliquable, pas de barre « Get » ni de Smart App Banner) ; le jour de la sortie, renseigner `appstore_id`, supprimer `"status"`, mettre la slug dans `ANNOUNCE`, relancer `python3 build.py` et pousser.
 
 ## Déploiement GitHub Pages
 

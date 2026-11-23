@@ -413,9 +413,7 @@ APPS = {
         "full_name": "Ježko: Learn Serbian",
         "category_label": "Education",
         "schema_category": "EducationalApplication",
-        # In App Review (October 2026). Once live: put the App Store ID here and remove "status".
-        "appstore_id": None,
-        "status": "soon",
+        "appstore_id": "6822418848",   # live since 23/11/2026
         # Palette « l'été chez baka » : crvena (icon background)
         "accent": "#d9483b", "accent_deep": "#b8372c", "accent_tint": "#fbe6e1",
         "icon_svg": '<path d="M4 15c0-4 3.5-7 8-7s8 3 8 7H4z"/><circle cx="16" cy="12" r=".8"/>',
@@ -640,7 +638,7 @@ LEGAL_ONLY = ["noctis"]
 HOME_LAYOUT = [("jezko", "feature"), ("keepcontact", "half"), ("fastclear", "half"), ("crescendo", "feature"), ("routineflow", "half"), ("walkquest", "half")]
 HOME_FAN = ["keepcontact", "jezko", "fastclear"]
 # Home banner: the app just released (empty: the next "coming soon" app). Change it at each launch.
-ANNOUNCE = "crescendo"   # the three screens in the home hero
+ANNOUNCE = "jezko"   # released 23/11/2026
 
 TODAY = datetime.date.today().isoformat()
 # Replaced in write() by the date the page content last changed (see DATES_FILE).
